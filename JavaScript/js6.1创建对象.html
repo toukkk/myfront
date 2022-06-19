@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+    <div>javascript</div>
+</body>
+
+
+</html>
+
+<script>
+    // //对象直接量---------------------------------------------------------------------------------------------
+    var empty = {};                                     //创建空对象
+    var point = { x: 1, y: 2 };                         //两个属性
+    var point1 = { x: point.x, y: point.y + 1 };        //更复杂的值
+    var body = {
+        "main title": "javascript",                     //属性名有空格必须用字符串表示
+        "sub_title": "The Definitive Cuide",            //属性名有连字符必须用字符串表示
+        "for": "all audiences",                         //"for"作为保留字，必须用引号
+        author: {                                       //复合对象
+            firstname: "David",                         //这里的属性名没用引号
+            surname: "Flanagan"                         //最后一个属性后的逗号在大部分实现中省略，但在IE中会报错
+        }
+    }
+    console.log("empty: ", empty);
+    console.log("point: ", point);
+    console.log("point1: ", point1);
+    console.log("body: ", body);
+    console.log("prototype: ", Object.prototype);        //对原型的引用
+    console.log("");
+    //通过new创建---------------------------------------------------------------------------------------------
+    var o_object = new Object();                          //new 后面接一个调用函数，即构造函数用以初始化一个新的对象，创建空对象
+    var o_array = new Array();                            //创建新空数组
+    var new_date = new Date();                            //创建一个新的当前时间对象
+    var js_regexp = new RegExp("js");                     //创建一个可以进行模式匹配的RegExp对象
+    console.log("o_object: ", o_object);
+    console.log("o_array: ", o_array);
+    console.log("new_date: ", new_date);
+    console.log("prototype: ", Date.prototype);             //对其原型的引用
+    console.log("js_regexp: ", js_regexp);
+    console.log("");
+    //通过Object.create()创建---------------------------------------------------------------------------------------------
+    var o1_object = Object.create({ x: 1, y: 2 });          //传入原型对象，o1_object将继承属性x和y
+    var o2_object = Object.create(null);                    //使用参数null创建一个没有原型的对象，o2_object将不继承任何属性和方法，连运算符"+"都不能正常工作
+    var o3_object = Object.create(Object.prototype);        //创建一个普通的新对象
+    function inherit(p) {                                   //定义一个继承对象函数
+        if (p == null) {                                    //如果对象原型为空则报错
+            throw TypeError();
+        }
+        else {
+            if (Object.create) {                            //如果支持Object.create函数，则输出Object.create 
+                console.log("Object.create(p): ",Object.create(p));
+                return Object.create(p);
+            }
+            else {
+                var p_typeof = typeof p;
+                if (p_typeof !== "object" && p_typeof !== "function") {         //如果不支持Object.create函数，则判断是否是对象或者函数
+                    throw TypeError();                      //不是则输出异常
+                }
+                else {
+                    function f() { };                       //如果是则定义一个构造空函数
+                }
+                f.prototype = p;                            //将原型对象赋予给函数的原型属性
+                return new f();                             //返回使用f()创建p的继承函数
+            }
+        }
+    }
+    var p = { x: "don't change this value", y: "hello world" };
+    function librery_function() { };
+    librery_function(inherit(p));                           //使用继承对象输入函数时可防止对原型对象p的意外修改
+    console.log("o1_object: ", o1_object);                  //返回为空对象{}，但又继承属性。
+    console.log("o2_object: ",o2_object);
+    console.log("o3_object: ",o3_object);
+    console.log("inherit(p).x: ",inherit(p).x);             //输出继承属性x
+</script>

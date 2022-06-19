@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/inherit.js"></script>
+    <script src="./scripts/Fun_extend.js"></script>
+    <script src="./scripts/Set.js"></script> -->
+
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //让属性不可枚举-------------------------------------------------------------------------------------------------------------------------
+    //将代码包装在一个匿名函数中
+    (function () {
+        Object.defineProperty(Object.prototype, "objectId", {
+            enumerable: false,
+            configurable: false,
+            get: idGetter                   //存取器属性，get为输出属性，只读不写
+        });
+        function idGetter() {
+            if (!(idprop in this)) {
+                if (!Object.isExtensible(this))
+                    throw new Error("noextensible");
+                Object.defineProperty(this, idprop, {
+                    value: nextid++,
+                    writable: false,
+                    enumerable: false,
+                    configurable: false
+                });
+            }
+            return this[idprop];
+        }
+        var nextid = 1;
+        var idprop = "|**objectId**|";
+    }());
+    var o = {};
+    console.log("id: ", o.objectId)
+    console.log(" ")
+    //定义不可变的类-----------------------------------------------------------------------------------------------------------------------
+    //创建一个不可变的类
+    function Range(from, to) {
+        var props = {
+            from: { value: from, enumerable: true, writable: false, configurable: false },
+            to: { value: to, enumerable: true, writable: false, configurable: false }
+        };
+        if (this instanceof Range)                       //当作为构造函数来调用是
+            Object.defineProperties(this, props);        //将属性加到新建对象中
+        else                                             //当作为函数使用时
+            return Object.create(Range.prototype, props);//将返回以Range.prototype为原型的创建的对象
+    }
+    //给原型对象添加属性
+    Object.defineProperties(Range.prototype, {
+        includes: {                                     //当未设置可枚举性，可配置性或者无法识别时，默认都是false
+            value: function (x) {
+                return x >= this.from && x <= this.to;
+            }
+        },
+        foreach: {
+            value: function (f) {
+                for (var x = Math.ceil(this.from); x <= this.to; x++)
+                    f(x);
+            }
+        },
+        toString: {
+            value: function () {
+                return "(" + this.from + "..." + this.to + ")";
+            }
+        }
+    });
+    //属性描述符工具函数
+    //将O的所有属性设置为不可写和不可配置的
+    function freezeprops(o) {
+        var props = (arguments.length === 1)
+            ? Object.getOwnPropertyNames(o)
+            : Array.prototype.splice.call(arguments, 1);
+        props.forEach(function (x) {
+            if (!Object.getOwnPropertyDescriptor(o, x).configurable) return;
+            Object.defineProperty(o, x, { enumerable: false, configurable: false });
+        });
+        return o;
+    }
+    //将O的所有属性设置为不可枚举和可配置的
+    function hideprops(o) {
+        var props = (arguments.length === 1)
+            ? Object.getOwnPropertyNames(o)
+            : Array.prototype.splice.call(arguments, 1);
+        props.forEach(function (x) {
+            if (!Object.getOwnPropertyDescriptor(o, x).configurable) return;    //仅返回当前函数
+            Object.defineProperty(o, x, { enumerable: false });
+        });
+        return o;
+    }
+    //用上面函数创建一个简单的不可变的类
+    function Range1(from, to) {
+        this.from = from;
+        this.to = to;
+        freezeprops(this);          //定义属性为不可变
+    }
+    Range1.prototype = hideprops({  //定义方法不可枚举
+        constructor: Range1,
+        includes: function (x) {
+            return x >= this.from && x <= this.to;
+        },
+        foreach: function (f) {
+            for (var x = Math.ceil(this.from); x <= this.to; x++)
+                f(x);
+        },
+        toString: function () {
+            return "(" + this.from + "..." + this.to + ")";
+        }
+    });
+    console.log(Range1.prototype)
+    console.log(Object.getOwnPropertyDescriptor(Range1.prototype, "foreach"))
+    console.log(" ")
+    //封装对象状态---------------------------------------------------------------------------------------------------------------------
+    function Range2(from, to) {
+        if (from > to) throw new Error("from must be <=to");
+        function getFrom() { return from; }                     //定义的get和set方法无法删除，变量更加健壮的封装
+        function getTo() { return to; }                         //和上面的例子相比没有什么不同
+        function setFrom(x) {
+            if (x > to) throw new Error("from must be <=to");
+            from = x;
+        }
+        function setTo(x) {
+            if (x < from) throw new Error("from must be <=to");
+            to = x;
+        }
+        Object.defineProperties(this, {
+            from: { get: getFrom, set: setFrom, enumerable: true, configurable: false },
+            to: { get: getTo, set: setTo, enumerable: true, configurable: false },
+        });
+    }
+    //防止类的扩展-----------------------------------------------------------------------------------------------------------
+    var original_sort_method = Array.prototype.sort;
+    Array.prototype.sort = function () {
+        var start = new Date();
+        original_sort_method.apply(this, arguments);
+        var end = new Date();
+        console.log("Date: ", end - start);
+    }
+    Array.prototype.sort()
+    //子类和ECMAScript 5-------------------------------------------------------------------------------------------------------------
+    function StringSet() {
+        this.set = Object.create(null);                     //为继承任何原型
+        this.n = 0;
+        this.add.apply(this, arguments);
+    }
+    StringSet.prototype = Object.create(Set.prototype, {
+        constructor: { value: StringSet },                  //未写的描述符属性为false
+        add: {
+            value: function () {
+                for (var i = 0; i < arguments.length; i++) {
+                    if (!arguments[i] in this.set) {
+                        this.set[arguments[i]] = true;
+                        this.n++;
+                    }
+                }
+                return this;
+            }
+        }
+    });
+    //属性描述符----------------------------------------------------------------------------------------------------------------
+    //定义一个私有函数域
+    (function namespace() {
+        function properties() {
+            var names;
+            if (arguments.length == 0)
+                names = Object.getOwnPropertyNames(this);
+            else if (arguments.length == 1 && Array.isArray(arguments[0]))
+                names = arguments[0];
+            else
+                names = Array.prototype.splice.call(arguments, 0);
+            return new Properties(this, names);
+        }
+        //定义一个方法，并设置该方法的属性描述符
+        Object.defineProperty(Object.prototype, "properties", { value: properties, enumerable: false, configurable: true, writable: true });
+        //上面调用的构造函数，定义
+        function Properties(o, names) {
+            this.o = o;
+            this.names = names;
+        }
+        // 定义该构造函数的原型方法，将是代表这些属性的对象设置为不可枚举的
+        Properties.prototype.hide = function () {
+            var o = this.o, hidden = { enumerable: false };
+            this.names.forEach(function (x) {
+                if (o.hasOwnProperty(x))
+                    Object.defineProperty(o, x, hidden)
+            });
+            return this;
+        };
+        Properties.prototype.freeze=function(){};
+        Properties.prototype.descriptor=function(){};
+        Properties.prototype.toString=function(){};
+    }());
+</script>

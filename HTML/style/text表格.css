@@ -1,0 +1,114 @@
+h2
+{
+    font-size:large;
+    text-align:center;
+}
+table
+{
+    border-collapse: collapse;
+    /* 消除框距 */
+    width:30%;
+    /* 表宽 */
+    margin:0 auto;
+}
+th
+{
+    height:50px;
+    /* 行高 */
+    background-color:rgb(159, 84, 230);
+    color:white;
+    /* 设置背景颜色和字体颜色 */
+}
+td
+{
+    text-align:right;
+    /* 水平对齐右边 */
+    vertical-align: bottom;
+    /* 垂直对齐底部 */
+    padding:15px
+    /* 元素周围填充 */
+}
+table,th,td
+{
+    border: 1px solid black;
+    /* 边框样式 */
+}
+caption
+{
+    caption-side:top;
+    font-size:10px;
+}
+#customers .back
+{
+    background-color:rgb(168, 238, 171);
+}
+#customers th
+{
+    background-color:rgb(90, 187, 61);
+    color:white;
+    height:30px;
+    font-size:18px;
+}
+#customers th,#customers td
+{
+    text-align:left;
+    padding:5px;
+    border: 0.5px solid black;
+}
+#customers
+{
+    border-collapse: collapse;
+    margin:0 auto;
+    width:50%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

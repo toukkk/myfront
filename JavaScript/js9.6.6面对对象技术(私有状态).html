@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //对类Range的读取端点方法的简单封装
+    function Range(from, to) {
+        this.from = function () { return from; };   //定义存取器函数来返回端点的值
+        this.to = function () { return to; };       //这些值都保存在闭包中
+    }
+    Range.prototype = {
+        constructor: Range,
+        includes: function (x) {                    //定义原型对象也必须调用存取器
+            return x >= this.from() && x <= this.to();
+        },
+        foreach: function (f) {
+            for (var x = Math.ceil(this.from()); x <= this.to(); x++)
+                f(x);
+        },
+        toString: function () {
+            return "(" + this.from() + "..." + this.to() + ")";
+        }
+    };
+    //创建一个不可修改的范围
+    var range = new Range(1, 5);
+    console.log("range.to: ",range.to());       //输出也要调用存取器
+    range.to = function () { return 10; };      //通过方法替换来修改它
+    console.log("range.to: ",range.to());
+</script>

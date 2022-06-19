@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/例8.1.js"></script>g
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //函数调用----------------------------------------------------------------------------------------------------------
+    printprops({ x: 1, y: 2 });                             //直接调用函数    
+    var total = distance(0, 0, 2, 1) + distance(2, 1, 3, 5);//调用多个函数计算并赋值
+    var probability = factorial(5) / factorial(13);
+    console.log("printprops: ", printprops);
+    console.log("total: ", total);
+    console.log("probability: ", probability);
+    var strict = (function (x) { return !this; }())          //定义一个调用函数来确定是否是严格模式
+    console.log("strict: ", strict);                         //输出：false，不是
+    console.log("");
+    //方法调用----------------------------------------------------------------------------------------------------------
+    var o = {                                               //定义对象
+        operand1: 1,
+        operand2: 2,
+        add: function () {                                  //定义对象方法
+            this.result = this.operand1 + this.operand2;    //方法作用为为对象添加属性，方法中的this指代对象
+            return "添加成功";
+        }
+    }
+    console.log("add(): ", o.add());                         //如果未运行该方法则未定义新属性
+    o["add"]();                                             //o.add()的另一种写法，基于属性访问表达式，同样适用于数组
+    console.log("result: ", o.result);
+    //方法中的嵌套函数的this
+    var o = {                                   
+        m: function () {                                    //定义方法m()
+            var self = this;            
+            console.log("o.m(): ", this === o);             //输出: true,这里的this指方法对象o
+            f();                                            //调用运行嵌套函数
+            function f() {                                  //定义嵌套函数
+                console.log("o.m().f(): ", this === o);     //输出：false，这里的this指全局对象或者undefuined
+                console.log("self=this: ", self === o);     //输出：true
+            }
+            return "运行成功";
+        }
+    };
+    console.log("o.m(): ",o.m());
+    
+</script>

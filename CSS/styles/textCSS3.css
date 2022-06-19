@@ -1,0 +1,355 @@
+body {
+    width: 50%;
+    margin: 0 auto;
+}
+h3 {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.css1 {
+    border: 15px solid transparent;
+    width: 15em;
+    padding: 100px;
+    border-image: url(../images/9.png) 30 30 round;
+    /* 铺满 */
+    border-image: url(../images/9.png) 30 30 repeat;
+    /* 重复 */
+    border-image: url(../images/9.png) 30 30 stretch;
+    /* 拉伸 */
+    background-image: url(../images/5.gif),url(../images/7.png);
+    background-position: bottom right,0px 0px;
+    background-size: 40px 40px,auto;
+    background-repeat: no-repeat,repeat;
+    background-origin: padding-box;
+    background-clip: padding-box;
+}
+
+.css2 {
+    border-radius: 250px;
+    height: 500px;
+    width: 500px;
+    background-image: linear-gradient(red,green);
+    background-image: linear-gradient(to top,red,green);
+    background-image: linear-gradient(to top right,red,green); 
+    background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+    background-image: linear-gradient(135deg red,blue,green);
+    background-image: linear-gradient(to right,rgba(255,0,0,0),rgba(255,0,0,1));
+    background-image: repeating-linear-gradient(to right,red,yellow 10%,green 20%);
+
+    background-image: radial-gradient(red,green,yellow);
+    background-image: radial-gradient(red 5%,green 25%,yellow 60%);
+    /* 百分比表示颜色中心线在线性渐变方向的百分比的位置。没有则为零百分比之间是过渡色，如果百分比位置之间有重叠会失去渐变过渡色 */
+    background-image: radial-gradient(circle, red,green,yellow);
+    background-image: radial-gradient(farthest-corner at 60% 55% red,green,yellow);
+    background-image: repeating-radial-gradient(red,yellow 10%,green 20%);
+    background-size: 40px 40px;
+}
+
+.css3 p:first-child {
+    white-space: nowrap;
+    border: 2px solid black;
+    overflow: hidden;
+    width: 20em;
+    padding: 10px;
+    text-overflow: clip;
+    /* 直接被切 */
+    text-overflow: ellipsis;
+    /* 默认使用。。。来表示文本被裁切 */
+}
+.css3 p:last-child {
+    width: 10em;
+    border: 2px solid black;
+    word-wrap: break-word;
+    /* 强行换行 */
+    word-break: keep-all;
+    /* 保留完整单词 */
+    word-break: break-all;
+    /* 打破一个单词 */
+}
+
+.css4,.css5 {
+    width: 300px;
+    height: 300px;
+    background-color: yellow;
+}
+.css5 {
+    transform: translate(50px,50px);
+    transform: rotate(30deg);
+    transform: skew(30deg,20deg);
+    /* transform: scale(0.5); */
+    /* transform: matrix(a,b,c,d,e,); */
+}
+
+.css6 {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    border: 1px solid rgb(107, 109, 109);
+    border-radius: 50px;
+    background-color: brown;
+    animation-name: my;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 2s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation: my 5s ease-in-out 2s infinite alternate none running;
+}
+@keyframes my {
+    0% {background-color: blue;left: 0px;top: 0px;} 
+    25% {background-color: rgb(0, 255, 13);left: 200px;top: 0px;}
+    50% {background-color: rgb(255, 60, 0);left: 200px;top: 200px;}
+    75% {background-color: rgb(0, 255, 213);left: 0px;top: 200px;}
+    100% {background-color: rgb(229, 255, 0);left: 0px;top: 0px;}
+}
+
+
+.css7 {
+    column-count: 3;
+    column-gap: 20px;
+    column-rule: 2px solid rgba(231, 194, 145, 0.356);
+    column-width: 100px;
+    column-fill: auto;
+    /* columns: 100px 3; */
+    text-indent: 2em;
+}
+.css7 h3 {column-span: all;}
+
+
+.css8 button {
+    padding:20px;
+    background-color: green;
+    width: 120px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 9px rgb(105, 105, 105);
+    transition: box-shadow 0s;
+    border-radius: 6px;
+}
+button:first-child {
+    cursor: not-allowed;
+    background-color: rgb(84, 172, 84);
+}
+
+
+.button1 span {
+    position: relative;
+    display: inline-block;
+    transition: 1s;
+}
+.button1 span::after {
+    content: ">>";
+    position: absolute;
+    left: 40px;
+    top: 2px;
+    opacity: 0;
+    transition: all 1s;
+}
+
+.button1:hover span{left:-10px;}
+.button1:hover span::after {opacity: 1;}
+.button1:active {
+    transform:translateY(4px);
+    box-shadow: 0 5px rgb(61, 61, 61);
+    background-color: rgb(123, 230, 123);
+}
+
+
+
+.css9 {text-align: center;}
+.css9 ul {margin: 0 auto;}
+.css9 ul li {
+    border: 1px solid rgb(252, 201, 201);
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    display: inline-block;
+}
+.css9 ul li a {
+    display: block;
+    text-decoration: none;
+    color: rgb(22, 46, 13);
+    padding: 6px 0;
+    font-size: 20px;
+}
+#boy {background-color: rgb(55, 168, 55);}
+.css9 li:hover:not(#boy) {
+    background-color: rgb(209, 245, 209);
+    transition: 1s;
+}
+
+
+.css10 {
+    width: 300px;
+    height: 300px;
+    display: flex;
+    /* 定义弹性盒子，默认只有一行或者一列 */
+    border: 1px solid black;
+    direction: rtl;
+    /* 文本方向：right-to-left */
+    flex-direction: column;
+    /* 指定了弹性子元素在父容器中的排序，由上到下垂直排列 */
+    justify-content: space-around;
+    /* 指定了弹性子元素在父容器中的分布，弹性项目平均分布在该行上，两边留有一半的间隔空间 */
+    align-items: center;
+	/* 设置弹性盒子元素在侧轴（纵轴）方向上的对齐方式。 */
+    flex-wrap: wrap;
+    /* 默认值为nowrap，只有一行或者列 */
+    align-content: space-around;
+    /* 属于修改flex-wrap属性的行为，指定各行在父容器中的分布，弹性项目平均分布在该列上，两边留有一半的间隔空间 */
+    flex-flow: column wrap;
+    /* flex-direction 和 flex-wrap 的简写 */
+}
+.css10 div {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+    background-color: blueviolet;
+    margin: 10px;
+    font-size: 2em;
+    text-align: center;
+}
+
+.css10 .he1 {
+    align-self: stretch;
+    flex: 0 0 auto;
+    /* 为以下三个属性的简写[ flex-grow ]：定义弹性盒子元素的扩展比率。[ flex-shrink ]：定义弹性盒子元素的收缩比率。[ flex-basis ]：定义弹性盒子元素的默认基准值。 */
+}
+.css10 .he2 {
+    align-self: stretch;
+    flex: 0 0 auto;
+}
+.css10 .he3 {
+    order: 1;
+    /* 弹性子元素顺序，order越小越在前，1表示顺序加一往后 */
+    align-self: stretch;
+    /* 在弹性子元素上使用。覆盖容器的 align-items 属性。 */
+    flex: 0 0 auto;
+}
+.css10 .he4 {
+    align-self: stretch;
+    flex: 0 0 auto;
+}
+
+
+.flex-container {
+    display: flex;
+    font-weight: both;
+    /* text-align: center; */
+    flex-flow: row wrap;
+} 
+.flex-container > * {
+    flex: 1 100%;
+    padding: 10px;
+    text-align: center;
+}
+.header {background-color: rgb(190, 130, 81);}
+.main {background-color: rgb(69, 142, 206);}
+.aside1 {background-color: rgb(62, 83, 35);}
+.aside2 {background-color: rgb(29, 161, 122);}
+.footer {background-color: rgb(185, 245, 21);}
+@media all and (min-width: 600px) {
+    .aside {
+        flex: 1 auto;
+        /* background-color: aliceblue; */
+    }
+}
+@media all and (min-width: 1000px) {
+    .main {
+        flex: 3 60%;
+        order: 1;
+    }
+    .aside2 {order: 2;}
+    .footer {order: 3;}
+}
+
+
+.css11 {
+    /* display: grid; */
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    /* 创建三个列，宽度默认（auto） */
+    grid-template-columns: 2fr 1fr 1fr;
+    /* 创建三个列，宽度单位fr ,表示网格容器中可用空间的一等份 */
+    grid-template-rows: 40px 60px 80px 100px;
+    /* 创建四个行，宽度自定义 */
+    grid-column-gap: 10px;
+    /* 列间距 */
+    grid-row-gap: 20px;
+    /* 行间距 */
+    grid-gap: 20px 10px;
+    /* grid-gap: 10px; */
+    /* grid-row-gap 和  grid-column-gap 的简写 ，也可写一个属性值代表两 */
+    padding: 10px;
+    background-color: blue;
+}
+.css11 .he {
+    padding: 10px;
+    border: 1px solid rgb(116, 74, 74);
+    background-color: #d2abf7;
+    font-size: 1.5em;
+    text-align: center;
+}
+.css11 .he1 {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    grid-column: 1/3;
+    grid-row: 1 / 3;
+    /* 简写 grid-column-start 和 grid-column-end 属性  */
+    grid-area: 1/1/3/3;
+     /* 简写 grid-column-start ，grid-row-start和 grid-column-end ，grid-row-end属性  */
+}
+
+.css12 {
+    display: grid;
+    grid-gap: 10px;
+    padding: 10px;
+    background-color: blue;
+    grid-template-areas: 
+    'hea hea heb heb' 
+    'hea hea hec hed' 
+    'hee hef hef heg' 
+    'hee heh heh hei';
+}
+.css12 .he {
+    padding: 10px;
+    border: 1px solid rgb(116, 74, 74);
+    background-color: #d2abf7;
+    font-size: 1.5em;
+    text-align: center;
+}
+.css12 .he1 {grid-area: hea;}
+.css12 .he2 {grid-area: heb;}
+.css12 .he3 {grid-area: hec;}
+.css12 .he4 {grid-area: hed;}
+.css12 .he5 {grid-area: hee;}
+.css12 .he6 {grid-area: hef;}
+.css12 .he7 {grid-area: heg;}
+.css12 .he8 {grid-area: heh;}
+.css12 .he9 {grid-area: hei;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

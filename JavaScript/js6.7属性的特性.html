@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    var random = {
+        get octet() { return Math.floor(Math.random() * 256); },            //取随机数整数0-256
+        get uint16() { return Math.floor(Math.random() * 65536); },         //取随机数整数0-65536
+        get int16() { return Math.floor(Math.random() * 65536) - 32786; }   //取随机数整数-32786-32786
+    };
+    console.log("PropertyDescriptor: ", Object.getOwnPropertyDescriptor({ x: 1 }, "x"));        //value,writable,enumerable,configurable四个属性标识符
+    console.log("PropertyDescriptor: ", Object.getOwnPropertyDescriptor(random, "octet"));   //存取器属性有get,set,enumerable,configurable四个属性标识符
+    console.log("PropertyDescriptor: ", Object.getOwnPropertyDescriptor({}, "x"));           //没有这个属性undefined
+    console.log("PropertyDescriptor: ", Object.getOwnPropertyDescriptor({}, "toString"));    //继承属性 underfined
+    console.log("");
+
+    var o = {};
+    Object.defineProperty(o, "x", {                         //创建一个属性，并写上属性描述符对象
+        value: 1,
+        writable: true,
+        enumerable: false,
+        configurable: true
+    });
+    console.log("enumerable: ", Object.keys(o));            //属性为不可枚举的
+    Object.defineProperty(o, "x", { writable: false });     //修改属性描述符对象的可写性属性
+    o.x = 2;                                                //赋值失败，但不会报错
+    console.log("writable: ", o.x);
+    Object.defineProperty(o, "x", { value: 2 });             //属性x还是可配置的，可通过修改描述符对values属性值进行修改
+    o.x = 2;                                                //赋值成功
+    console.log("writable: ", o.x);
+    Object.defineProperty(o, "x", { get: function () { return 3; } });      //将x属性改为存取器属性
+    console.log("o: ", o)                                    //输出为3
+    //复制属性的特性
+    Object.defineProperty(Object.prototype, "extend", {                     //给对象添加一个extend()方法
+        writable: true,
+        enumerable: false,                                                  //该方法不可枚举
+        configurable: true,
+        value: function (o) {                                               //该方法的值为函数
+            var names = Object.getOwnPropertyNames(o);                      //声明一个数组，得到o的全部自有属性名
+            for (var i = 0; i < names.length; i++) {
+                if (names[i] in this) continue;                             //如果属性名已存在于跳过，this指调用该方法的对象
+                var desc = Object.getOwnPropertyDescriptor(o, names[i]);    //否则将属性的属性描述符对象赋值给desc
+                Object.defineProperty(this, names[i], desc)                 //给调用对象添加属性
+            }
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

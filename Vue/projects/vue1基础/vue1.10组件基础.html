@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="components-button">
+        <div :style="{fontSize:countText+'em'}" v-on:hi='sayHi'>
+            <button-click v-on:enlarge="digText" v-for="post,index in posts" :post="post" :title="post.title"
+                :key="index"></button-click>
+        </div>
+    </div><br><br><br><br>
+    <div id="input-model">
+        <input-model v-model="searchText">
+        <h1>h1....</h1>
+        <p>tiezhu: {{searchText}}</p>
+        </input-model>
+        <p>zhangtiezhu: {{searchText}}</p>
+    </div>
+</body>
+
+</html>
+<style>
+
+</style>
+<script>
+    //创建组件
+    Vue.component('button-click', {             //创建组件，组件是可复用的 Vue 实例，如：Vue.component('组件名'，{属性与模型})
+        data() {                                //一个组件的 data 选项必须是一个函数，因此每个实例可以维护一份被返回对象的独立的拷贝
+            return {
+                count: 0,
+            };
+        },
+        props: ['post', 'title'],               //通过 Prop 向子组件传递数据
+        //组件模板，有多个标签时要用根元素包裹，如：<div>标签
+        template: `<div>                        
+            <h2>{{ title }}</h2>               
+            <button v-on:click="countFun">{{ post.id }}:You clicked me {{ count }} times.</button>
+            </div>`,                            //子组件接受数据，子组件触发事件
+        methods: {                              //定义组件函数
+            countFun: function () {
+                this.count++;
+                this.$emit('enlarge', 0.1);      //子组件可以通过调用内建的 $emit 方法并传入父组件事件名称来触发这个事件
+                this.$emit('hi');               //hi事件不在父组件上，所以未触发
+            },
+        }
+    });
+    var vm = new Vue({
+        el: '#components-button',
+        data: {
+            posts: [                            //传入的循环数组数据
+                { id: 1, title: "whant" },
+                { id: 2, title: "are" },
+                { id: 3, title: "you" },
+            ],
+            countText: 1,
+        },
+        methods: {
+            digText: function (a) {             //父组件事件调用的函数
+                this.countText += a;            //参数a未$emit方法抛出的第二个参数，也可以通过 $event 访问到被抛出的这个值如：v-on:enlarge-text="postFontSize += $event"
+            },
+            sayHi: function () {
+                alert("hi");
+            }
+        }
+    });
+    //在组件上使用 v-model,及插槽
+    Vue.component('input-model', {
+        props: ['value'],
+        //使用v-on:input="$emit('input',$event.target.value）创建父组件v-model的使用条件
+        template: `<div>
+            <input :value="value" v-on:input="$emit('input',$event.target.value)">
+            <p>tiezhu: {{value}}</p><slot></slot></div>`
+            //使用<slot>标签创建插槽，用于插入向一个组件传递内容
+    });
+    var vm1 = new Vue({
+        el: '#input-model',
+        data: {
+            searchText: '',
+        },
+    });
+</script>

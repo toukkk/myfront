@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    var o = {
+        names: "tiezhu",
+        ega: 20,
+        like: "game",
+        work: "niubi"
+    }
+    var keys = Object.keys(o);                  //得到对象o可枚举自有属性名合集数组keys
+    var values = [];
+    for (var i = 0; i < keys.length; i++) {
+        var key = keys[i];                      //循环获取数组keys元素属性名
+        values[i] = o[key];                     //将对象o内属性值依次赋值给数组values
+    }
+    console.log("keys: ", keys);                 //输出：["names"，"ega"，"like"，"work"]
+    console.log("values: ", values);             //输出：["tiezhu"，"20"，"game"，"niubi"]
+    console.log("");
+    //排除null,undefined,和不存在的值--------
+    var a = [2, 4, null, , 5, NaN, 8, 0, -0, 9];
+    a[20] = 10;
+    var a1 = [];
+    console.log(3 in a)
+    for (var i = 0, j = 0; i < a.length; i++) {
+        if (!a[i]) continue;                    //同时也排除了所有非真值
+        a1[j] = a[i];
+        j++;
+    }
+    console.log("a1_for_if: ", a1)
+    //跳过undefined和不纯在的值---------
+    for (var i = 0, j = 0; i < a.length; i++) {
+        if (a[i] === undefined) continue;
+        a1[j] = a[i];
+        j++;
+    }
+    console.log("a1_for_if: ", a1)
+    //跳过不纯在的值---------
+    for (var i = 0, j = 0; i < a.length; i++) {
+        if (!(i in a)) continue;                //[2,,3]暂时理解为稀疏数组
+        a1[j] = a[i];
+        j++;
+    }
+    console.log("a1_for_if: ", a1)
+    console.log("")
+    //for/in循环将可枚举的属性及所有赋值---------------------------------------------------------------------------------------------
+    var j = 0;
+    for (var prop in a) {
+        a1[j] = a[prop];
+        j++;
+    }
+    console.log("a1_for/in: ", a1)
+    //跳过继承属性--------
+    var j = 0;
+    for (var prop in a) {
+        if (!a.hasOwnProperty(i)) continue;
+        a1[j] = a[prop];
+        j++;
+    }
+    console.log("a1_for/in: ", a1)
+    //跳过不是非负整数的prop--------
+    var j = 0;
+    for (var prop in a) {                   //prop为数组索引，即对象属性名为字符串
+        if (String(Math.floor(Math.abs(Number(prop)))) !== prop) continue;
+        a1[j] = a[prop];
+        j++;
+    }
+    console.log("a1_for/in: ", a1)
+    console.log("")
+    //多维数组设置九九乘法表---------------------------------------------------------------------------------------------
+    var table = new Array(10);
+    for (var i = 0; i < table.length; i++) {
+        table[i] = new Array(10);
+    }
+    for(var row=0;row<table.length;row++){
+        for(var col=0;col<table[row].length;col++){
+            table[row][col]=row*col;                //表示给乘法表赋值
+        }
+    }
+    console.log("table[5][7]: ",table[5][7])        //直接输出数组值
+</script>

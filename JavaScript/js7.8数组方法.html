@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //join()-------------------------------------------------------------------------------------------------
+    var a = [1, 2, 3, 4, 5];                                //方法join()将数组所有元素转化为字符串来连接在一起
+    console.log("a.join(): ",       a.join());             //默认数组元素以逗号分隔
+    console.log("a.join(' '): ",    a.join(" "));           //数组元素以引号内value分隔
+    console.log("a.join(''): ",     a.join(""));            //不分隔
+    a = new Array(10);
+    console.log("a.join('-'): ",    a.join("-"));          //稀疏数组也可以被转化，为空保留分隔符
+    console.log(" ");
+    //reverse()----------------------------------------------------------------------------------------------
+    var a = [1, 2, 3, 4, 5];
+    console.log("a.reverse().join(): ", a.reverse().join());     //方法reverse()颠倒原来数组顺序，返回逆序的数组
+    console.log(" ");
+    //sort()----------------------------------------------------------------------------------------------
+    var a = ["banana", "cherry", "appie", 33, 2, 1111, 222, "Dog", "Bug"];
+    console.log("a.sort(): ", a.sort());                //方法sort()将数组元素排序后返回，不带参数表示按字母顺序表排序
+    console.log(" ");
+    a.sort(function (a, b) {                            //用于数字大小排序，a,b参数表示前后元素，
+        return a - b;                                   //返回值要为负，a小于b,则从小到大
+    });
+    console.log("a.sort(value): ", a);
+    a.sort(function (a, b) {
+        return b - a;                                   //返回值要为负，a大于b,则从大小
+    });
+    console.log("a.sort(value): ", a);
+    console.log(" ");
+    var a = ["banana", "cherry", "appie", "Dog", "Bug"];
+    a.sort();                                           //区分大小写排序
+    console.log("case: ", a);
+    a.sort(function (a, b) {                            //不区分大写排序，此参数只对字母有用，数字报错
+        var s = a.toLowerCase();
+        var j = b.toLowerCase();
+        if (s < j) return -1;
+        if (s > j) return 1;
+        return 0;
+    });
+    console.log("case: ", a);
+    console.log("");
+    //concat()--------------------------------------------------------------------------------------------------
+    var a = [1, 2, 3];
+    console.log("a.concat(4,5): ",         a.concat(4, 5));             //创建一个新的数组，保留原数组元素和concat()的每个参数
+    console.log("a.concat([4,5]): ",       a.concat([4, 5]));           //第一层[]会被合并
+    console.log("a.concat([4,5],[6,7]): ", a.concat([4, 5], [6, 7]));
+    console.log("a.concat(4,[5,[6,7]]): ", a.concat(4, [5, [6, 7]]));   //第二层后的[]才会被写入
+    console.log("");
+    //slice()-----------------------------------------------------------------------------------------------------------
+    var a = [1, 2, 3, 4, 5];
+    console.log("a.slice(0,3): ",   a.slice(0, 3));           //两个参数表示从第一个参数引索开始到第二个参数前的所有元素，并返回新数组
+    console.log(a);                                         //表示为改变原数组
+    console.log("a.slice(3): ",     a.slice(3));                //只有一个参数表示该参数引索开始到后面所有元素
+    console.log("a.slice(1,-1): ",  a.slice(1, -1));
+    console.log("a.slice(-3,-2): ", a.slice(-3, -2));       //参数为负表示倒数的几个元素
+    console.log("");
+    //splice()----------------------------------------------------------------------------------------------------------
+    var a = [1, 2, 3, 4, 5, 6, 7, 8];
+    console.log("a.splice(4): ",    a.splice(4));                   //只有一个参数表示从a[4]开始删除后面所有元素，返回擅长的元素数组
+    console.log(": ", a);                                           //输出：[1, 2, 3, 4]
+    console.log("a.splice(1,2): ",  a.splice(1, 2));                //两个参数表示从a[1]开始删除2个元素，返回[2, 3]
+    console.log(": ", a);                                           //输出：[1, 4]
+    console.log("a.splice(1,1): ",  a.splice(1, 1));                //输出：[4]
+    console.log(": ", a);                                           //输出：[1]
+    console.log("a.splice(0,0,2,3,4,5): ", a.splice(0,0,2,3,4,5));  //两个以上参数，后面的参数表示从a[0]位置前插入的元素，返回空[]
+    console.log(": ", a);                                           //输出：[2, 3, 4, 5, 1]
+    console.log("a.splice(2,0,'a','b'): ", a.splice(2,0,'a','b'));  //a[2]位置前插入元素
+    console.log(": ", a);                                           //输出：[2, 3, 'a', 'b', 4, 5, 1]
+    console.log("");
+    //push()和unshift()----------------------------------------------------------------------------------------------------------------
+    var a=[4, 5, 1];
+    console.log("a.push(6,7,8): ",a.push(6,7,8));       //表示在数组后面添加三个元素，返回新数组长度
+    console.log("a.pop(): ",    a.pop());               //方法pop()没有参数，表示删除数组最后一个元素，返回删除元素值8
+    console.log("a.push({[8,9]}): ",a.push([8,9]));     //表示在数组后面添加个数组
+    console.log("a.pop(): ",    a.pop());               //输出：[8,9]
+    console.log("a.pop(): ",    a.pop());               //输出：7
+    console.log(": ", a);                               //输出：[4, 5, 1, 6]
+    console.log("");
+    //unshift()和shift()----------------------------------------------------------------------------------------------
+    var a=[4, 5, 1];
+    console.log("a.unshift(6,7,8): ",a.unshift(6,7,8));     //表示在数组前面添加三个元素(一次性插入，所以顺序不变)，返回新数组长度
+    console.log("a.shift(): ",    a.shift());               //方法shift()没有参数，表示删除数组头部一个元素，返回删除元素值6
+    console.log("a.unshift({[8,9]}): ",a.unshift([8,9]));   //表示在数组前面添加个数组
+    console.log("a.shift(): ",    a.shift());               //输出：[8,9]
+    console.log("a.shift(): ",    a.shift());               //输出：7
+    console.log(": ", a);                                   //输出：[8, 4, 5, 1]
+    console.log("");
+    //toString()和toLocalString()---------------------------------------------------------------------------------------------
+    console.log("toString(): ",[1,2,3].toString());         //输出："1,2,3"
+    console.log("toString(): ",["a","b","c"].toString());   //输出："a,b,c"
+    console.log("toString(): ",[1,[2,"d"]].toString());     //输出："1,2,d"
+
+</script>

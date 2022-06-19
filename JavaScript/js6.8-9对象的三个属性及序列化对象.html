@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //原型属性--------------------------------------------------------------------------------------------------------
+    var object1 = { x: 1 };
+    var object2 = inherit(object1);
+    console.log("turn: ", object1.isPrototypeOf(object2));               //对象1是对象2的原型
+    console.log("turn: ", Object.prototype.isPrototypeOf(object1));      //Object.prototype是对象1的原型
+    console.log("");
+    //类属性----------------------------------------------------------------------------------------------------
+    function classof(o) {
+        if (o === null) return null;
+        if (o === undefined) return undefined;
+        return Object.prototype.toString.call(o).slice(8, -1);
+    }
+    function f() { };
+    console.log("classof(object1): ", classof(object1));
+    console.log("classof(window): ", classof(window));                      //客服端对象
+    console.log("classof(new Date()): ", classof(new Date()));              //时间类
+    console.log("classof(new function()): ", classof(new f()));             //构造对象
+    console.log("");
+    //可扩展性-------------------------------------------------------------------------------------------------------
+    var o = Object.seal(Object.create(Object.freeze({ x: 1 }), { y: { value: 2, writable: true } }));   //创建一个封闭对象，有一个冻结的原型和一个只可写的属性
+    console.log("Object.isSealed(o): ", Object.isSealed(o));
+    console.log("o: ", o);
+    console.log("");
+    //序列化对象-----------------------------------------------------------------------------------------------------------
+    var o = { x: 1, y: { z: [false, null, ""] } };
+    o_string = JSON.stringify(o);                           //将对象转化为字符串，数据交换格式
+    o_reduction = JSON.parse(o_string);                     //将字符串还原为对象，o_reduction是o的深拷贝
+    console.log("o_string: ",o_string);
+    console.log("o_reduction: ",o_reduction);
+</script>

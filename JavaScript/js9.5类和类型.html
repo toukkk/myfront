@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/Range.js"></script>
+    <script src="./scripts/classof.js"></script>
+    <script src="./scripts/getName.js"></script>
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //instanceof运算符表示后操作数是否是前操作数的类------------------------------------------------------------------------------------------------
+    //及isPrototypeOf()判断前者是否是后者的原型对象，两者的缺点是只能检测对象是否属于指定类，无法通过对象获取类名
+    //constructor属性----------------------------------------------------------------------------------------------------------------
+    var typeAndValue = function (o) {       //定义函数输出类名，同样在多个页面窗口下也无法工作
+        if (o == null) return null;
+        switch (o.constructor) {            //switch循环，o.constructor（并不是所有对象都有constructor属性）判定值等于
+            case Number:
+                return "Number" + o;
+            case String:
+                return "String" + o;
+            case Object:
+                return "Object" + o;
+            case Date:
+                return "Data" + o;
+            case Range:
+                return "Range" + o;
+        }
+    }
+    var range = new Range(3, 4);
+    console.log("typeAndValue(range): ", typeAndValue(range))  //输出Range
+    //构造函数的名字------------------------------------------------------------------------------------------------------------------------------
+    function type(o) {                                  //定义判断值类型的函数
+        if (o === null) return "null";                  //如果为空，则返回null
+        if (o !== o) return "nan";                      //自有NaN不等于NaN
+        if (classof(o) !== "Object") return classof(o); //如果classof()返回的不是Object，则表明为它的构造函数
+        if ((typeof o) !== "object") return typeof o;   //如果typeof返回的不是Object，则表明为它的构造函数
+        if (o.constructor && typeof o.constructor === "function")   //如果对象有constructor属性且输出类型为函数则为构造函数
+            return o.constructor.getName();                         //有个问题并不是所有对象都有constructor属性
+        return "Object";                                //其余都是返回Object
+    }
+    //鸭式变型----------------------------------------------------------------------------------------------------------------------------------
+    function quacks(o/*,....*/) {
+        for (var i = 1; i < arguments.length; i++) {    //循环获取第一位参数后的参数并赋值
+            var arg = arguments[i];
+            switch (typeof arg) {                       //循环判断参数类型
+                case "string":                          //如果是字符串  
+                    if (typeof o[arg] !== "function") return false;     //对象中没有该方法则false
+                    continue;                           //有则跳过
+                case "function":                        //如果是函数，则同一当作构造函数来看
+                    arg = arg.prototype;                //然后将函数原型对象赋值给参数进入下一个case语句
+                case "object":                          //如果是对象
+                    for (var prop in arg) {             //遍历对象，如果是内置类的方法不可枚举则可以用函数Object.getOwnPropertyNames()
+                        if (typeof arg[prop] === "function" && typeof o[arg] !== "function")
+                            return false;               //如果原型中有方法，且对象中没有方法则false
+                    }
+            }
+        }
+        return true;                                    //如果对象实现了其他参数的所有方法则输出true
+    }
+
+</script>

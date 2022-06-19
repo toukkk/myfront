@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/enumeration.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //定义类
+    function defineClass(constructor,               //指构造函数
+        methods,                //当实例方法为真时，把它复制到原型中
+        statics)                //当类属性为真时，把它复制到构造函数中
+    {
+        if (methods) extend(constructor.prototype, methods);    //extend为复制函数
+        if (statics) extend(constructor, statics);
+        return constructor;
+    }
+    var SimpleRange = defineClass(          //用上面函数声明一个类（构造函数）
+        function (a, b) { this.a = a, this.b = b; },
+        {
+            includes: function (x) {
+                return x >= this.from && x <= this.to;
+            },
+            foreach: function (f) {
+                for (var x = Math.ceil(this.from); x <= this.to; x++)
+                    f(x);
+            },
+            toString: function () {
+                return "(" + this.from + "..." + this.to + ")";
+            }
+        },
+        {
+            upto: function (x) { return new SimpleRange(0, t); }
+        }
+    );
+    console.log("SimpleRange: ", SimpleRange.prototype.includes);
+    //表示复数的类
+    function Complex(real, imaginary) {         //定义构造函数
+        if (isNaN(real) || isNaN(imaginary))
+            throw new TypeError();
+        this.r = real;
+        this.i = imaginary;
+    }
+    //定义类的实例方法
+    Complex.prototype.add = function (that) {       //添加另一个复数，并返回新的复数
+        return new Complex(this.r + that.r, this.i + that.i);
+    };
+    Complex.prototype.mul = function (that) {       //与另一个复数相乘，并返回新的复数
+        return new Complex(this.r * that.r - this.i * that.i, this.r * that.i + this.i * that.r);
+    };
+    Complex.prototype.mag = function () {           //计算复数的模，及到原点的复平面距离
+        return Math.sqrt(this.r * that.r + this.i * that.i);
+    };
+    Complex.prototype.neg = function () {           //求负运算
+        return new Complex(-this.r, -this.i);
+    };
+    Complex.prototype.toString = function () {      //将复数对象转化为字符串
+        return "{" + this.r + "," + this.i + "}";
+    };
+    Complex.prototype.equals = function (that) {    //判断是否和另一复数值相同
+        return that != null && that.constructor === Complex && this.r === that.r && this.i === that.i;
+    };
+    //定义类字段
+    Complex.ZERO = new Complex(0, 0);
+    Complex.ONE = new Complex(1, 0);
+    Complex.I = new Complex(0, 1);
+    //定义类方法
+    Complex.parse = function (s) {                  //定义一个类方法，将由方法toString转化为字符串通过正则匹配解析为复数对象
+        try {
+            var m = Complex._format.exec(s);        //正则匹配
+            return new Complex(parseFloat(m[1]), parseFloat(m[2]));
+        }
+        catch (e) {
+            throw new TypeError("can't parse '" + s + "' as a complex number.");
+        }
+    };
+    Complex._format = /^\{([^,]+),([^}]+)\}$/;       //定一个私有字段，下划线表示只能类内部使用，不属于共有API的部分
+    //类实例的实现
+    var range1 = new Complex(2, 3);                 //构建函数构建新的对象
+    var range2 = new Complex(range1.i, range1.r);   //使用了range1的实例属性
+    console.log("range1: ", range1.add(range2));    //两个对象相加
+    console.log("range1: ", range1.add(range2).toString());     //输出转化为字符串
+    console.log("trun: ", Complex.parse(range1.toString()).add(range1.neg()).equals(Complex.ZERO))
+    //类的扩充--------------------------------------------------------------------------------------------------------------------------
+    Number.prototype.times = function (f, context) {    //扩充Number的一个实例方法
+        var n = Number(this);                           //运行函数f的次数
+        for (var i = 0; i < n; i++) {
+            f.call(context, n);
+        }
+    };
+    String.prototype.trim = function () {               //扩充String的一个实例方法
+        if (!this) return this;                         //替换字符串首尾的空格
+        return this.replace(/^\s+|\s+$/g, "");
+    };
+    Function.prototype.getName = function () {          //扩充Function的一个实例方法，获取函数名
+        return this.name || this.toString().match(/function\s*([^(]*)\(/)[1];
+    };
+    var n = 5;
+    var s = "  string hello world ";
+    var funname = function () { };
+    console.log("number.times(): ", n.times(function (n) { console.log(n + "gello") }));
+    console.log("object.tirm(): ", s.trim());
+    console.log("function.getName(): ", funname.getName());
+
+</script>

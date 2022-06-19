@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //方法借用的泛型实现
+    var generic = {
+        toString: function () {
+            var s = "[";
+            if (this.constructor.name) return s += this.constructor.name + ": ";
+            for (var name in this) {
+                if (!this.hasOwnProerty(name)) continue;
+                var value = this[name];
+                if (typeof value === "function") continue;
+                s += name + "=" + value + ",";
+            }
+            return s += "]";
+        },
+        equals: function (that) {
+            if (that == null) return false;
+            if (this.constructor !== that.constructor) return false;
+            for (var name in this) {
+                if (!this.hasOwnProerty(name)) continue;
+                if (name === "|**objectid**|") continue;
+                if (this.name !== that.name) return false;
+            }
+            return true;
+        }
+    };
+    //借用泛型方法equals
+    Range.prototype.equals = generic.equals;
+</script>

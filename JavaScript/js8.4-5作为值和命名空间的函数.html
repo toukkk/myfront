@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //将函数用做值---------------------------------------------------------------------------------------------------------
+    //定义些简单函数--
+    function add(x, y) { return x + y; }
+    function subtract(x, y) { return x - y; }
+    function multiply(x, y) { return x * y; }
+    function divide(x, y) { return x / y; }
+    //将上面函数作为参数调入下面函数
+    function operate(a, b, c) {
+        return a(b, c);
+    }
+    var data = operate(add, operate(add, 2, 3), operate(multiply, 4, 5))    //(2+3)+（4*5）
+    console.log("data: ", data)
+    //函数直接量定义在一个对象直接量中
+    var operators = {
+        add: function add(x, y) { return x + y; },
+        subtract: function subtract(x, y) { return x - y; },
+        multiply: function multiply(x, y) { return x * y; },
+        divide: function divide(x, y) { return x / y; },
+        pow: Math.pow
+    }
+    //这个函数接收一个参数运算符，在这个对象内查找这个运算符
+    function operate2(operator, x, y) {
+        if (typeof operators[operator] === "function")
+            return operate2.i++, operators[operator](x, y);     //operate2.i++可表示为函数属性，表示函数运行的次数
+        else throw "unknown operator";
+    }
+    operate2.i = 0;                                             //赋值初始值
+    //计算"hello"+" "+"world"的值,调用pow方法
+    var data2 = operate2("add", "hello", operate2("add", " ", "world"))
+    var data3 = operate2("pow", 5, 3);
+    console.log("data2: ", data2);
+    console.log("data3: ", data3);
+    console.log("", operate2.i);
+    console.log("");
+    //自定义函数属性----------------------------------------------------------------------------------------------------
+    function uniqueInteger() {
+        return uniqueInteger.counter++;
+    }
+    uniqueInteger.counter = 0;
+    uniqueInteger()
+    console.log("counter: ", uniqueInteger.counter)
+    function factorial(n) {
+        if (isFinite(n) && n > 0 && Math.round(n) === n) {
+            if (!(n in factorial))                              //判定函数对是否有n的缓存，即属性
+                factorial[n] = n * factorial(n - 1);            //将阶乘的值赋值给函数对象factorial[n]，属性为n
+            return factorial[n];                                //返回阶乘值
+        }
+        else return 1;
+    }
+    factorial(2)
+    console.log(2 in factorial);
+    console.log(factorial(2));
+    console.log(factorial[2]);
+    console.log("");
+    //作为命名空间的函数------------------------------------------------------------------------------------------------------
+    function myModule() {
+        //模块代码      模块内的全局变量就变成了局部变量
+        //这样不会污染整个全局命名空间
+    }
+    myModule();         //调用这个函数
+    (function () {      // myModule()可从写为这种匿名函数表达式，并在函数结束立即调用
+        //模块代码
+    }());
+    //例8.3-------
+    var extend = (function () {                                 //将函数赋值给变量
+        for (var p in { toString: null }) {                     //如果in不会枚举对象的自有toString属性，则跳过这段循环，反之则执行下面代码
+            return function extend(o) {                         //返回一个将第一个以后的参数元素添加到第一个参数，o表示第一个参数
+                for (var i = 1; i < arguments.length; i++) {
+                    var source = arguments[i];
+                    for (var prop in source) {
+                        o[prop] = source[prop];
+                    }
+                }
+                return o;
+            };
+        }
+        return function patched_extend(o) {                     //如果in不会枚举对象的同String属性，则反回这段函数
+            for (var i = 1; i < arguments.length; i++) {
+                var source = arguments;
+                for (var prop in source) {
+                    o[prop] = source[prop];
+                }
+                for (var j = 0; j < protoprops.length; j++) {   
+                    props = protoprops[j];
+                    if (source.hasOwnProperty(prop))            //显性检测，下面不可枚举属性是否为source的自有属性
+                        o[prop] = source[prop];
+                }
+            }
+            return o;
+        };
+        var protoprops = ["toString", "valueOf", "constructor", "hasOwnProperty",
+            "isPrototypeOf", "propertyIsEnumerable", "toLocalString"];
+    }([], { x: 1, y: 2, z: 3 }, [4, 5, 6]));                    //函数结束后直接调用
+    console.log("extend: ",extend);                                         //输出函数1
+    console.log("extend(): ", extend([], { x: 1, y: 2, z: 3 }, [4, 5, 6])); //输出：[4, 5, 6, x: 1, y: 2, z: 3]
+</script>

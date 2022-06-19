@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+    
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    function moveon() {                            //定义一个函数为moveon（）
+        var answer = confirm("准备好了吗");         //定义一个变量answer并赋予函数confirm（）网页弹窗问答
+        if (answer) {                               //暂可理解为如变量answer点确定则
+            window.location = "http://taobao.com"   //将网页地址赋予给window对像的定位location属性
+        }
+    }
+    setTimeout(moveon, 600)                         //setTimeout()这个函数有两个参数，分别表示过了多少秒执行函数moveon
+</script>

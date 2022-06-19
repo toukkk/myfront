@@ -1,0 +1,117 @@
+h1
+{
+    text-align:center;
+    text-shadow:3px 3px 2px red;
+}
+h2
+{
+    text-decoration:overline;
+    /* 上划线 */
+}
+h3
+{
+    text-decoration:line-through;
+    /* 删除线 */
+}
+h4
+{
+    text-decoration:underline;
+    /* 下划线 */
+}
+h5
+{
+    text-align:center;
+}
+p.date
+{
+    text-align:right;
+}
+p.main
+{
+    text-align:justify;
+    /* 定义的元素左右对齐 */
+}
+a
+{
+    text-decoration:none;
+    /* 定义无下划线 */
+}
+p.uppercase
+{
+    text-transform:uppercase;
+    /* 全部大写 */
+    text-indent:50px;
+    /* 首行缩进 */
+    letter-spacing:3px;
+    /* 字符间距 */
+    word-spacing:10px;
+    /* 单词间间距 */
+}
+p.lowercase
+{
+    text-transform:lowercase;
+    /* 全部小写 */
+    text-indent:50px;
+    letter-spacing:1px;
+    word-spacing:20px;
+}
+p.capitalize
+{
+    text-transform:capitalize;
+    /* 首字母大写 */
+    text-indent:50px;
+    letter-spacing:-3px;
+    word-spacing:30px;
+}    
+div.pre
+{
+    white-space:pre;
+    /* 设置元素中空白的处理方式,pre:定义预设格式 */
+}
+div.small
+{
+    line-height:70%;
+    /* 设置行高 */
+}
+div.big
+{
+    line-height:200%;
+}
+img.top
+{
+    vertical-align:text-top;
+    /* 垂直对齐，对齐上面 */
+}
+img.bottom
+{
+    vertical-align:text-bottom;
+    /* 垂直对齐，对齐下面 */
+}
+#rtl
+{
+    direction:rtl;
+    unicode-bidi:bidi-override;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

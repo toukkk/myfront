@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    var p = {
+        x: 1.0,
+        y: 1.0,
+        get r() { return Math.sqrt(this.x * this.x + this.y * this.y) },        //设置p.r 属性可读，并返回表达式值
+        set r(newvalue) {                                                       //设置p.r 属性可写
+            var oldvalue = Math.sqrt(this.x * this.x + this.y * this.y);
+            var ratio = newvalue / oldvalue;
+            this.x *= ratio;
+            this.y *= ratio;
+        },
+        get theta() {                                                           //设置p.r 属性可读，并返回表达式值
+            return Math.atan2(this.x, this.y)
+        },
+    };
+    p.r = 2;                                                                    //这个2表示setter(value)的参数赋值，求新的x,y
+    console.log("p.r: ", p.r);
+    console.log("p.theta: ", p.theta);
+    console.log("p.x: ", p.x);
+    console.log("p.y: ", p.y);
+    console.log("");
+
+    var q = inherit(p);                                                        //getter和setter存取器属性可被继承
+    q.x = 2;
+    q.y = 2;
+    console.log("q.r: ", q.r);
+    console.log("q.theta: ", q.theta);
+    console.log("");
+
+    var serialnum = {
+        $n: 0,
+        get next() { return this.$n++; },
+        set next(n) {                                                          //数值n表示输入的序列号值，小于$n报错
+            if (n >= this.$n) {
+                this.$n = n;
+            }
+            else {
+                throw "序列号值不能比当前值小";
+            }
+        }
+    };
+    console.log("serialnum: ", serialnum.next);
+    console.log("");
+
+    var random = {
+        get octet() { return Math.floor(Math.random() * 256); },            //取随机数整数0-256
+        get uint16() { return Math.floor(Math.random() * 65536); },         //取随机数整数0-65536
+        get int16() { return Math.floor(Math.random() * 65536) - 32786; }   //取随机数整数-32786-32786
+    };
+    console.log("octet: ", random.octet);
+    console.log("uint16: ", random.uint16);
+    console.log("int16: ", random.int16);
+</script>

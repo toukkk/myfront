@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/inherit.js"></script>
+    <script src="./scripts/Fun_extend.js"></script>
+    <script src="./scripts/Set.js"></script> -->
+
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //用作命名空间的对象-----------------------------------------------------------------------------------------------------------
+    //嵌套的命名对象
+    var collections;                        //定义个顶层命名空间对象
+    if (!collections)                       //如果不存在
+        collections = {};                   //建立一个
+    collections.sets = {};                  //在collections对象内定义sets命名空间
+    collections.sets.Set = function () { }; //在collections.sets内定义Set类
+    //导入
+    var Set = collections.sets.Set;         //直接将类导入出来
+    var s = new collections.sets.Set([1, 2, 3]);        //或者通过命名空间调用类
+    //作为私有命名空间的函数-------------------------------------------------------------------------------------------------------
+    //导出API
+    var Set = (function () {                    //声明全局变量，来接收返回的构造函数Set
+        function Set() {                        //定义类
+            this.values = {};
+            this.add.apply(this, arguments);
+        }
+        Set.prototype = {};                     //原型对象
+        function v2s(val) { }                   //内部函数
+        function vobjectId(o) { }
+        var next = 1;                           //内部变量
+        return Set;                             //导出公用API，以便模块外部调用它们
+    }());
+    //返回为对象多单元
+    collections.sets = (function () {
+        /**............**/
+        return {
+            NotSet: NotSet,
+            AbstractEnumerableSet: AbstractEnumerableSet,
+            SinletonSet: SinletonSet,
+            ArraySet: ArraySet
+        };
+    }());
+    //使用new来调用API
+    collections.sets = (new function Set() {
+        /**............**/
+        this.NotSet = NotSet;
+        this.SinletonSet = SinletonSet;
+    }());
+    //如果已经定义了全局命名空间对象，这个模块可以直接设置空间对象属性
+    collections.sets = {};
+    (function () {
+        /**............**/
+        collections.sets.NotSet = NotSet;
+        collections.sets.SinletonSet = SinletonSet;
+    }());
+</script>

@@ -1,0 +1,41 @@
+h1
+{
+    text-align: center;
+}
+.text1
+{
+    background-color: aqua;
+    border:25px solid green;
+    margin:25px;
+    padding:25px;
+    width:300px;
+}
+.text2 div
+{
+    background-color: rgb(214, 243, 243);
+    border:5px solid rgb(42, 58, 42);
+    margin:0px;
+    padding:25px;
+    width:190px;
+}
+p{
+    margin:0px;
+}
+/* 去除浏览器自带的段落间margin 的设置 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,23 @@
+将所选文本设置为粗体	 Ctrl + B	        Cmd + B
+将所选文本设置为斜体     Ctrl + I	        Cmd + I
+将所选文本加下划线	     Ctrl + U	        Cmd + U
+将所选文本设置为上标	 Ctrl + Shift + =	Cmd + Shift + =
+将所选文本设置为下标	 Ctrl + =	        Cmd + =
+增加缩进量	            Tab	Tab
+减少缩进量	            Shift + Tab	        Shift + Tab
+复制文本	            Ctrl + C	        Cmd + C
+查找替换文本	        Ctrl + H	        Cmd + F
+粘贴文本	            Ctrl + V	        Cmd + V
+剪切文本	            Ctrl + X	        Cmd + X
+重做文本	            Ctrl + Y	        Shift + Cmd + Z
+撤销文本	            Ctrl + Z	        Cmd + Z
+保存文件	            Ctrl + S	        Cmd + S
+查找替换文本        	Ctrl + H	        Cmd + F
+新建文档	            Ctrl + N	        Cmd + N
+打开文件	            Ctrl + O	        Cmd + O
+查找替换文本        	Ctrl + H	        Cmd + F
+新建文档	            Ctrl + N	        Cmd + N
+打开文件	            Ctrl + O	        Cmd + O
+重新打开最后一个关闭的标签页	Ctrl + Shift + T	                        Cmd + Shift + T
+复制整个屏幕的截图到剪贴板	    PrtScr (Print Screen) or Ctrl + PrtScr	    Cmd + Ctrl + Shift + 3
+复制窗口截图到剪贴板	        Alt + PrtScr	                            Cmd + Ctrl + Shift + 4, then Space

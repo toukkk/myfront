@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <p>请输入0-9的密码：</p>
+    <input id="demo" type="text" size="20">
+    <button type="button" onclick="myfunction()">确认</button>  <!-- 引用函数 -->
+
+</body>
+
+</html>
+
+<script>
+    //标签语句-----------------------------------------------------------------------------------------------
+    var token;
+    labelname: while (token != null) {               //给while循环语句块定义一个标签
+        token = hull;
+        continue labelname;                          //应用语句标签，continue关键词表示跳转到下一次循环（这里表示标签语句）
+    }                                               //continue和break是JavaScript中唯二可以使用语句标签的语句
+    //break语句---------------------------------------------------------------------------------------------
+    var a = ["hello", "world", "target", "form"]
+    for (var i = 0; i < a.length; i++) {            //使用循环遍历整个数组来查找某个值，只有整数组遍历完才会结束循环。
+        if (a[i] == "target") {
+            break;                                  //使用break语句则可以在找到某个值后直接跳出循环。
+        }                                           //break后面接语句标签，表示程序将跳转到这个标签所标识语句(无法跳出父级函数作用域)的结束，该标签语句不应该是循环语句或switchyuju 
+        else { i = i + 3; }
+        // i = i + 3
+    }
+    console.log("break: ", i)                        //循环只进行了3次
+    console.log("")
+    var matrix = [[2, NaN, 6], [4, 6, 8, 10]];              //定义一个复合数组
+    console.log("matrix: ", matrix)
+    var sum = 0, success = false;
+    compute_sum: if (matrix) {                          //设置语句标签
+        for (var i = 0; i < matrix.length; i++) {
+            var row = matrix[i];                        //循环获取matrix的元素
+            if (!row) {                                 //判断元素数组是否为假值
+                break compute_sum;                      //跳出标签语句结束位置
+            }
+            else {
+                for (var j = 0; j < row.length; j++) {  //循环获取元素数组row的元素
+                    if (isNaN(row[j])) {                //如果它是数字，
+                        break;                          //跳出标签语句结束位置,尽在row==NaN时才跳过break后续语句，其他时候还是会运行。
+                    }
+                    else {
+                        sum += row[j];                  //将不是NaN的元素相加
+                    }
+                }
+            }
+        }
+    }
+    console.log("sum: ", sum)
+    console.log("success: ", success)
+    console.log("")
+    //continue语句---------------------------------------------------------------------------------------------
+    var produst = 1, n = 4;
+    while (n > 1) {
+        produst *= n;
+        n--;
+        continue;                       //continue在while中表示跳过后面的statement执行下一个循环，并在循环开始的expression进行重复判定，
+        produst *= 2;                   //必须要有终止，否则会一直循环
+    }
+    console.log("while: ", produst);
+
+    var produst = 1, n = 4;
+    do {		                        //do/while循环表示先运行一次do{}中的语句
+        produst *= n;
+        n--;
+        continue;                       //continue在do/while直接跳到最后的while判定语句这，并对expression进行重复判定，
+    }
+    while (n > 0);                      //判定循环是否继续
+    console.log("do/while: ", produst);
+
+    var i, total = 0, data = [2, 4, , 6, , 8];
+    for (i = 0; i < data.length; i++) {
+        if (!data[i]) {
+            continue;                   //不能处理的undefined数据，且先计算increment表达式，然后再检测test表达式进行判定循环
+        }
+        else {
+            total += data[i]
+        }
+    }
+    console.log("total: ", total)
+    console.log("")
+    //throw语句------------------------------------------------------------------------------------------------
+    function factorial(n) {
+        if (n < 0) {
+            throw new Error;                            //当n小于0时throw语句设置一个报错
+        }
+        else {
+            for (var i = 1; n > 0; i *= n, n--);        //循环在for()内已经完成，所以for()语句后面加分号表示循环已结束。
+            return i;
+        }
+    }
+    // console.log("factorial: ",factorial(-3))         //输入负值报错
+    console.log("factorial: ", factorial(5.43))
+    //try/catch/finally语句------------------------------------------------------------------------------------------------
+    //catch 和 finally 语句都是可选的，但你在使用 try 语句时必须至少使用一个。
+    { var message, text;
+        text = document.createElement("p");
+        text.id = "text1";
+        text.innerHTML = "";  
+        document.body.appendChild(text);}               //定义语句块，在body中添加<p></p>.位于body底部
+    function myfunction() {                             //定义点击函数
+        message = document.getElementById("demo").value;//将输入框内的值赋值给变量
+        try {                                           //try语句允许我们定义在执行时进行错误测试的代码块
+            if (message === "") {           
+                throw "为空";                           //配合throw语句输出异常
+            }
+            if (isNaN(message)) {
+                throw "不是数字";
+            }
+            if (message > 9) {
+                throw "数字太大";
+            }
+            if (message < 0) {
+                throw "数字为负";
+            }
+        }
+        catch (err) {                                 //catch语句允许我们定义当 try 代码块发生错误时，所执行的代码块。
+            text.innerHTML = "输入的值：" + err;
+        }
+        finally {                                     //语句在 try 和 catch 之后无论有无异常都会执行
+            document.getElementById("demo").value="";
+        }
+    }
+</script>

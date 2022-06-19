@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script type="text/javascript" src="">js代码无效</script> -->
+</head>
+
+<body>
+
+    <div>
+        <h1>Digital Clock</h1>
+        <span id="clock"></span>
+    </div>
+    <div>
+        <input type="checkbox" name="options" value="giftwrap" onchange="order.options.giftwrap=this.checked;"><br>
+        <a href="javascript:new Date().toLocaleString();">What time is it?</a><br>
+        <a href="javascript:alert(new Date().toLocaleString());">得到时间，而不必覆盖整个文档</a><br>
+        <a href="javascript:void window.open('about:blank')">打开一个窗口</a>
+    </div>
+</body>
+
+
+</html>
+<style>
+    #clock {
+        font: bold 24pt sans;
+        background: #ddf;
+        padding: 10px;
+        border: soild black 2px;
+        border-radius: 10px;
+    }
+    input{
+        margin:40px;
+    }
+</style>
+<script>
+    function displaytime() {
+        var span = document.getElementById("clock");        //提取元素
+        span.innerHTML = (new Date()).toLocaleString();     //初始化元素
+        setTimeout(displaytime, 1000);                      //过一秒再次执行
+    }
+    window.onload = displaytime;                            //文档加载完执行
+
+</script>

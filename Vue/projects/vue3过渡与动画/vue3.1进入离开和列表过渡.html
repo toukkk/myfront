@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>javascript</title>
+  <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="demo">
+    <button @click="show = !show">
+      Toggle
+    </button>
+    <transition name="fade" appear appear-class="fade-appear" appear-to-class="fade-appear-to"
+      appear-active-class="fade-appear-active" mode="out-in">
+      <!-- <p v-if="show" key="1">过渡类名为fade, 条件渲染 (使用 v-if)</p>
+            <p v-else key="2">Sorry, no items found.</p> -->
+      <p :key="show">{{show?"过渡类名为fade, 条件渲染 (使用 v-if)":"Sorry, no items found."}}</p>
+    </transition>
+    <transition name="slide-fade" :duration="10000">
+      <p v-if="show">css过渡, 事件监听器为transition, 显性的过渡持续时间为10s</p>
+    </transition>
+    <transition name="bounce" :duration="{enter: 500, leave: 800}">
+      <p v-if="show">css动画, 事件监听器为animation, 显性的定制进入和移出的持续时间</p>
+    </transition>
+    <transition name="custom-classes-transition" enter-active-class="animated tada"
+      leave-active-class="animated bounceOutRight">
+      <p v-if="show">自定义过渡的类名，他们的优先级高于普通的类名</p>
+    </transition>
+    <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter" @enter-cancelled="enterCancelled"
+      @before-leave="beforeLeave" @leave="leave" @after-leave="afterLeave" @leave-cancelled="leaveCancelled">
+      <p v-if="show">可以在 attribute 中声明 JavaScript 钩子</p>
+    </transition><br><br><br><br><br>
+    <input type="radio" value="v-a" id="a" name="view" @click="view='v-a'">
+    <label for="a">A</label>
+    <input type="radio" value="v-b" id="b" name="view" @click="view='v-b'">
+    <label for="b">B</label>
+    <transition name="component-fade" mode="out-in">
+      <component v-bind:is="view"></component>
+    </transition>
+    <transition :name="transitionName">
+      <p v-if="show">动态过渡</p>
+    </transition>
+  </div><br><br><br><br>
+  <div id="demo1">
+    <button @click="add">add</button>
+    <button @click="remove">remove</button>
+    <transition-group name="list" tag="h1">
+      <span v-for="item in items" :key="item" class="list-item">{{item}}</span>
+    </transition-group>
+  </div>
+</body>
+
+</html>
+<script>
+  //单元素和组件过渡<transition>---------------------------------------------------------------------------------------------
+  new Vue({
+    el: '#demo',
+    data: {
+      show: true,
+      view: 'v-a',
+      transitionName: 'fade',
+    },
+    components: {
+      'v-a': {
+        template: '<div>动态切换组件完成多组件过渡: Component A</div>'
+      },
+      'v-b': {
+        template: '<div>动态切换组件完成多组件过渡: Component B</div>'
+      }
+    },
+    methods: {
+      // 进入中，自定义JavaScript 钩子
+      beforeEnter: function (el) {
+        el.style.opacity = 0;
+        console.log(el.style.opacity)
+      },
+      // 当与 CSS 结合使用时
+      // 回调函数 done 是可选的
+      enter: function (el, done) {
+        el.style.transition = 'opacity 4s';
+        console.log(el.style.transition)
+        done()
+      },
+      afterEnter: function (el) {
+      },
+      enterCancelled: function (el) {
+      },
+      // 离开时
+      beforeLeave: function (el) {
+        el.style.opacity = 1;
+        console.log(el.style.opacity)
+      },
+      // 当与 CSS 结合使用时
+      // 回调函数 done 是可选的
+      leave: function (el, done) {
+        el.style.transition = 'opacity 4s';
+        console.log(el.style.opacity)
+        done()
+      },
+      afterLeave: function (el) {
+      },
+      // leaveCancelled 只用于 v-show 中
+      leaveCancelled: function (el) {
+      }
+    }
+  });
+  //列表过渡<transition-group>-------------------------------------------------------------------------------------------
+  new Vue({
+    el: '#demo1',
+    data: {
+      items: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    },
+    methods: {
+      randomNumber() {
+        return Math.floor(Math.random() * this.items.length)
+      },
+      add() {
+        var j = Math.floor(Math.random() * 100);
+        if (this.items.indexOf(j) == -1) {
+          this.items.splice(this.randomNumber(), 0, j)
+        }
+        else this.add()
+      },
+      remove() {
+        this.items.splice(this.randomNumber(), 1,)
+      }
+    }
+  });
+  //函数式组件
+  Vue.component('my-special-transition', {
+    functional: true,
+    render: function (createElement, context) {
+      var data = {
+        props: {
+          name: 'very-special-transition',
+          mode: 'out-in'
+        },
+        on: {
+          beforeEnter(el) { },
+          afterEnter(el) { }
+        }
+      }
+      return createElement('transition', data, context.children)
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+  .fade-appear-active {
+    transition: opacity 2s;
+  }
+
+  .fade-appear {
+    opacity: 0;
+  }
+
+  .fade-appear-to {
+    opacity: 1;
+  }
+
+  .fade-appear-active,
+  .fade-leave-active {
+    transition: opacity 2s;
+  }
+
+  .fade-enter,
+  .fade-leave-to
+
+  /* .fade-leave-active below version 2.1.8 */
+    {
+    opacity: 0;
+  }
+
+  .slide-fade-enter-active {
+    transition: all 1s ease;
+  }
+
+  .slide-fade-leave-active {
+    transition: all 2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+
+  .slide-fade-enter,
+  .slide-fade-leave-to
+
+  /* .slide-fade-leave-active for below version 2.1.8 */
+    {
+    transform: translateX(10px);
+    opacity: 0;
+  }
+
+  .bounce-enter-active {
+    animation: bounce-in 1s;
+  }
+
+  .bounce-leave-active {
+    animation: bounce-in 2s reverse;
+  }
+
+  @keyframes bounce-in {
+    0% {
+      transform: scale(0);
+    }
+
+    50% {
+      transform: scale(1.5);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  .component-fade-enter-active,
+  .component-fade-leave-active {
+    transition: opacity .3s ease;
+  }
+
+  .component-fade-enter,
+  .component-fade-leave-to
+
+  /* .component-fade-leave-active for below version 2.1.8 */
+    {
+    opacity: 0;
+  }
+
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 1s;
+  }
+
+  .list-enter,
+  .list-leave-to
+
+  /* .list-leave-active for below version 2.1.8 */
+    {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+</style>

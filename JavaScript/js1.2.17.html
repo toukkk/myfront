@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/debug.js"></script>
+    <script src="./scripts/hide.js"></script>
+</head>
+
+<body>
+
+    <div>
+        hello
+        <button onclick="hide(this,true);debug('hide button 1');">hide1</button>
+        world
+        <button onclick="hide(this);debug('hide button 2');">hide2</button>
+
+    </div>
+    <div>
+        <div class="img">
+            <div class="img1">
+                <img id="test" src="./images/1.jpeg" alt="这是一个表情包" width="300px" height="300px"
+                    style="visibility: visible;">
+                <button onclick="hideOrShow()">show or hide</button>
+            </div>
+            <div class="img1">
+                <img src="./images/2.jpeg" alt="这是一个表情包" width="300px" height="300px" style="visibility: visible;">
+            </div>
+            <div class="img1">
+                <img src="./images/3.jpeg" alt="这是一个表情包" width="300px" height="300px" style="visibility: visible;">
+            </div>
+
+        </div>
+
+</body>
+
+</html>
+
+<script>
+    window.onload = function () {                               //当window在完成文档加载（onload）后才会执行这里的代码
+        var images = document.getElementsByTagName("img");      //获取文档元素名为img的元素组成的数组
+        for (var i = 0; i < images.length; i++) {
+            var image = images[i];
+            if(image.addEventListener){                         //元素方法属性
+            image.addEventListener("click", hide, false);       //"click"为添加事件处理程序的节点事件
+            }                                                   //第三个参数表示，当多个元素同时触发时是冒泡还是捕获
+            else{                                                               //false:默认值表示，事件由内到外触发
+                //兼容IE8以前版本                                                //true: 事件由外到内触发
+                image.addEventListener("onclick",hide)          //反之则. click 是方法，onclick是事件。执行click就是模拟鼠标点击，同时会触发onclick事件。
+            }
+        }
+        function hide(event){                                   //定义上面处理事件的函数
+            event.target.style.visibility="none";               //属性返回哪个 DOM 元素触发了事件
+        }
+    };
+
+    function hideOrShow() {                                     //定义函数显现图片
+        var image = document.getElementById("test")
+        var sy = image.style
+        console.log(sy.visibility)                              //onclick="hideOrShow()"调用函数
+        if (sy.visibility == "hidden") {
+            sy.visibility = "visible"
+        } else {
+            sy.visibility = "hidden";
+        }
+    }
+
+</script>

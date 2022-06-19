@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div>
+        {{text}}
+    </div>
+</body>
+
+</html>
+<script>
+    //定义一个混入对象，一个混入对象可以包含任意组件选项。当组件使用混入对象时，所有混入对象的选项将先被调用，被“混合”进入该组件本身的选项
+    var mixin = {
+        created() { console.log("钩子函数:  混入对象中的钩子函数，钩子函数会被合并，不会被覆盖") },
+        methods: {
+            myMethod() {
+                console.log("调用方法")
+            }
+        },
+        data() {
+            return {
+                test: "对象不同名",
+                text: "混入对象中的初始数据，同名会被覆盖及不同则合并"
+            };
+        },
+    };
+    //创建一个Vue的子类
+    var Component = Vue.extend({ mixins: [mixin] });
+    var component = new Component();
+    //创建实例
+    var vm = new Vue({
+        el: 'div',
+        mixins: [mixin],
+        created() {
+            //输出实例数据data
+            console.log("this.$data: ", this.$data)
+            //输出方法覆盖myMethod
+            console.log("this.myMethod: ", this.myMethod)
+            //输出合并方法
+            console.log("this.myMethod1: ", this.myMethod1)
+        },
+        methods: {
+            myMethod() {
+                console.log("调用覆盖方法")
+            },
+            myMethod1() {
+                console.log("调用实例方法")
+            }
+        },
+        data() {
+            return {
+                test1: "实例不同名",
+                text: "混入对象中的初始数据，同名会被覆盖及不同则合并,覆盖以组件为主"
+            };
+        }
+    });
+    //全局混入
+    Vue.mixin({
+        created() {
+            var myOption = this.$options.myOption;
+            if (myOption) {
+                console.log("myOption: ", myOption)
+            }
+        },
+    });
+    new Vue({
+        myOption: 'hello!',
+    });
+    //自定义选项合并策略
+    Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
+        // 返回合并后的值           //定义自定义选项myOption的合并策略
+    }
+    //也可以将methods选项的合并merge策略strategies赋值给自定义选项
+    Vue.config.optionMergeStrategies.myOption = Vue.config.optionMergeStrategies.methods
+    //合并策略实例
+    const mergeMethods = Vue.config.optionMergeStrategies.methods;
+    Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {
+        if (!toVal) return fromVal;
+        if (!fromVal) return toVal;
+        return {
+            getters: mergeMethods(toVal.getters, fromVal.getters),
+            state: mergeMethods(toVal.state, fromVal.state),
+            actions: mergeMethods(toVal.actions, fromVal.actions)
+        };
+    }
+</script>
+<style>
+
+</style>

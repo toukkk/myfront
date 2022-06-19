@@ -1,0 +1,66 @@
+body
+{
+    font-size:100%;
+    /* em会随浏览器调整百分比变化，px不会 */
+}
+h1
+{
+    font-size:2.5em;
+    /* 1em=16px  40px=2.5em */
+}
+p.normal
+{
+    font-style:normal;
+}
+p.serifItalicSize
+{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-style:italic;
+    font-size:1em;
+}
+p.sansserifObliqueSize
+{
+    font-family:Arial, Helvetica, sans-serif;
+    font-style:oblique;
+    font-size:4px;
+}
+P
+{
+    font-size:16px;
+}
+p.normalVariant
+{
+    font-weight:normal;
+    /* 字体粗细正常 */
+    font-variant:normal;
+    /* 正常字体显示文本 */
+}
+p.lightVariant
+{
+    font-weight:lighter;
+    font-variant:small-caps;
+    /* 小型大写字体,对中文无效 */
+}
+p.bold
+{
+    font-weight:bold;
+}
+p.thick
+{
+    font-weight:900;
+}
+p.font
+{
+    font:italic normal 800 20px/30px Georgia,serif;
+    /* font简写所以属性 */
+}
+
+
+
+
+
+
+
+
+
+

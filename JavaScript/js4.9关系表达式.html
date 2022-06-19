@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    //相等运算符--------------------------------------------------------------------------------------------------
+    console.log("true === true: ", true === true)
+    console.log("undefined === undefined: ", undefined === undefined)
+    console.log("NaN === 2: ", NaN === 2)                                    //NaN不等于任何值，包括它本身，只有x!==x时才确定x=NaN.
+    console.log(" 0 === -0: ", 0 === -0)
+    console.log("{} === '[object,object]': ", {} === "[object,object]")      //对象转为字符串
+    var x = {}, y = x;
+    console.log(" x === y: ", x === y)                                       //两个引用指向同一对象则两个引用相等
+    console.log("undefined == null: ", undefined == null)                   //x=null，y=undefined，  x=y
+    console.log("2 == '2': ", 2 == "2")                                     //x=number， y=string，先将字符串转化为数值，在比较值
+    console.log("true == '1': ", true == "1")                               //x=trun或x=false，则将其转换为1或者0在进行比较
+    console.log("{} == 'object': ", {} == "object")                         //x=object，y=number或string，则将对象通过valueOf()或toString()转换为原始值，在比较
+    console.log("")
+    //比较运算符--------------------------------------------------------------------------------------------------
+    console.log("<: ", 11 < 3)                    //纯数字比较，只有两个都是string时，才会比较string
+    console.log("<: ", "11" < 3)                  //有number和string时，以number为先   =》false
+    console.log("<: ", "11" < "3")                //全是string，则按字符串比较    =》true
+    console.log("<: ", "one" << 3)              //number的比较，"one"转化为number为NaN，   =》false
+    console.log("")
+    //位运算符--------------------------------------------------------------------------------------------------
+    console.log("~: ", ~51)
+    console.log("~: ", ~-51)
+    console.log("<<: ", 42 << 3)
+    console.log("<<: ", -42 << 3)
+    console.log(">>: ", 42 >> 3)
+    console.log(">>: ", -42 >> 3)
+    console.log(">>>: ", 42 >>> 3)
+    console.log(">>>: ", -42 >> 3)
+    console.log("")
+    //in运算符------------------------------------------------------------------------------------------------------------
+    var point = {
+        x: 1,
+        y: 2
+    };
+    console.log("in1: ", "x" in point)               //in运算符表示前操作数是否是后对象的属性(包括方法)
+    console.log("in1: ", "z" in point)
+    console.log("in1: ", "toString" in point)        //toString属性 为对象继承的toString()方法，
+    console.log("")
+    var date = [7, 8, 9];
+    console.log("in2: ", "0" in date)                //0属性为数组的第一个元素的属性
+    console.log("in2: ", 1 in date)                  //数字转化为string，
+    console.log("in2: ", 3 in date)
+    console.log("")
+    //instanceof运算符------------------------------------------------------------------------------------------------------------
+    var d = new Date();                                         //instanceof运算符表示前操作数是否是后操作数的实例
+    console.log("instanceof1: ", d instanceof Date)             //d对象是由Date()创建的，所以为它的实例，=》true
+    console.log("instanceof1: ", d instanceof Object)           //所有对象都是Object的实例
+    console.log("instanceof1: ", d instanceof Number)           //d不适宜Number对象      =》false
+    console.log("")
+    var a = [7, 8, 9];
+    console.log("instanceof2: ", a instanceof Object)           //数组也是一种对象，所以   =>true
+    console.log("instanceof2: ", a instanceof Array)            //a为一个数组
+    console.log("instanceof2: ", a instanceof RegExp)           //数组不是正则表达式
+    console.log("")
+</script>

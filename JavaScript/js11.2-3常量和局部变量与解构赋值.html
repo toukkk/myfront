@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/inherit.js"></script>
+    <script src="./scripts/Fun_extend.js"></script>
+    <script src="./scripts/Set.js"></script> -->
+
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //变量与局部变量------------------------------------d--------------------------------------------------------------
+    //const关键字
+    const pi = 3.14;         //定义一个常量并赋值
+    // pi = 4.13;            //任何对其赋值都会忽略
+    // const p = 3.14;      //重新声明会报错
+    // var p = 4.31;        //使用var也会报错
+    console.log("pi: ", pi)
+    //let关键字
+    function oddsums(n) {
+        let total = 0, result = [];         //total变量只在函数内有定义的
+        for (let x = 1; x < n + 1; x++) {   //x变量只在循环有定义
+            let add = 2 * x - 1;            //add变量只在循环有定义
+            total += add;
+            result.push(total);
+        }
+        // console.log("result: ",x,add)    //使用var声明时，这个位置x,add变量有定义
+        return result;
+    }
+    console.log("result: ", oddsums(5))
+    //for/in
+    o = { x: 1, y: 2 };
+    for (let p in o) console.log("p: ", p);         //变量p仅在循环内有定义
+    // for each(let v in o) console.log("v: ", v);  //浏览器不支持
+    //作用域
+    // let x = 1;
+    // for (let x = x + 1; x < 5; x++)       //声明提前，即let x;
+    //     console.log("x: ", x);            //所以会报错未初始化变量
+    // {                                     //同样提前至语句块前报错
+    //     let x = x + 1;
+    //     console.log("x: ", x);
+
+    // }
+    //指定作用域                          //为解决
+    // let a = 1, b = 2;
+    // let (a = a + 1, b = a + 2) {
+    //     console.log(a + b);
+    // };
+    // console.log("a+b: ", a + b);
+    // let a=1,b=2;
+    // console.log(let (a=a+1,b=a+2) a+b);
+    //解构赋值-----------------------------------------------------------------------------------------------------------------
+    //简单的解构例子
+    let [x, y] = [1, 2];
+    [x, y] = [x + 1, y + 2];
+    [x, y] = [y, x];
+    console.log("x,y: ", x, y)
+    //定义函数将笛卡尔坐标转换为极坐标[r ,theta]
+    function polar(x, y) {
+        return [Math.sqrt(x * x + y * y), Math.atan2(x, y)];
+    }
+    //定义函数将极坐标[r ,theta]转换为笛卡尔坐标
+    function cartesian(r, theta) {
+        return [r * Math.cos(theta), r * Math.sin(theta)];
+    }
+    let [r, theta] = polar(x, y);
+    let [x1, y1] = cartesian(r, theta);
+    console.log("polar: ", [r, theta])
+    console.log("cartesian: ", [x1, y1])
+    //左右对应
+    let [a, b] = [1];
+    console.log("ab: ", a, b);          //输出：1，undefined
+    [a, b] = [2, 3, 4];
+    console.log("ab: ", a, b);          //输出：2，3
+    [, a, , b,] = [1, 2, 3, 4];
+    console.log("ab: ", a, b);          //输出：2，4
+    let all, first, second;
+    all = [first, second] = [1, 2, 3, 4];
+    console.log("all,first,second: ", all, first, second);  //输出：[1,2,3,4] , 1 , 2
+    let [one, [twoA, towB]] = [1, [2, 2.5, 3], 3];
+    console.log("one,twoA,towB: ", one, twoA, towB);        //输出：1，2，2.5
+    //解构对象
+    let transparent = { r: 0.0, b: 1.0, g: 0.0, a: 1.0 };
+    let { r: red, g: green, b: blue } = transparent;        //对对象来说是value的赋值，属性名对应
+    console.log("red,green,blue: ", red, green, blue);      //输出：0，0，0
+    let { sin: sin, cos: cos, tan: tan } = Math;            //访问对象Math
+    console.log("sin,cos,tan: ",sin,cos,tan);               //输出：Math.sin , Matn.cos , Math.tan
+</script>

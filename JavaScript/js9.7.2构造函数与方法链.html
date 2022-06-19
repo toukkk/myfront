@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+    <script src="./scripts/Set.js"></script>
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //定义Set子类NonNullSet
+    function NonNullSet() {
+        Set.apply(this, arguments);
+    }
+    NonNullSet.prototype = inherit(Set.prototype);      //继承原型
+    NonNullSet.prototype.constructor = NonNullSet;      //设置constructor属性
+    NonNullSet.prototype.add = function () {
+        for (var i = 0; i < arguments; i++) {           //遍历参数对象
+            var arg = arguments[i];
+            if (arg == null) throw new Error;           //排除null和undefined
+        }
+        return Set.prototype.add.apply(this, arguments); //调用父类的方法执行实际操作
+    };
+    //定义个类工厂函数
+    function filteredSetSubclass(superclass, filter) {
+        var constructor = function () {
+            superclass.apply(this, arguments);
+        };
+        constructor.prototype = inherit(superclass.prototype);
+        constructor.prototype.constructor = constructor;
+        constructor.prototype.add = function () {
+            for (var i = 0; i < arguments; i++) {
+                var arg = arguments[i];
+                if (!filter(arg)) throw new Error;
+            }
+            Set.prototype.add.apply(this, arguments);
+        };
+        return constructor;
+    }
+    //只保留字符串的合集类
+    var StringSet = filteredSetSubclass(Set, function (x) { return typeof x === "string" });
+    //合集类成员不能是函数，null，undefined,父类不一样
+    var MySet = filteredSetSubclass(NonNullSet, function (x) { return typeof x !== "function" });
+</script>

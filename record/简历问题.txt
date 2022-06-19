@@ -1,0 +1,390 @@
+我的问题：
+项目所用技术
+项目周期
+工作地点
+福利待遇
+
+项目：
+1：该项目主要面向的对象是银行的业务人员开发的提取财报定制化的一个系统，
+帮助业务人员从繁琐的取数流程中解放出来，在以往的工作中业务人员需要获取一份财务报表时，
+需要联系数仓开发人员运行SQL（塞扣）脚本从数仓中获取报表并返回给业务人员
+然后有了这个管理系统以后，业务人员可以直接在该也页面上创建一个取数流程获取财报
+该流程支持三种模式，一是利用过往的取数逻辑从财务数据仓库中取数，二是在过往的取数逻辑并没有业务人员
+需要的报表时，可以指定数仓开发人员进行开发，获取数仓开发上传的数据，三是对于具备SQL开发经验
+的人员可以自己写SQL脚本来获取财报。
+2：库表管理，以table的形式将项目下的库表展示在前端页面，方便业务人员了解最新的财报信息
+
+1：该项目主要面向的对象是银行客户经理开发的一个客户管理系统，通过图形化的管理让客户经理能够
+更加准确直观的了解客户的资产信息，潜在价值，关系归属。以达到精准营销的目的
+客户置产日报管理使用百度开发的
+(qua4z)框架绘制图表，通过图表的形式直观展示客户具备的资产信息
+例如通过资产折线图可以了解客户资产的动态变化，通过理财饼状图可以了解客户的理财占比，
+2：客户基本信息管理展示一些客户的身份信息，联系方式等，方便用户快速了解客户信息
+3：通过HTML5的canvas元素在页面上绘制一个客户图像，给图像贴上一系列直观的标签来反映客户的所具备的
+潜在价值，如客户是否有奢侈品爱好可以通过手表项链的形式来表现，客户的vip等级可以用胸前的徽章样式来表现
+4：客户关系跟踪管理系统，由于会出现客户转到其他客户经理的情况，
+该管理系统便于银行经理的绩效考核以及之后的客户双边关系的维护与跟进
+
+自我介绍：
+我叫章盘龙，19年毕业于重庆理工大学，专业是应用统计学。今天来是想面试贵公司的web前端岗位，
+刚接触前端的时侯就喜欢上了那种按照自己想法开发出来一个完美的网页，
+以及解决难题时的成就感，并在之后一直为此着迷。
+
+在上家公司中我的主要职责是负责后台管理系统前端页面开发，接口联调优化，界面样式优化
+
+在之前的工作中，不仅强化了我的业务能力，自学能力和与同事沟通的能力，
+还养成了对工作负责认真，积极好学，注重团队合作的良好习惯。
+
+技术方面我一直从事于web方面的工作，熟练掌握js、html、css等前端技术，
+也能熟练的运用vue、element-ui等框架来完成工作。
+
+面试官，以上是我的介绍，谢谢
+
+
+
+
+
+
+问题：
+v-if 和 v-show 的区别
+v-if 是条件是否满足来决定是否渲染此节点。
+v-show 条件不满足时控制样式将对应节点隐藏 （display:none）
+v-if 用在不需要频繁切换条件的场景，而v-show则适用于频繁切换的场景
+
+v-if与v-for
+在vue2中，v-for的优先级是高于v-if，把它们放在一起，输出的渲染函数中可以看出会先执行循环再判断条件，
+哪怕我们只渲染列表中一小部分元素，也得在每次重渲染的时候遍历整个列表，这会比较浪费；
+另外需要注意的是在vue3中则完全相反，v-if的优先级高于v-for，所以v-if执行时，
+它调用的变量还不存在，就会导致异常
+
+MVVM与MVC的区别
+MVC：一句话描述就是 Controller （控制器）负责将 Model（模组） 的数据用 View（视图） 显示出来
+MVVM：将数据模型与数据表现进行分离
+	通过ViewModel将Model（模组） 的数据和 View（视图） 数据进行双向绑定，不用再手动操作 Dom 元素，来改变 View 的显示
+
+子组件可以直接改变父组件的数据么，单项数据流
+所有的 prop 都使得其父子之间形成了一个单向下行绑定：父级 prop 的更新会向下流动到子组件中，
+但是反过来则不行。这样会防止从子组件意外变更父级组件的状态，
+从而导致你的应用的数据流向难以理解
+
+Vuex 是
+Vuex 是一个专为 Vue.js 应用开发的状态管理模式，用于多个组件中数据共享、数据缓存等
+
+keep-alive
+keep-alive 是 Vue 内置的一个组件，可以实现组件缓存，当组件切换时不会对当前组件进行卸载。
+常用的两个属性 include/exclude，允许组件有条件的进行缓存。
+两个生命周期 activated/deactivated，用来得知当前组件是否处于活跃状态
+
+nextTick()
+从字面上的意思是指下一帧渲染，而vue的渲染具有块级，即当一函数运行完以后才会将运行结果渲染到dom上
+而nextTick像异步延迟操作，将该代码跳到渲染块之后执行
+
+computed 和 watch 的区别和运用的场景
+computed 是计算属性，依赖其他属性计算值，并且 computed 的值有缓存，
+只有当计算值变化才会返回内容，它可以设置 getter 和 setter。
+watch 监听到值的变化就会执行回调，在回调中可以进行一些逻辑操作。
+计算属性一般用在模板渲染中，某个值是依赖了其它的响应式对象甚至是计算属性计算而来；
+而侦听属性适用于观测某个值的变化去完成一段复杂的业务逻辑
+
+为什么 data 是一个函数
+组件中的 data 写成一个函数，数据以函数返回值形式定义，这样每复用一次组件，就会返回一份新的 data
+，类似于给每个组件实例创建一个私有的数据空间
+
+Vue项目优化可以怎么做
+v-if 和 v-show 区分使用场景
+computed 和 watch  区分使用场景
+v-for 遍历必须为 item 添加 key，且避免同时使用 v-if
+长列表性能优化
+事件的销毁
+图片资源懒加载
+路由懒加载
+适当采用 keep-alive 缓存组件
+第三方插件的按需引入
+Webpack 对图片进行压缩
+提取公共代码
+模板预编译
+提取组件的 CSS
+构建结果输出分析
+
+闭包的用途
+可以在函数外部访问到函数内部的局部变量， 使内部私有变量不受外界干扰，也不会不污染外部变量
+让这些变量始终保存在内存中, 不会随着函数的结束而自动销毁，这样可能导致内存消耗很大，
+所以不能滥用闭包，造成网页的性能问题。解决方法是，在退出函数之前，将不使用的局部变量全部删除。
+
+盒模型
+任意一个元素都可以当作盒模型
+2.盒子的大小由内容宽高(width/height)+边距(padding)+边框(border)
+3.盒子由外边距(margin),影响盒子的位置
+广义盒模型:文档中所有功能性及内容性标签,及文档中所有显示性标签.
+
+forEach与map区别,forEach没有返回值，map有返回值，一个新数组
+
+箭头函数举例vue选项
+
+浏览器跨域
+跨域是指从一个域名的网页去请求另一个域名的资源，协议，域名，端口有任何一个的不同，
+就被当作是跨域，如果一个网页可以随意地访问另外一个网站的资源，
+那么就有可能在客户完全不知情的情况下出现安全问题
+像对后段接口的请求大多都是跨域的，这个时候浏览器会阻止跨域，我们可以通过设置跳过同源策略
+
+测试，
+找到报错的位置，console.log()打印报错对象，通过报错的目录一步步打印排查，找到产生bug的原因
+
+v-for为什么要加key，
+key作为vnode中的唯一标识符，我们能够更加准确快速的找到节点，
+还因为vue会复用同类型元素的算法，加key以后就变成唯一的元素
+
+双向绑定
+通过绑定属性，监听属性值发生改变时的事件，如input的input事件，select的change事件，
+并将变化值拋出并修改dom，绑定一个响应式数据到视图，同时视图中变化能改变该值。
+在自定义组件上使用，表示某个值的输入和输出控制。
+
+v-model与.sync的异同
+v-model只能绑定一次；.sync可以同步多个。都可以实现父子组件中的数据的双向通信
+
+权限有两种
+菜单通过后台传回路由权限，设置动态路由来展示不同菜单界面
+按钮通过vue的directives选项自定义一个指今像函数v-access=传入按钮特定id
+后台传回来的权限进行匹配，如果有则显现按钮
+
+api层面Vue3新特性主要包括：Composition API、SFC Composition API语法糖、
+Teleport传送门、Fragments 片段、Emits选项、自定义渲染器、SFC CSS变量、Suspense
+
+什么是原型
+每一个js对象(除null外)创建的时候，就会与之关联另一个原型对象，每一个对象都会从原型中
+“继承”属性,而这个原型对象也可能是另外原型的实例，它也有一个原型对象。当实例没有一个属性，
+它会去它的原型中去找，但是如果它的原型中也没有这个属性，它就会去它的原型的原型中去寻找，这样就形成了一条原型链。
+
+作用域
+作用域是变量（变量作用域又称上下文）和函数能被访问的区域，在一个局部作用域内，
+需要引用一个变量，如果在局部作用域内没找，它就会去它的上层作用域中寻找，
+以此类推直到找到还变量或者到了全局作用域，这样就行程了一个作用域链
+
+数组查重
+1.定义一个结果数组存放结果。
+ 2.创建一个新对象。
+ 3.for循环的时候，每次取出一个元素与对象对比，如果这个元素不重复则把它放在结果数组里，同时把这个元素的内容作为对象的属性，并赋值为1。
+
+递归函数
+积function getMul(n){return n == 1 ? 1 : n * getMul(n-1); };
+和function getSum(n){ return n==1 ? 1:n + getSum(n-1); };
+菲function getData(n) {return (n == 1 || n == 2)?1 : getData(n-1) + getData(n-2); };
+子var father = document.getElementById('father');
+        var list = []; //声明空数组存储所有的后代元素
+        function getHouDai(ele) {
+            for (var i = 0; i < ele.children.length; i++) {
+                list.push(ele.children[i]);
+                getHouDai(ele.children[i]);};};
+        getHouDai(father);
+        getHouDai(document);
+
+ES6 promise对象 async函数 let const 声明 解构赋值 扩展元素符... 参数的默认值 箭头函数 super关键字
+当对象键名与对应值名相等的时候，可以进行简写 实例对象方法
+
+vuex 的map方法  //import {mapGetters} from 'vuex'      computer:{  mapGetters :['name']}
+数组的常用方法  //  find fill map filter concat forEach splice  includes indexOf flat (some every) find (unshift push)
+判断数组 Aarry.isAarry(list)  instanceof 
+选择器种类 
+指令那些 v-if v-show v-for v-on v-slot v-bind v-once
+组件通信--依赖注入是否是响应的 props
+父子组件创建时的过程
+水平居中       display:flex justify-content:space-arround  item-align:center calc(100% - 2px) 定位
+响应式页面    数据响应 还是样式响应-自适应页面 display:flex 
+之前项目前端几个 
+promise   resolve reject pendding  三种状态控制  promise.then.then.then
+
+class Promise  {
+constructor(fn,status){
+
+	this.status  = status || 'pendding'
+this.fn = fn
+
+}
+let status = "pendding"
+
+then() {
+	this.status = "resolve"
+	this.fn(){
+	
+	}
+	return new Promise(this.fn,"resolve" )
+}
+catch() {
+	this.status = "reject"
+return new Promise(this.fn,"resolve" )
+}
+
+}
+
+const a = new Promise((resove,reject) => {}).then().then()
+
+			
+asnyc,await
+数组或对象改变，页面改变是否 
+
+
+深拷贝
+
+
+list:[{id，name}，{}]    this.list = this.list.map(item =>  return {key:item.id,userName:item.name})  //数组的map接受一个函数作为它的参数，这个函数
+的第一个参数，是原数组的每一项，该函数的返回  作为一个新的项 Push到map返回的数组中，
+所以说，很多时候我们用Map来作数据字段的重构,并且这个原数组接受他
+
+深拷贝会改变原this对象  浅拷贝不会
+
+function test(){}  
+test()   this -> window
+win.setTimeout()
+const obj = {name:"test",fn:test}
+obj.fn( console.(this.name))  this -> obj
+
+
+默认指向定义它时，所处上下文的对象  的this指向
+
+methods:{
+
+test(){
+	const a = () => {
+console.log(this.name)}
+
+a()
+}
+
+test2(){
+	this.test1()
+}
+}
+
+const a = () => {
+this.name = ""  当前作用域
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function Promise(executor) {
+    this.status = PADDING;// promise 状态
+    this.data = undefined;// 返回值
+    this.callbacks = []; // 异步队列
+
+    const resolve = value=>{
+      if(this.status !== PADDING) return
+      this.status = RESOLVED
+      this.data = value
+      this.callbacks.forEach(o => o.onResolved(value));
+
+    }
+    const reject = reason=>{
+      if(this.status !== PADDING) return
+      this.status = REJECTED
+      this.data = reason
+      this.callbacks.forEach(o => o.onRejected(reason));
+
+    }
+
+    try{
+      executor(resolve,reject)
+    }catch(err){
+      reject(err)
+    }
+  }
+
+  Promise.prototype.then=function(onResolved,onRejected) {
+    const self = this
+    onResolved =typeof onResolved ==='function' ? onResolved : value=>value
+    onRejected =typeof onRejected ==='function' ? onRejected : reason=>{throw reason}
+    return new Promise((resolve,reject)=>{
+
+      if(self.status === RESOLVED){
+        setTimeout(() => {
+          handle(self.data,onResolved,resolve,reject)
+        });
+      }else if(self.status === REJECTED){
+        setTimeout(() => {
+          handle(self.data,onRejected,resolve,reject)
+        });
+      }else{
+        this.callbacks.push({
+          onResolved(){
+            handle(self.data,onResolved,resolve,reject)
+          },
+          onRejected(){
+            handle(self.data,onRejected,resolve,reject)
+          }
+        })
+      }
+    })
+  }
+
+  Promise.prototype.catch = function (onRejected) {
+    return this.then(undefined,onRejected)
+  }
+
+  Promise.resolve = function (value) {
+    return new Promise((resolve,reject)=>{
+      if(value instanceof Promise){
+        value.then(resolve,reject)
+      }else{
+        resolve(value)
+      }
+    })
+  }
+
+  Promise.reject = function (reason) {
+    return new Promise((resolve,reject)=>{
+      reject(reason)
+    })
+  }
+
+
+	nextTick  下一帧
+
+
+	<div>
+
+	<child v-if="show" ref="child"/>    name:"chi"  method{showName{ console.log(this.name)}}
+<div>
+show = false
+methods:{
+showChildName(){
+this.show = true 
+
+this.$nextTick(() => {
+   this.$refs.child.showName()
+})
+
+const a;
+//等方法走完之后，才进行渲染
+}
+
+this.showChildName()
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

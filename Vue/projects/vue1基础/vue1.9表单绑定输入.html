@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="model">
+        <input type="text" v-model="message" placeholder="fuck you">
+        <p>Message is : {{ message }}</p><br>
+        <textarea type="text" v-model="message1" placeholder="fuck you"></textarea>
+        <P style="white-space:pre-line">{{ message1 }}</P><br>
+        <input type="checkbox" v-model="checked">
+        <label>{{ checked }}</label><br><br><br>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+        <label for="john">Jac</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">Joh</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mik</label>
+        <P>checkedNames: {{ checkedNames }}</P><br>
+        <input type="radio" id="one" value="One" v-model="picked">
+        <label for="one">One</label>
+        <input type="radio" id="two" value="Two" v-model="picked">
+        <label for="two">Two</label>
+        <p>picked: {{picked}}</p><br>
+        <select v-model="selected" multiple>
+            <optgroup label="请选择"></optgroup>
+            <option value="a">A</option>
+            <option>B</option>
+            <option>C</option>
+        </select>
+        <p>selected: {{ selected }}</p><br>
+        <select v-model="selectedFor">
+            <optgroup label="请选择"></optgroup>
+            <option v-for="option in options" :value="option.value">{{option.text}}</option>
+        </select>
+        <p>selectedFor: {{ selectedFor }}</p><br>
+        
+    </div>
+</body>
+
+</html>
+<style>
+
+</style>
+<script>
+    var vm = new Vue({
+        el: '#model',
+        data: {
+            message: '',                //文本输入
+            message1: '',               //多行文本输入，在文本区域插值 (<textarea>{{text}}</textarea>) 并不会生效
+            checked: false,             //单个复选框，绑定到布尔值
+            checkedNames: [],           //多个复选框，绑定到同一个数组
+            picked: '',                 //单选框
+            selected: [],               //选择框多选时 (绑定到一个数组)
+            selectedFor: '',            //选择框单选时，用 v-for 渲染的动态选项
+            options: [                  //v-for动态选项的数据数组
+                { text: 'A', value: 'one' },
+                { text: 'B', value: 'two' },
+                { text: 'C', value: 'three' },
+            ]
+        },
+    });
+</script>

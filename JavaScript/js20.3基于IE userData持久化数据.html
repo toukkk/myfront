@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script type="text/javascript" src="./scripts/enumeration.js">/*js代码无效*/</script>
+</head>
+
+<body>
+    <div>
+        <h1 type="button">javascript</h1>
+        <span id="clock" style="padding-left:20px;">东</span>
+    </div>
+
+</body>
+
+</html>
+<!-- [if IE]>
+<script>
+    //基于IE浏览器
+    //定义附加userData行为的元素
+    var memory = document.createElement("input");
+    memory.id = "_memory";
+    memory.style.behavior = "url('#default#userData')";
+    document.body.appendChild(memory);
+    //载入与储存数据
+    memory.load("myDataStorage");                    //载入方法
+    var name = memory.getAttribute("username");     //提取属性值
+    if (!name) {
+        name = prompt("what is your name?");        //获取用户名
+        memory.setAttribute("username", name);      //写入属性
+        memory.save("myDataStorage");                //上传数据以便下次使用
+    }
+    //设置expires属性指定过期时间
+    var now = (new Date()).getTime();               //获取时间毫秒
+    var expires = now + 100 * 24 * 60 * 60 * 1000;  //加上一百天
+    memory.expires = (new Date(expires)).toUTCString();     //将时间转化为字符串，设置属性
+    //基于IE userData实现部分储存API
+    function UserDataStorage(maxage) {
+        var memory = document.createElement("input");
+        memory.id = "_memory";
+        memory.style.behavior = "url('#default#userData')";
+        document.body.appendChild(memory);
+        if (maxage) {
+            var now = (new Date()).getTime();               //获取时间毫秒
+            var expires = now + 100 * 24 * 60 * 60 * 1000;  //加上一百天
+            memory.expires = (new Date(expires)).toUTCString();     //将时间转化为字符串，设置属性
+        }
+        memory.load("UserDataStorage");
+        this.getItem = function (name) {
+            return memory.getAttribute(name) || null;
+        };
+        this.setItem = function (name, value) {
+            memory.setAttribute(name, value);      
+            memory.save("UserDataStorage");
+        };
+        this.removeItem=function(name){
+            memory.removeAttribute(name);      
+            memory.save("UserDataStorage");
+        };
+    }
+</script>
+<![endif]-->

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script type="text/javascript" src="./scripts/enumeration.js">/*js代码无效*/</script>
+</head>
+
+<body>
+    <div>
+        <h1 type="button">javascript</h1>
+        <span id="clock" style="padding-left:20px;">东</span>
+    </div>
+
+</body>
+
+</html>
+<script>
+    //使用script元素发送JSONP请求
+    function getJSONP(url, callback) {
+        var cbnum = "cb" + getJSONP.counter++;          //计数器
+        var cbname = "getJSONP." + cbnum;
+        if (url.indexOf("?") === -1)
+            url += "?jsonp=" + cbname;
+        else url += "&jsonp=" + cbname;
+        var script = document.createElement("script");  //创建script元素用于发送请求
+        getJSONP[cbnum] = function (response) {         //定义被脚本执行的回调函数，给响应数据
+            try {
+                callback(response);                     //处理响应数据，传给回调函数
+            }
+            finally {
+                delete getJSONP[cbnum];                 //删除回调函数
+                script.parentNode.removeChild(script);  //移除script元素
+            }
+        };
+        script.src = url;                               //设置外部链接
+        document.body.appendChild(script);              //插入文档中执行回调
+    }
+    getJSONP.counter = 0;
+</script>

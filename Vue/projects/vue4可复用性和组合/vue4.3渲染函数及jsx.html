@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>
+            <a name="hello-world" href="#hello-world">
+                Hello world!
+            </a>
+        </h1>
+        <anchored-heading :level="1">Hello world!</anchored-heading>
+        <paragraph-loop></paragraph-loop>
+        <render-input :items="items" v-model="text"></render-input>
+        <p>{{text}}</p>
+        <render-slot>hello world</render-slot>
+    </div>
+</body>
+
+</html>
+<script>
+    //createElement 参数----------------------------------------------------------------------------------------
+    //创建函数，返回所有元素你文本内容合集的字符串
+    var getChildrenTextContent = function (children) {
+        return children.map(function (node) {
+            return node.children
+                ? getChildrenTextContent(node.children)
+                : node.text
+        }).join('')
+    };
+    //创建组件，使用render选项返回vnode虚拟节点
+    Vue.component('anchored-heading', {
+        render: function (createElement) {
+            // 创建 kebab-case 风格的 ID
+            var headingId = getChildrenTextContent(this.$slots.default)
+                .toLowerCase()
+                .replace(/\W+/g, '-')
+                .replace(/(^-|-$)/g, '')
+            //VNode 虚拟节点唯一
+            return createElement(
+                'h' + this.level,                   //第一参数
+                [                                   //第三参数
+                    createElement('a',              //第一参数
+                        {                           //第二参数
+                            attrs: {
+                                name: headingId,
+                                href: '#' + headingId
+                            }
+                        },
+                        this.$slots.default),       //第三参数
+                ]
+            )
+        },
+        props: {
+            level: {
+                type: Number,
+                required: true
+            }
+        }
+    });
+    //限制约束
+    Vue.component("paragraph-loop", {
+        render(createElement) {
+            var myParagraphVNode = createElement('p', 'hi')
+            return createElement('div',
+                //下面这渲染函数用完全合法的方式渲染了 5 个相同的段落
+                Array.apply(null, { length: 5 }).map(function () {
+                    return createElement('p', 'hi')
+                }).concat(
+                    //错误 - 重复的 VNode,渲染是没问题的, 但这会破坏后续的更新,只有第二个会更新
+                    myParagraphVNode,
+                    myParagraphVNode
+                )
+            );
+        },
+    });
+    //使用 JavaScript 代替模板功能,重写v-if,v-for,v-model等指令
+    Vue.component('render-input', {
+        props: ['items', 'value', 'message'],
+        render(createElement) {
+            var self = this;                            //this指组件实例
+            if (this.items.length) {                    //重写v-if指令
+                return createElement('ul',
+                    this.items.map(function (item) {    //重写v-for指令
+                        return createElement('li',
+                            [item.item,
+                            createElement('input', {
+                                domProps: { value: self.value },
+                                on: {
+                                    input: function (event) {      //重写v-model
+                                        self.$emit('input', event.target.value)
+                                    }
+                                }
+                            })]
+                        )
+                    })
+                );
+            }
+            else return createElement('p', 'No items found.')
+        }
+    });
+    //插槽
+    Vue.component("render-slot", {
+        props: ['message'],
+        render: function (createElement) {
+            // `<div><slot :text="message"></slot></div>`
+            return createElement('div', [
+                //用来访问作用域插槽
+                this.$scopedSlots.default({
+                    text: this.message
+                })
+            ])
+        }
+    });
+    //函数式组件,中选项render 的应用
+    var EmptyList = { /* ... */ }
+    var TableList = { /* ... */ }
+    var OrderedList = { /* ... */ }
+    var UnorderedList = { /* ... */ }
+    Vue.component('smart-list', {
+        functional: true,
+        props: {
+            items: {
+                type: Array,
+                required: true
+            },
+            isOrdered: Boolean
+        },
+        render: function (h, ctx) {
+            function ctxappropriateListComponent() {
+                var items = context.props.items
+                if (items.length === 0) return EmptyList
+                if (typeof items[0] === 'object') return TableList
+                if (ctx.props.isOrdered) return OrderedList
+                return UnorderedList
+            }
+            return h(
+                appropriateListComponent(),
+                ctx.data,
+                ctx.children
+            )
+        }
+    })
+
+    var vm = new Vue({
+        el: 'div',
+        data: {
+            items: [
+                { item: 1 },
+                { item: 2 },
+                { item: 3 }
+            ],
+            text: '',
+            message: "200"
+        }
+    });
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+    //一个与模板中 attribute 对应的数据对象
+    var a = {
+        // 与 `v-bind:class` 的 API 相同，
+        // 接受一个字符串、对象或字符串和对象组成的数组
+        'class': {
+            foo: true,
+            bar: false
+        },
+        // 与 `v-bind:style` 的 API 相同，
+        // 接受一个字符串、对象，或对象组成的数组
+        style: {
+            color: 'red',
+            fontSize: '14px'
+        },
+        // 普通的 HTML attribute
+        attrs: {
+            id: 'foo'
+        },
+        // 组件 prop
+        props: {
+            myProp: 'bar'
+        },
+        // DOM property
+        domProps: {
+            innerHTML: 'baz'
+        },
+        // 事件监听器在 `on` 内，
+        // 但不再支持如 `v-on:keyup.enter` 这样的修饰器。
+        // 需要在处理函数中手动检查 keyCode。
+        on: {
+            click: this.clickHandler
+        },
+        // 仅用于组件，用于监听原生事件，而不是组件内部使用
+        // `vm.$emit` 触发的事件。
+        nativeOn: {
+            click: this.nativeClickHandler
+        },
+        // 自定义指令。注意，你无法对 `binding` 中的 `oldValue`
+        // 赋值，因为 Vue 已经自动为你进行了同步。
+        directives: [
+            {
+                name: 'my-custom-directive',
+                value: '2',
+                expression: '1 + 1',
+                arg: 'foo',
+                modifiers: {
+                    bar: true
+                }
+            }
+        ],
+        // 作用域插槽的格式为
+        // { name: props => VNode | Array<VNode> }
+        scopedSlots: {
+            default: props => createElement('span', props.text)
+        },
+        // 如果组件是其它组件的子组件，需为插槽指定名称
+        slot: 'name-of-slot',
+        // 其它特殊顶层 property
+        key: 'myKey',
+        ref: 'myRef',
+        // 如果你在渲染函数中给多个元素都应用了相同的 ref 名，
+        // 那么 `$refs.myRef` 会变成一个数组。
+        refInFor: true
+    }
+</script>
+<style>
+
+</style>

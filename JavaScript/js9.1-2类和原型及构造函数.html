@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //类和原型--------------------------------------------------------------------------------------------------------------------------------
+    function range(a, b) {              //定义个函数用于返回新创建的范围对象对象
+        var o = inherit(range.methods); //创建对象
+        o.from = a;                     //创建属性并赋值
+        o.to = b;
+        return o;                       //返回对象
+    }
+    range.methods = {                   //原型对象定义方法
+        includes: function (x) {
+            return x >= this.from && x <= this.to;
+        },
+        foreach: function (f) {
+            for (var x = Math.ceil(this.from); x <= this.to; x++)
+                f(x);
+        },
+        toString: function () {
+            return "(" + this.from + "..." + this.to + ")";
+        }
+    };
+    console.log("range(1,5): ", range(1, 5));
+    console.log("range(1,5): ", range(1, 5).includes(4));
+    console.log("range(1,5): ", range(1, 5).foreach(console.log));
+    console.log("range(1,5): ", range(1, 5).toString());
+    console.log("");
+    //类和构造函数---------------------------------------------------------------------------------------------------------------------
+    function Range(a, b) {               //定义个构造函数
+        this.from = a;                   //创建属性并赋值
+        this.to = b;
+    }
+    Range.prototype = {                   //构造函数强制原型对象定义方法
+        constructor: Range,               //这里从新赋值Range.prototype对象需要也写上，否则这类将无法引用该属性
+        includes: function (x) {
+            return x >= this.from && x <= this.to;
+        },
+        foreach: function (f) {
+            for (var x = Math.ceil(this.from); x <= this.to; x++)
+                f(x);
+        },
+        toString: function () {
+            return "(" + this.from + "..." + this.to + ")";
+        }
+    };
+    range1 = new Range(1, 5);           //利用构造函数创建新对象
+    range2 = new Range(1, 5);
+    console.log("range1: ", range1);
+    console.log("range2: ", range2.includes(4));
+    console.log("range2: ", range2.foreach(console.log));
+    console.log("range2: ", range2.toString());
+    console.log("");
+    //constructor属性
+    //js 构造函数原型默认的一个属性(指向构造函数)，可写成下面：
+    Range.prototype.includes=function (x) {             //通过宽展赋值对象，来保留默认属性constructor
+            return x >= this.from && x <= this.to;
+        },
+    console.log("range1.constructor: ", range1.constructor === Range)
+</script>

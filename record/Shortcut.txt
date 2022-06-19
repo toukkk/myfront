@@ -1,0 +1,102 @@
+		Windows
+Win+D：	快速显示桌面（与点击屏幕右下角等效）
+Win+E：	打开文件资源管理器
+Win+H :	语音听写（据说Win11的识别率很高，笔者尚未使用过）
+Win+Q/Win+S 一键搜索（Win11的搜索框很好用）
+Win+R 		运行
+Win+Z 			打开窗口布局（Win11新功能，分屏时很好用，鼠标暂留在最大化图标上也有相同效果）
+描述	    	Windows	Mac OS
+编辑菜单	Alt + E		Ctrl + F2 + F
+文件菜单	Alt + F		Ctrl + F2 + E
+视图菜单	Alt + V		Ctrl + F2 + V
+全选文本	Ctrl + A		Cmd + A
+复制文本	Ctrl + C		Cmd + C
+查找文本	Ctrl + F		Cmd + F
+替换文本	Ctrl + H		Cmd + F
+新建文档	Ctrl + N	Cmd + N
+打开文件	Ctrl + O	Cmd + O
+打印选项	Ctrl + P		Cmd + P
+保存文件	Ctrl + S		Cmd + S
+粘贴文本	Ctrl + V		Cmd + V
+剪切文本	Ctrl + X		Cmd + X
+重做文本	Ctrl + Y		Shift + Cmd + Z
+撤销文本	Ctrl + Z		Cmd + Z
+增加缩进量	Tab		Tab
+减少缩进量	Shift + Tab	Shift + Tab
+		光标移动		
+将文本插入光标向右移动或者移动到下一行行首	Right 			Right 
+将文本插入光标向左移动或者移动到上一行行尾	Left 			Left 
+将文本插入光标向上移动一行			Up 			Up 
+将文本插入光标向下移动一行			Down 			Down 
+将文本插入光标移动到当前行的行首		Home			Cmd + Left 
+将文本插入光标移动到当前行的行尾		End			Cmd + Right 
+将文本插入光标移动到文档的开头			Ctrl + Home		Cmd + Up 
+将文本插入光标移动到文档的结尾			Ctrl + End		Cmd + Down 
+将文本插入光标移动到上一个文本框		Page Up		Fn + Up 
+将文本插入光标移动到下一个文本框		Page Down		Fn + Down 
+将文本插入光标向左移动到前一个词的开头	Ctrl + Left 		Option + Left 
+将文本插入光标向右移动到后一个词的开头	Ctrl + Right 		Option + Right 
+将文本插入光标移动到行首			Ctrl + Up 		Cmd + Left 
+将文本插入光标移动到行尾			Ctrl + Down 		Cmd + Right 	 
+		文本选择		
+选择文本插入光标左边的字符			Shift + Left 		Shift + Left 
+选择文本插入光标右边的字符			Shift + Right 		Shift + Right 
+向上选择一行文本				Shift + Up 		Shift + Up 
+向下选择一行文本				Shift + Down 		Shift + Down 
+选择文本插入光标左边的字			Shift + Ctrl + Left	Shift + Opt + Left
+选择文本插入光标右边的字			Shift + Ctrl + Right	Shift + Opt + Right
+向左选择一段文本				Shift + Ctrl + Up	Shift + Opt + Up
+向右选择一段文本				Shift + Ctrl + Down	Shift + Opt + Down
+选择文本插入光标与当前行行首之间的文本	Shift + Home		Cmd + Shift + Left 
+选择文本插入光标与当前行行尾之间的文本	Shift + End		Cmd + Shift + Right 
+选择文本插入光标与文档开头之间的文本		Shift + Ctrl + Home	Cmd + Shift + Up  or Cmd + Shift + Fn + Left 
+选择文本插入光标与文档结尾之间的文本		Shift + Ctrl + End	Cmd + Shift + Down  or Cmd + Shift + Fn + Right 
+向上选择一个文本框				Shift + Page Up	Shift + Fn + Up 
+向下选择一个文本框				Shift + Page Down	Shift + Fn + Down  	 
+		文本排版		
+将所选文本设置为粗体		Ctrl + B			Cmd + B
+将所选文本设置为斜体		Ctrl + I			Cmd + I
+将所选文本加下划线		Ctrl + U			Cmd + U
+将所选文本设置为上标		Ctrl + Shift + =		Cmd + Shift + =
+将所选文本设置为下标		Ctrl + =			Cmd + =
+		文本编辑		
+删除文本插入光标左边的字符	Backspace		Backspace
+删除文本插入光标右边的字符	Delete			Fn + Backspace
+删除文本插入光标右边的字	Ctrl + Del		Cmd + Backspace
+删除文本插入光标左边的字	Ctrl + Backspace	Cmd + Fn + Backspace
+
+		Web 浏览器
+刷新网页			F5			Cmd + R
+查找文本			Ctrl + F			Cmd + F
+		标签/窗口管理		
+打开一个新的标签页		Ctrl + T			Cmd + T
+重新打开最后一个关闭的标签页	Ctrl + Shift + T		Cmd + Shift + T
+定位到浏览器的地址栏		Ctrl + L or Alt + D	Cmd + L
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

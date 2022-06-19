@@ -1,0 +1,176 @@
+div h2{
+    text-align: center;
+    text-shadow:2px 2px 1px red;
+}
+div p{
+    width:400px;
+}
+div .none{
+    border-style:none;
+}
+div .dotted{
+    border-style:dotted;
+    border-width:medium;
+    /* 标准边宽 */
+    border-color:blueviolet;
+
+    outline-style:dotted;
+    outline-width:medium;
+    outline-color:rgb(160, 48, 14);
+    /* 设置轮廓，用法与边框一致，且不占空间，起凸显渲染作用 */
+}
+div .dashed{
+    border:8px dashed red;
+    /* 简写边框属性 */
+}
+div .solid{
+    border-style:solid;
+    border-width:7px;
+    border-top:7px double rgb(35, 161, 67);
+}
+div .double{
+    border-style:double;
+    border-width:6px;
+    border-bottom:hidden;
+}
+div .groove{
+    border-style:groove;
+    border-width:5px;
+    border-left-width:10px;
+}
+div .ridge{
+    border-style:ridge;
+    border-width:4px;
+    border-color:blueviolet red rgb(103, 216, 38) green;
+    /* border-color:blueviolet red rgb(103, 216, 38); */
+    /* border-color:blueviolet red; */
+    /* border-color与border-style一样可以设置几个属性值 */
+}
+div .inset{
+    border-style:inset;
+    border-width:3px;
+    border-right-color:blue;
+}
+div .outset{
+    border-style:outset;
+    border-width:2px;
+}
+div .hidden{
+    border-style:hidden;
+    border-width:1px;
+    /* 隐藏边框也有边宽 */
+}
+div .mix{
+    border-style:dotted solid double ridge;
+    /* border-style:dotted solid double; */
+    /* border-style:dotted solid; */
+    border-width:10px;
+}
+#example1{
+    background-color:rgb(14, 143, 31);
+    color:white;
+    border:2px solid rgb(32, 24, 24);
+    width:350px;
+    padding:10px 50px;
+    border-radius:100px/10px;
+    /* 设置边框椭圆,最高值为高宽的一半，这里两个值为圆角的宽和高， */
+    /* border-radius:25px; */
+    /* 只有一个值则表示圆角宽高一样，为圆形。 */
+}
+
+#example2{
+    background:url("../images/7.png");
+    background-repeat:repeat;
+    background-position:left top;
+    /* 插入背景图，循环，靠左上 */
+    color:rgb(22, 15, 15);
+    border:2px solid rgb(32, 24, 24);
+    width:580px;
+    padding:10px 50px;
+    border-radius:50px 25px;
+}
+#example3{
+    background-color:rgb(14, 143, 31);
+    color:white;
+    border:2px solid rgb(32, 24, 24);
+    width:200px;
+    height:100px;
+    padding:10px 50px;
+    border-radius:20%;
+    /* 20%表示取框的宽高的百分比作为数值 */
+}
+#example4{
+    background-color:rgb(14, 143, 31);
+    color:white;
+    border:2px solid rgb(32, 24, 24);
+    width:200px;
+    height:100px;
+    padding:10px 50px;
+    border-radius: 2em 1em 4em / 0.5em 3em;
+    /* 简写属性个数对应位置与其他属性一样 */
+    /* 左上，右上，右下，左下 */
+    /* 等价于:
+    border-top-left-radius: 2em 0.5em;
+    border-top-right-radius: 1em 3em;
+    border-bottom-right-radius: 4em 0.5em;
+    border-bottom-left-radius: 1em 3em; */
+}
+.backcolor p{
+    background-color: yellowgreen;
+}
+.height1{
+    max-width:100px;
+}
+.height1{
+    max-height:50px;
+}
+.width1{
+    min-height:60px;
+}
+div #width2{
+    min-width:500px;
+    max-width:600px;
+}
+div .img{
+    /* height:auto; */
+    /* 默认值 */
+    width:10%;
+    height:0.2%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

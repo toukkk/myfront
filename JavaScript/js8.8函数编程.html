@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts//partial.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //使用函数处理数组---------------------------------------------------------------------------------------------------------------------
+    var sum = function (x, y) { return x + y; };
+    var square = function (x) { return x * x; };
+    var data = [1, 1, 3, 5, 5];
+    var mean = data.reduce(sum) / data.length;              //求平均值
+    var deviations = data.map(function (x) { return x - mean; }).map(square).reduce(sum);//求减平均值后平方和
+    var stddev = Math.sqrt(deviations / (data.length - 1));
+    console.log("mean: ", mean);
+    console.log("stddev: ", stddev);
+    //数组map()函数代码--
+    var map = function (a, f) {                                     //定义函数
+        var result = [];
+        for (var i = 0; i < a.length; i++)                          //循环赋值
+            if (i in a) result[i] = f.call(null, a[i], i, a);       //如果i在数组内执行赋值，所以map()方法输出的是稠密数组
+        return result;                                              //f.call(null, a[i], i, a)，表示null调用函数f，最大为三个参数
+    };
+    console.log("map(data, square);: ", map(data, square));         // map(data, square)函数调用表达式
+    //数组map()方法源代码--
+    Array.prototype.map = function (f) {                            //定义方法
+        var result = [];
+        for (var i = 0; i < this.length; i++)
+            if (i in this) result[i] = f.call(this, this[i], i, this);  //这里的this指调用它的对象
+        return result;
+    };
+    console.log("data.map(square): ", data.map(square));
+    // 数组reduce()函数代码--
+    var reduce = function (a, f, initial) {                         //定义函数，第三个参数值可选
+        var i = 0, len = a.length, accumulator;
+        if (arguments.length > 2) accumulator = initial;            //如果输入参数值长度大于2，就是有初始值赋值给存储变量
+        else {                                                      //如果没有第三参数
+            if (len == 0) throw TypeError();                        //若为空则报错
+            while (i < len) {                                       //将第一个不为空的元素赋值给存储变量
+                if (i in a) {
+                    accumulator = a[i++];                           //且i++,是为了保证下买你的a[i]为第二个元素
+                    break;
+                }
+                else i++;
+            }
+            if (i == len) throw TypeError();
+        }
+        while (i < len) {                                           //循环调用函数f（两个参数）计算，
+            if (i in a)                                             //如果i为空，则加一跳过
+                accumulator = f.call(undefined, accumulator, a[i], i, a);       //初始值作为第一个参数输入
+            i++;
+        }
+        return accumulator;
+    }
+    console.log("reduce(data, sum): ", reduce(data, sum));
+    // 数组reduce()方法源代码--
+    Array.prototype.reduce = function (f, initial) {
+        var i = 0, len = this.length, accumulator;
+        if (arguments.length > 1) accumulator = initial;
+        else {
+            if (len == 0) throw TypeError();
+            while (i < len) {
+                if (i in this) {
+                    accumulator = this[i++];
+                    break;
+                }
+                else i++;
+            }
+            if (i == len) throw TypeError();
+        }
+        while (i < len) {
+            if (i in this)
+                accumulator = f.call(this, accumulator, this[i], i, this);
+            i++;
+        }
+        return accumulator;
+    }
+    console.log("data.reduce(sum): ", data.reduce(sum));
+    console.log("");
+    //高阶函数--------------------------------------------------------------------------------------------------------------------
+    //接受一个或多个函数为参数，并且返回一个新函数
+    function not(f) {                               //定义高阶函数
+        return function () {
+            return !(f.apply(this, arguments));     //函数f求反
+        };
+    }
+    var even = function (n) {                       //函数判断是否是偶
+        return n % 2 === 0;
+    }
+    console.log("not(even)(5): ", not(even)(5));     //5不是偶数求反为true
+    console.log("data.every(not(even)): ", data.some(not(even)));   //数组有一个元素为偶求反为true
+    //接收函数f()和g(),返回函数f(g()),
+    function compose(f, g) {
+        return function () {
+            return f.call(this, g.apply(this, arguments));      //f调用只有一个参数用call，g调用有多个参数用apply
+        };
+    }
+    value = compose(square, sum)(2, 3);
+    console.log("value: ", value);
+    console.log("");
+    //不完全函数------------------------------------------------------------------------------------------------------------------------------------------
+    //参数顺序不一样计算的结果也不一样
+    var f = function (x, y, z) { return x * (y - z); };
+    console.log("partialLeft(f, 2)(3, 4): ", partialLeft(f, 2)(3, 4));
+    console.log("partialRight(f, 2)(3, 4): ", partialRight(f, 2)(3, 4));
+    console.log("partial(f, undefined, 2)(3, 4): ", partial(f, undefined, 2)(3, 4));
+    //重新定义not()函数
+    var not = partialLeft(compose, function (x) { return !x; });
+    var even = function (n) { return n % 2 === 0; };
+    console.log("not(even)(5): ", not(even)(5));     //5不是偶数求反为true
+    //存粹的函数式编程
+    var sum = function (x, y) { return x + y; };
+    var data = [1, 1, 3, 5, 5];
+    var product = function (x, y) { return x * y; };
+    var neg = partial(product, -1);                     //转负
+    var square = partial(Math.pow, undefined, 2);       //平方
+    var sqrt = partial(Math.pow, undefined, .5);        //开方
+    var reciprocal = partial(Math.pow, undefined, -1);  //负一次方
+    var mean = product(data.reduce(sum), reciprocal(data.length));
+    var stddev = sqrt(
+        product(data.map(compose(square, partial(sum, neg(mean)))).reduce(sum), reciprocal(sum(data.length, -1))));
+    console.log("mean: ", mean);
+    console.log("stddev: ", stddev);
+    console.log("");
+    //记忆--------------------------------------------------------------------------------------------------------------------
+    function memorize(f) {                              //定义一个函数，返回一个有记忆的f()函数
+        var cache = {};
+        return function () {
+            var key = arguments.length + Array.prototype.join.call(arguments, ",");
+            if (cache[key]) return cache[key];
+            return cache[key] = f.apply(this, arguments);
+        };
+    }
+    //计算两整数最大公约数
+    function gcd(a, b) {
+        var t;
+        if (a < b) t = b, b = a, a = t;
+        while (b != 0) t = b, b = a % b, a = t;
+        return a;
+    }
+    console.log("gcd(87, 243): ", gcd(87, 243));
+    console.log("gcd(85, 187): ", gcd(85, 187));
+    console.log("gcd(5, 18): ", gcd(5, 18));
+    //实现记忆功能的阶乘函数
+    function factorial(n) {
+        return (n <= 1) ? 1 : n * factorial(n - 1);
+    }
+    memorize_factorial = memorize(factorial);           //对n的1-5都有缓存
+    console.log("memorize_factorial: ", memorize_factorial(5));
+</script>

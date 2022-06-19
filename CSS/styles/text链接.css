@@ -1,0 +1,180 @@
+a.color:link     
+{
+    color:red;
+}  
+a.color:visited     
+{
+    color:blueviolet;
+}  
+a.color:hover     
+{
+    color:blue;
+}  
+a.color:active
+{
+    color:red;
+}  
+/* 改变链接颜色 */
+a.size:link     
+{
+    color:red;
+}  
+a.size:visited     
+{
+    color:blueviolet;
+}  
+a.size:hover     
+{
+    color:blue;
+    font-size:150%;
+}  
+a.size:active
+{
+    color:red;
+}  
+/* 改变字体大小 */
+a.background:link     
+{
+    color:red;
+    background-color:rgb(247, 144, 113);
+}  
+a.background:visited     
+{
+    color:blueviolet;
+    background-color:rgb(247, 144, 113);
+}  
+a.background:hover     
+{
+    color:blue;
+    background-color:rgb(52, 168, 52) ;
+}  
+a.background:active
+{
+    color:red;
+}  
+/* 改变链接背景色 */
+a.family:link     
+{
+    color:red;
+}  
+a.family:visited     
+{
+    color:blueviolet;
+}  
+a.family:hover     
+{
+    color:blue;
+    font-family:serif;
+}  
+a.family:active
+{
+    color:red;
+}  
+/* 改变字体类型 */
+a.style:link     
+{
+    color:red;
+}  
+a.style:visited     
+{
+    color:blueviolet;
+}  
+a.style:hover     
+{
+    color:blue;
+    text-decoration:none;
+}  
+a:active  
+{
+    color:red;
+}  
+/* 改变字体样式 */
+
+.class a:link,a:visited
+{
+    display:block;
+	font-weight:bold;
+	color:#FFFFFF;
+	background-color:#98bf21;
+	width:120px;
+	text-align:center;
+	padding:4px;
+	text-decoration:none;
+}
+.class a:hover,a:active
+{
+    color:blue;
+} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

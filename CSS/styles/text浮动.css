@@ -1,0 +1,169 @@
+body{
+    width:500px;
+    margin:0 auto;
+    /* 居中 */
+}
+.div1{
+    margin:0 auto;
+    text-align: center;
+    width:140px;
+    background-color: rgb(235, 100, 100);
+    color:blue;
+}
+h1{
+    text-align: center;
+    color:red;
+    text-shadow:2px 3px 1px rgb(199, 57, 57);
+}
+h2{
+    text-align: center;
+    color:blueviolet;
+}
+.img-right{
+    float:right;
+    border:1px dotted black;
+    margin:0px 0px 20px 16px;
+    /* 添加边框和外边距隔开文本 */
+}
+div.images img{
+    float:left;
+    width:130px;
+    height:130px;
+    margin:10px;
+}
+.both{
+    clear:both;
+    /* 两侧不允许浮动元素 */
+    margin-bottom:10px;
+}
+div p span{
+    float:left;
+    width:1.2em;
+    line-height:80%;
+    font-size:400%;
+    font-family:Algerian;
+    /* 字体浮动 */
+}
+.web{
+    width:500px;
+    height:500px;
+    overflow:auto;
+    clear:both;
+}
+#header{
+    background-color:#777;
+    list-style-type: none;
+    padding:0;
+    margin:0;
+    overflow: hidden;
+}
+#header li{
+    float:left;
+}
+#header li a{
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+#header li a:hover{
+    background-color: black;
+}
+#header li a:active{
+    background-color: blueviolet;
+}
+#header .active{
+    background-color: green;
+}
+.nav{
+    clear:both;
+    float:left;
+    list-style-type: none;
+    overflow: hidden;
+    margin:0px;
+    padding-left: 10px;
+}
+.nav li a{
+    background-color: rgb(192, 210, 226);
+    text-decoration:none;
+    text-align: left;
+    padding:8px;
+    width:6em;
+    display:table;
+    margin-top:8px;
+}
+.nav .active{
+    background-color: blueviolet;
+    color:white;
+}
+.nav a:hover{
+    background-color: rgb(143, 139, 133);
+}
+.main{
+    float:right;
+    width:360px;
+}
+.main h3{
+    text-align: center;
+    background-color: rgb(168, 104, 228);
+    font-size: 150%;
+    padding:10% 0px;
+    margin:10px;
+    color:white;
+}
+.main p.h{
+    font-size:150%;
+}
+.main p{
+    padding-left: 10px;
+}
+.footer{
+    clear:both;
+    padding:5px;
+    background-color: rgb(79, 84, 99);
+    color:white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html manifest="./permanote.appcache">
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/permanote.js"></script>
+</head>
+
+<body>
+    <div id="toolbar">
+        <button onclick="sace()" id="sacebutton">Sace</button>
+        <button onclick="sync()">Sync Note</button>
+        <!-- <button onclick="applicationCache.updata()">Updata application</button> -->
+    </div>
+    <textarea id="editor"></textarea>
+    <div id="statusline"></div>
+</body>
+
+</html>
+<style>
+    #editor {
+        width: 100%;
+        height: 250px;
+    }
+
+    #statusline {
+        width: 100%;
+    }
+</style>
+<script>
+    //通过应用程序的主HTML界面上的<html>标签的manifest的属性指向一个缓存清单来缓存Web程序
+    // <!DOCTYPE html>
+    // <html manifest="myapp.appcache">
+    // <head>......</head>
+    // <body>......</body>
+    // </html>
+    //缓存清单文件一般以.appcache作为文件拓展名，如myapp.appcache
+    // CACHE MANIFEST               //用来标识此文件是缓存清单文件
+    // CACHE：                      //默认，下面都是应用程序依赖的资源文件的url
+    // myapp.html
+    // myapp.css
+    // myapp.js
+    // images/background.png
+    // 其他缓存清单文件的特殊区域头
+    // FALLBACK:                     //每行清单项都有两个url,第二个为需缓存的，如任何有第一个前缀的url都将先从网络载入，失败则载入的二个缓存
+    // videos/ offline_help.html
+    // NETWORK:                      //表示区域内的所有url资源都将从网络载入
+    // cgi/
+    //注册处理程序来跟踪浏览器更新缓存过程,window.applicationCahe支持应用缓存的浏览器才有的属性
+    //显示默认状态信息
+    // function status(msg) {
+    //     document.getElementById("statusline").innerHTML = msg;
+    //     console.log(msg);
+    // }
+    //每当应用程序载入时，检查缓存清单文件，并触发checking事件
+    // window.applicationCahe.onchecking = function () {
+    //     status("Checking for a new version");
+    //     return false;
+    // };
+    //如缓存清单文件没有改变，同时应用程序也缓存，并触发noupdate事件
+    // window.applicationCahe.onnoupdate = function () {
+    //     status("This version is up-to-date");
+    //     return false;
+    // };、
+    //如缓存清单文件有改变，或同时应用程序也缓存，并触发downloading事件
+    // window.applicationCahe.ondownloading = function () {
+    //     status("Downloading new version");
+    //     window.progresscount = 0;
+    //     return false;
+    // };
+    //下载的过程中不断触发progress事件，通常是每个文件下载完毕时
+    // window.applicationCahe.onprogress = function (e) {
+    //     var progress = "";
+    //     if (e && e.lengthComputable)
+    //         progress = " " + Math.round(100 * e.loaded / e.total) + "%";
+    //     else progress = " (" + ++progresscount + ")";
+    //     status("Downloading new version" + progress);
+    //     return false;
+    // };
+    //当下载完成并且首次将应用程序下载到缓存中时，并触发cache事件
+    // window.applicationCahe.oncache = function () {
+    //     status("This application is now cache localy");
+    //     return false;
+    // };
+    //当下载完成并将缓存中应用程序更新后，触发updatecache事件
+    // window.applicationCahe.onupdatecache = function () {
+    //     var reload = prompt("A new version has been downloading,Do you want to reload now");
+    //     if (reload) location.reload();
+    //     status("A new version has been downloading. Reload to run it");
+    //     return false;
+    // };
+    //当浏览器处于离线状态时，检查清单文件失败，则触发error事件
+    // window.applicationCahe.onerror = function () {
+    //     status("Could't load manifest or cache application");
+    //     return false;
+    // };
+    //如一个应用程序引用了一个不存在额缓存文件，则触发obsolete事件
+    // window.applicationCahe.onobsolete = function () {
+    //     status("This application is no longer cached.Reload to get the latest version from the network.");
+    //     return false;
+    // };
+
+</script>

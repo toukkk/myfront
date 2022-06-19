@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Promise</title>
+</head>
+
+<body>
+    <div>
+
+    </div>
+</body>
+
+</html>
+<script>
+
+    //Promise方法及原型实例方法
+    setTimeout(() => console.dir(Promise), 1000)
+    var p = new Promise(function (resolve, reject) {
+        setTimeout(() => {
+            const time = new Date();
+            if (time % 2 == 0) {
+                resolve("成功的数据,time=" + time.getTime())
+            }
+            else {
+                reject("失败的数据,time=" + time.getTime())
+            }
+        }, 2000)
+    });
+    p.then(value => console.log("回调成功：", value))
+        .catch(reason => console.log("回调失败：", reason))
+    console.log('Promise: ', Promise)
+    var sleep = function (msg) {
+        return new Promise(function (resolve, reject) {
+            if (typeof msg != "number") {
+                reject(new Error("输入错误:"))
+            }
+            setTimeout(() => resolve("延迟" + msg + "毫秒输出"), msg)
+        })
+    };
+    const promise = [2, 3, 5, 7, 11, 13].map(val => sleep(val))
+    console.log(promise)
+    Promise.all(promise).then(value => console.log("promise.all: ", value))
+        .catch(error => console.log("promise.all: ", error))
+    Promise.race(promise).then(value => console.log("promise.race: ", value))
+        .catch(error => console.log("promise.race: ", error))
+    //同步>Promise>setTimeout  =>2,4,3,1
+    setTimeout(function () {
+        setTimeout(() => console.log(1), 0);
+        new Promise(function (resolve, reject) {
+            console.log("")
+            console.log(2)
+            resolve(null)
+        }).then(() => console.log(3))
+        console.log(4)
+    }, 3000)
+    //比较全面的检测
+    setTimeout(function () {
+        setTimeout(() => { console.log("s1") }, 0);
+        setTimeout(() => { console.log("s2") }, 1000);
+        new Promise((resolve, reject) => {
+            console.log("");
+            console.log("p1");
+            resolve();
+            console.log("p2");
+        }).then(() => console.log("p3"));
+        console.log("w1");
+        async function test1() {
+            console.log("a1");
+            await test2();
+            console.log("a2");
+            console.log("a4");
+
+        }
+        async function test2() {
+            console.log("a3");
+        }
+        test1();
+        console.log("w2");
+    }, 4000)
+</script>

@@ -1,0 +1,405 @@
+属性：
+    实例属性：
+        vm.$el:             表示对找到对应元素的第一个进行渲染，
+        vm.$data:           Vue 实例观察的数据对象。Vue 实例代理了对其 data 对象 property 的访问。
+        vm.props:           当前组件接收到的 props 对象。Vue 实例代理了对其 props 对象 property 的访问
+        vm.$refs:           持有注册过 ref attribute 的所有 DOM 元素和组件实例
+        vm.$attrs:          包含了父作用域中不作为 prop 被识别 (且获取) 的 attribute 绑定 (class 和 style 除外)
+        vm.$listeners:      包含了父作用域中的 (不含 .native 修饰器的) v-on 事件监听器。它可以通过 v-on="$listeners" 传入内部组件
+        vm.$slots:          用来访问被插槽分发的内容。每个具名插槽有其相应的 property (例如：v-slot:foo 中的内容将会在 vm.$slots.foo 中被找到)
+            this.$slots.default     指访问包括了所有没有被包含在具名插槽中的节点，或 v-slot:default 的内容
+                            你可以通过 this.$slots 访问静态插槽的内容，每个插槽都是一个 VNode 数组
+        vm.$scopedSlots：   用来访问作用域插槽。对于包括 默认 slot 在内的每一个插槽，该对象都包含一个返回相应 VNode 的函数
+        vm.$root:           当前组件树的根 Vue 实例。如果当前实例没有父实例，此实例将会是其自己
+        vm.$parent:         父实例，如果当前实例有的话
+        vm.$options:        用于当前 Vue 实例的初始化选项。需要在选项中包含自定义 property 时会有用处
+    选项：
+      数据：
+        data:               Vue 实例的数据对象
+        props：             props 可以是数组或对象，用于接收来自父组件的数据
+        computed:           计算属性，用于定义需要计算的属性定义，常用到this
+        model:              允许一个自定义组件在使用 v-model 时定制 prop 和 event,例：{ prop?: string, event?: string }
+        watch：             一个对象，键是需要观察的表达式，值是对应回调函数。值也可以是方法名，或者包含选项的对象
+        methods:            用于定义的函数，可以通过 return 来返回函数值
+      DOM：
+        el:                 提供一个在页面上已存在的 DOM 元素作为 Vue 实例的挂载目标。可以是 CSS 选择器，也可以是一个 HTMLElement 实例
+        template:           一个字符串模板作为 Vue 实例的标识使用。模板将会替换挂载的元素。挂载元素的内容都将被忽略，除非模板的内容有分发插槽。
+        rander:             字符串模板的代替方案，允许你发挥 JavaScript 最大的编程能力。该渲染函数接收一个 createElement 方法作为第一个参数用来创建 VNode
+            参数createElement:  返回一个“虚拟节点 (virtual node)”，也常简写它为“VNode”
+                第一参数：{String | Object | Function}  一个 HTML 标签名、组件选项对象，或者resolve 了上述任何一种的一个 async 函数。必填项
+                第二参数：{Object}                      一个与模板中 attribute 对应的数据对象。可选
+                    {
+                    // 与 `v-bind:class` 的 API 相同，
+                    // 接受一个字符串、对象或字符串和对象组成的数组
+                    'class': {
+                        foo: true,
+                        bar: false
+                    },
+                    // 与 `v-bind:style` 的 API 相同，
+                    // 接受一个字符串、对象，或对象组成的数组
+                    style: {
+                        color: 'red',
+                        fontSize: '14px'
+                    },
+                    // 普通的 HTML attribute
+                    attrs: {
+                        id: 'foo'
+                    },
+                    // 组件 prop
+                    props: {
+                        myProp: 'bar'
+                    },
+                    // DOM property
+                    domProps: {
+                        innerHTML: 'baz'
+                    },
+                    // 事件监听器在 `on` 内，
+                    // 但不再支持如 `v-on:keyup.enter` 这样的修饰器。
+                    // 需要在处理函数中手动检查 keyCode。
+                    on: {
+                        click: this.clickHandler
+                    },
+                    // 仅用于组件，用于监听原生事件，而不是组件内部使用
+                    // `vm.$emit` 触发的事件。
+                    nativeOn: {
+                        click: this.nativeClickHandler
+                    },
+                    // 自定义指令。注意，你无法对 `binding` 中的 `oldValue`
+                    // 赋值，因为 Vue 已经自动为你进行了同步。
+                    directives: [
+                        {
+                        name: 'my-custom-directive',
+                        value: '2',
+                        expression: '1 + 1',
+                        arg: 'foo',
+                        modifiers: {
+                            bar: true
+                        }
+                        }
+                    ],
+                    // 作用域插槽的格式为
+                    // { name: props => VNode | Array<VNode> }
+                    scopedSlots: {
+                        default: props => createElement('span', props.text)
+                    },
+                    // 如果组件是其它组件的子组件，需为插槽指定名称
+                    slot: 'name-of-slot',
+                    // 其它特殊顶层 property
+                    key: 'myKey',
+                    ref: 'myRef',
+                    // 如果你在渲染函数中给多个元素都应用了相同的 ref 名，
+                    // 那么 `$refs.myRef` 会变成一个数组。
+                    refInFor: true
+                    }
+                第三参数：{String | Array}              插入第一参数内的内容。可选
+            参数context：       如果组件是一个函数组件，渲染函数还会接收一个额外的 context对象 参数，为没有实例的函数组件提供上下文信息
+                props：             提供所有 prop 的对象
+                children：          VNode 子节点的数组
+                slots：             一个函数，返回了包含所有插槽的对象
+                scopedSlots：       (2.6.0+) 一个暴露传入的作用域插槽的对象。也以函数形式暴露普通插槽。
+                data：              传递给组件的整个数据对象，作为 createElement 的第二个参数传入组件
+                parent：            对父组件的引用
+                listeners：         (2.3.0+) 一个包含了所有父组件为当前组件注册的事件监听器的对象。这是 data.on 的一个别名。
+                injections：        (2.3.0+) 如果使用了 inject 选项，则该对象包含了应当被注入的 property。
+      资源：
+        components:         用于创建局部组件
+        directives：        用于创建局部自定义指令
+        filters:            用于创建局部过滤器
+      组合：
+        mixins:             mixins 选项接收一个混入对象的数组。这些混入对象可以像正常的实例对象一样包含实例选项，这些选项将会被合并到最终的选项中，
+                                使用的是和 Vue.extend() 一样的选项合并        
+        provide：           依赖注入是父级选项
+        inject：            依赖注入是子级选项逻辑,混入包含一个 created 钩子，而创建组件本身也有一个，那么两个函数都会被调用
+      生命周期钩子：
+        beforeCreate:      在实例初始化之后,进行数据侦听和事件/侦听器的配置之前同步调用。
+        created:           在实例创建完成后被立即同步调用。
+        beforeMount:       在挂载开始之前被调用：相关的 render 函数首次被调用
+        mounted:           实例被挂载后调用，这时 el 被新创建的 vm.vm.$el 替换了
+        beforeUpdate:      在数据发生改变后，DOM 被更新之前被调用
+        updated:           在数据更改导致的虚拟 DOM 重新渲染和更新完毕之后被调用
+特殊attribute:
+    key:        key 的特殊 attribute 主要用在 Vue 的虚拟 DOM 算法，在新旧 nodes 对比时辨识 VNodes。如果不使用 key，Vue 会使用一种最大限度减少动态元素并且尽可能的尝试就地修改/复用相同类型元素的算法。而使用 key 时，它会基于 key 的变化重新排列元素顺序，并且会移除 key 不存在的元素。
+    ref:        ref 被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，引用就指向组件实例
+    is:         用于动态组件且基于 DOM 内模板的限制来工作
+方法:
+    vm.$watch():        观察方法，用于
+    vm.$on():           监听当前实例上的自定义事件。事件可以由 vm.vm.$emit 触发。回调函数会接收所有传入事件触发函数的额外参数。
+    vm.$once():         监听一个自定义事件，但是只触发一次。一旦触发之后，监听器就会被移除
+    vm.$off():          移除自定义事件监听器
+                        如果没有提供参数，则移除所有的事件监听器
+                        如果只提供了事件，则移除该事件所有的监听器
+                        如果同时提供了事件与回调，则只移除这个回调的监听器
+    vm.$emit():         内部的子组件事件调用方法，用于触发父组件的事件
+    vm.$forceUpdate():  迫使 Vue 实例重新渲染。注意它仅仅影响实例本身和插入插槽内容的子组件，而不是所有子组件。
+    vm.$mount():        如果 Vue 实例在实例化时没有收到 el 选项，则它处于“未挂载”状态，没有关联的 DOM 元素。可以使用 vm.$mount() 手动地挂载一个未挂载的实例
+指令：
+    v-bind:         将这个元素节点的属性和Vue实例的属性绑定   eg: v-bind:todo='item'
+        简写：:todo='item'
+    v-if:           根据表达式的值的 truthiness 来有条件地渲染元素。在切换时元素及它的数据绑定 / 组件被销毁并重建
+    v-else：        为 v-if 或者 v-else-if 添加“else 块”
+    v-else-if：     表示 v-if 的“else if 块”。可以链式调用
+    v-show:         根据表达式之真假值，切换元素的 display CSS property。
+    v-for:          基于源数据多次渲染元素或模板块。此指令之值，必须使用特定语法 alias in expression，为当前遍历的元素提供别名
+        数组：      可写两个参数：数组元素值、index
+        对象：      可写三个参数：对象属性值、属性名、index<!DOCTYPE html>
+    v-on:           绑定事件监听器。事件类型由参数指定。表达式可以是一个方法的名字或一个内联语句，如果没有修饰符也可以省略  
+        简写：@click="f"  eg：v-on:click="f"
+    v-model:        它能轻松实现在<input>、<textarea> 及 <select> 元素输入和应用状态之间的双向绑定  eg：v-model='message'
+    v-html:         将变量转换为html标签，添加指令的标签内容将被变量内容替换  eg: v-html='message'
+    v-slot:         用于该内容指定的带name属性的插槽位置,v-slot 只能添加在 <template> 上 (只有一种例外情况),该指令集合了废弃语法slot和slot-scope
+                    后接等于=为插槽attribute的对象合集，例v-slot:default='{user,data...等}'
+        简写：#default='slotProps'    且支持动态参数#[dynamicSlotName],dynamicSlotName为计算表达式，计算结果为指令的参数
+    v-once:         没有属性，只渲染元素和组件一次。随后的重新渲染，元素/组件及其所有的子节点将被视为静态内容并跳过。这可以用于优化更新性能。
+全局 API：
+    Vue.component():    注册全局组件,组件是可复用的 Vue 实例，可以用在任何新创建的 Vue 根实例 (new Vue) 的模板中
+        第一参数：          用于表示创建的组件名，定义组件名的方式有两种：一、my-base-component; 二、MyBaseComponent
+        第二参数：          对象{}
+            props:              任何数据都不会被自动传递到组件里，因为组件有自己独立的作用域。为了把迭代数据传递到组件里，我们要使用 props:['']
+                type:       验证类型
+                required:   是否必填，值未布尔值，即required：true；
+                default:    默认值，也可以是函数返回默认值
+                validator:  自定义验证函数
+            template:           组件模板
+                inheritAttrs: false     禁止组件根元素继承 attribute
+            data:           组件初始化属性，用函数表示返回对象
+            methods：       组件内部调用的函数
+            model:          允许一个自定义组件在使用 v-model 时定制 prop 和 event,例：{ prop?: string, event?: string }
+    Vue.directive():    注册或获取全局指令
+        第一参数：          自定义指令名称，只有一个参数时表示获取自定义的全局指令
+        第二参数：          指令钩子函数对象，
+        自定义指令钩子函数：
+            bind:               只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
+            inserted:           被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+            update:             所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前
+            componentUpdated:   指令所在组件的 VNode 及其子 VNode 全部更新后调用
+            unbind:             只调用一次，指令与元素解绑时调用
+            钩子函数的参数：
+                el：            指令所绑定的元素，可以用来直接操作 DOM
+                binding：       一个对象，包含以下 property：
+                    name：          指令名，不包括 v- 前缀
+                    value：         指令的绑定值，例如：v-my-directive="1 + 1" 中，绑定值为 2
+                    oldValue：      指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无论值是否改变都可用
+                    expression：    字符串形式的指令表达式。例如 v-my-directive="1 + 1" 中，表达式为 "1 + 1"
+                    arg：           传给指令的参数，可选。例如 v-my-directive:foo 中，参数为 "foo"
+                    modifiers：     一个包含修饰符的对象。例如：v-my-directive.foo.bar 中，修饰符对象为 { foo: true, bar: true }
+                vnode：         Vue编译生成的虚拟节点。移步 VNode API 来了解更多详情
+                oldVnode：      上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用
+    Vue.filter():       注册或获取全局过滤器
+        第一参数：          定义过滤器名
+        第二参数：          过滤函数
+    Vue.mixin(object):  全局注册一个混入，影响注册之后所有创建的每个 Vue 实例。插件作者可以使用混入，向组件注入自定义的行为。不推荐在应用代码中使用
+    Vue.extend(object): 使用基础 Vue 构造器，创建一个“子类”,参数是一个包含组件选项的对象。data 选项必须是函数
+    Vue.use(plugin):    用于安装 Vue.js 插件。该方法需要在调用 new Vue() 之前被调用 
+                            如果插件是一个对象，必须提供 install 方法。如果插件是一个函数，它会被作为 install 方法。install 方法调用时，会将 Vue 作为参数传入。
+    Vue.set():          添加未初始化的属性
+        第一参数：          要添加的对象或者数组,如data,data.tabel
+        第二参数：          key索引,string |number 
+        第三参数：          要添加的元素
+    Vue.set():          添加初始化的属性，参数同
+全局配置 Vue.config
+    optionMergeStrategies:  全局配置属性的选项合并策略，后接选项=函数，例：Vue.config.optionMergeStrategies.myOption = function (toVal, fromVal) {//返回合并后的值}
+    globalProperties:       全局原型对象（vue3),vue2使用Vue.peototype设置
+内置组件：
+    <component>：       内置动态组件，渲染一个“元组件”为动态组件。依 is 的值，来决定哪个组件被渲染,不会缓存，每次创建新实例
+    <keep-alive>：      包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们
+        include         字符串或正则表达式。只有名称匹配的组件会被缓存。
+        exclude         字符串或正则表达式。任何名称匹配的组件都不会被缓存。
+        max             数字。最多可以缓存多少组件实例。
+    <slot>:             <slot> 元素作为组件模板之中的内容分发插槽。<slot> 元素自身将被替换。
+    <transition>：      <transition> 元素作为单个元素/组件的过渡效果。<transition> 只会把过渡效果应用到其包裹的内容上，而不会额外渲染 DOM 元素，也不会出现在可被检查的组件层级中
+        props:
+            name - string，     用于自动生成 CSS 过渡类名。例如：name: 'fade' 将自动拓展为 .fade-enter，.fade-enter-active 等。默认类名为 "v"
+            appear - boolean，  是否在初始渲染时使用过渡。默认为 false。
+            css - boolean，     是否使用 CSS 过渡类。默认为 true。如果设置为 false，将只通过组件事件触发注册的 JavaScript 钩子。
+            type - string，     指定过渡事件类型，侦听过渡何时结束。有效值为 "transition" 和 "animation"。默认 Vue.js 将自动检测出持续时间长的为过渡事件类型。
+            mode - string，     控制离开/进入过渡的时间序列。有效的模式有 "out-in" 和 "in-out"；默认同时进行。
+                in-out：        新元素先进行过渡，完成之后当前元素过渡离开
+                out-in：        当前元素先进行过渡，完成之后新元素过渡进入
+            duration - number | { enter: number, leave: number } 指定过渡的持续时间。默认情况下，Vue 会等待过渡所在根元素的第一个 transitionend 或 animationend 事件。
+            初始过渡渲染：
+                appear-class
+                appear-to-class
+                appear-active-class
+                例：appear appear-class="fade-appear" appear-to-class="fade-appear-to" appear-active-class="fade-appear-active" 
+            在进入/离开的过渡中，会有 6 个 class 切换
+                v-enter：       定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。
+                v-enter-active：定义进入过渡生效时的状态。在整个进入过渡的阶段中应用，在元素被插入之前生效，在过渡/动画完成之后移除。这个类可以被用来定义进入过渡的过程时间，延迟和曲线函数。
+                v-enter-to：    2.1.8 版及以上定义进入过渡的结束状态。在元素被插入之后下一帧生效 (与此同时 v-enter 被移除)，在过渡/动画完成之后移除。
+                v-leave：       定义离开过渡的开始状态。在离开过渡被触发时立刻生效，下一帧被移除。
+                v-leave-active：定义离开过渡生效时的状态。在整个离开过渡的阶段中应用，在离开过渡被触发时立刻生效，在过渡/动画完成之后移除。这个类可以被用来定义离开过渡的过程时间，延迟和曲线函数。
+                v-leave-to：    2.1.8 版及以上定义离开过渡的结束状态。在离开过渡被触发之后下一帧生效 (与此同时 v-leave 被删除)，在过渡/动画完成之后移除。
+        事件：
+            before-enter
+            before-leave
+            before-appear
+            enter
+            leave
+            appear
+            after-enter
+            after-leave
+            after-appear
+            enter-cancelled
+            leave-cancelled (v-show only)
+            appear-cancelled
+    <transition-group>：<transition-group> 元素作为多个元素/组件的过渡效果。<transition-group> 渲染一个真实的 DOM 元素。默认渲染 <span>，可以通过 tag attribute 配置哪个元素应该被渲染。        
+        props：         除了 mode，其他 attribute 和 <transition> 相同 
+            tag - string，  默认为 span
+            move-class      覆盖移动过渡期间应用的 CSS 类。
+        事件：          事件和 <transition> 相同
+修饰符：
+    事件修饰符：
+        .stop           阻止冒泡
+        .prevent        阻止默认事件
+        .passive        不阻止默认事件
+        .capture        阻止捕获
+        .self           只监听触发该元素的事件
+        .once           只触发一次
+        .native         用于监听组件的根元素上的原生事件，例：<base-input v-on:focus.native="onFocus"></base-input>
+    v-bind指令修饰符：   例：v-on:title.sync="title“
+        .sync           
+    v-model指令修饰符：  例：<input v-model.number="age">
+        .lazy           将默认每次input事件触发后将输入框的值与数据进行的同步转为在change事件之后进行同步：
+        .number         自动将用户的输入值转为数值类型
+        .trim           自动过滤用户输入的首尾空白字符
+    鼠标按钮修饰符：
+        .left           左键事件
+        .right          右键事件
+        .middle         中间滚轮事件
+    按键修饰符：
+        .enter          例：<input v-on:keyup.enter="submit">指按下enter键触发事件
+        .tab            或者通过keyCode,eg :<input v-on:keyup.13="submit">
+        .delete         (捕获 "删除" 和 "退格" 键)
+        .esc
+        .space
+        .up
+        .down
+        .left
+        .right
+    系统修饰键：
+        .ctrl           例：<input v-on:keyup.ctrl.67="submit">指按下ctrl+c键触发事件
+        .alt
+        .shift
+        .meta
+        .exact          修饰符允许你控制由精确的系统修饰符组合触发的事件
+    使用 JavaScript 代替模板功能时：
+        修饰符	                        前缀
+        .passive	                    &
+        .capture	                    !
+        .once	                        ~
+        .capture.once或.once.capture	~!
+        修饰符	                        处理函数中的等价操作
+        .stop	                        event.stopPropagation()
+        .prevent	                    event.preventDefault()
+        .self	                        if (event.target !== event.currentTarget) return
+        按键：
+        .enter, .13	                    if (event.keyCode !== 13) return (对于别的按键修饰符来说，可将 13 改为另一个按键码)
+        修饰键：
+        .ctrl, .alt, .shift, .meta	    if (!event.ctrlKey) return (将 ctrlKey 分别修改为 altKey、shiftKey 或者 metaKey)
+路由router：
+    正则匹配规则：
+        // 将匹配所有内容并将其放在 `$route.params.pathMatch` 下
+        { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+        // 将匹配以 `/user-` 开头的所有内容，并将其放在 `$route.params.afterUser` 下
+        { path: '/user-:afterUser(.*)', component: UserGeneric },
+        // /:orderId -> 仅匹配数字
+        { path: '/:orderId(\\d+)' },
+        // /:productName -> 匹配其他任何内容
+        { path: '/:productName' },
+        /:chapters ->  匹配 /one, /one/two, /one/two/three, 等
+        { path: '/:chapters+' },
+        // /:chapters -> 匹配 /, /one, /one/two, /one/two/three, 等
+        { path: '/:chapters*' },
+        // 匹配 /1, /1/2, 等
+        { path: '/:chapters(\\d+)+' },
+        // 匹配 /, /1, /1/2, 等
+        { path: '/:chapters(\\d+)*' },
+        // 匹配 /users 和 /users/posva
+        { path: '/users/:userId?' },
+        // 匹配 /users 和 /users/42
+        { path: '/users/:userId(\\d+)?' },
+        // 给定 { path: '/:chapters*', name: 'chapters' },
+        router.resolve({ name: 'chapters', params: { chapters: [] } }).href
+        // 产生 /
+        router.resolve({ name: 'chapters', params: { chapters: ['a', 'b'] } }).href
+        // 产生 /a/b
+        // 给定 { path: '/:chapters+', name: 'chapters' },
+        router.resolve({ name: 'chapters', params: { chapters: [] } }).href
+        // 抛出错误，因为 `chapters` 为空 
+    书写规则：
+        // 字符串
+        <router-link to="apple"> to apple</router-link>
+        // 对象
+        <router-link :to="{path:'apple'}"> to apple</router-link>
+        // 命名路由
+        <router-link :to="{name: 'applename'}"> to apple</router-link>
+        //直接路由带查询参数query，地址栏变成 /apple?color=red
+        <router-link :to="{path: 'apple', query: {color: 'red' }}"> to apple</router-link>
+        // 命名路由带查询参数query，地址栏变成/apple?color=red
+        <router-link :to="{name: 'applename', query: {color: 'red' }}"> to apple</router-link>
+        //直接路由带路由参数params，params 不生效，如果提供了 path，params 会被忽略
+        <router-link :to="{path: 'apple', params: { color: 'red' }}"> to apple</router-link>
+        // 命名路由带路由参数params，地址栏是/apple/red
+        <router-link :to="{name: 'applename', params: { color: 'red' }}"> to apple</router-link>
+        // 字符串
+        router.push('apple')
+        // 对象
+        router.push({path:'apple'})
+        // 命名路由
+        router.push({name: 'applename'})
+        //直接路由带查询参数query，地址栏变成 /apple?color=red
+        router.push({path: 'apple', query: {color: 'red' }})
+        // 命名路由带查询参数query，地址栏变成/apple?color=red
+        router.push({name: 'applename', query: {color: 'red' }})
+        //直接路由带路由参数params，params 不生效，如果提供了 path，params 会被忽略
+        router.push({path:'applename', params:{ color: 'red' }})
+        // 命名路由带路由参数params，地址栏是/apple/red
+        router.push({name:'applename', params:{ color: 'red' }})
+    router/index.js--routes:
+        path:               记录的路径。应该以 / 开头，除非该记录是另一条记录的子记录。可以定义参数：/users/:id 匹配 /users/1 以及 /users/posva
+        name:               路由记录独一无二的名称
+        component:          路由对应的组件
+        components:         命名视图的具名与组件对象，如果没有，包含一个键为 default 的对象
+        children:           当前记录的嵌套路由
+        redirect:           如果路由是直接匹配的，那么重定向到哪里呢。重定向发生在所有导航守卫之前，并触发一个带有新目标位置的新导航
+        alias:              路由的别名。允许定义类似记录副本的额外路由。这使得路由可以简写为像这种 /users/:id 和 /u/:id。 所有的 alias 和 path 值必须共享相同的参数
+    this.$router：          访use(router)的router
+        push()方法:         通过在历史堆栈中推送一个 entry，以编程方式导航到一个新的 URL
+            方法参数对象属性：
+            name:           路由记录的名称。如果什么都没提供，则为 undefined
+            path:           编码 URL 的 pathname 部分，与路由地址有关
+            params:         从 path 中提取的已解码参数对象
+            qurey:          从 URL 的 search 部分提取的已解码查询参数的对象
+            hash:           已解码 URL 的 hash 部分。总是以 #开头。如果 URL 中没有 hash，则为空字符串
+        replace():          通过替换历史堆栈中的当前 entry，以编程方式导航到一个新的 URL
+        go():               相对于当前页面，你要移动到的历史位置
+    this.$route：           访问当前路由
+        name:               路由记录的名称。如果什么都没提供，则为 undefined
+        path:               编码 URL 的 pathname 部分，与路由地址有关
+        params:             从 path 中提取的已解码参数对象
+        query:              从 URL 的 search 部分提取的已解码查询参数的对象
+        hash:               已解码 URL 的 hash 部分。总是以 #开头。如果 URL 中没有 hash，则为空字符串
+    <router-link>:
+        to:                 转到的路径
+        replace:            按replace()方法处理，而不是push()
+        tag:                更改默认a标签,例:tag='button'
+    <router-view>:
+        name:               具名视图，没有则默认为default
+Promise:                
+    resolve():          上述生成一个新的Promise对象实例p，状态为resolve
+    reject():           上述生成一个新的Promise对象实例p，状态为reject
+    all():              用于将多个 Promise 实例，包装成一个新的 Promise 实例,存在一个reject则返回第一个rejrct ,否则返回实例resolve数组
+    race():             同样是将多个 Promise 实例，包装成一个新的 Promise 实例，实例中谁先改变则返回谁，无论reject或resolve
+    原型Prototype：     
+        then()；        接受实例会点函数resolve的内容作为参数
+        catch():        接受实例会点函数reject的内容作为参数
+    async:              async是一个加在函数前的修饰符，被async定义的函数会默认返回一个Promise对象resolve的值。因此对async函数可以直接then，返回值就是then方法传入的函数
+    await:              await 也是一个修饰符，只能放在async定义的函数内。可以理解为等待。await 修饰的如果是Promise对象：可以获取Promise中返回的内容（resolve或reject的参数），且取到值后语句才会往下执行；
+                            如果不是Promise对象：把这个非promise的东西当做await表达式的结果。
+vuex-store:             状态管理
+    state:              状态变量：this.$store.state.调用变量
+    mutations:          提交同步改变状态方法，自带参数state，可选参数： this.$store.commit(''，)调用方法
+    actions:            提交异步改变状态的方法，自带参数context，内部调用mutation方法；可看成state：this.$store.dispatch(''，)
+    getters:            计算属性，自带参数state，getters，可返回函数和变量： this.$store.getter.调用计算属性
+    modules:            封装模块，this.$store.state.user.调用模组变量： 方法计算属性同上this.$store.getter. this.$store.commit(''，)
+
+

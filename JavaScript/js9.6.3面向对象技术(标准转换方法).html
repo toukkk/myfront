@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    extend(Set.prototype, {
+        toString: function () {
+            var s = "{", i = 0;
+            this.foreach(function (v) { s += ((i++ > 0) ? "," : "") + v; });
+            return s + "}";
+        },
+        toLocalString: function () {
+            var s = "{", i = 0;
+            this.foreach(function (v) {
+                if (i++ > 0) s += ",";
+                if (v == null) s += v;
+                else s += v.toLocalString;
+            });
+            return s + "]";
+        },
+        toArray: function () {
+            var a = [];
+            this.foreach(function (v) { a.push(v); });
+        }
+    });
+</script>

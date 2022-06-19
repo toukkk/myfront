@@ -1,0 +1,176 @@
+h1 {
+    text-align: center;
+}
+fieldset {
+    width: 50%;
+    margin: 0 auto;
+    background-color: rgb(234, 239, 243);
+    border-radius: 5px;
+    padding: 20px;
+}
+legend {
+    text-align: center;
+    font-weight:bold;
+}
+label {
+    display:block;
+    padding: 10px 0 20px 0;
+}
+/* #like-text {
+    padding-bottom: 50px;
+} */
+input[type="text"],input[type="password"],select {
+    display: inline-block;
+    border: 1px solid rgb(145, 144, 144);
+    border-radius: 4px;
+    width: 20%;
+    transition: width 1s ease-in-out;
+    padding:10px 10px 10px 25px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    background: rgb(255, 255, 255) url("../images/6.png") no-repeat 15px 15px;
+}
+input[type="submit"],input[type="reset"] {
+    width: 30%;
+    background-color: rgb(144, 218, 144);
+    color: white;
+    padding: 10px 5px;
+    font-size: 120%;
+    box-shadow: 3px 3px 5px 3px rgba(179, 50, 50, 0.3);
+    cursor:pointer;
+    border-radius: 10px;
+}
+input[type="reset"] {
+    float: right;
+}
+input[type="password"]:focus {
+    background-color: rgb(227, 211, 241);
+}
+button[type="botton"] {
+    width: 100%;
+    background-color: rgb(125, 219, 125);
+    color: white;
+    padding: 10px 5px;
+    font-size: 120%;
+    box-shadow: 3px 3px 5px 3px rgba(179, 50, 50, 0.3);
+    cursor:pointer;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+input[type="submit"]:hover,input[type="reset"]:hover,button[type="botton"]:hover {
+    background-color: rgb(90, 190, 90);
+}
+input[type="text"]:focus,input[type="password"]:focus {
+    width: 60%;
+}
+textarea {
+    border-radius: 4px;
+    padding: 10px;
+    text-indent: 2em;
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box;
+    width: 80%;
+    height: 10em;
+}
+select {
+    border: none;
+}
+/* input[type="text"]:fater,input[type="password"]:fater,textarea:fater {
+    clear: both;
+} */
+@media screen and (min-width:800px ) {
+    input[type="text"],input[type="password"],textarea {
+        width: 60%;
+        float: right;
+        margin-top: 0;
+
+    }
+    label {
+        display: inline-block;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

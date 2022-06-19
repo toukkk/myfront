@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <button @click="counter +=1">按了几次：{{counter}}</button><br>
+        <button @click="greet()">按钮</button>
+        <button @click="greet1('zhangtiezhu')">按钮</button>
+        <button @click="greet2('zhangtiezhu',$event)">按钮</button>
+    </div>
+    <div id="style">
+
+    </div>
+</body>
+
+</html>
+<style>
+
+</style>
+<script>
+    //事件处理方法
+    var vm = new Vue({
+        el: 'div',
+        data: {
+            counter: 0,
+            name: 'TieZhu',
+        },
+        methods: {                          //定义函数
+            greet: function (e) {           //当处理函数无实参是，参数e表示event对象
+                alert(this.name);
+                if (e)  
+                    e.target.tagName;
+            },
+            greet1: function (e) {          //当处理函数有实参时，参数e表示实参
+                alert(this.name+"   "+e);   //可调用this指向vm对象
+            },
+            greet2:function(msg,e){         //当有多个参数需要引入evnet时，$event表示evnt对象的实参
+                alert(this.name+"   "+msg);
+                if (e)
+                    alert(e.target.tagName);
+            }
+        }
+    });
+</script>

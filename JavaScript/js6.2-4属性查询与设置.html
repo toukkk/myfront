@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //属性的查询与设置----------------------------------------------------------------------------------------------
+    var book = {
+        "main title": "javascript",                     //属性名有空格必须用字符串表示
+        "sub_title": "The Definitive Cuide",            //属性名有连字符必须用字符串表示
+        "for": "all audiences",                         //"for"作为保留字，必须用引号
+        author: {                                       //复合对象
+            firstname: "David",                         //这里的属性名没用引号
+            surname: "Flanagan"                         //最后一个属性后的逗号在大部分实现中省略，但在IE中会报错
+        }
+    }
+    var author = book.author;                           //获取book的"auteor"属性
+    var name = author.surname;                          //获取auteor的"surname"属性
+    var title = book["main title"];                     //带引号的关键字或者空格，连字符的字符串属性用[""]来获取
+    book.edition = 6;                                   //给book添加新属性
+    book["sub_title"] = "ECMAScript";                   //给属性“sub_title”赋值
+    //作为关联数组的对象----------------------------------------------------------------------------------------------
+    var customent = { address0: "4", address1: "6", address2: "8", address3: "10" };
+    var addr = "";
+    for (var i = 0; i < 4; i++) {
+        addr += customent["address" + i] + "\n";        //[]运算符内的表达式可以运算，结果为对象字符串属性就行
+    }
+    console.log("addr:", addr);
+
+    var portfolio = {};
+    function addstock(portfolio, stockname, shares) {
+        portfolio[stockname] = shares;                  //将参数stockname和shares作为属性名和值添加到对象portfolio中
+        return portfolio;
+    }
+    addstock(portfolio, "name1", 30);
+    addstock(portfolio, "name2", 40);
+    addstock(portfolio, "name3", 50);
+    addstock(portfolio, "name4", 60);
+    console.log("portfolio: ", portfolio);
+
+    function sum(portfolio) {
+        var total = 0.0;
+        for (stock in portfolio) {                      //遍历对象portfolio的属性，并对值进行叠加
+            console.log(stock);
+            total += portfolio[stock];                  //.运算符是静态的，写死在程序里，而[]运算符则是使用字符串值(字符串是动态的)，这里程序运行时必须用[]来访问属性
+        }
+        return total;
+    }
+    console.log("totlal: ", sum(portfolio));
+    console.log("");
+    //对象的继承属性----------------------------------------------------------------------------------------------
+    function inherit(p) {                                   //定义一个继承对象函数
+        if (p == null) {                                    //如果对象原型为空则报错
+            throw TypeError();
+        }
+        else {
+            if (Object.create) {                            //如果支持Object.create函数，则输出Object.create 
+                return Object.create(p);
+            }
+        }
+    }
+    var object1 = {};                                       //object1从Object.portotype继承对象的方法
+    object1.x = 1;
+    var object2 = inherit(object1);                         //object2从object1继承x、Object.portotype继承对象的方法
+    object2.y = 2;
+    var object3 = inherit(object2);                         //object3从object1继承属性x、object2继承属性y、Object.portotype继承对象的方法
+    object3.z = 3;
+    object3.y = 6;                                          //覆盖了继承的属性y
+    var method = object3.toString();                        //toString 继承自Object.portotype
+    console.log("inherit: ", object3.x + object3.y);
+    console.log("object2.y: ", object2.y);                  //并没有更改原型对象的y属性
+    console.log("method: ", method);
+    console.log("");
+    //不可删除属性--------------------------------------------------------------------------------------------------------
+    var o_object = {}, a = 1;
+    delete o_object.toString;                   //不可删除继承属性
+    delete Object.prototype;                    //不可删除不可配置属性
+    delete a;                                   //不可删除声明变量和函数
+    //检测属性--------------------------------------------------------------------------------------------------------------
+    var a = { x: 1, y: undefined };
+    "x" in a;                                               //x属性为对象的属性
+    "toString" in a;                                        //继承属性也为对象属性
+    a.hasOwnProperty("x");                                  //x属性为对像的自有属性
+    a.hasOwnProperty("toString");                           //继承属性不属于对象的自有属性
+    a.propertyIsEnumentable("x");                           //x属性为对象的自有可枚举属性
+    a.propertyIsEnumentable("toString");                    //toString属性不属于对象的自有属性
+    Object.prototype.propertyIsEnumerable("toString");      //toString属性不属于Object.prototype的可枚举属性
+    a.x !== undefined;                                      //对象中有x属性为true
+    a.z !== undefined;                                      //对象中没有x属性为false
+    a.y !== undefined;                                      //为false，但属性存在，这是用下面的代码
+    "y" in a;                                               //y属性为对象的属性
+</script>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{a}}</p>
+        <button v-on:click="a=a+1">change it</button>
+    </div>
+    <div id="app1">
+        <p>{{a}}</p>
+        <button v-on:click="a=a+1">change it</button>
+    </div>
+</body>
+
+</html>
+<script>
+    //数据与的方法-------------------------------------------------------------------------------------
+    var data = { a: 1 };
+    // Object.freeze(data);              //适用对象的冻结函数，将不能修改现有的 property，即响应系统无法再追踪变化
+    var vm = new Vue({
+        el: '#app',
+        data: data
+    });
+    vm.a == data.a                       // =>true
+    vm.a = 2;
+    console.log("data.a: ", data.a);     // =>2
+    data.a = 3;
+    console.log("vm.a: ", vm.a);         // =>3
+    //添加新属性
+    vm.b = 2;
+    console.log("data.b: ", data.b);     // =>undefined,如果你知道你会在晚些时候需要一个 property，但是一开始它为空或不存在，那么你仅需要设置一些初始值
+    Object.freeze(data);                 //对已经创建vm的对象 Object.freeze()将不起作用
+    vm.a = 4;                            //失败
+    console.log("vm.a: ", vm.a);         // =>3
+    //属性与方法
+    console.log("vm.$data: ", vm.$data);         //输出data属性，为data对象
+    console.log("vm.$el: ", vm.$el);             //输出元素，含有id的元素对象，等同document.getElementById('app') 
+    vm.$watch("a", function (newValue, oldValue) {
+        console.log("oldValue: ", oldValue);     //回调函数表示在响应后调用
+        console.log("newValue: ", newValue);
+    })
+    console.log("vm.$watch: ", vm.$watch);       //输出方法watch，表示观察响应前后变化，第一参数表示观察对象，而参数表示回调函数两个参数表示新旧值
+    //生命周期钩子函数，不要在选项 property 或回调上使用箭头函数，因为生命周期钩子常用this指指向调用它的 Vue 实例，而箭头函数没有this
+    var vm1=new Vue({
+        el:'#app1',
+        data: { a: 1 },
+        beforeCreate: function () {             //页面创建之前调用的函数
+            console.log("beforeCreate: ",this.a);
+        },
+        created: function () {                  //已经创建好了实例，数据观测和运算、事件回调完成，但还未挂载到DOM上，即$el属性还未见时
+            console.log("created: ",this.a);
+        },
+        beforeMount: function () {              //挂载之前调用
+            console.log("beforeMount: ",this.a);
+        },
+        mounted: function () {                  //挂载之后调用，el被vm1.$el替换
+            console.log("mounted: ",this.a);
+        },
+        beforeUpdate: function () {             //数据变化时调用
+            console.log("beforeUpdate: ",this.a);
+        },
+        updated: function () {                  //数据变化之后调用
+            console.log("updated: ",this.a);
+        }
+    });
+</script>

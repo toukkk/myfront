@@ -1,0 +1,52 @@
+body{
+    width:50%;
+}
+h1{
+    text-align: center;
+}
+h1,p{
+    background-color: rgb(230, 230, 33);
+}
+.distance1{
+    margin-top:100px;
+    margin-right:60px;
+    margin-bottom:40px;
+    margin-left:20px;
+    /* margin:100px 60px 40px 20px; */
+    /* 简写 */
+}
+.distance2{
+    padding-top: 20px;
+    padding-right: 50%;
+    /* 百分比为body的宽度 */
+    padding-bottom: 20px;
+    padding-left: 32px;
+    /* padding:20px 50% 20px 32px */
+    /* 简写 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

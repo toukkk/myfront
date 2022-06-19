@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+    <script src="./scripts//Fun_extend.js"></script>
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //定义一个抽象函数，可以作为任何抽象方法
+    function abstractmethod() { throw new Error("abstract method"); }
+    //定义一个抽象构造函数类
+    function AbstractSet() { throw new Error("can't instantiate abstract class"); }
+    //将抽象函数赋值为抽象方法
+    AbstractSet.prototype.contains = abstractmethod;
+    //使用Function.prototype.extend函数创建一个非抽象子类和非抽象方法
+    var NotSet = AbstractSet.extend(function NotSet(set) { this.set = set; },
+        {
+            contains: function (x) { return !this.set.contains(x); },
+            toString: function () { return "~" + this.set.toString(x); },
+            equals: function (that) {
+                return that instanceof NotSet && this.set.equals(that.set);
+            }
+        });
+    //定义抽象子类，并定义抽象方法，
+    var AbstractEnumerableSet = AbstractSet.extend(function () { throw new Error("can't instantiate abstract class"); },
+        {
+            size: abstractmethod,
+            foresch: abstractmethod,
+            /*.....*/
+        });
+</script>

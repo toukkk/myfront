@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/Set.js"></script>
+    <script src="./scripts/Fun_extend.js"></script>
+    <script src="./scripts/inherit.js"></script>
+
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    var FilteredSet = Set.extend(
+        function FilteredSet(set, filter) {                 //子类函数
+            this.set =set;
+            this.filter = filter;
+        }, 
+        {
+            add: function () {
+                if (this.filter)
+                    for (var i = 0; i < arguments; i++) {
+                        var arg = arguments[i];
+                        if (!filtr(arg)) throw new Error;
+                    }
+                return this.set.add.apply(this.Set, arguments);
+            },
+            remove: function () {
+                this.set.remove.apply(this.Set, arguments);
+                return this;
+            },
+            contains: function (v) { return this.set.contains(v); },
+            size: function () { return this.set.size(); },
+            foreach: function (f, c) { return this.set.foreach(f, c); }
+        }
+    );
+    var s = new FilteredSet(new Set(), function (x) { return x != null; });
+    var s1 = new FilteredSet(s, function (x) { return !(x instanceof Set); });
+    console.log(FilteredSet)
+</script>

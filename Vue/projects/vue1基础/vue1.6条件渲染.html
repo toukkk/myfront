@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="ifElse">
+        <h1 v-if="awesome">Vue is awesome!</h1>
+        <h1 v-else>Oh no 😢</h1>
+        <template v-if="ok">
+            <h1>Title</h1>
+            <p>Paragraph 1</p>
+            <p>Paragraph 2</p>
+        </template>
+        <div v-if="type === 'A'">
+            A
+        </div>
+        <div v-else-if="type === 'B'">
+            B
+        </div>
+        <div v-else-if="type === 'C'">
+            C
+        </div>
+        <div v-else>
+            Not A/B/C
+        </div>
+        <template v-if="loginType === 'username'">
+            <label>Username</label>
+            <input placeholder="Enter your username" key="username-input">
+        </template>
+        <template v-else>
+            <label>Email</label>
+            <input placeholder="Enter your email address" key="email-input">
+        </template><br>
+        <button @click="this.changeLoginType">Change Login Types</button>
+    </div>
+    <div id="show">
+        <P v-show="ok">v-show条件语句</P>
+    </div>
+</body>
+
+</html>
+<style>
+
+</style>
+<script>
+    //v-if/else
+    var vm = new Vue({
+        el: '#ifElse',
+        data: {
+            awesome: false,      //表示不对该标签渲染，v-else绑定元素紧接上个v-if元素才起作用
+            ok: false,           //把一个 <template> 元素当做不可见的包裹元素，并在上面使用 v-if。最终的渲染结果将不包含 <template> 元素。
+            type: "",            //v-else-if，顾名思义，充当 v-if 的“else-if 块”，可以连续使用
+            loginType: 'username',  //提供了一种方式来表达“这两个元素是完全独立的，不要复用它们”。
+        },                          //只需添加一个具有唯一值的 key，即key="username-input"
+        methods: {              //定义按钮事件处理程序函数，即对象方法
+            changeLoginType: function () {
+                if (this.loginType === 'username')
+                    this.loginType = '';
+                else this.loginType = 'username';
+            }
+        }
+    });
+    //v-show
+    var vm = new Vue({
+        el: '#show',
+        data: {
+            ok: '',             //相当于使用了display属性的none值，不占空，文档保留在DOM文档上
+        },
+    });
+</script>

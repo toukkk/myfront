@@ -1,0 +1,136 @@
+* {
+    box-sizing: border-box;
+}
+header {
+    text-align: center;
+    background-color: rgb(227, 252, 213);
+    margin: 0;
+    padding: 10px;
+}
+h1,h2 {
+    text-shadow: 2px 1px 1px rgb(207, 124, 124);
+    font-style: oblique;
+    padding: 10px;
+}
+nav {
+    /* overflow: hidden; */
+    background-color: rgb(252, 136, 136);
+    margin: 0;
+    padding: 0;
+}
+ul {
+    list-style-type: none;
+    text-align: center;
+    display: inline-block;
+    /* float: left; */
+    background-color: rgb(102, 64, 64);
+    width: 50%;
+    padding: 0;
+    margin: 0;
+}
+ul li {
+    display: block;
+    border-right: 2px solid rgb(71, 30, 30);
+    width: 25%;
+    float: left;
+    padding: 10px;
+}
+ul li>a {
+    text-decoration: none;
+    /* padding: 10px; */
+    color: white;
+}
+nav ul li:first-child {
+    background-color: rgb(136, 223, 96);
+}
+nav ul li:last-child {
+    position: relative;
+    border-right: none;
+}
+nav ul li div {
+    border: 2px solid black;
+    box-shadow: 0 4px 4px 4px rgba(247, 140, 140, 0.5);
+    border-radius: 5px;
+    display: none;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(205, 235, 253);
+    left: -5px;
+    top: 40px;
+}
+nav ul li div a {
+    line-height: 1.8em;
+    text-decoration: none;
+    color: black;
+    background-color: rgb(174, 223, 253);
+    padding: 10px;
+}
+nav form {
+    float: right;
+    padding: 10px;
+}
+main div:first-child {
+    width:10%;
+    float: left;
+    height: 100%;
+    /* position: fixed; */
+    background-color: rgb(157, 195, 245);
+}
+main div:first-child aside a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px;
+}
+.article {
+    width: 60%;
+    float: left;
+    margin: 20px;
+}
+.article h2 {
+    text-align: center;
+}
+.article p {
+    text-indent: 2em;
+    line-height: 2em;
+}
+main .img {
+    float: left;
+    margin: 5px;
+    border: 2px solid rgb(233, 138, 138);
+}
+main .img a {   
+    display: block;
+    font-size: 0;
+}
+footer {
+    font-size: small;
+    text-align: center;
+    background-color: rgb(203, 238, 174);
+}
+p {
+    margin: 0;
+}
+
+nav ul li:hover {
+    background-color: rgb(136, 223, 96);
+}
+
+nav ul li:last-child:hover div {
+    display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

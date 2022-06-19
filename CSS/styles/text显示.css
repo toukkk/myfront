@@ -1,0 +1,38 @@
+h1,h2{
+    text-align: center;
+    background-color: blueviolet;
+}
+p.hidden{
+    visibility:hidden;
+    /* 隐藏占用空间 */
+}
+
+p.none{
+    display:none;
+    /* 隐藏不占用空间 */
+}
+ul li,.inline p{
+    display:inline;
+    /* 改成同一行 */
+}
+
+div div p span{
+    display:block;
+    /* 由一行，换行 */
+}
+table th,table td,table{
+    text-align: center;
+}
+#collapse{
+    visibility:collapse;
+}
+
+
+
+
+
+
+
+
+
+

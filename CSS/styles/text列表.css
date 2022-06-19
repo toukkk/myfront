@@ -1,0 +1,112 @@
+.a li
+{
+    list-style-type:square;
+}
+.b li
+{
+    list-style-type:circle;
+}
+.c li
+{
+    list-style-type:upper-roman;
+}
+.d li
+{
+    list-style-type:lower-alpha;
+}
+.img li
+{
+    list-style-image:url("./6.png");
+}
+/* 在所有浏览器中此代码展示出来的效果不一样 */
+.img-compatible
+{
+    list-style-type:none;
+    margin:0px;
+    padding:0px;
+}
+/* 清除默认值 */
+.img-compatible li
+{
+    background-image:url("./6.png");
+    /* 插入图像 */
+    background-repeat:no-repeat;
+    /* 只显示一次，无重复 */
+    background-position:26px 7px;
+    /* 定位图象位置，设置左，上下距离 */
+    padding-left:40px;
+    /* 元素左边距 */
+}
+/* 建立新的列表标识图像 */
+.abb
+{
+    list-style: inside square url("./6.png")
+    /* 简写 */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

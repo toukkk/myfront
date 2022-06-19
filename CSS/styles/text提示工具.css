@@ -1,0 +1,130 @@
+body {
+    width:50%;
+    margin:0 auto;
+}
+h1 {
+    text-align: center;
+    text-shadow: 2px 2px 1px rgb(101, 170, 87,0.5);
+}
+.tips {
+    display: inline-block;
+    position: relative;
+    border-bottom: 1px solid red;
+    padding: 10px;
+}
+.tips .tips-text {
+    display: block;
+    /* visibility: hidden; */
+    /* visibility 的隐藏元素用法 */
+    width:100px;
+    background-color: rgb(90, 78, 78);
+    color: white;
+    padding: 10px 20px;
+    border-radius:6px;
+    /* 加圆角 */
+    position: absolute;
+    z-index: 1;
+    /* right:150%;
+    top: 0px; */
+    /* 提示在右边 */
+    /* left:150%;
+    top: 0px; */
+    /* 提示在左边 */
+    /* bottom: 150%;
+    left: 50%;
+    margin-left: -70px; */
+    /* 提示在正上边 */
+    top: 150%;
+    left: 50%;
+    margin-left: -70px;
+    /* 提示在下面 */
+    opacity: 0;
+    /* 透明度0~1 */
+    transition: opacity 1s;
+    /* 元素过度属性设置 */
+}
+/* .tips-text::after {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    border-width: 5px;
+    margin-top: -5px;
+    border-color: transparent black transparent transparent;
+    border-style: solid;
+} */
+/* 指针在左侧 */
+/* .tips-text::after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    border-width: 5px;
+    margin-top: -5px;
+    border-color: transparent transparent transparent black;
+    border-style: solid;
+} */
+/* 指针在右侧 */
+/* .tips-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    border-width: 5px;
+    margin-left: -5px;
+    border-color:black transparent transparent  transparent;
+    border-style: solid;
+} */
+/* 指针在下面 */
+.tips-text::after {
+    content: "";
+    /* content 属性与 :before 及 :after 伪元素配合使用，来插入内容。 */
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    border-width: 5px;
+    margin-left: -5px;
+    border-color: transparent transparent black transparent;
+    border-style: solid;
+}
+/* 指针在上面 */
+.tips:hover .tips-text {
+    display: block;
+    /* visibility: visible;*/
+     /*隐藏元素的显现 */ 
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

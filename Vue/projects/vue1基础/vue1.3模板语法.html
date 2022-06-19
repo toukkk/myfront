@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script> -->
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <p v-once>{{msg}}</p>
+        <p>{{msg}}</p>
+        <p>Using mustaches: {{ rawHtml }}</p>
+        <p v-html="rawHtml">Using v-html directive: </p>
+        <p v-bind:class="color">这段文本的class类属性</p>
+        <p>{{ number + 1 }}</p>
+        <p>{{ ok ? 'YES' : 'NO' }}</p>
+        <p>{{ message.split('').reverse().join('') }}</p>
+    </div>
+    <div id="app" v-on:click="click1">
+        <a v-bind:href="url">...</a>
+        <a v-bind:[name]="url">...</a>
+        <p v-on:click="click1">冒泡</p>
+        <p v-on:click.stop="click1">阻止冒泡</p>
+    </div>
+</body>
+
+</html>
+<style>
+    .red {
+        color: red;
+    }
+
+    .blue {
+        color: blue;
+        font-size: large;
+    }
+</style>
+<script>
+    //插值--------------------------------------------------------------------------------------------
+    var vm = new Vue({
+        el: 'div',
+        data: {
+            //文本插值，用两个{}，无论何时，绑定的数据对象上 msg property 发生了改变，插值处的内容都会更新。
+            msg: "文本插值",
+            //双大括号会将数据解释为普通文本，为了输出真正的 HTML，你需要使用 v-html 指令
+            rawHtml: '<span style="color:red;">This should is red</span>',
+            //Mustache 语法不能作用在 HTML attribute 上，遇到这种情况应该使用 v-bind 指令
+            color: "red",
+            //对于所有的数据绑定，Vue.js 都提供了完全的 JavaScript 表达式支持。
+            number: 10,
+            ok: false,
+            message: "hello"
+        }
+    });
+    vm.color = "blue";                   //更改实例属性，可响应式触发变化
+    vm.msg = "插值处的内容更新"           //v-once指令表示一次性插值，当数据改变时，插值处的内容不会更新
+    //指令-----------------------------------------------------------------------------------------------
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            url:'http://ww.baidu.com',
+            name:"ferh".split('').reverse().join('')    //动态参数
+        },
+        methods:{
+            click1:function(){console.log('test.......');}
+        }
+    });
+
+</script>

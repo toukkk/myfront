@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>第十四章</title>
+    </head>
+    <body>
+        <h2 style="text-align:center;color:red;">这是一张综合表</h2>
+        <table width="50%" border="1" cellspacing="0" cellpadding="0" align="center">
+            <caption>表一水平标题：</caption>
+            <tr style="color:red;">
+                <th>Name</th>
+                <th>age</th>
+                <th>occupation</th>
+                <th colspan="2">likes</th>
+            </tr>
+            <tr>
+                <td>张铁柱</td>
+                <td>23</td>
+                <td>厨师</td>
+                <td>奶茶</td>
+                <td>大姐</td>
+            </tr>
+            <tr>
+                <td>牛二全</td>
+                <td>32</td>
+                <td>警察</td>
+                <td>残疾人</td>
+                <td>瑞吉峰</td>
+            </tr>
+        </table><br><br>
+        <table width="50%" border="1" cellspacing="0" cellpadding="0" align="center">
+            <caption>表二垂直标题：</caption>
+            <tr>
+                <th>Name</th>
+                <td>张铁柱</td>
+                <td>牛二全</td>
+            </tr>
+            <tr>
+                <th>age</th>
+                <td>23</td>
+                <td>32</td>
+            </tr>
+            <tr>
+                <th>occupation</th>
+                <td>厨师</td>
+                <td>警察</td>
+            </tr>
+            <tr>
+                <th rowspan="2">likes</th> 
+                <td>奶茶</td>
+                <td>残疾人</td>
+            </tr> 
+            <tr>
+                <td>大姐</td>
+                <td>瑞吉峰</td>
+            </tr>
+        </table><br><br>
+        <table width="50%" border="1" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+                <td>
+                    <p>不晓得打些什么</p>
+                    <p>就是打着玩</p>
+                </td>
+                <td>
+                    <table border="1" cellspacion="0" align="center">
+                        <caption>小表格：</caption>
+                        <tr>
+                            <td>A</td>
+                            <td>B</td>
+                        </tr>
+                        <tr>
+                            <td>C</td>
+                            <td>D</td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>列表：
+                <ul>
+                    <li>sjfrjfrjfijf</li>
+                    <li>hfurjfirjfirj</li>
+                    <li>vrjirjeijfi\</li>
+                    <li>dvhruhveijci</li>
+                </ul>
+                </td>
+                <td>
+                    <div style="text-align:center;">
+                        <img src="C:\Users\peiliang\Desktop/3.jpeg" width="50" hieght="50" alt="1" border="1">
+                    </div>
+                </td>
+            </tr>
+        </table>    
+    </body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>School timetable</title>
+    <style>
+    html {
+      font-family: sans-serif;
+    }
+
+    table {
+      border-collapse: collapse;
+      border: 2px solid rgb(200,200,200);
+      letter-spacing: 1px;
+      font-size: 0.8rem;
+    }
+
+    td, th {
+      border: 1px solid rgb(190,190,190);
+      padding: 10px 20px;
+    }
+
+    td {
+      text-align: center;
+    }
+
+    caption {
+      padding: 10px;
+    }
+    </style>
+  </head>
+  <body>
+    <h1>School timetable</h1>
+    <table>
+      <colgroup>
+        <col>
+        <col>
+        <col style="background-color:#97DB9A;">
+        <col style="width:42px;">
+        <col style="background-color:#97DB9A;">
+        <col style="background-color:#DCC48E;border:4px solid #C1437A">
+        <col style="width:42px;">
+        <col style="width:42px;">
+      </colgroup>
+      <tr>
+        <td>&nbsp;</td>
+        <th>Mon</th>
+        <th>Tues</th>
+        <th>Wed</th>
+        <th>Thurs</th>
+        <th>Fri</th>
+        <th>Sat</th>
+        <th>Sun</th>
+      </tr>
+      <tr>
+        <th>1st period</th>
+        <td>English</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>German</td>
+        <td>Dutch</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th>2nd period</th>
+        <td>English</td>
+        <td>English</td>
+        <td>&nbsp;</td>
+        <td>German</td>
+        <td>Dutch</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th>3rd period</th>
+        <td>&nbsp;</td>
+        <td>German</td>
+        <td>&nbsp;</td>
+        <td>German</td>
+        <td>Dutch</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <th>4th period</th>
+        <td>&nbsp;</td>
+        <td>English</td>
+        <td>&nbsp;</td>
+        <td>English</td>
+        <td>Dutch</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My spending record</title>
+    <link href="./text1.css" rel="stylesheet" type="text/css">
+    <style>
+        tbody {
+          font-size: 90%;
+          font-style: italic;
+        }
+
+        tfoot {
+          font-weight: bold;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>My spending record</h1>
+
+      <table>
+        <caption>How I chose to spend my money</caption>
+        <thead>
+          <tr>
+            <th scope="col">Purchase</th>
+            <th scope="col">Location</th>
+            <th scope="col">Date</th>
+            <th scope="col">Evaluation</th>
+            <th scope="col">Cost (€)</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <td colspan="4">SUM</td>
+            <td>118</td>
+          </tr>
+        </tfoot>
+        <tbody>
+          <tr>
+            <th scope="row">Haircut</td>
+            <td>Hairdresser</td>
+            <td>12/09</td>
+            <td>Great idea</td>
+            <td>30</td>
+          </tr>
+          <tr>
+            <td>Lasagna</td>
+            <td>Restaurant</td>
+            <td>12/09</td>
+            <td>Regrets</td>
+            <td>18</td>
+          </tr>
+          <tr>
+            <td>Shoes</td>
+            <td>Shoeshop</td>
+            <td>13/09</td>
+            <td>Big regrets</td>
+            <td>65</td>
+          </tr>
+          <tr>
+            <td>Toothpaste</td>
+            <td>Supermarket</td>
+            <td>13/09</td>
+            <td>Good</td>
+            <td>5</td>
+          </tr>
+        </tbody>
+    </table>
+
+  </body>
+</html>
+

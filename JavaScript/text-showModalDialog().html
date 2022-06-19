@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+</head>
+
+<body>
+    <form>
+        <fieldset id="fiel"></fieldset>
+        <div style="text-align:center;">
+            <button onclick="okey()">okey</button>
+            <button onclick="cancel()">cancel</button>
+        </div>
+        <script>
+            var args = window.dialogArguments;
+            // var args = ["Enter 3D point coordinates", "x", "y", "z"];
+            var text = "<legend>" + args[0] + "</legend>";
+            for (var i = 1; i < args.length; i++) {
+                text += "<label>" + args[i] + ": <input id='f" + i + "'></label><br>";
+            }
+            document.getElementById("fiel").innerHTML = text;
+            function cancel(){window.close();}
+            function okey(){
+                window.returnValue=[];
+                for(var i=1;i<args.length;i++){
+                    window.returnValue[i-1]=document.getElementById("f"+i).value;
+                }
+                window.close();
+            }
+        </script>
+    </form>
+</body>
+
+
+</html>
+
+<script>
+
+</script>

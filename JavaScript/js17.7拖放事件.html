@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script type="text/javascript" src="./scripts/enumeration.js">/*js代码无效*/</script>
+    <script src="./scripts/whenReady.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 type="button" 4>javascript</h1>
+        <span style="padding-left:20px;">东</span>
+    </div>
+    <div>
+        <h1>从时钟中脱出时间戳</h1>
+        <span id="clock"
+            style="font:bold 24pt sans;background:#ddf;padding:10px;border:solid black 2px;border-radius:10px;"></span>
+        <textarea cols="60" rows="20"></textarea>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    whenReady(function () {
+        var clock = document.getElementById("clock");
+        var icon = new Image();
+        icon.src = "./images/3.jpeg";
+        //定义每分钟刷新的时间函数
+        function displayDate() {
+            var now = new Date();
+            var hrs = now.getHours(), mins = now.getMinutes();
+            if (mins < 10) mins = "0" + mins;
+            clock.innerHTML = hrs + ":" + mins;
+            setTimeout(displayDate, 60000);
+        }
+        displayDate()
+        //设置元素为可拖动的
+        clock.draggable = true;
+        //定义拖动事件处理程序
+        clock.ondragstart = function (event) {
+            var event = event || window.event;
+            var dt = event.dataTransfer;        //数据传输属性
+            dt.setData("Text", Date() + "\n");  //传输的信息
+            if (dt.setDragImage)    
+                dt.setDragImage(icon, 0, 0);    //传输时的背景图对象
+        };
+    });
+</script>

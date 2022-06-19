@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //数组类型-----------------------------------------------------------------------------------------------------
+    console.log("Array.isArray([]): ", Array.isArray([]));       //输出：true，函数表示为判断是否为数组
+    console.log("Array.isArray({}): ", Array.isArray({}));       //输出：false
+    console.log("[]: ", [] instanceof Array);                    //输出：true，运算符表示为判断[]是否为数组
+    console.log("{}: ", {} instanceof Array);                    //输出：false
+    var judge_array = Array.isArray || function (a) {            //使用逻辑或||，将函数赋值给变量judge_array
+        return typeof a === "object" && Object.prototype.toString.call(a) === "[object Array]";
+    }                                                            //使用逻辑与&&，定义函数返回值.
+    console.log("judge_array: ", judge_array([]));
+    console.log("");
+    //类数组对象---------------------------------------------------------------------------------------------------
+    var o = {};                             //定义一个空对像
+    var i = 0;
+    while (i < 10) {                        //循环加入数字属性并赋值
+        o[i] = i * i;
+        i++;
+    }
+    o.length = i;                           //添加长度属性，称为类数组
+    var total = 0;
+    for (var j = 0; j < o.length; j++) {    //当作数组一样遍历它
+        total += o[j];
+    };
+    console.log("o: ", o);                  //输出：{0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25, 6: 36, 7: 49, 8: 64, 9: 81, length: 10}
+    console.log("total: ", total);
+    function isArrayLike(o) {               //定义一个函数判断o是否是类数组
+        var len = o.length;
+        if (o &&                            //排除null或者undefined
+            typeof o === "object" &&        //o是对象，排除字符串，和函数
+            isFinite(len) &&                //长度属性值为有限数
+            len >= 0 &&                     //长度属性值为正数
+            len === Math.floor(len) &&      //长度属性值为整数
+            len < 4294967296)               //长度属性x小于2的32次方
+            return true;                    //以上全满足，则为类数组
+        else
+            return false;
+    }
+    console.log("isArrayLike(o): ", isArrayLike(o));    //输出：true
+    //类数组调用数组方法--
+    console.log("o_join(): ", Array.prototype.join.call(o, "+"));
+    console.log("o_slice(): ", Array.prototype.slice.call(o, 0));
+    console.log("o_map(): ", Array.prototype.map.call(o, function (x) { return x + 1; }));
+    console.log("");
+    //在ECMAScript 5中--
+    // Array.join(o, "+")=Array.prototype.join.call(o, "+")        //这是可以看成一个函数
+    // Array.slice(o, 0)=Array.prototype.slice.call(o, 0)
+    // Array.map(o, function (x) { return x + 1; })=Array.prototype.map.call(o, function (x) { return x + 1; })
+    //作为数组的字符串---------------------------------------------------------------------------------------
+    var s="javavscript";
+    console.log("s_join(): ", Array.prototype.join.call(s, " "));   //字符串可以当作类数组一样使用数组方法
+</script>

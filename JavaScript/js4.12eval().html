@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    //eval()------------------------------------------------------------------------------
+    var geval = eval;                       //定义一个全局函数，并将eval赋值给它
+    var x = "global", y = "global";
+    function f() {
+        var x = "local";
+        eval("x +='changed';");             //eval()更改了局部变量x，只作用域局部域
+        return x;
+    }
+    function g() {
+        var y = "local";
+        geval("y +='changed';");            //geval()只能影响到全局变量，即它的作用域为全局
+        return y;
+    }
+    console.log("eval: ", f(), x);
+    console.log("eval: ", g(), y);
+
+
+    var a = 1, b = 2, c = 3, d = 4;         //定义全局变量
+    function o() {                          //定义全局函数
+        a += b;
+        return a;
+    }
+    function p() {  
+        d -= c;
+        console.log("z(): ", z() + d)       //只能影响到局部域p()内
+        function z() {                      //定义局部变量
+            var a = 10;                     //局部变量为覆盖全局函数o()的变量
+            b *= o();                       //引用全局函数
+            return b;
+        }
+        return d;
+    }
+    console.log("o(): ", o())
+    console.log("p(): ", p())
+    console.log("z(): ", z())               //对全局域显示未定义
+
+</script>

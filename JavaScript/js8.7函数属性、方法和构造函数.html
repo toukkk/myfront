@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //length属性--------------------------------------------------------------------------------------------------
+    function check(args) {
+        var actual = args.length;               //实际输入参数对象组的长度
+        var expected = args.callee.length;      //期望的参数长度
+        if (actual !== expected)                //比较两组是否相等
+            return "实参不等于形参";
+    }
+    function test(x, y, z) {
+        check(arguments);
+        return x + y + z;
+    }
+    console.log("test(1,2,3): ", test(1, 2, 3));
+    console.log("test.length: ", test.length);   //输出：3
+    console.log("");
+    //prototype属性---------------------------------------------------------------------------------------------
+    console.log("test.prototype: ", test.prototype);     //这个属性指向一个对象的引用，为原型对象，构造函数的新对象会从构造函数的原型对象中继承属性
+    //call()和apply()方法-------------------------------------------------------------------------------------------------------
+    var o = { m: function () { return 10; } };
+    test.call(o, 1, 2, 3);                               //对象o通过方法调用了函数 test，后面参数为输入函数参数
+    test.apply(o, [1, 2, 3]);                            //输出：6，           于call 不同，apply中的函数参数要加[]        
+    Object.prototype.toString.call(o).slice();  //对象o通过方法调用了函数Object.prototype.toString,然后使用了函数中的方法slice()
+    //相当于--
+    o.m = test;                                 //将函数添加为对象的方法
+    o.m();                                      //运行方法
+    delete o.m;                                 //最后在删除方法
+    //函数实参是任意的--
+    var bigger = Math.max.apply(Math, /*array_of_numbers*/);     //传入apply的参数数组可以是类数组对象也可以是数组
+    //定义函数将对象o中m方法替换--
+    var o = { m: function () { return 10; } };
+    function trace(o, m) {
+        var orginal = o[m];                                 //将方法赋值给变量
+        o[m] = function () {                                //重新定方法o[m]
+            console.log(new Date(), "Entering: ", m);       //输出日志消息
+            var result = orginal.apply(this, arguments);    //调用原始方法函数，this指调用函数的对象，即自身result，
+            console.log(new Date(), "Entering: ", m);       //输出日志消息
+            return result;
+        };
+    }
+    trace(o, "m")                                           //运行函数
+    console.log("trace(o,m): ", o["m"]());                   //新方法的调用
+    console.log("");
+    //bind()--------------------------------------------------------------------------------------------------------------------------
+   
+    var o_new = f.bind(o);                                  //将函数f绑定为对象o的方法，并返回新函数赋值给变量
+    console.log("o_new(2): ", o_new(2));                    //输出：3
+    //替代代码
+    function bind(f, o) {
+        if (f.bind) return f.bind(o);
+        else return function () { return f.apply(o, arguments); };
+        // f.bind(o) || function () { return f.apply(o, arguments); };错了
+    }
+    console.log("bind(f,o): ", bind(f, o));
+    //绑定参数--
+    var sum = function (x, y) { return x + y; };
+    var sum1 = sum.bind(null, 1);                          //将函数绑定在null上，这里this的值绑定null，并且函数的第一个参数绑定到1
+    console.log("sum1(2): ", sum1(2));                     //传入的2为y参数的值，所以输出：3
+    var sum = function (y, z) { return this.x + y + z; };
+    var sum1 = sum.bind({ x: 1 }, 2);                     //将函数绑定在{x:1}对象上，this.x绑定为1，并且函数的第一个参数y绑定到2
+    console.log("sum1(3): ", sum1(3));                   //传入的3为z参数的值，所以输出：6
+    //ECMAScript3 版本中的Function.bind()方法--
+    if (!Function.prototype.bind) {
+        Function.prototype.bind = function (o) {
+            var self = this, outarguments = arguments;      //this指向调用这个函数的对象，即f.bind中的f,arguments则是指当前函数的参数组
+            return function () {                            //表示绑定函数运行后返回的函数
+                var args = [], i;
+                for (i = 1; i < outarguments.length; i++)   //将外函数的除了第一位的参数(表示绑定参数)加到args中，第一位便是对象o
+                    args.push(outarguments[i]);
+                for (i = 0; i < arguments.length; i++)      //将返回函数的参数组（表示输入参数）加到args中
+                    args.push(arguments[i])
+                return self.apply(o,args);                  //表示返回输入参数后返回的结果，self=this=f,args表示绑定参数和输入参数集合的参数组
+            };
+
+        };
+    }
+    console.log("");
+    //toString()--------------------------------------------------------------------------------------------------------
+    //返回字符串（非全部），内置函数返回"[native code]"
+    //Function()构造函数--------------------------------------------------------------------------------------------------------------------
+    var scope = "global scope";
+    function constructFunction() {
+        var scope = "local scope";
+        return new Function("return scope;");               //使用构造函数创建的函数并不能使用词法作用域，相反，函数体代码编译总是在全局作用域
+    }
+    console.log("constructFunction()(): ", constructFunction()());  //所以输出的是全局变量
+    //可调用的对象--------------------------------------------------------------------------------------------------------------------------------
+    function isFunction(x) {                                //定义函数用来验证是否是函数对象
+        return Object.prototype.toString.call(x) === "[object Function]";
+    }
+</script>

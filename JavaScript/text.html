@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script type="text/javascript" src="./images/1.jpeg">/*js代码无效*/</script>
+</head>
+
+<body>
+    <img id="img1" src="./images/1.jpeg" width="0px" height="0px">
+    <img id="img2" src="./images/2.jpeg" width="0px" height="0px">
+    <br />
+    <canvas id="canvas" width="400" height="400" style="border:2px solid red;"></canvas>
+</body>
+
+</html>
+<script>
+    let img1 = document.getElementById('img1');
+    let img2 = document.getElementById('img2');
+
+    let canvas = document.getElementById('canvas');
+    let context = canvas.getContext('2d')
+    img2.onload = function(){
+        context.drawImage(img1,10,10,400,400)
+        context.drawImage(img2,200,80,20,20)
+    }
+    
+
+</script>

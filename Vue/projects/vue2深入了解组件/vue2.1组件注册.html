@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="component-local">
+        <input-local v-model="text"></input-local>
+        <p>{{text}}</p>
+        <button-local><input-local v-model="text1"></input-local><p>{{ text1 }}</p></button-local>
+    </div>
+</body>
+
+</html>
+<style>
+
+</style>
+<script>
+    //局部注册组件
+    var vm = new Vue({
+        el: '#component-local',
+        data:{
+            text:'',
+            text1:'',
+        },
+        components: {
+            "input-local": {
+                props: ['value'],
+                template: `<div><p>输入值：{{value}}</p>
+                    <input :value='value' v-on:input="$emit('input',$event.target.value)"></input></div>`,
+                methods:{
+                    alert:function(e){
+                        console.log(e.target.value)
+                        console.log(this.$emit)
+                    }
+                }
+            },
+            "button-local":{
+                template:`<div><button>曲</button><slot></slot></div>`,
+            },
+        },
+    });
+</script>

@@ -1,0 +1,42 @@
+ipconfig		：IP
+clear              	:  清空
+mv    			：移动
+cd ..     		:   返回上一级目录
+cd        	 	:   打开文件夹
+cd>			:  添加文件
+ls           		:  文件列表
+md ||echo    		:  新建文件夹
+name -v    		:  检查版本或安装成功
+npm install    	:   npm安装 缩写npm i
+npm uninstall 	：npm卸载
+npm update jquery  		： 更新最新版本的jquery
+npm update jquery@2.1.0  	： 更新到指定版本号的jquery
+npm i vue@1.1.2			:    安装指定包
+npm i -g cnpm --registry=https://registry.npm.taobao.org   :安装cnpm
+npm i -g @vue/cli 		:  安装vue脚手架
+npm i -g webpack  		:  安装webpack应用程序的静态模块打包工具
+npm i element-ui -S 		：安装元素组件
+npm run		： 运行
+npm run build	： 为生产而编译和缩小
+npm run serve --open 		:  为开发而编译和重新加载, 运行后打开
+npm run lint  	:  Lints和fixes文件代码规范文件
+npm view jquery dependencies ： 查看某个包对于各种包的依赖关系
+npm view jquery version  	： 查看jquery最新的版本号
+npm view jquery versions  	： 查看所有jquery历史版本号（很实用）
+npm view jquery  			： 查看最新的jquery版本的信息
+npm -v		:  查看npm版本
+npm list -g		：查看所有全局安装
+npm ls  		:  查看dependencies安装依赖包列表
+npm search            :  搜索
+npm init                 :  使用 NPM 生成 package.json 文件，初始化当前目录
+npm help		:  查看命令详情
+npm root     		：查看项目中模块所在的目录
+npm cache clean   ： 清除npm的缓存
+npm prune            ： 清除项目中没有被使用的包
+-g		： 为 --global 的缩写，表示安装到全局目录里
+-S		： 为 --save 的缩写，表示安装的包将写入package.json里面的dependencies
+-D		： 为 --save-dev 的缩写，表示将安装的包将写入packege.json里面的devDependencies
+
+vue ui  	:  项目创建界面
+node  	:  打开node 执行界面
+node .js        ：直接执行js文件

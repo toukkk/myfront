@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div>
+        {{ message | global-filter }}
+        <input v-model="text" @keyup.enter="hander"><br><br>
+        <textarea :value="text1 | global-filter | local-filter('Tiezhu: ',' ')"></textarea>
+    </div>
+</body>
+
+</html>
+<script>
+    //创建全局过滤器
+    Vue.filter('global-filter', function (value) {
+        if (!value) return '';
+        var val = value.toString();
+        return val.charAt(0).toUpperCase() + val.slice(1);
+    });
+    new Vue({
+        el: 'div',
+        data: {
+            message: 'zhang',
+            text: '',
+            text1: '',
+        },
+        methods: {
+            hander: function () {
+                this.text1 += this.text+'\n'+' ';
+                this.text = ""
+            }
+        },
+        //创建局部过滤器
+        filters: {
+            'local-filter': function (value,name,line) {            //第二三参数表示字符串和表达式，可有可无
+                return line+value.split(' ').map(function (val) {
+                    return name+val.charAt(0).toUpperCase() + val.slice(1);
+                }).join(" ");
+            }
+        },
+    });
+</script>
+
+<style>
+
+</style>

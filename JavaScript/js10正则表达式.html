@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/inherit.js"></script>
+    <script src="./scripts/Fun_extend.js"></script>
+    <script src="./scripts/Set.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    var url = /(\w+):\/\/([\w.]+)\/(\S*)/;
+    var text = "Visit my blog at http://www.example.com/~david";
+    var result = text.match(url);                   //返回数组
+    console.log("result: ", Object.prototype.toString(result));
+    if (result != null) {                           //控制台输出
+        console.log("result[0]: ", result[0]);
+        console.log("result[1]: ", result[1]);
+        console.log("result[2]: ", result[2]);
+        console.log("result[3]: ", result[3]);
+    }
+    if (result != null) {                           //页面输出
+        document.write("result[0]: ", result[0]+"<br>");
+        document.write("result[1]: ", result[1]+"<br>");
+        document.write("result[2]: ", result[2]+"<br>");
+        document.write("result[3]: ", result[3]+"<br>");
+    }
+    //最左最右的 / 先忽略 是正则的界定符，表示正则的开始结束
+    // (\w+) 表示长度大于1的字符串 (\w的含义自己搜一下)
+    // : 比较单纯就是表示 :
+    // \/\/ 这个表示 // 因为 / 跟上述界定符长得一样会导致程序懵逼，所以前面加了 \ 来转义
+    // ([\w.]+) 表示长度大于1 由\w和 .(点) 组成的字符串
+    // \/ 同上
+    // (\S*) 除空白符号之外的的任意字符任意长度
+    // 用 () 括起来表示要在代码里捕获这里面匹配的内容
+</script>

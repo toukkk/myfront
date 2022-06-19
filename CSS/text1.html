@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>St Huxley's Community College</title>
+</head>
+
+<body>
+    <div></div>
+    <div><a href="#">swdc</a></div>
+
+</body>
+
+</html>
+<style>
+    div {
+        position: absolute;
+    }
+
+    div:first-child {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+
+    div:nth-child(2) {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(76, 0, 255);
+    }
+    a:active div:first-child {
+        z-index: 2;
+        width: 300px;
+    }
+    a:active div:nth-child(2) {
+        background-color: red;
+    }
+</style>

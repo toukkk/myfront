@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    var then=new Date(2011,0,1);                //2011年1月1号，月份从0 开始
+    var later= new Date(2011,0,1,17,10,30);     //同天下午五点十分三十秒
+    var now= new Date();                        //实时时间
+    var elapsed=now-then;                       //相差时间（毫秒）
+    console.log("now: ",now )                                         
+    console.log("elapsed: ",elapsed)
+    console.log("year: ",now.getFullYear())     //	从 Date 对象以四位数字返回年份。
+    console.log("month: ",now.getMonth())       //	从 Date 对象返回月份 (0 ~ 11)。
+    console.log("date: ",now.getDate())         //	从 Date 对象返回一个月中的某一天 (1 ~ 31)。
+    console.log("day: ",now.getDay())           //	从 Date 对象返回一周中的某一天 (0 ~ 6)。
+    console.log("hours: ",now.getHours())       //	返回 Date 对象的小时 (0 ~ 23)。
+    console.log("minutes: ",now.getMinutes())   //	返回 Date 对象的分钟 (0 ~ 59)。
+    console.log("seconds: ",now.getSeconds())   //  返回 Date 对象的秒数 (0 ~ 59)。
+    console.log("time: ",now.getTime())         //  返回 1970 年 1 月 1 日至今的毫秒数。
+</script>

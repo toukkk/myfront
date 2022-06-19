@@ -1,0 +1,96 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-size: 10px;
+}
+header h1 {
+    text-align: center;
+    font-size: 2.3rem;
+    font-family: 'Courier New', Courier, monospace;
+    letter-spacing: .3rem;
+    line-height: 3;
+    border-top: .5rem solid rgb(202, 80, 80);
+    border-bottom: .5rem solid rgb(202, 80, 80);
+    margin-top: 0;
+}
+section {
+    width: 50%;
+    float: left;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0 2rem;
+}
+section p,li{
+    line-height: 2;
+    letter-spacing: .1rem;
+    word-break: break-all;
+}
+section h2+p {
+    text-indent: 2rem;
+}
+h2 {
+    font-size: 1.6rem;
+    letter-spacing: .2rem;
+    font-family: 'Courier New', Courier, monospace;
+}
+section ul {
+    list-style: square;
+}
+section ol,aside ul{
+    list-style: lower-latin;
+}
+aside {
+    width: 30%;
+    float: left;
+}
+nav {
+    width: 20%;
+    float: left;
+}
+nav ul {
+    list-style: none;
+}
+nav li {
+    display: block;
+    margin-bottom: 1.5rem;
+}
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.3rem;
+    text-align: center;
+    line-height: 3;
+    border: .1rem solid rgba(143, 238, 143, 0.514);
+    width: 11rem;
+    background-color: rgb(240, 255, 241);
+}
+footer {
+    clear: both;
+    text-align: center;
+    border-top: .1rem solid rgb(202, 80, 80);
+    border-bottom: .1rem solid rgb(202, 80, 80);
+}
+footer p {
+    margin-bottom: 0;
+    font-size: .8rem;
+}
+section p a {
+    background: url(../images/9.png) right 0 top 0 no-repeat;
+    background-size: 1rem 1rem;
+    padding-right: 1.2rem;
+}
+a:link {
+    color: orange;
+}
+a:visited {
+    color: blueviolet;
+}
+a:hover,a:focus{
+    text-decoration: none;
+    font-size: large;
+    outline: none;
+}
+a:active {
+    color: black;
+    background-color: rgba(240, 240, 160, 0.651);
+}

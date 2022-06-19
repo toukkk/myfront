@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script type="text/javascript" src="./scripts/enumeration.js">/*js代码无效*/</script>
+</head>
+
+<body>
+    <div>
+        <h1>javascript</h1>
+        <span id="clock"></span>
+    </div>
+</body>
+
+</html>
+<script>
+    //打开和关闭窗口---------------------------------------------------------------------------------------------------
+    //open()
+    var w = window.open("http://www.meituan.com", "_blank", "width:400,height:300,atatus=yes,resizable:yes", "flase");
+    w.opener !== null;                                  //ture  ,在open打开的窗口有个属性opener，表示打开它的脚本的window对象，这里表示window
+    // w.open("http://www.meituan.com").opener === w;   //ture  ，其他窗口或窗体opener属性为null
+    //close()
+    w.close();                  //关闭自己创建的页面
+    // window.close();          //关闭自己
+    //窗体之间的关系
+    console.log("window: ", window);     //任何窗口和窗体的window和self都为引用自身
+    console.log("self: ", self);
+    console.log("parent: ", parent);     //表示引用包含它的窗口或窗体的window对象,当为顶级对象时，引用为自身
+    console.log("top: ", top);           //表示为所在窗口的顶级窗口
+    parent == self;                      //表示为顶级窗口 ，parent.parent表示引用在上一层window对象
+    //交互窗口,窗口中右窗体A，B。
+    // var i = 3;                       //在A中声明全局变量i
+    // parent.A.i = 4;                  //在B中引用并修改A的变量值
+    // Parent.B.f();                    //在A中引用B的全局函数，要当B的方法引用
+    // var f = Parent.B.f();            //引用B的全局函数并赋值给A的变量，方便使用
+    // var s = new Set();               //顶级窗口构造函数创建对象
+    // var s = new parent.Set();        //窗体中引用构造函数创建对像
+    // var Set = top.Set, s = new Set;  //通过引用创建自己的构建函数
+
+</script>

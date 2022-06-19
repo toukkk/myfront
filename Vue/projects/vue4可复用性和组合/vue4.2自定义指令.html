@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input v-focus>
+        <p v-my-directive:[args].a.b="message"></p>
+        <div v-color-swatch="{color:'red',width:'300px'}" style="width: 200px;height: 200px;"></div>
+    </div>
+</body>
+
+</html>
+<script>
+    Vue.directive('my-directive', {
+        bind(el, binding, vnode, oldVnode) {
+            //只调用一次，指令第一次绑定到元素时调用。在这里可以进行一次性的初始化设置
+            var s = JSON.stringify
+            el.innerHTML =
+                '指令名name:' + '<br>' + s(binding.name) + '<br>' +
+                '指令的绑定值value:' + '<br>' + s(binding.value) + '<br>' +
+                '指令绑定表达式expression:' + '<br>' + s(binding.expression) + '<br>' +
+                '指令参数argument:' + '<br>' + s(binding.arg) + '<br>' +
+                '指令修饰符对象modifiers:' + '<br>' + s(binding.modifiers) + '<br>' +
+                'vnode keys:' + '<br>' + Object.keys(vnode).join(', ')
+        },
+        inserted(el, binding, vnode, oldVnode) {
+            //被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)
+            el.focus()
+        },
+        update(el, binding, vnode, oldVnode) {
+            //所在组件的 VNode 更新时调用，但是可能发生在其子 VNode 更新之前
+            var s = JSON.stringify
+            el.innerHTML =
+                '指令名name:' + '<br>' + s(binding.name) + '<br>' +
+                '指令的绑定值value:' + '<br>' + s(binding.value) + '<br>' +
+                '指令绑定表达式expression:' + '<br>' + s(binding.expression) + '<br>' +
+                '指令参数(可动参数)argument:' + '<br>' + s(binding.arg) + '<br>' +
+                '指令修饰符对象modifiers:' + '<br>' + s(binding.modifiers) + '<br>' +
+                'vnode keys:' + '<br>' + Object.keys(vnode).join(', ')
+        },
+        componentUpdated(el, binding, vnode, oldVnode) {
+            //指令所在组件的 VNode 及其子 VNode 全部更新后调用
+        },
+        undind(el, binding, vnode, oldVnode) {
+            //只调用一次，指令与元素解绑时调用
+        }
+    });
+    console.log("Vue.directive('my-directive')只有一个参数： ", Vue.directive("my-directive"))
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            message: 200,
+        },
+        computed: {
+            args: function () {
+                return "args";
+            }
+        },
+        //定义局部指令
+        directives: {
+            focus: {
+                inserted: function (el) {
+                    el.focus()
+                }
+            },
+            //简写函数，在 bind 和 update 时触发相同行为，而不关心其它的钩子时
+            'color-swatch': function (el, binding) {
+                //如果指令需要多个值，可以传入一个 JavaScript 对象字面量
+                el.style.backgroundColor = binding.value.color;
+                el.style.width = binding.value.width;
+            }
+        }
+    });
+    vm.message = 100;       //更新数据
+</script>
+<style>
+
+</style>

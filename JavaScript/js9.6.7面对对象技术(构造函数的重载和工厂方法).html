@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //重载构造函数Set的例子
+    function Set() {
+        this.values = {};
+        this.n = o;
+        if (arguments.length == 1 && isArrayLike(arguments[0]))
+            this.add.apply(this, arguments[0]);     //如果只传入一个类数组对象，则将元素添加到集合
+        else if (arguments.length > 0)
+            this.add.apply(this, arguments);
+    }
+    Set.prototype.add = function () {
+        for (var i = 0; i < arguments; i++) {       //遍历参数对象
+            var arg = arguments[i];
+            var str = Set._a2s(arg);                //用自用函数将参数转化为字符串
+            if (!this.values.hasOwnProperty(str)) {  //如集合中自有属性没有该属性
+                this.values[str] = arg;              //添加
+                this.n++;                           //集合计数器加一
+            }
+        }
+        return this;                                //返回对象
+    };
+    //使用工厂方法返回一个使用极坐标初始化类的对象的实例
+    Complex.polar = function (r, theta) {           //定义类方法输入复数模与角度，返回该值的新的复数对象
+        return new Complex(r * Math.cos(theta), r * Math.sin(theta));
+    };
+    //Set类的一个辅助构造函数
+    function SetFromArray(a) {                      //定义辅助构造函数
+        Set.apply(this, a);                         //通过函数的形式调用Set（）来初始化这个新对象
+    }
+    SetFromArray.prototype = Set.prototype;         //设置原型与Set一样，以便能创造Set实例
+    var s = new SetFromArray([1, 2, 3]);            //创建新对象
+    s instanceof Set                                //输出：true
+</script>

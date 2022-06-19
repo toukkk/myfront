@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第十二章</title>
+    <link href="./styles/text定位.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <div class="div1">
+            <h1>元素定位</h1>
+        </div>
+        <div>
+            <div>
+                <h2>默认定位</h2>
+            </div>
+            <div>
+                <p>position: static;</p>
+                <p>使用 position: static; 定位的元素，无特殊定位，遵循正常的文档流对象:</p>
+                <p class="static">F该元素使用了 position: static;</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>相对浏览器窗口定位</h2>
+            </div>
+            <div>
+                <p><b>注意:</b> IE7 和 IE8 支持只有一个 !DOCTYPE 指定固定值.</p>
+                <p class="fixed">这个段落定位在窗口，不占文档流空间</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>相对页面定位</h2>
+            </div>
+            <div>
+                <p class="relative1">这个标题相对于其正常位置向左移动</p>
+                <p class="relative2">这个标题相对于其正常位置向右移动</p>
+                <p>相对定位会按照元素的原始位置对该元素进行移动。</p>
+                <p>样式 "left:-20px" 从元素的原始左侧位置减去 20 像素。</p>
+                <p>样式 "left:20px" 向元素的原始左侧位置增加 20 像素。</p>
+                <p class="relative3">来一段向上的移动，保留其元素原所占空间。</p>
+                <p><b>注意:</b> 即使相对定位元素的内容是移动,预留空间的元素仍保存在正常流动。</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>绝对定位</h2>
+            </div>
+            <div>
+                <p>用绝对定位,一个元素可以放在页面上的任何位置。
+                    标题下面放置距离左边的页面100 px和距离页面的顶部150 px的元素。</p>
+                <h3 class="absolute">这是一使用了绝对定位的标题，不占文档流空间</h3>
+                <p>这个段落空间它不占。</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>粘性定位</h2>
+            </div>
+            <div>
+                <p>尝试滚动页面。</p>
+                <p>注意: IE/Edge 15 及更早 IE 版本不支持 sticky 属性。</p>
+
+                <div class="sticky">我是粘性定位!</div>
+
+                <div style="padding-bottom:2000px">
+                    <p>滚动我</p>
+                    <p>来回滚动我</p>
+                    <p>滚动我</p>
+                    <p>来回滚动我</p>
+                    <p>滚动我</p>
+                    <p>来回滚动我</p>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>重叠元素堆叠顺序并裁剪</h2>
+                </div>
+                <div>
+                    <img src="./images/5.gif" width="200px" height="200px">
+                    <img class="img" src="./images/3.jpeg" width="200px" height="200px">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>设置滚动条,只有内容溢出时才出现</h2>
+                    <p>如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条等行为。</p>
+                    <p>overflow 属性规定当内容溢出元素框时发生的事情。</p>
+                </div>
+                <div class="overflow1">
+                    <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+                </div><br><br>
+                <div class="overflow2">
+                    <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+                </div><br><br>
+                <div class="overflow3">
+                    <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+                </div><br><br>
+                <div class="overflow4">
+                    <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+                </div><br><br>
+            </div><br><br><br><br><br><br><br><br>
+            <div>
+                <div>
+                    <h2>鼠标光标样式</h2>
+                </div>
+                <div>
+                    <p>请把鼠标移动到单词上，可以看到鼠标指针发生变化：</p>
+                    <span style="cursor:auto">auto</span><br>
+                    <span style="cursor:crosshair">crosshair</span><br>
+                    <span style="cursor:default">default</span><br>
+                    <span style="cursor:e-resize">e-resize</span><br>
+                    <span style="cursor:help">help</span><br>
+                    <span style="cursor:move">move</span><br>
+                    <span style="cursor:n-resize">n-resize</span><br>
+                    <span style="cursor:ne-resize">ne-resize</span><br>
+                    <span style="cursor:nw-resize">nw-resize</span><br>
+                    <span style="cursor:pointer">pointer</span><br>
+                    <span style="cursor:progress">progress</span><br>
+                    <span style="cursor:s-resize">s-resize</span><br>
+                    <span style="cursor:se-resize">se-resize</span><br>
+                    <span style="cursor:sw-resize">sw-resize</span><br>
+                    <span style="cursor:text">text</span><br>
+                    <span style="cursor:w-resize">w-resize</span><br>
+                    <span style="cursor:wait">wait</span><br>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

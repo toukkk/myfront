@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script type="text/javascript" src="./scripts/enumeration.js">/*js代码无效*/</script>
+</head>
+
+<body>
+
+    <div>
+        <h1>Digital Clock</h1>
+        <span id="clock" ></span>
+    </div>
+</body>
+
+
+</html>
+
+<script>
+    //location对象属性，浏览器的定位和导航-----------------------------------------------------------------------------------------------------------------
+    //提取URL的搜索字符串中的参数
+    window.location === document.location;                  //true
+    function urlArgs() {
+        var args = {};
+        var query = location.search.substring(1);           //search属性为带？开始的字符串片段，截取从位置1开的字符串
+        var pairs = query.split("&");                       //将字符串以&分组
+        for (var i = 0; i < pairs.length; i++) {
+            console.log("pairs[i]: ", location)
+            var pos = pairs[i].indexof('=');                //寻找第一个=的位置
+            if (pos == -1) continue;                        //pos=-1表示未找到
+            var name = pairs[i].slice(0, pos);              //=前的赋值给name
+            var value = pairs[i].slice(pos + 1);            //=后的赋值给value
+            value = decodeURIComponent(value);              //对value进行解码
+            args[name] = value;                             //存储为属性
+        }
+        return args;
+    }
+    //载入新的文档
+    // location.assign("http://www.oreilly.com");              //载入当前文档
+    // location.replace("http://www.oreilly.com");             //删除前文档并替换当前文档
+    // location.reload();                                      //重新载入当前文档
+    // location="http://www.oreilly.com";                      //直接将新的URL赋值给location属性
+    // location="page2.html";                                  //载入下一个页面
+    // location="#top";                                        //回到当前文档开始
+    // location.search="?page="+(pagenum+1);                   //location的URL分解属性是可写的，重新赋值可改变URL的位置
+
+    //history对象属性，浏览历史-----------------------------------------------------------------------------------------------------------------------
+    // history.go(-2);                  //后退两个历史记录，相当于单击两次后退按钮
+    // history.length;                  //历史记录个数
+    // history.back();                  //后退一次
+    // history.forward();               //前进一次
+
+    //navigator对象属性，浏览器和screen对象属性，屏幕信息-----------------------------------------------------------------------------------------------------
+    //navigator对象属性，浏览器
+    console.log("navigator.appName: ", navigator.appName);               //返回浏览器名字
+    console.log("navigator.appVersion: ", navigator.appVersion);         //返回浏览器的平台和版本信息
+    console.log("navigator.userAgent: ", navigator.userAgent);           //返回由客户机发送服务器的user-agent 头部的值
+    console.log("navigator.platform: ", navigator.platform);             //返回运行浏览器的操作系统平台
+    console.log("navigator.onLine: ", navigator.onLine);                 //返回当前浏览器是否连接网络
+    console.log("navigator.javaEnabled(): ", navigator.javaEnabled());   //指定是否在浏览器中启用Java小程序
+    console.log("navigator.cookieEnabled: ", navigator.cookieEnabled);   //返回指明浏览器中是否启用 cookie 的布尔值
+    //screen对象属性，屏幕信息
+    console.log("screen.width: ", screen.width);                         //返回屏幕的总宽度
+    console.log("screen.height: ", screen.height);                       //返回屏幕的总高度
+    console.log("screen.availWidth: ", screen.availWidth);               //返回屏幕的宽度（不包括Windows任务栏）
+    console.log("screen.availHeight: ", screen.availHeight);             //返回屏幕的高度（不包括Windows任务栏）
+    console.log("screen.colorDepth: ", screen.colorDepth);               //返回目标设备或缓冲器上的调色板的比特深度
+    console.log("screen.pixelDepth: ", screen.pixelDepth);               //返回屏幕的颜色分辨率（每象素的位数）
+</script>

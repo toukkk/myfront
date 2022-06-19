@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/enumeration.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //forEach()------------------------------------------------------------------------------------------------------
+    var a = [1, 2, 3, , , 4, 5];
+    var sum = 0;
+    a.forEach(function (value) {                    //从头打尾遍历数组，一个参数表示元素值
+        sum += value;                               //执行函数将元素值求和
+    });
+    console.log("sum: ", sum);
+    a.forEach(function (a, b, c) {                  //三个参数分别表示元素值，元素索引，数组
+        c[b] = a + 1;                               //将数组所有元素值加1
+    });
+    console.log("a[i]+1: ", a);                     //稀疏数组返回时还是稀疏数组
+    function foreach(v, i, a) {                     //forEach方法无法在所有元素都传递给函数之前终止遍历，
+        try {                                             //如果需要提前终止则需要放在try块里，并能抛出一个异常
+            a.forEach(v, i, a);
+        }
+        catch (e) {
+            if (e === foreach.break) return;        //如果try块抛出的是foreach.break异常，则循环终止
+            else throw e;
+        }
+    }
+    foreach.break = new Error("stopIteration");
+    console.log("");
+    //map()------------------------------------------------------------------------------------------------------
+    var a = [1, 2, , , 3], a1;
+    a1 = a.map(function (value) {                     //map()方法将调用的数组的每个元素传递给函数，并返回一个新数组，新数组包含该函数返回值
+        return value * value;                         //函数内运算
+    });
+    console.log("a1: ", a1);                          //输出： [1, 4, empty × 2, 9]
+    console.log("");
+    //filter()----------------------------------------------------------------------------------------------------
+    var a = [0, 1, null, 3, , , 4, 5];
+    smallvalue = a.filter(function (x) { return x < 3; });          //方法filter()表示返回一个调用数组的一个符合函数判定元素的新子集数组
+    everyother = a.filter(function (x, i) { return i % 2 === 0; }); //
+    dense = a.filter(function () { return true; });                 //并且该方法会跳过不存存在的元素即稀疏数组，所以返回的是稠密数组
+    dense1 = a.filter(function (x) {                                //跳过undefined和null
+        return x !== undefined && x !== null;
+    });
+    console.log("smallvalue: ", smallvalue);
+    console.log("everyother: ", everyother);
+    console.log("dense: ", dense);
+    console.log("dense1: ", dense1);
+    console.log("");
+    //every()和some()--------------------------------------------------------------------------------------------------------------------------------
+    var a = [1, 2, 3, 4, 5];
+    console.log("turn: ", a.every(function (x) { return x < 10; }));            //方法every()返回判定结果true和false，表示every元素值都要小于10
+    console.log("false: ", a.every(function (x, i) { return i % 2 === 0; }));   //输出：false，表示every引索要为偶数就为true
+    console.log("false: ", a.every(function (x) { return x > 10; }));           //方法every()返回判定结果true和false，表示some元素值都要大于于10
+    console.log("turn: ", a.every(function (x) { return x < 2; }));             //输出：true，表示some元素值小于2就为true
+    console.log("");
+    //reduce()和reduceRight()------------------------------------------------------------------------------------------------------------
+    var a = [1, 2, 3, 4, 5];
+    var sum = a.reduce(function (x, y) { return x + y; }, 0);               //方法表示用指定函数将数组元素进行组合，生产一个值
+    var product = a.reduce(function (x, y) { return x * y; }, 1);           //方法有两个参数，第一为函数，第二为函数第一参数的初始值
+    var product1 = a.reduceRight(function (x, y) { return x * y; }, 1);     //运算规则为(((((1*5)*4)*3)*2)*1),第一个1为初始值
+    var max = a.reduce(function (x, y) { return x > y ? x : y; });         //指定函数内两个参数分别为初始值，元素值。如果没有初始值则为第一，第二元素值
+    console.log("sum: ", sum);              //(((((0+1)+2)+3)+4)+5)
+    console.log("product: ", product);      //(((((1*1)*2)*3)*4)*5)
+    console.log("product1: ", product1);    //(((((1*5)*4)*3)*2)*1)
+    console.log("max: ", max);              //?:运算符取最大
+    var a_object = [{ x: 1, a: 1 }, { y: 2, a: 2 }, { z: 3, a: 3 }];
+    var leftunion = a_object.reduce(union);                 //函数union()为之前定义对象合并函数
+    var rightunion = a_object.reduceRight(union);           //同属性名保留后者
+    console.log("leftunion: ", leftunion);                  //输出：{x: 1, a: 3, y: 2, z: 3}
+    console.log("rightunion: ", rightunion);                //输出：{z: 3, a: 1, y: 2, x: 1}
+    console.log("");
+    //indexOf()和lastIndexOf()----------------------------------------------------------------------------------------------------
+    var a = [0, 1, 2, 1, 0];
+    console.log("a.indexOf(1): ", a.indexOf(1));            //方法indexOf()和lastIndexOf()表示搜索整个数组中特定值的元素，并返回第一个匹配元素的引索
+    console.log("a.lastIndexOf(1): ", a.lastIndexOf(1));    //方法lastIndexOf()表示反向搜索数组
+    console.log("a.indexOf(3): ", a.indexOf(3));            //数组中没有元素为3，所有返回-1
+    console.log("a.indexOf(1,3): ", a.indexOf(1, 3));       //方法的第二参数（可选）数组的一个引索，表示从该元素开始搜索
+    function findal(a, x) {             //定义一个数组搜索函数
+        var results = [];               //声明搜索结果引索组成的数组
+        var i = 0;
+        while (i < a.length) {          //结束条件
+            i = a.indexOf(x, i);        //搜索出的引索赋值给i
+            if (i === -1) break;        //如果没有则跳出
+            results.push(i);            //有则加入数组
+            i++;                        //从搜索结果的后一位开始搜索
+        }
+    }
+</script>

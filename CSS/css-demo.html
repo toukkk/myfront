@@ -1,0 +1,1944 @@
+<!-------------------------------------id和选择器---------------------------------->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>第一章</title>
+        <style>
+            body
+            {
+                background-color:hsl(256, 60%, 78%);
+                /* 会被background-color属性覆盖 */
+                background-image:url("1.jpeg");
+            }
+            h1
+            {
+                font-size:36pt;
+                text-align:center;
+            }
+            h2
+            {
+                color:orange;
+            }
+            hr
+            {
+                color:navy;
+            }
+            p
+            {
+                font-family:"Times New Roman";/* 字体 */
+                font-size:20px;
+                margin-left:50px;
+            }
+            a:link     
+            {
+                color:green;
+            }  
+            /* 未访问 */
+            a:visited
+            {
+                color:yellow;
+            }  
+            /*已访问后 */
+            a:hover    
+            {
+                color:black;
+            }  
+            /*  悬停 */
+            a:active   {
+                color:blue;
+            }  
+             /*  点击 */
+            #paral
+            {
+                text-align:left;
+                color:red;
+            }
+            .center
+            {
+                text-align:center;
+            }
+            p.right
+            {
+                text-align:right;
+            }
+        </style>
+      </head>
+    <body>
+        <h1>这是一个36pt尺寸居中的标题</h1>
+        <h2 class="center">这是一个橙色标题</h2>
+        <hr>
+        <p>这是一个20px像素的段落,做外边距为50像素</p>
+        <p>这是一个可以变色的
+            <a href="https://element.eleme.cn/#/zh-CN/component/dialog" target="_blank" alt="变色">链接</a>。
+        </p>
+        <p id="paral">引用id声明，段落居左，红色字体</p>
+        <h2 class="right">这个标题不受类选择器p.class影响</h2>
+        <p class="right">这个段落受类选择器p.class影响</p>
+    </body>
+</html>
+
+
+
+<!-------------------------------------创建---------------------------------->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>第二章</title>
+        <link href="./styles/text创建.css" rel="stylesheet">
+      </head>
+    <body>
+        <h1>这是一个36pt尺寸居中的标题</h1>
+        <h2 class="center">这是一个橙色标题</h2>
+        <hr>
+        <p>这是一个20px像素的段落,做外边距为50像素</p>
+        <p>这是一个可以变色的
+            <a href="https://element.eleme.cn/#/zh-CN/component/dialog" target="_blank" alt="变色">链接</a>。
+        </p>
+        <p id="paral">引用id声明，段落居左，红色字体</p>
+        <h2 class="right">这个标题不受类选择器p.class影响</h2>
+        <p class="right">这个段落受类选择器p.class影响</p>
+    </body>
+</html>
+
+
+
+<!-------------------------------------背景---------------------------------->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>第二章</title>
+        <link href="./styles/text背景.css" rel="stylesheet">
+      </head>
+    <body>
+        <h1>这是一个36pt尺寸居中的标题</h1>
+        <h2 class="center">这是一个橙色标题</h2>
+        <hr>
+        <p>这是一个20px像素的段落,做外边距为50像素</p>
+        <p>这是一个可以变色的
+            <a href="https://element.eleme.cn/#/zh-CN/component/dialog" target="_blank" alt="变色">链接</a>。
+        </p>
+        <p id="paral">引用id声明，段落居左，红色字体</p>
+        <h2 class="right">这个标题不受类选择器p.class影响</h2>
+        <p class="right">这个段落受类选择器p.class影响</p>
+    </body>
+</html>
+
+
+
+<!-------------------------------------文本---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第三章</title>
+    <link href="./styles/text文本.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>CSS text-align 实例,加阴影</h1>
+
+    <h5>文本划线</h5>
+    <h2>有上划线的标题</h2>
+    <h3>有删除线的标题</h3>
+    <h4>有下划线的标题</h4>
+
+    <h5>靠右对齐时间</h5>
+    <p class="date">2015 年 3 月 14 号</p>
+
+    <h5>预设格式，标准行高，文本左右对齐</h5>
+    <div class="pre">
+        <h5>标准行高</h5>
+        <p class="main">“当我年轻的时候，我梦想改变这个世界；
+            当我成熟以后，我发现我不能够改变这个世界，
+            我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，
+            我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下
+            我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，
+            我突然意识到：如果一开始我仅仅去改变我自己，然后，
+            我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家
+            做一些事情；然后，谁知道呢?我甚至可能改变这个世界。”
+        </p>
+    </div>
+
+    <h5>更小行高，文本左右对齐</h5>
+    <div class="small">
+        <h5>小的行高</h5>
+        <p class="main">“当我年轻的时候，我梦想改变这个世界；
+            当我成熟以后，我发现我不能够改变这个世界，
+            我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，
+            我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下
+            我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，
+            我突然意识到：如果一开始我仅仅去改变我自己，然后，
+            我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家
+            做一些事情；然后，谁知道呢?我甚至可能改变这个世界。”
+        </p>
+    </div>
+
+    <h5>更大行高，文本左右对齐，文本反方向</h5>
+    <div class="big">
+        <h5>大的行高</h5>
+        <p class="main" id="rtl">“当我年轻的时候，我梦想改变这个世界；
+            当我成熟以后，我发现我不能够改变这个世界，
+            我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，
+            我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下
+            我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，
+            我突然意识到：如果一开始我仅仅去改变我自己，然后，
+            我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家
+            做一些事情；然后，谁知道呢?我甚至可能改变这个世界。”
+        </p>
+    </div>
+
+    <h5>链接无下划线</h5>
+    <p><b>注意：</b>重置
+        <a href="./styles/lession背景.html" target="_blank" alt="liuranqi">浏览器</a>
+        窗口大小查看 &quot;justify&quot; 是如何工作的。
+    </p>
+
+    <h5>字母大小写，垂直对齐，字符间距，单词间距</h5>
+    <p class="uppercase">This is <img src="./image/1.jpeg" width="80px" height="80px"> some text.</p>
+    <p class="lowercase">This is <img class="top" src="./image/1.jpeg" width="80px" height="80px"> some text.</p>
+    <p class="capitalize">This is <img class="bottom" src="./image/1.jpeg" width="80px" height="80px"> some text.</p>
+</body>
+
+</html>
+
+
+
+<!-------------------------------------字体---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第四章</title>
+    <link href="./styles/text字体.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>CSS font-family</h1>
+    <p class="normal">这是一个正常样式的段落</p>
+    <p class="serifItalicSize">这段文字的字体是 Time New Roman，斜体，正常字体大小</p>
+    <p class="sansserifObliqueSize">这段文字的字体是 Arial，斜体，4px字体大小</p>
+
+    <p>允许在 Internet Explorer 9, Firefox, Chrome, Opera, 和 Safari 中通过缩放浏览器调整文本大小。</p>
+    <p><b>注意:</b>这个例子在 IE9之前的版本不工作, prior version 9.</p>
+
+
+    <h2>字体加粗</h2>
+    <p class="normalVariant">这是一个字体粗细正常的段落</p>
+    <p class="lightVariant">This is a paragraph with smaller font thickness </p>
+    <p class="bold">这是一个字体粗细加粗的段落</p>
+    <p class="thick">这是一个字体粗细为900的段落</p>
+
+
+    <h2>font简写属性</h2>
+    <p class="font">font 简写属性在一个声明中设置所有字体属性。可设置的属性是（按顺序）： "font-style font-variant font-weight 
+        font-size/line-height font-family"font-size和font-family的值是必需的。如果缺少了其他值，默认值将被插入，如果有默认值的话。</p>
+</body>
+
+</html>
+
+
+
+<!-------------------------------------链接---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第五章</title>
+    <link href="./styles/text链接.css" rel="stylesheet">
+</head>
+
+<body>
+    <h2>点击链接改变链接样式</h2>
+    <p>
+        <a class="color" href="https://element.eleme.cn/#/zh-CN/component/dialog" target="_blank" alt="element.eleme.cn">这是一个可改变链接颜色的链接</a>
+    </p>
+    <p>
+        <a class="size" href="https://element.eleme.cn/#/zh-CN/component/dialog" target="_blank" alt="element.eleme.cn">这是一个可改变链接字体大小的链接</a>
+    </p>
+    <p>
+        <a class="background" href="https://element.eleme.cn/#/zh-CN/component/dialog" target="_blank" alt="element.eleme.cn">这是一个可改变链接背景颜色的链接</a>
+    </p>
+    <p>
+        <a class="family" href="https://element.eleme.cn/#/zh-CN/component/dialog" target="_blank" alt="element.eleme.cn">这是一个可改变链接字体类型的链接</a>
+    </p>
+    <p>
+        <a class="style" href="https://element.eleme.cn/#/zh-CN/component/dialog" target="_blank" alt="element.eleme.cn">这是一个可改变链接文字修饰的链接</a>
+    </p>
+
+    <h2>创建连接框</h2>
+    <div class="class">
+        <a href="./image/1.jpeg" target="_blank">这是一个链接</a> 
+        <p><b>注意:</b> hover必须在:link和 a:visited之后定义才有效.</p>
+        <p><b>注意:</b>active必须在hover之后定义是有效的.</p>
+    </div>
+</body>
+
+</html>
+
+
+
+<!-------------------------------------列表---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第六章</title>
+    <link href="./styles/text列表.css" rel="stylesheet">
+</head>
+
+<body>
+    <h2>列表样式</h2>
+    <ul class="a">
+        <li>第一章</li>
+        <li>第二章</li>
+        <li>第三章</li>
+        <li>第四章</li>
+    </ul>
+    <ul class="b">
+        <li>第一章</li>
+        <li>第二章</li>
+        <li>第三章</li>
+        <li>第四章</li>
+    </ul>
+    <ol class="c">
+        <li>第一章</li>
+        <li>第二章</li>
+        <li>第三章</li>
+        <li>第四章</li>
+    </ol>
+    <ol class="d">
+        <li>第一章</li>
+        <li>第二章</li>
+        <li>第三章</li>
+        <li>第四章</li>
+    </ol>
+
+    <h2>图像图标</h2>
+    <div>
+        <ul class="img">
+            <li>第一章</li>
+            <li>第二章</li>
+            <li>第三章</li>
+            <li>第四章</li>
+        </ul>
+    </div>
+    <div>
+        <ul class="img-compatible">
+            <li>第一章</li>
+            <li>第二章</li>
+            <li>第三章</li>
+            <li>第四章</li>
+        </ul>
+    </div>
+
+    <h2>list-style 简写</h2>
+    <div>
+        <ul class="abb">
+            <li>第一章</li>
+            <li>第二章</li>
+            <li>第三章</li>
+            <li>第四章</li>
+        </ul>
+    </div>
+</body>
+
+</html>
+
+
+
+<!-------------------------------------表格---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第七章</title>
+    <link href="./styles/text表格.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <h2>定义表格</h2>
+        <table>
+            <caption>表一：基本信息表</caption>
+            <tr>
+                <th>名字</th>
+                <th>性别</th>
+                <th>年龄</th>
+            </tr>
+            <tr>
+                <td>章铁柱</td>
+                <td>男</td>
+                <td>45</td>
+            </tr>
+            <tr>
+                <td>王二蛋</td>
+                <td>女</td>
+                <td>23</td>
+            </tr>
+        </table>
+        <p><b>注意：</b> 如果没有指定 !DOCTYPE border-collapse 属性在 IE8 及更早 IE 版本中是不起作用的。</p>
+    </div>
+
+    <div>
+        <h2>检验表</h2>
+        <table id="customers">
+            <caption>表二：基础测试表</caption>
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+            </tr>
+            <tr class="back">
+                <td>Berglunds snabbköp</td>
+                <td>Christina Berglund</td>
+                <td>Sweden</td>
+            </tr>
+            <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+            </tr>
+            <tr class="back">
+                <td>Ernst Handel</td>
+                <td>Roland Mendel</td>
+                <td>Austria</td>
+            </tr>
+            <tr>
+                <td>Island Trading</td>
+                <td>Helen Bennett</td>
+                <td>UK</td>
+            </tr>
+            <tr class="back">
+                <td>Königlich Essen</td>
+                <td>Philip Cramer</td>
+                <td>Germany</td>
+            </tr>
+            <tr>
+                <td>Laughing Bacchus Winecellars</td>
+                <td>Yoshi Tannamuri</td>
+                <td>Canada</td>
+            </tr>
+            <tr class="back">
+                <td>Magazzini Alimentari Riuniti</td>
+                <td>Giovanni Rovelli</td>
+                <td>Italy</td>
+            </tr>
+            <tr>
+                <td>North/South</td>
+                <td>Simon Crowther</td>
+                <td>UK</td>
+            </tr>
+            <tr class="back">
+                <td>Paris spécialités</td>
+                <td>Marie Bertrand</td>
+                <td>France</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
+
+
+
+
+<!-------------------------------------盒子---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第八章</title>
+    <link href="./styles/text盒子.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>盒子模型演示</h1>
+
+    <p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。</p>
+    <div class="text1">
+        <p>这里是盒子内的实际内容。</p>
+        <p>有 25px 内间距，25px 外间距、25px 绿色边框。</p>
+    </div>
+
+    <p>计算盒子尺寸</p>
+    <div class="text2">
+        <img src="./images/1.jpeg" width="250px" height="250px">
+        <div>
+            <p>上面的图片是250 px宽。</p>
+            <p>这个元素的总宽度也是250 px。</p>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+<!-------------------------------------边框&轮廓---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第九章</title>
+    <link href="./styles/text边框&轮廓.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <div>
+            <h2>边框样式</h2>
+            <p class="none">无边框。</p>
+            <p class="dotted">标准边宽蓝色的虚边框。</p>
+            <p class="dashed">简写红色8px虚线边框。</p>
+            <p class="solid">上面是绿色双边框的实线边框。</p>
+            <p class="double">下面是隐藏边框的双边框。</p>
+            <p class="groove"> 左边是宽度为10px的凹槽边框。</p>
+            <p class="ridge">四边颜色不同的垄状边框。</p>
+            <p class="inset">右边边框颜色为蓝色的嵌入边框。</p>
+            <p class="outset">外凸边框。</p>
+            <p class="hidden">隐藏边框。</p>
+            <p class="mix">混合边框。</p>
+        </div>
+        <div>
+            <h2>设置圆形边框</h2>
+            <p id="example1">border-radius 属性允许您为元素添加圆角边框！</p>
+            <p id="example2">如果设置了两个值，第一个用于左上角和右下角，第二个用于右上角和左下角。并插入个背景图</p>
+            <p id="example3">使用百分比定义圆角</p>
+            <p id="example4">简写</p>
+        </div>
+        <div class="backcolor">
+            <h2>宽高</h2>
+            <p class="height2">本段落的最大高度被设置为 50px。 本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。本段落的最大高度被设置为 50px。
+                本段落的最大高度被设置为 50px。</p>
+            <p class="width1">这段的最小高度设置为60px。</p>
+            <p id="width2">这段的最小宽cccccdddvvvvvvvvvvvddddddccccccccccccccccc度设置为100px。</p>
+            <img class="img" src="./images/2.jpeg" width="200px" height="200px">
+            <P class="height1">这是段落中的一些文本。这是段落中的一些文本。 这是段落中的一些文本。
+                这是段落中的一些文本。 这是段落中的一些文本。这是段落中的一些文本.</P>
+        </div>
+      </div>
+      </div>
+
+    <p><b>注意:</b> "border-color" 属性 如果单独使用则不起作用. 要先使用 "border-style" 属性来设置边框。
+</body>
+
+</html>
+
+
+
+<!-------------------------------------外边距&填充---------------------------------->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>第十章</title>
+        <link href="./styles/text外边距&填充.css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <div>
+                <h1>设置外边距和填充</h1>
+            </div>
+            <div>
+                <p class="distance2">在选择器中以.来定义class选择器，class选择器用来描述一组元素的样式，class选择器区别id选择器可以多个元素使用。</p>
+                <p class="distance1">!important规则使用与优先级无关，使用!important的声明将覆盖其他声明。使用!important不是良好的习惯，不破坏原有样式表级联关系，造成bug.</p>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+<!-------------------------------------显示---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>
+        第十一章
+    </title>
+    <link href="./styles/text显示.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>显示与隐藏</h1>
+            <P>这是一个正常的段落</P>
+            <p class="hidden">这是一个隐藏但占用空间的段落</p>
+            <p>这是中间的一个段落</p>
+            <p class="none">这是一个隐藏但不占空间的段落</p>
+            <p>这是一个结尾的段落</p>
+        </div>
+        <div class="inline">
+            <h2>显示元素的内联元素</h2>
+            <ul>
+                <li><a href="./css-demo.html" target="_blank">html</a></li>
+                <li><a href="./css-demo.html" target="_blank">CSS</a></li>
+                <li><a href="./css-demo.html" target="_blank">js</a></li>
+                <li><a href="./css-demo.html" target="_blank">xml</a></li>
+            </ul>
+            <p>display 属性的值为 "inline"的结果</p>
+            <p>两个元素显示在同一水平线上。</p>
+        </div>
+        <div>
+            <h2>换行</h2>
+            <p><span>Record: MTV Unplugged in New York</span><span>Year: 1993</span></p>
+            <h2>Radiohead</h2>
+            <P><span>Record: OK Computer</span><span>Year: 1997</span></P>
+        </div>
+        <div>
+            <h2>对表使用visibility属性的collapse值</h2>
+            <table>
+                <tr>
+                    <th>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>4</td>
+                    <td>6</td>
+                </tr>
+                <tr id="collapse">
+                    <td>4</td>
+                    <td>8</td>
+                    <td>12</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>16</td>
+                    <td>24</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+<!-------------------------------------定位---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第十二章</title>
+    <link href="./styles/text定位.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <div class="div1">
+            <h1>元素定位</h1>
+        </div>
+        <div>
+            <div>
+                <h2>默认定位</h2>
+            </div>
+            <div>
+                <p>position: static;</p>
+                <p>使用 position: static; 定位的元素，无特殊定位，遵循正常的文档流对象:</p>
+                <p class="static">F该元素使用了 position: static;</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>相对浏览器窗口定位</h2>
+            </div>
+            <div>
+                <p><b>注意:</b> IE7 和 IE8 支持只有一个 !DOCTYPE 指定固定值.</p>
+                <p class="fixed">这个段落定位在窗口，不占文档流空间</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+                <p>来一段无限循环的段落</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>相对页面定位</h2>
+            </div>
+            <div>
+                <p class="relative1">这个标题相对于其正常位置向左移动</p>
+                <p class="relative2">这个标题相对于其正常位置向右移动</p>
+                <p>相对定位会按照元素的原始位置对该元素进行移动。</p>
+                <p>样式 "left:-20px" 从元素的原始左侧位置减去 20 像素。</p>
+                <p>样式 "left:20px" 向元素的原始左侧位置增加 20 像素。</p>
+                <p class="relative3">来一段向上的移动，保留其元素原所占空间。</p>
+                <p><b>注意:</b> 即使相对定位元素的内容是移动,预留空间的元素仍保存在正常流动。</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>绝对定位</h2>
+            </div>
+            <div>
+                <p>用绝对定位,一个元素可以放在页面上的任何位置。
+                    标题下面放置距离左边的页面100 px和距离页面的顶部150 px的元素。</p>
+                <h3 class="absolute">这是一使用了绝对定位的标题，不占文档流空间</h3>
+                <p>这个段落空间它不占。</p>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h2>粘性定位</h2>
+            </div>
+            <div>
+                <p>尝试滚动页面。</p>
+                <p>注意: IE/Edge 15 及更早 IE 版本不支持 sticky 属性。</p>
+
+                <div class="sticky">我是粘性定位!</div>
+
+                <div style="padding-bottom:2000px">
+                    <p>滚动我</p>
+                    <p>来回滚动我</p>
+                    <p>滚动我</p>
+                    <p>来回滚动我</p>
+                    <p>滚动我</p>
+                    <p>来回滚动我</p>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>重叠元素堆叠顺序并裁剪</h2>
+                </div>
+                <div>
+                    <img src="./images/5.gif" width="200px" height="200px">
+                    <img class="img" src="./images/3.jpeg" width="200px" height="200px">
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h2>设置滚动条,只有内容溢出时才出现</h2>
+                    <p>如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条等行为。</p>
+                    <p>overflow 属性规定当内容溢出元素框时发生的事情。</p>
+                </div>
+                <div class="overflow1">
+                    <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+                </div><br><br>
+                <div class="overflow2">
+                    <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+                </div><br><br>
+                <div class="overflow3">
+                    <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+                </div><br><br>
+                <div class="overflow4">
+                    <p>菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+                </div><br><br>
+            </div><br><br><br><br><br><br><br><br>
+            <div>
+                <div>
+                    <h2>鼠标光标样式</h2>
+                </div>
+                <div>
+                    <p>请把鼠标移动到单词上，可以看到鼠标指针发生变化：</p>
+                    <span style="cursor:auto">auto</span><br>
+                    <span style="cursor:crosshair">crosshair</span><br>
+                    <span style="cursor:default">default</span><br>
+                    <span style="cursor:e-resize">e-resize</span><br>
+                    <span style="cursor:help">help</span><br>
+                    <span style="cursor:move">move</span><br>
+                    <span style="cursor:n-resize">n-resize</span><br>
+                    <span style="cursor:ne-resize">ne-resize</span><br>
+                    <span style="cursor:nw-resize">nw-resize</span><br>
+                    <span style="cursor:pointer">pointer</span><br>
+                    <span style="cursor:progress">progress</span><br>
+                    <span style="cursor:s-resize">s-resize</span><br>
+                    <span style="cursor:se-resize">se-resize</span><br>
+                    <span style="cursor:sw-resize">sw-resize</span><br>
+                    <span style="cursor:text">text</span><br>
+                    <span style="cursor:w-resize">w-resize</span><br>
+                    <span style="cursor:wait">wait</span><br>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
+
+
+
+<!-------------------------------------浮动---------------------------------->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>第十三章</title>
+        <link href="./styles/text浮动.css" rel="stylesheet">
+    </head>
+    <body>
+        <div>
+            <div>
+                <h1>元素浮动</h1>
+            </div>
+            <div>
+                <h2>图像在文本中浮动</h2>
+                <p>在下面段落中插入一张<b>float:right</b>的图片，将图片浮动在段落右边</p>
+                <p>在上面的段落中, 第一个字嵌入在span 元素中。这个 span 元素的宽度是当前字体大小的1.2倍。
+                    这个 span 元素是当前字体的400%(相当大)， line-height 为80%。文字的字体为"Algerian"。</p>
+            </div>
+            <div>
+                <img class="img-right" src="./images/4.jpeg" width="100px" height="100px">
+                <p><span>这</span>是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                    这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                    这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                    这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                    这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                    这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                    这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                    这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                    这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。这是一个段落。
+                </p>
+            </div>
+            <div>
+                <h2>多张图像浮动排列</h2>
+            </div>
+            <div class="images">
+                <h3>第一组</h3>
+                <img src="./images/5.gif" width="100px" height="100px">
+                <img src="./images/5.gif" width="100px" height="100px">
+                <img src="./images/5.gif" width="100px" height="100px">
+                <img src="./images/5.gif" width="100px" height="100px">
+                <img src="./images/5.gif" width="100px" height="100px">
+                <img src="./images/5.gif" width="100px" height="100px">
+                <img src="./images/5.gif" width="100px" height="100px">
+                <img src="./images/5.gif" width="100px" height="100px">
+                <h3 class="both">第二组</h3>
+                <img src="./images/4.jpeg" width="100px" height="100px">
+                <img src="./images/4.jpeg" width="100px" height="100px">
+                <img src="./images/4.jpeg" width="100px" height="100px">
+                <img src="./images/4.jpeg" width="100px" height="100px">
+                <img src="./images/4.jpeg" width="100px" height="100px">
+                <img src="./images/4.jpeg" width="100px" height="100px">
+                <img src="./images/4.jpeg" width="100px" height="100px">
+                <img src="./images/4.jpeg" width="100px" height="100px">
+            </div>
+            <div class="web">
+                <div>
+                    <h2>使用float创造一个网页</h2>
+                </div>
+                <div>
+                    <div>
+                        <ul id="header">
+                            <li><a class="active" href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">主页</a></li>
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">新闻</a></li>
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">联系我们</a></li>
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">关于我们</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="nav">
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">The Flight</a></li>
+                            <li><a class="active" href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">The City</a></li>
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">The Island</a></li>
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">The Food</a></li>
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">The People</a></li>
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">The History</a></li>
+                            <li><a href="./lession链接.html" target="_blank" alt="禁止访问" title="更多">The Oceans</a></li>
+                        </ul>
+                    </div>
+                    <div class="main">
+                        <div>
+                            <h3>The City</h3>
+                        </div>
+                        <div>
+                            <p class="h"><b>Chania</b></p>
+                            <p>Chania is the capital of the Chania region on the island of Crete.
+                                The city can be divided in two parts, the old town and the modern city.</p>
+                            <p>You will learn more about responsive web pages in a later chapter.</p>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <p>底部文本</p>
+                    </div>
+                </div>
+            </div>                                                                                 
+        </div>
+    </body>
+</html>
+
+
+<!-------------------------------------浮动---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第十四章</title>
+    <link href="./styles/text导航栏.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>导航栏</h1>
+        </div>
+        <div>
+            <h2>垂直导航栏</h2>
+            <ul class="nav">
+                <li><a class="action" href="./lession列表.html" target="_blank">主页</a> </li>
+                <li><a href="./lession列表.html" target="_blank">新闻</a> </li>
+                <li><a href="./lession列表.html" target="_blank">联系我们</a> </li>
+                <li><a href="./lession列表.html" target="_blank">关于</a> </li>
+            </ul>
+        </div>
+        <div class="main">
+            <h2>Fixed Full-height Side Nav</h2>
+            <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
+            <p>Notice that this div element has a left margin of 25%. This is because the side navigation is set to 25%
+                width. If you remove the margin, the sidenav will overlay/sit on top of this div.</p>
+            <p>Also notice that we have set overflow:auto to sidenav. This will add a scrollbar when the sidenav is too
+                long (for example if it has over 50 links inside of it).</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+            <p>Some text..</p>
+        </div>
+        <div class="main2">
+            <div>
+                <h2>水平导航栏</h2>
+                <ul class="header">
+                    <li><a class="action" href="./lession列表.html" target="_blank">主页</a> </li>
+                    <li><a href="./lession列表.html" target="_blank">新闻</a> </li>
+                    <li><a href="./lession列表.html" target="_blank">联系我们</a> </li>
+                    <li style="float:right;"><a href="./lession列表.html" target="_blank">关于</a> </li>
+                </ul>
+            </div>
+            <div class="main1">
+                <h2>Fixed Full-height Side Nav</h2>
+                <h3>Try to scroll this area, and see how the sidenav sticks to the page</h3>
+                <p>Notice that this div element has a left margin of 25%. This is because the side navigation is set to
+                    25% width. If you remove the margin, the sidenav will overlay/sit on top of this div.</p>
+                <p>Also notice that we have set overflow:auto to sidenav. This will add a scrollbar when the sidenav is
+                    too long (for example if it has over 50 links inside of it).</p>
+                <p>Some text..</p>
+                <p>Some text..</p>
+                <p>Some text..</p>
+                <p>Some text..</p>
+                <p>Some text..</p>
+                <p>Some text..</p>
+                <p>Some text..</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+<!-------------------------------------下拉菜单---------------------------------->
+<!DOCTYPE html>
+<html>
+<heaf>
+    <meta charset="utf-8">
+    <title>第十五章</title>
+    <link href="./styles/text下拉菜单.css" rel="stylesheet">
+</heaf>
+
+<body>
+    <div>
+        <div>
+            <h1>设置下拉菜单</h1>
+        </div>
+        <div>
+            <p>鼠标移动到按钮上打开下拉菜单</p>
+            <div class="dropdown">
+                <button class="button">下拉菜单</button>
+                <div class="button-form">
+                    <a href="./lession列表.html" target="_blank">第一个菜单</a>
+                    <a href="./lession列表.html" target="_blank">第二个菜单</a>
+                    <a href="./lession列表.html" target="_blank">第三个菜单</a>
+                </div>
+            </div>
+            <div class="dropdown" style="float:right">
+                <button class="button">右下拉菜单</button>
+                <div class="button-form">
+                    <a href="./lession列表.html" target="_blank">第一个菜单</a>
+                    <a href="./lession列表.html" target="_blank">第二个菜单</a>
+                    <a href="./lession列表.html" target="_blank">第三个菜单</a>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h1>设置下拉图像</h1>
+            </div>
+            <div>
+                <p>鼠标移动到图像上打开下拉菜单</p>
+                <div class="dropdown">
+                    <img src="./images/2.jpeg" width="200px" height="200px">
+                    <div class="button-form">
+                        <img src="./images/2.jpeg" width="400px" height="400px">
+                        <div class="text">
+                            <p>学的不仅是技术，更是梦想！</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h1>设置下拉导航栏</h1>
+            </div>
+            <div>
+                <ul class="nav">
+                    <li><a href="./lession列表.html">主页</a> </li>
+                    <li><a href="./lession列表.html">新闻</a> </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="button">下拉菜单</button>
+                            <div class="button-form">
+                                <a href="./lession列表.html" target="_blank">第一个菜单</a>
+                                <a href="./lession列表.html" target="_blank">第二个菜单</a>
+                                <a href="./lession列表.html" target="_blank">第三个菜单</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="float:right">
+                        <div class="dropdown">
+                            <img src="./images/2.jpeg" width="30px" height="30px">
+                            <div class="button-form">
+                                <img src="./images/2.jpeg" width="40px" height="40px">
+                                <div class="text">
+                                    <p>学的不仅是技术，更是梦想！</p>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+                <div>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<!-------------------------------------导航栏测试---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>text</title>
+    <meta charset="utf-8">
+    <style>
+        body {
+            width:50%;
+            margin: 0 auto;
+        }
+        h1 {
+            color: rgb(145, 187, 120);
+            text-shadow:3px 3px 1px rgb(223, 165, 165);
+            font-size:150%;
+            text-align:center;
+            margin:0;
+            padding:5px;
+        }
+        .left-dropdown {
+            width:10%;
+            height:100%;
+            margin-right:0;
+            position:fixed;
+            /* top:0; */
+            background-color:rgb(179, 214, 211);
+
+        }
+        .left-dropdown ul {
+            list-style-type:none;
+            padding:0;
+        }
+        .left-dropdown li {
+            width:90%;
+            background-color:rgb(190, 143, 235);
+            margin:10px;
+        }
+        .left-dropdown li a {
+            text-decoration:none;
+            color:black;
+            padding:10px;
+            display:block;
+            margin-bottom:40px;
+        }
+        .left-dropdown a:hover:not(.action), .action {
+            background-color:rgb(151, 93, 206);
+        }
+        .main {
+            width:75%;
+            float:right;
+        }
+        .main span {
+            font-size:200%;
+            float:left;
+            padding:10px;
+        }
+        .main .brief {
+            background-color: rgb(211, 238, 167);
+        }
+        .main div:first-child p {
+            margin-bottom:0;
+        }
+        .main .top-dropdown ul {
+            list-style-type:none;
+            background-color: rgb(47, 45, 45);
+            overflow:hidden;
+            padding:0;
+            margin:0;
+        }
+        .main .top-dropdown li {
+            float:left;
+            width:15%;
+            border-right:2px solid rgb(187, 92, 92);
+        }
+        .main .top-dropdown li a,.button {
+            display:block;
+            text-align:center;
+            text-decoration:none;
+            color:white;
+            padding:10px 0px;
+        }
+        .main .top-dropdown li:last-child {
+            border:none;
+        }
+        .dropdown {
+            display:inline-block;
+            width:100%;
+        }
+        .button {
+            background-color: black;
+            color:white;
+            width:100%;
+            border:none;
+            cursor:pointer;
+        }
+        .button-form {
+            display:none;
+            box-shadow:0 5px 8px 0 rgba(0,0,0,0.5);
+            background-color: rgb(152, 170, 187);
+            min-width:100px;
+            position:absolute;
+        }
+        .top-dropdown .dropdown .button-form a {
+            text-decoration:none;
+            display:block;
+            color:black;
+            padding:10px;
+        }
+        .dropdown:hover .button-form {
+            display:block;
+        }
+        .top-dropdown a:hover:not(.action) {
+            background-color: black;
+        }
+        .dropdown .button-form a:hover {
+            background-color:rgb(20, 212, 212);
+        }
+        .top-dropdown+div h1~p {
+            text-indent:2em;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>综合测试</h1>
+        </div>
+        <div class="left-dropdown">
+            <ul>
+                <li><a class="action" href="#" target="_blank">主页</a> </li>
+                <li><a href="#" target="_blank">书城</a> </li>
+                <li><a href="#" target="_blank">漫画</a> </li>
+                <li><a href="#" target="_blank">联系我们</a> </li>
+                <li><a href="#" target="_blank">关于我们</a> </li>
+            </ul>
+        </div>
+        <div class="main">
+            <div class="brief">
+                <h1>网站简介</h1>
+                <p><span>这</span>是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。
+                    这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。这是一段简介。
+                    这是一段简介。这是一段简介。这是一段简介。这是一段简介。
+                </p>
+            </div>
+            <div class="top-dropdown">
+                <ul>
+                    <li><a hred="#" target="_blank">精品书城</a> </li>
+                    <li><a hred="#" target="_blank">免费</a> </li>
+                    <li><a hred="#" target="_blank">vip专享</a> </li>
+                    <li>
+                        <div class="dropdown">
+                            <button class="button">设置</button>
+                            <div class="button-form">
+                                <a hred="#" target="_blank">字体设置</a>
+                                <a hred="#" target="_blank">图案设置</a>
+                                <a hred="#" target="_blank">声音设置</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li style="float:right"><img style="float:right" src="./images/1.jpeg" width="40px" height="40px"> </li>
+                </ul>
+            </div>
+            <div>
+                <h1>第一章</h1>
+                <p>这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。
+                    这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。这是一段文字。
+                    这是一段文字。这是一段文字。这是一段文字。这是一段文字。
+                </p>
+                <p>还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。
+                    还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。
+                    还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。还是一段文字。
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+<!-------------------------------------提示工具---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>第十六章</title>
+    <link href="./styles/text提示工具.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>设置提示工具</h1>
+        </div>
+        <div>
+            <div class="tips">
+                <div>这里有个炸弹</div>
+                <div class="tips-text">真有炸弹</div>
+            </div>
+        </div>
+    </div>
+
+    </div> 
+</body>
+
+</html>
+
+
+
+<!-------------------------------------图片廊---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charget="utf-8">
+    <title>第十七章</title>
+    <link href="./styles/text图像廊.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <h1>图片集</h1>
+        <div class="img">
+            <div class="img1">
+                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                    <img src="./images/1.jpeg" alt="这是一个表情包" width="300px" height="300px">
+                </a>
+                <div class="p">这是一个搞笑的表情包</div>
+            </div>
+            <div class="img1">
+                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                    <img src="./images/2.jpeg" alt="这是一个表情包" width="300px" height="300px">
+                </a>
+                <div class="p">这是一个搞笑的表情包</div>
+            </div>
+            <div class="img1">
+                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                    <img src="./images/3.jpeg" alt="这是一个表情包" width="300px" height="300px">
+                </a>
+                <div class="p">这是一个搞笑的表情包</div>
+            </div>
+            <div class="img1">
+                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                    <img src="./images/4.jpeg" alt="这是一个表情包" width="300px" height="300px">
+                </a>
+                <div class="p">这是一个搞笑的表情包</div>
+            </div>
+            <div class="img1">
+                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                    <img src="./images/5.gif" alt="这是一个表情包" width="300px" height="300px">
+                </a>
+                <div class="p">这是一个搞笑的表情包</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+
+
+
+<!-------------------------------------媒体类型---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>s
+    <title>第十八章</title>
+    <meta charset="utf-8">
+    <link href="./styles/text媒体类型.css" rel="stylesheet">
+</head>
+
+<body>
+<div>
+    <div>
+        <h1>媒体类型</h1>
+    </div>
+    <div>
+        <p>改变一些媒体类型</p>
+    </div>
+</div>
+</body>
+
+</html>
+
+<style>
+
+</style>
+
+
+
+
+<!-------------------------------------表单---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>第十九章</title>
+    <meta charset="utf-8">
+    <link href="./styles/text表单.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <div>
+            <h1>表单</h1>
+        </div>
+        <div>
+            <form action="MAILTO:8246189@qq.com" method="post">
+                <fieldset>
+                    <legend>这是一个修饰过的表单:</legend>
+                    <label for="name">姓名：</label>
+                    <input id="name" type="text" name="name" size="10" value="姓名"><br>
+                    <label for="sex">性别：</label><br>
+                    <input type="radio" id="sex" name="sex" checked>男<br>
+                    <input type="radio" name="sex">女<br><br>
+                    <label for="egg">年龄：</label>
+                    <select id="egg" name="egg">
+                        <option>15</option>
+                        <option>16</option>
+                        <option>17</option>
+                        <option>18</option>
+                        <option>19</option>
+                        <option selected>20</option>
+                        <option>21</option>
+                        <option>22</option>
+                    </select><br>
+                    <label for="email">邮箱：</label>
+                    <input type="text" name="email" id="email" size="20" value="你的邮箱"><br>
+                    <label for="pass">密码：</label>
+                    <input type="password" name="password" id="pass" placeholder="密码"><br>
+                    <label>爱好（多选）：</label>
+                    <input type="checkbox" name="hobby" value="read">读书<br>
+                    <input type="checkbox" name="hobby" value="motion">运动<br>
+                    <input type="checkbox" name="hobby" value="surf the internet">上网<br>
+                    <input type="checkbox" name="hobby" value="work">工作<br>
+                    <input type="checkbox" name="hobby" value="Play games">打游戏<br>
+                    <input type="checkbox" name="hobby" value="chat">聊天<br>
+                    <input type="checkbox" name="hobby" value="sit quietly">静坐<br>
+                    <input type="checkbox" name="hobby" value="sleep">睡觉<br>
+                    <input type="checkbox" name="hobby" value="Tiktok">看抖音<br><br>
+                    <div style="height:15em">
+                        <label for="like-text">你最喜欢的一段话：</label>
+                        <textarea id="like-text" rows="10" cols="70">输入你想说的...</textarea>
+                    </div>
+                    <div>
+                        <input type="submit" value="确认">
+                        <input type="reset" value="重置"><br><br>
+                        <button type="botton" onclick="alert('叫你点你就点,傻逼')">点我!傻逼</botton>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<style>
+
+</style>
+
+
+
+<!-------------------------------------计数器---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>第二十章</title>
+    <meta charset="utf-8">
+    <link href="./styles/text计数器.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <h1>隔天就笔记本</h1>
+        <h2>给我如果过热 让各位grew人人Greg我如果人工工日</h2>
+        <h2>划归为韩国i如果假如 人Greg我给如果如果</h2>
+        <h2>入俄v好热哦据i就覅人家覅肉结果附近3猪u4发0 9</h2>
+    </div>
+    <div>
+        <h1>隔天就笔记本</h1>
+        <h2>给我如果过热 让各位grew人人Greg我如果人工工日</h2>
+        <h2>划归为韩国i如果假如 人Greg我给如果如果</h2>
+        <h2>入俄v好热哦据i就覅人家覅肉结果附近3猪u4发0 9</h2>
+    </div>
+    <div>
+        <h1>隔天就笔记本</h1>
+        <h2>给我如果过热 让各位grew人人Greg我如果人工工日</h2>
+        <h2>划归为韩国i如果假如 人Greg我给如果如果</h2>
+        <h2>入俄v好热哦据i就覅人家覅肉结果附近3猪u4发0 9</h2>
+    </div>
+    <div>
+        <h1>隔天就笔记本</h1>
+        <h2>给我如果过热 让各位grew人人Greg我如果人工工日</h2>
+        <h2>划归为韩国i如果假如 人Greg我给如果如果</h2>
+        <h2>入俄v好热哦据i就覅人家覅肉结果附近3猪u4发0 9</h2>
+    </div>
+    <div>
+        <ol>
+            <li>item</li>
+            <li>item   
+            <ol>
+              <li>item</li>
+              <li>item</li>
+              <li>item
+              <ol>
+                <li>item</li>
+                <li>item</li>
+                <li>item</li>
+              </ol>
+              </li>
+              <li>item</li>
+            </ol>
+            </li>
+            <li>item</li>
+            <li>item</li>
+          </ol>
+          <ol>
+            <li>item</li>
+            <li>item</li>
+          </ol>
+    </div>
+</body>
+
+</html>
+
+<style>
+
+</style>
+
+
+
+<!-------------------------------------页面布局---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>第二十一章</title>
+    <meta charset="utf-8">
+    <link href="./styles/text页面布局.css" rel="stylesheet">
+</head>
+
+<body>
+    <div>
+        <div>
+            <header>
+                <h1>铁血网</h1>
+                <p>本网站为广大观众提供丰富的脑残玩意</p>
+            </header>
+        </div>
+        <div>
+            <nav>
+                <ul>
+                    <li><a href="./lesson页面布局.html" rel="stylesheet">主页</a></li>
+                    <li><a href="./lesson页面布局.html" rel="stylesheet">新闻</a></li>
+                    <li><a href="./lesson页面布局.html" rel="stylesheet">关于我们</a></li>
+                    <li><a href="./lesson页面布局.html" rel="stylesheet">设置</a>
+                        <div>
+                            <a href="./lesson页面布局.html" rel="stylesheet">字体设置</a><br>
+                            <a href="./lesson页面布局.html" rel="stylesheet">声音设置</a><br>
+                            <a href="./lesson页面布局.html" rel="stylesheet">颜色设置</a><br>
+                        </div>
+                    </li>
+                </ul>
+                <form>
+                    <input type="search" name="search" placeholder="搜索..">
+                    <input type="submit" name="botton">
+                </form>
+            </nav>
+        </div>
+        <div>
+            <main>
+                <div>
+                    <aside>
+                        <a href="./lesson页面布局.html" rel="stylesheet">字&nbsp&nbsp体</a><br>
+                        <a href="./lesson页面布局.html" rel="stylesheet">字&nbsp&nbsp体</a><br>
+                        <a href="./lesson页面布局.html" rel="stylesheet">字&nbsp&nbsp体</a><br>
+                        <a href="./lesson页面布局.html" rel="stylesheet">字&nbsp&nbsp体</a><br>
+                        <a href="./lesson页面布局.html" rel="stylesheet">字&nbsp&nbsp体</a><br>
+                        <a href="./lesson页面布局.html" rel="stylesheet">字&nbsp&nbsp体</a><br>
+                        <a href="./lesson页面布局.html" rel="stylesheet">字&nbsp&nbsp体</a><br>                     
+                    </aside>
+                </div>
+                <div class="article">
+                    <article>
+                        <h2>欢迎</h2>
+                        <P>欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+                            无论你是一名期望学习铁血知识的新手。欢迎访问铁血网虚拟站点。如果这是一个真实的网站，
+                            那么它就是铁血爱好者的理想聚集地。无论你是一名期望学习铁血知识的新手欢迎访问铁血网虚拟站点。
+                            如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。无论你是一名期望学习铁血知识的新手
+                            欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+                            无论你是一名期望学习铁血知识的新手</P>
+                        <p>欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+                            无论你是一名期望学习铁血知识的新手。欢迎访问铁血网虚拟站点。如果这是一个真实的网站，
+                            那么它就是铁血爱好者的理想聚集地。无论你是一名期望学习铁血知识的新手欢迎访问铁血网虚拟站点。
+                            如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。无论你是一名期望学习铁血知识的新手
+                            欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+                            无论你是一名期望学习铁血知识的新手</p>
+                    </article>
+                </div>
+                <div>
+                    <aside>
+                        <h3>欣赏图片：</h3>
+                        <div>
+                            <div class="img">
+                                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                                    <img src="./images/1.jpeg" alt="这是一个表情包" width="150px" height="150px">
+                                </a>                               
+                            </div>
+                            <div class="img">
+                                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                                    <img src="./images/2.jpeg" alt="这是一个表情包" width="150px" height="150px">
+                                </a>                               
+                            </div>
+                            <div class="img">
+                                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                                    <img src="./images/3.jpeg" alt="这是一个表情包" width="150px" height="150px">
+                                </a>                               
+                            </div>
+                            <div class="img">
+                                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                                    <img src="./images/4.jpeg" alt="这是一个表情包" width="150px" height="150px">
+                                </a>                               
+                            </div>
+                            <div class="img">
+                                <a href="./lession图像廊.html" target="_blank" alt="无法打开，请重新加载">
+                                    <img src="./images/5.gif" alt="这是一个表情包" width="150px" height="150px">
+                                </a>                               
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </main>
+        </div>
+        <div style="clear:both">
+            <footer>
+                <p>本虚拟站点采用 CC0 协议，代码所有内容均可任意修改和复用。原始版本由 Chris Mills 于 2016 年编写。Roy Tian 于 2019 年汉化。</p>
+                <p><a href="https://www.baidu.com/" target="_blank" title="图表绘制作者">鸽子图标</a> 
+                  由 Lorc 绘制。</p>
+            </footer>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+<!-------------------------------------页面布局---------------------------------->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>第二十二章</title>
+    <meta charset="utf-8">
+    <link href="./styles/textCSS3.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <h3>边界图片与背景图设置</h3>
+        <div class="css1">使用边界图片设置边框</div>
+    </div>
+    <div>
+        <h3>渐变色设置</h3>
+        <div class="css2"></div>
+    </div>
+    <div>
+        <h3>文本效果</h3>
+        <div class="css3">
+            <P>欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+                无论你是一名期望学习铁血知识的新手。</P>
+            <p>欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+                无论你是一名期望学习铁血知识的新手。</p>
+        </div>
+    </div>
+    <div>
+        <h3>2D转换</h3>
+        <div class="css4">结构图如果五百那天和你让你不会太难有。</div>
+        <div class="css5">结构图如果五百那天和你让你不会太难有。</div>
+    </div>
+    <div>
+        <h3>动画变换</h3>
+        <div class="css6"></div>
+    </div>
+    <div class="css7">
+        <h3>多列设置</h3>
+        <P>欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+            无论你是一名期望学习铁血知识的新手。</P>
+        <p>欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+            无论你是一名期望学习铁血知识的新手。</p>
+        <P>欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+            无论你是一名期望学习铁血知识的新手。</P>
+        <p>欢迎访问铁血网虚拟站点。如果这是一个真实的网站，那么它就是铁血爱好者的理想聚集地。
+            无论你是一名期望学习铁血知识的新手。</p>
+    </div>
+    <div>
+        <h3>按钮动画</h3>
+        <div class="css8">
+            <button>按钮1</button>
+            <button class="button1"><span>按钮2</span></button>
+            <button class="button2">按钮3</button>
+            <button class="button3">按钮4</button>
+            <button>按钮5</button>
+            <button>按钮6</button>
+        </div>
+    </div>
+    <div>
+        <h3>分页</h3>
+        <div class="css9">
+            <ul>
+                <li><a href="./test.html" target="_blank">《 </a> </li>
+                <li><a href="./test.html" target="_blank">1</a> </li>
+                <li><a href="./test.html" target="_blank">2</a> </li>
+                <li id="boy"><a href="./test.html" target="_blank">3</a> </li>
+                <li><a href="./test.html" target="_blank">4</a> </li>
+                <li><a href="./test.html" target="_blank">5</a> </li>
+                <li><a href="./test.html" target="_blank">6</a> </li>
+                <li><a href="./test.html" target="_blank">7</a> </li>
+                <li><a href="./test.html" target="_blank"> 》</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div style="margin-bottom:100px;">
+        <h3>弹性盒子</h3>
+        <div class="css10">
+            <div class="he1">1</div>
+            <div class="he2">2</div>
+            <div class="he3">3</div>
+            <div class="he4">4</div>
+        </div>
+    </div>
+    <div>
+        <h3>使用弹性盒子设置响应式页面</h3>
+        <div class="flex-container">
+            <header class="header">头部</header>
+            <article class="main">
+                <p>主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。
+                    主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。
+                    主要内容。主要内容。主要内容。主要内容。主要内容。主要内容。
+                </p>
+            </article>
+            <aside class="aside aside1">边栏 1</aside>
+            <aside class="aside aside2">边栏 2</aside>
+            <footer class="footer">底部</footer>
+        </div>
+    </div>
+    <div>
+        <h3>网格布局</h3>
+        <div class="css11">
+            <div class="he he1">1</div>
+            <div class="he he2">2</div>
+            <div class="he he3">3</div>
+            <div class="he he4">4</div>
+            <div class="he he5">5</div>
+            <div class="he he6">6</div>
+            <div class="he he7">7</div>
+            <div class="he he8">8</div>
+            <div class="he he9">9</div>
+        </div>
+    </div>
+    <div>
+</body>
+</html>
+
+
+
+
+<!-------------------------------------页面布局---------------------------------->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Layout Task</title>
+  <link href="./styles/text布局测试.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+  <div class="logo">
+    My exciting website!
+  </div>
+
+  <nav>
+    <ul>
+      <li>
+        <a href="">Home</a>
+      </li>
+      <li>
+        <a href="">Blog</a>
+      </li>
+      <li>
+        <a href="">About us</a>
+      </li>
+      <li>
+        <a href="">Our history</a>
+      </li>
+      <li>
+        <a href="">Contacts</a>
+      </li>
+    </ul>
+  </nav>
+
+  <main class="grid">
+    <article>
+      <h1>
+        An Exciting Blog Post
+      </h1>
+      <img src="./images/2.jpeg" alt="placeholder" class="feature">
+      <p>Veggies es bonus vobis, proinde vos postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi tomatillo melon
+        azuki bean garlic.</p>
+
+      <p>Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens
+        dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.</p>
+
+      <p>Turnip greens yarrow ricebean rutabaga endive cauliflower sea lettuce kohlrabi amaranth water spinach avocado daikon
+        napa cabbage asparagus winter purslane kale. Celery potato scallion desert raisin horseradish spinach carrot soko.
+        Lotus root water spinach fennel kombu maize bamboo shoot green bean swiss chard seakale pumpkin onion chickpea gram
+        corn pea. Brussels sprout coriander water chestnut gourd swiss chard wakame kohlrabi beetroot carrot watercress.
+        Corn amaranth salsify bunya nuts nori azuki bean chickweed potato bell pepper artichoke.</p>
+
+      <p>Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie
+        turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki
+        bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley jícama salsify.</p>
+
+      <p>Celery quandong swiss chard chicory earthnut pea potato. Salsify taro catsear garlic gram celery bitterleaf wattle
+        seed collard greens nori. Grape wattle seed kombu beetroot horseradish carrot squash brussels sprout chard.</p>
+
+    </article>
+
+    <aside>
+      <h2>
+        Photography
+      </h2>
+      <ul class="photos">
+        <li>
+          <img src="./images/5.gif" alt="placeholder">
+        </li>
+        <li>
+          <img src="./images/5.gif" alt="placeholder">
+        </li>
+        <li>
+          <img src="./images/5.gif" alt="placeholder">
+        </li>
+        <li>
+          <img src="./images/5.gif" alt="placeholder">
+        </li>
+        <li>
+          <img src="./images/5.gif" alt="placeholder">
+        </li>
+      </ul>
+
+    </aside>
+  </main>
+  <div style="height:100px;"></div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

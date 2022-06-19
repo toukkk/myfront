@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/debug.js"></script> -->
+</head>
+
+<body>
+
+    <div>
+        javascript
+    </div>
+</body>
+
+</html>
+<script>
+    function debug(msg) {
+        var log = $("#debuglog");   
+        console.log(log)                                //找到要显示msg的元素
+        if (log.length == 0) {                                      //没有就创建一个
+            log = $("<div id='debuglog'><h1>debug log</h1></div>"); //创建内容
+            log.appendTo(document.body);                            //将其加到页面底部
+        }
+        log.append($("<pre/>").text(msg));                          //将msg包装但<pre>中，并将<pre>加入到log底部
+    }
+    debug(1)
+</script>

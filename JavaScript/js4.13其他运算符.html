@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    //条件运算符------------------------------------------------------------------------------------------------
+    var username, greeting = "hello";
+    greeting += username ? username : "  " + "tiezhu";      //首先对第一个操作数进行布尔值判定，为真则输出第二个操作数，反之则输出第三个操作数。
+    console.log("greeting: ", greeting);
+    //等同于下面if语句
+    if (username) {
+        var greeting = "hello";
+        greeting += username;
+    }
+    else {
+        var greeting = "hello";
+        greeting += "  " + "tiezhu";
+    }
+    console.log("greeting: ", greeting);
+    console.log("");
+    //typeof运算符--------------------------------------------------------------------------------------------------
+    console.log("typeof: ", typeof null);                     //type运算符表示返回值的类型，null的类型为object
+    console.log("typeof: ", typeof (null));                    //type还可以用（）圈住值来表示，类似函数
+    console.log("");
+    //delete运算符--------------------------------------------------------------------------------------------------
+    var a = { x: 1, y: 2 }, b = [2, 4, 6, 8];
+    console.log("delete_a.x: ", delete a.x);                   //删除对象属性
+    console.log("a.x: ", a.x);                                 //未定义
+    console.log("delete_a.x: ", delete a.x);                   //删除没有的属性输出true
+    console.log("a.x_in_a: ", a.x in a);                        //检验被删属性是否还在对象中
+    console.log("delete_a: ",delete a);                         //false, 不能删除var定义的对象
+    console.log("delete_b[2]: ", delete b[2]);                  //删除数组第三个元素
+    console.log("b[2]: ", b[2]);                                //未定义
+    console.log("b[2]_in_b: ", b[2] in b);                      //检验被删元素是否还在数组中
+    console.log("b.length: ", b.length);                        //数组长度未变，删除的元素留下一个’洞‘
+    console.log("delete_1: ", delete 1);                        //参数不是左值，所以true
+    this.x=1;                                                   //为全局对象加个属性
+    console.log("delete_x: ",delete x);                         //删除该全局属性
+    console.log("x: ", x);                                      //显示未定义
+    console.log("");       
+    //void运算符--------------------------------------------------------------------------------------------------
+    <a href="javascript:void window.open();">打开一个新窗口</a>
+    //经常在HTML代码内的<a>标签中使用void运算符。
+</script>

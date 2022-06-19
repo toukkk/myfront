@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/isArrayLike.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //可选形参------------------------------------------------------------------------------------------------------------
+    var o = { a: 2, b: 3, c: 4 };
+    // var result = [];
+    function getPropertyNames(o, result) {      //函数设置了两个形参
+        if (result === undefined) {             //当实参为输入时，对应的形参将设置为undefined，
+            result = [];                        //如果实参result未输入，则使用新数组
+        }
+        // result = result || [];               //可替代上面if语句，函数内result为形参以声明（函数内用）
+        for (var i in o)                        //循环添加
+            result.push(i);
+        return result;
+    }
+    var a = getPropertyNames(o);                  //只有一个实参，结果一样
+    console.log("result: ", a)                  //输出：['a', 'b', 'c']
+    getPropertyNames(o, a);                      //两个实参
+    console.log("result: ", a)
+    console.log("");
+    //可变的实参列表：实参对象----------------------------------------------------------------------------------------------
+    function max(/*number....*/) {                      //定义一个去实参值中最大值的函数,/*number....*/为注释类型，可接收任意实参
+        var max = Number.NEGATIVE_INFINITY;             //将变量定义为负无穷
+        arguments[2] = 90;                              //通过修改实参数组的元素值，同样会修改实参值
+        console.log("arguments[2]: ", arguments[2])
+        for (var i = 0; i < arguments.length; i++) {    //循环参数数组
+            if (max < arguments[i]) {                   //如果参数值大于max
+                max = arguments[i];                     //将参数值赋值给max
+            }
+        }
+        console.log("max: ", max);                       //输出max
+        return max;
+    }
+    max(23, 4, 5, 6, 2323, 5435, 35, 2, 5, 87, 65, 3);   //这种接受任意个参数的函数称为不定实参函数
+    console.log("");
+    //callee和caller属性--
+    var factorial = function (x) {
+        if (x <= 1) return 1;
+        return x * arguments.callee(x - 1);              //在没有命名的函数表达式中，arguments.callee()表示调用自身
+    }
+    console.log("factorial(5): ", factorial(5));
+    console.log("");
+    //将对象属性用在实参------------------------------------------------------------------------------------------
+    var a = [1, 2, 3, 4, 5], b = [];
+    function arrayCopy(x) {             //x为对象为参数
+        for (var i in x.from) {          //x. 表示形参
+            x.to.push(x.from[i]);
+        }
+        x.to.length = x.from.length;
+        return x.to;
+    }
+    arrayCopy({ from: a, to: b });       //以对象作为参数，形参为它的属性名对应实参，顺序无关紧要
+    console.log("b: ", b);
+    console.log("");
+    //实参类型--------------------------------------------------------------------------------------------
+    function sum(a) {                               //定义一个函数计算类数组值总和
+        if (isArrayLike(a)) {                       //调用类数组和数组的判定函数
+            var total = 0;
+            for (var i = 0; i < a.length; i++) {
+                var element = a[i];
+                if (element == null) continue;      //排除值为null，undefined，0，
+                if (!isFinite(element)) throw new Erroe("a[i] must be finite number");      //值为无限数报错
+                total += element;
+            }
+            return total;
+        }
+        throw new Erroe("a must be array_like");    //不是类数组或数组报错
+    }
+    console.log("sum(a): ", sum(a));
+    function flexisum(a) {
+        var total = 0, n = 0;
+        for (var i = 0; i < arguments.length; i++) {
+            var element = arguments[i];
+            if (element == null) continue;
+            if (typeof element === "object" && Object.prototype.toString.call(element) === "[object Array]") {
+                n = flexisum.apply(this, element);
+            }
+            else if (typeof element === "function") {
+                n = Number(element());
+            }
+            else {
+                n = Number(element);
+            }
+            if (isNaN(n))
+                throw new Error("element can't convert number");
+            total += n;
+        }
+        return total;
+    }
+    console.log("total: ", flexisum(a))
+</script>

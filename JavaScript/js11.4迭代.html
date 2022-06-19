@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/inherit.js"></script>
+    <script src="./scripts/Fun_extend.js"></script>
+    <script src="./scripts/Set.js"></script> -->
+
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //for/each循环---------------------------------------------------------------------------------------------------------------
+    // for each(let i in o)     //表示遍历对象o的可枚举属性值，for/in为遍历属性名
+    // 迭代器---------------------------------------------------------------------------------------------------------------------
+    //定义迭代器函数，必须包含next()方法
+    function counter(start) {
+        let nextValue = Math.round(start);                      //表示迭代器的一个私有状态
+        return { next: function () { return nextValue++; } };   //返回迭代器
+    }
+    let counter1000 = counter(1000);        //返回迭代器
+    let next1 = counter1000.next();         //该对象第一次调用迭代器方法
+    let next2 = counter1000.next();         //该对象第一次调用迭代器方法
+    console.log("next1: ", next1);          //输出：1000
+    console.log("next2: ", next2);          //输出：1001
+    //StopIteration
+    //定义迭代器函数，返回的迭代器可以迭代某个范围的整数
+    function rangeIter(first, last) {
+        let nextValue = Math.ceil(first);
+        return {
+            next: function () {
+                if (nextValue > last) throw "StopIteration";
+                return nextValue++;
+            }
+        };
+    }
+    let r = rangeIter(1, 5);
+    while (true) {                          //在循环内运行
+        try {
+            console.log("r.next(): ", r.next());    //循环调用方法
+        }
+        catch (e) {
+            if (e === "StopIteration") break;       //如果抛出错误则跳出
+            else throw e;
+        }
+    }
+    //定义函数返回可迭代对象
+    function range(min, max) {
+        return {                                    //返回可迭代对象
+            get min() { return min; },
+            get max() { return max; },
+            includes: function (x) {
+                return min <= x && x <= max;
+            },
+            toString: function () {
+                return "[" + min + "," + max + "]";
+            },
+            __iterator__: function () {             //可迭代对象必须定义一个 __iterator__()方法，用来获取迭代器对像
+                let nextValue = Math.ceil(min);     //当前为保存在闭包
+                return {                            //返回迭代器
+                    next: function () {
+                        if (nextValue > max) throw "StopIteration";
+                        return nextValue++;
+                    }
+                };
+            }
+        };
+    }
+    //for/in
+    for (let i in range(1, 10))
+        console.log("i: ", i);
+    //
+</script>

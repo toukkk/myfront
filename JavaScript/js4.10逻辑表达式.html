@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    //&&逻辑与运算符------------------------------------------------------------------------------------------------------------
+    var a = { x: 1, y: 2 }, b = null, d;
+    function c() { d = a.x + a.y; return d; }
+    console.log("diyicheng: ", a.x < a.y && b == 0)          //第一层的对两边操作数的布尔值进行判定都为true则取true，反之false
+    console.log("diercheng1: ", a.y && a.x)                  //第二层的对两边真值进行判定，由左往右，先判定左操作数是否为真值，如为假值则直接输出左操作数，反之输出右操作数。
+    console.log("disancheng2: ", a.y && b)
+    console.log("disancheng3: ", b && a.x)                   //=》null
+    if (a.y) { c(); }
+    console.log("dengtong: ", a.y && c())                    //该语句等同与上条if语句
+    console.log("")
+    //||逻辑或运算符------------------------------------------------------------------------------------------------------------
+    var min_width = 200, p = { min_width: 200, max_width: 800 }, max, max_width;
+    max = max_width || p.max_width || 500;                  //||运算符与&&逻辑一样，从一组备选表达式中选出第一个真值
+    maxtest = max_width || null || -0;                      //没有真值则输出最后一个假值
+    console.log("max_width: ", max_width)
+    console.log("max: ", max)
+    console.log("maxtest: ", maxtest)
+    console.log("")
+    //!逻辑非运算符------------------------------------------------------------------------------------------------------------
+    var p = true, q = false;
+    console.log("!: ", !5)                                  //"!"运算符较高的优先性是对布尔值的求反，所以运算符首先对操作数转换为布尔值。
+    console.log("!!: ", !!5)                                //通过两次逻辑非运算得到一个值等价布尔值
+    console.log("ture: ", !(p && q) === !p || !q)
+    console.log("true: ", !(p || q) === !p && !q)
+    console.log("")
+
+</script>

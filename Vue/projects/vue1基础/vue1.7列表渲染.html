@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="array">
+        <ul>
+            <template v-for="item in items">
+                <li>{{ item.message }}</li>
+                <li class="divider" role="presentation"></li>
+            </template>
+        </ul>
+        <ul>
+            <li v-for="item,index in items" :key="index">
+                {{index}}-{{item.message}}
+            </li>
+            <li v-for="n in 10" :key="'number'+n">
+                {{n}}
+            </li>
+        </ul>
+    </div>
+    <div id="object">
+        <div v-for="value,name,index in object" :key="name">
+            {{index}}-{{name}}: {{value}}
+        </div>
+    </div>
+    <div id="screen">
+        <ul v-for="set in sets" style="margin-bottom: 40px;">
+            <li v-for="n in even(set)">{{ n }}</li>
+            <li v-for="n in evenSet">{{ n }}</li>
+        </ul>
+    </div>
+</body>
+
+</html>
+<style>
+
+</style>
+<script>
+    //迭代数组
+    var vm = new Vue({
+        el: '#array',
+        data: {
+            items: [
+                { message: 'Zhang' },
+                { message: 'Tie' },
+                { message: 'Zhu' },
+            ],
+        },
+    });
+    vm.items.push({ message: "Long" });            //可用数组方法对数组进行更新数据。
+    //迭代对象
+    var vm = new Vue({
+        el: '#object',
+        data: {
+            object: {
+                name: 'zhangtiezhu',
+                title: 'are you not a like',
+                cooking: "jiaangchaic",
+            }
+        },
+    });
+    //显示筛选/排序后的结果
+    var vm = new Vue({
+        el: '#screen',
+        data: {
+            sets: [
+                [1, 2, 3, 4, 5, 6],
+                [7, 8, 9, 10, 11, 12]
+            ],
+        },
+        computed: {                                 //定义计算属性需return值
+            evenSet: function () {
+                return this.sets.filter(function (value) {
+                    return value > 5;
+                });
+            },
+        },
+        mounted() {                                 //载入完执行
+            console.log("evenSet", this.evenSet)
+        },
+        methods: {                                  //定义寒素
+            even: function (array) {
+                return array.filter(function (value) {
+                    return value % 2 === 0;
+                });
+            },
+        }
+    });
+
+</script>

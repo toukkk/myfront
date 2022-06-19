@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    //运算符的类型转换-------------------------------------------------------------------------------------------------
+    console.log("true: ", null == undefined)
+    console.log("true: ", "0" == 0)
+    console.log("true: ", 0 == false)
+    console.log("true: ", "0" == false)
+    console.log("false: ", undefined == false)              //==运算符号不会吧undefined转化为布尔值
+    console.log("")
+    var x = 3
+    console.log("String(x): ", x + "")                      //运算符+的隐性转换
+    console.log("Number(x): ", +x)                          //运算符+的隐性转换
+    console.log("Boolean(x): ", !!x)                        //运算符!的隐性转换，取反两次为真
+    console.log("")
+
+    //toString()方法的使用,转化为原始值---------------------------------------------------------------------------------------------
+    var n = 17323.4782;
+    console.log("binary: ", n.toString(2))                   //转化为二进制字符串
+    console.log("octal: ", "o" + n.toString(8))                //转化为八进制字符串
+    console.log("hex: ", "ox" + n.toString(16))                //转化为十六进制字符串
+    console.log("toFixed: ", n.toFixed(0))                   //toFixed(x)方法保留几位小数
+    console.log("toFixed: ", n.toFixed(2))
+    console.log("toFixed: ", n.toFixed(5))
+    console.log("toExponential: ", n.toExponential(1))       //toExponential(x)方法表示保留x位数的科学计数法
+    console.log("toExponential: ", n.toExponential(3))
+    console.log("toPrecision: ", n.toPrecision(4))           //toPrecision(x)方法表示保留x位数
+    console.log("toPrecision: ", n.toPrecision(7))
+    console.log("toPrecision: ", n.toPrecision(11))
+    console.log("")
+    
+    console.log("object-string: ", ({ x: 1, y: 2 }).toString())             //=》"[object objrect]"
+    console.log("object-string: ", [1, 2, 3].toString())                    //将数组每个元素转化为字符串，并在元素间加入逗号合并成字符串
+    console.log("fubction-string: ", (function (x) { f(x); }).toString())   //系那个函数转化为源代码字符串
+    console.log("date-string: ", new Date(2010, 3, 12).toString())          //日期类将返回一个可读的日期，时间字符串
+    console.log("onject-numder: ", new Date(2010, 3, 12).valueOf())         //将默认对象转化为原始值(数字)
+    console.log("")
+
+    console.log("Number: ", Number("3"))                     //方法Number("3")，转化为数字
+    console.log("String: ", String(false))                   //方法String(false)，转化为字符串
+    console.log("Boolean: ", Boolean([]))                    //方法Boolean([])，转化为布尔值
+    console.log("Object: ", Object(3))                       //方法Object(3)，转化为对象
+    //除了null和undefined的任何值都可用toString()方法，效果如同String()。
+    console.log("") 
+    //全局函数parseInt(),和parseFloat()------------------------------------------------------------------------------------
+    console.log("parseInt1: ", parseInt("3 blid 4 miee"))    //只解析第一个整数
+    console.log("parseInt2: ", parseFloat("3.14 ndwbcu 3ef"))
+    console.log("parseInt3: ", parseInt("-23.44"))
+    console.log("parseInt4: ", parseInt("0xFF"))
+    console.log("parseInt5: ", parseInt("-0xff"))
+    console.log("parseInt6: ", parseFloat(".12"))            //仅parseFloat()可以解析小数点开头
+    console.log("parseInt7: ", parseInt("0.12"))
+    console.log("parseInt8: ", parseInt(".12"))              //小数点和$，字母均是非空格的非法数字直接量
+    console.log("parseInt9: ", parseFloat("$29.32"))
+    console.log("")
+    
+    console.log("parseInt10: ", parseInt("11", 2))            //parseInt()有两个参数时，第二个参数表示解析式用的几进制
+    console.log("parseInt11: ", parseInt("FF", 16))
+    console.log("parseInt12: ", parseInt("zz", 36))
+    console.log("")
+    
+</script>

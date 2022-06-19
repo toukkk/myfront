@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/inherit.js"></script>
+    <script src="./scripts/enumeration.js"></script>
+    <script src="./scripts/Set.js"></script>
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //用简单的函数创造简单的子类
+    function defineSubclass(superclass, constructor, methods, statics) {
+        constructor.prototype = inherit(superclass.prototype);
+        constructor.prototype.constructor = constructor;
+        if (methods) extend(constructor.prototype, methods);
+        if (statics) extend(constructor, statics);
+        return constructor;
+    }
+    //也可以通过父类的构造函数的方法来做到
+    Function.prototype.extend = function (constructor, methods, statics) {
+        return defineSubclass(this, constructor, methods, statics);
+    }
+    //定义Set的子类SingletonSet
+    function SingletonSet(member) {
+        this.member = member;
+    }
+    SingletonSet.prototype = inherit(Set.prototype);    //继承父类属性
+    extend(SingletonSet.prototype, {                    //覆盖部分继承属性及方法
+        constructor: SingletonSet,
+        add: function () { throw "read-only set"; },
+        remove: function () { throw "read-only set"; },
+        size: function () { return 1; },
+        foreach: function (f, context) { f.call(context, this.member); },
+        contains: function (x) { return x === this.member; }
+    });
+    console.log(SingletonSet.prototype.remove)
+    console.log(extend)
+</script>

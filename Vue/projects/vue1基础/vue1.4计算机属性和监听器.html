@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <p>Original message: {{now}} "{{ message }}"</p>
+        <p>Computed reversed message: "{{ reversedMessage1 }}"</p>
+        <p>Methods reversed message: "{{ reversedMessage2() }}"</p>
+    </div>
+    <div id="demo"> fullName:{{ fullName }} <br>
+        firstName:{{firstName}} <br>
+        lastName:{{lastName}}
+    </div>
+    <div id="watch-example">
+        <p>
+            Ask a yes/no question:
+            <input v-model="question">
+        </p>
+        <p>{{ answer }}</p>
+    </div>
+</body>
+
+</html>
+<script>
+    //计算属性缓存和方法-------------------------------------------------------------
+    var vm = new Vue({
+        el: '#example',
+        data() {
+            return {
+                message: 'hello',
+            };
+        },
+        //计算属性，计算属性是基于它们的响应式依赖进行缓存的，只要 message 还没有发生改变，多次访问 reversedMessage 计算属性会立即返回之前的计算结果
+        computed: {
+            // 计算属性的 getter
+            reversedMessage1: function () {
+                // `this` 指向 vm 实例
+                return this.message.split("").reverse().join("");
+            },
+            //下面的计算属性将不再更新，因为 Date.now() 不是响应式依赖
+            now: function () {
+                return Date.now();
+            }
+        },
+        //定义函数，每次调用都会运行函数
+        methods: {
+            reversedMessage2: function () {
+                return this.message.split('').reverse().join('')
+            },
+        }
+    });
+    console.log(vm.reversedMessage1) // => 'olleH'
+    vm.message = 'Goodbye'
+    console.log(vm.reversedMessage2()) // => 'eybdooG'
+    //计算属性和监听属性----------------------------------------------------------------------
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Foo',
+            lastName: 'Bar',
+        },
+        //监听属性
+        watch: {
+            firstName: function (val, oldValue) {
+                this.fullName = val + ' ' + this.lastName;
+                console.log("oldValue: ", oldValue);
+            },
+            lastName: function (val, oldValue) {
+                this.fullName = this.firstName + ' ' + val;
+                console.log("oldValue: ", oldValue);
+            }
+        },
+        computed: {
+            //计算属性的 setter
+            fullName: {
+                // getter，默认
+                get: function () {
+                    return this.firstName + ' ' + this.lastName;
+                },
+                // setter
+                set: function (newValue) {
+                    var names = newValue.split(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+        }
+    });
+    console.log(vm.fullName = "Sha Bi")
+    console.log("vm.firstName: ", vm.firstName)
+    console.log("vm.lastName: ", vm.lastName)
+    //监听器-----------------------------------------------------------------------
+    var vm = new Vue({
+        el: '#watch-example',
+        data: {
+            question: '',
+            answer: 'I cannot give you an answer until you ask a question!'
+        },
+        watch: {
+            question: function (newValue, oldValue) {
+                this.answer = 'Waiting for you to stop typing...';
+                setTimeout(this.getAnswer, 500);
+                setTimeout(this.yesNo,2000);
+            }
+        },
+        methods: {
+            getAnswer: function () {
+                if (this.question.indexOf('?') === -1) {
+                    this.answer = 'Questions usually contain a question mark. ;-)'
+                    return
+                }
+                this.answer = 'Thinking...';
+            },
+            yesNo: function () {
+                if (Math.random() - 0.5 > 0)
+                    this.answer = 'Yes';
+                else this.answer = 'NO';
+            }
+        }
+    });
+</script>

@@ -1,0 +1,125 @@
+body{
+    width:500px;
+    margin:0 auto;
+    /* 居中 */
+}
+.div1{
+    margin:0 auto;
+    text-align: center;
+    width:140px;
+    background-color: rgb(235, 100, 100);
+    color:blue;
+}
+h2{
+    text-align: center;
+    color:blueviolet;
+}
+.static{
+    position:static;
+    border:2px solid green;
+    /* 默认值，随文档流 */
+}
+.fixed{
+    position:fixed;
+    /* 相对浏览器窗口固定，不占空间 */
+    top:10em;
+    right:500px;
+    font-size:30px;
+    color:red;
+}
+.relative1{
+    position:relative;
+    /* 相对页面固定，占空间 */
+    left:2em;
+}
+.relative2{
+    position:relative;
+    left:-4em;
+}
+.relative3{
+    position:relative;
+    top:-50px;
+}
+.absolute{
+    position:absolute;
+    /* 绝对页面固定，不占空间 */
+    top:1185px;
+    left:30em;
+}
+.sticky{
+    background-color: bisque;
+    color:rgb(14, 145, 46);
+    border:2px solid green;
+    padding:5px;
+    /* position: -webkit-sticky; */
+    position:sticky;
+    top:100px;
+    bottom:200px;
+    /*父级元素要在浏览器窗口才生效*/
+}
+div img{
+    position:absolute;
+    top:4000px;
+    left:30em;
+    z-index:-1;
+    /* 堆叠顺序往下一层 */
+}
+div .img{
+    position:absolute;
+    clip:rect(10px 140px 100px 10px);
+    /* 裁剪图像,上右下左 */
+    top:4200px;
+    left:30em;
+    z-index:-1;
+}
+div.overflow1{
+    width: 120px;
+    height:120px;
+    background-color:rgb(144, 122, 165);
+    overflow:scroll;
+}
+div.overflow2{
+    width: 120px;
+    height:120px;
+    background-color:rgb(144, 122, 165);
+    overflow:hidden;
+}
+div.overflow3{
+    width: 120px;
+    height:120px;
+    background-color:rgb(144, 122, 165);
+    overflow:auto;
+}div.overflow4{
+    width: 120px;
+    height:120px;
+    background-color:rgb(144, 122, 165);
+    overflow:visible;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

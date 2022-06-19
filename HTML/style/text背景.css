@@ -1,0 +1,69 @@
+body
+{
+    /* background-color:hsl(256, 60%, 78%); */
+    /* 会被background-color属性覆盖 */
+    background-image:url("1.jpeg");
+    /* background-repeat:repeat-y; */
+    /* background-repeat:repeat-x; */
+    background-repeat:no-repeat;
+    /* 图像是否可以循环，像那个方向循环 */
+    background-attachment:scroll;
+    /* 背景图随内容滚动 */
+    /* background-attachment:fixed; */
+    /* 背景图静止 */
+    background-position:right top;
+    /* 图像位置 */
+    /* background:#9c7979 url("1.jpeg") no-repeat scroll left top; */
+    /* 背景属性简写 */
+}
+h1
+{
+    font-size:36pt;
+    text-align:center;
+}
+h2
+{
+    color:orange;
+}
+hr
+{
+    color:navy;
+}
+p
+{
+    font-family:"Times New Roman";/* 字体 */
+    font-size:20px;
+    margin-left:50px;
+}
+a:link     
+{
+    color:green;
+}  
+/* 未访问 */
+a:visited
+{
+    color:yellow;
+}  
+/*已访问后 */
+a:hover    
+{
+    color:black;
+}  
+/*  悬停 */
+a:active   {
+    color:blue;
+}  
+ /*  点击 */
+#paral
+{
+    text-align:left;
+    color:red;
+}
+.center
+{
+    text-align:center;
+}
+p.right
+{
+    text-align:right;
+}

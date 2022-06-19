@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <!-- <div id="app">
+        <component-root>
+            ：访问自身实例（即组件）
+            <component-root>：访问自身实例（即组件）</component-root>
+            <input-root>：访问自身实例（即组件）</input-root>
+        </component-root>
+        <input-root>
+            ：访问自身实例（即组件）
+            <component-root>：访问自身实例（即组件）</component-root>
+            <input-root>：访问自身实例（即组件）</input-root>
+        </input-root>
+        <div id="app1">
+            <component-root>：访问自身实例（即组件）</component-root>
+            <input-root>：访问自身实例（即组件）</input-root>
+        </div>
+    </div> -->
+    <div id="app2">
+        <component-parent>
+            : 访问父级实例(即vm2)
+            <component-parent>: 访问父级实例(即component-parent组件)</component-parent>
+            <input-parent>: 访问父级实例(即component-parent组件)</input-parent>
+        </component-parent>
+        <input-parent>
+            : 访问父级实例(即vm2)
+            <component-parent>: 访问父级实例(input-parent组件)</component-parent>
+            <input-parent>: 访问父级实例(input-parent组件)</input-parent>
+        </input-parent>
+        <div id="app3">
+            <input-parent>: 访问父级实例(即vm3)</input-parent>
+        </div>
+    </div>
+    <div id="app4">
+        <component-ref ref="input1">
+            <component-refa ref="input2"></component-refa>
+        </component-ref>
+        <input>
+    </div>
+    <div id="app5">
+        <one :folder="folder"></one>
+    </div>
+</body>
+
+<script>
+    //$root访问根实例，$parent访问父实例，与实例在js中渲染顺序有关
+    Vue.component('input-parent', {
+        data() { return { a: 4 }; },
+        template: `<div><p>{{this.$parent.a}}</p><slot></slot></div>`,
+    });
+    var vm3 = new Vue({
+        el: '#app3',
+        data: { a: "b" },
+    });
+    var vm2 = new Vue({
+        el: '#app2',
+        data: { a: 5 },
+        components: {
+            'component-parent': { data() { return { a: 6 }; }, template: `<div><p>{{this.$parent.a}}</p><slot></slot></div>` }
+        }
+    });
+    //$ref和依赖注入
+    var vn4 = new Vue({
+        el: '#app4',
+        components: {
+            'component-ref': {
+                template: `<div><input placeholder="使用ref语法将组件以input1名绑定在refs对象内"></input>
+                    <slot></slot></div>` },
+            'component-refa': {
+                template: `<input @input='FocusF' placeholder="使用ref语法将组件以input2名绑定在refs对象内">
+                    </input>`,
+                //子集组件可通过inject属性访问FocusF
+                inject: ['FocusF']
+            },
+        },
+        methods: {
+            // 用来从父级组件聚焦输入框
+            focus: function () {
+                //父级可通过this.$refs.name对象访问所有绑定的组件
+                this.$refs.input2.focus()
+            },
+            FocusF() { alert("test") },
+        },
+        mounted() {
+            console.log(this.$refs)
+            console.log(this.$refs.input1)
+            console.log(this.$refs.input2)
+            this.$on('hook:beforeUpdated', this.FocusF)
+        },
+        //依赖注入，父级将this.FocusF绑定给FocusF
+        provide: function () {
+            return {
+                FocusF: this.FocusF
+            }
+        },
+    });
+    //组件之间的循环引用
+    Vue.component('one', {
+        props:['folder'],
+        template: `<p><span>{{ folder.name }}</span>
+        <two :children="folder.children"/></p>` });
+    Vue.component('two', { 
+        props:['children'],
+        template: `<ul><li v-for="child in children">
+        <one v-if="child.children" :folder="child"/>
+        <span v-else>{{ child.name }}</span>
+        </li></ul>` });
+    var vm =new Vue({
+        el:'#app5',
+        data:{
+            folder:{
+                children:{
+                    1:{children:"noe",name:1},
+                    2:{children:"two",name:2},
+                    3:{children:"freet",name:3},
+                },
+                name:1,
+            },
+        },
+    });
+    // Vue.component('input-root', {
+    //     data() { return { a: 1 }; },
+    //     template: `<div><p>{{this.a}}</p><slot></slot></div>`,
+    // });
+    // var vm = new Vue({
+    //     el: '#app',
+    //     data: { a: 2 },
+    //     components: {
+    //         'component-root': { data() { return { a: 3 }; }, template: `<div><p>{{this.a}}</p><slot></slot></div>` },
+    //     }
+    // });
+    // var vm1 = new Vue({
+    //     el: '#app1',
+    //     data: { a: "b" },
+    // });
+</script>

@@ -1,0 +1,21 @@
+@media screen {
+    p {
+        font-size:16px ;
+        font-family:Verdana,sans-serif;
+    }
+}
+@media print {
+    p {
+        font-size: 12px;
+        font-family: times,serif;
+    }
+}
+
+@media screen,print {
+    p{
+        font-weight: bold;
+    }
+}
+h1,p {
+    text-align: center;
+}

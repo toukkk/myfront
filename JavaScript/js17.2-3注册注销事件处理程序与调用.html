@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script type="text/javascript" src="./scripts/enumeration.js">/*js代码无效*/</script>
+</head>
+
+<body>
+    <div>
+        <h1 type="button">】javascript</h1>
+        <span id="clock" style="padding-left:20px;">东</span>
+    </div>
+
+</body>
+
+</html>
+<script>
+    //事件处理程序的注册与注销-----------------------------------------------------------------------------------------------
+    //addEventListener()事件监听方法注册事件处理程序
+    var e = document.getElementsByTagName("h1")[0];
+    e.onclick = function () { alert('world'); };                    //通过给HTML标签添加属性来注册事件，this指接受事件对象
+    function f() { alert("hello"); }
+    e.addEventListener("click", f);                                 //标签通过addEventListener方法注册事件，并不影响标签的属性事件，可以为同一对象注册多个事件
+    e.addEventListener("click", function () { alert("hello one"); });
+    //removeEventListener()事件监听方法删除事件处理程序
+    e.removeEventListener("click", f, false);                       //注销事件处理程序
+    e.removeEventListener("click", function () { alert("hello one"); });    //第二个参数不能是匿名函数，两个函数不等
+    //attachEvent()和detachEvent()IE5以后的IE浏览器使用的事件处理方法。IE9以前的不支持addEventListener()和removeEventListener()
+    if (e.addEventListener)
+        e.addEventListener("click", function () { alert("hello tow"); });
+    else if (e.attachEvent)
+        e.attachEvent("onclick", function () { alert("hello tow"); }); //只有两个参数，且事件需要加前缀on，this指向全局对象
+    //事件处理程序的调用--------------------------------------------------------------------------------------------------------------
+    //事件取消
+    function cancelHandler(event) {
+        var event = event || window.event;      //适用IE
+        if (event.preventDefault) event.preventDefault();   //标准,未支持
+        if (event.returnValue) event.returnValue = false;   //适用IE
+        return false;                           //用于处理使用对象属性注册s的处理程序
+    }
+</script>

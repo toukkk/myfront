@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    ///////////////////////3.2.1
+    var x1 = "Π";
+    console.log("x1: ", x1.length)
+    var x2 = "e";
+    console.log("x2: ", x2)
+    console.log("x2: ", x2.length)
+    var x3 = "";
+    console.log("x3: ", x3.length)
+    var x4 = "testing";
+    console.log("x4: ", x4.length)
+    var x5 = "3.14";
+    console.log("x5: ", x5.length)
+    var x6 = 'name="myform"';
+    console.log("x6: ", x6.length)
+    var x7 = 'wouldn you prefer O\"reillys book?"';
+    console.log("x7: ", x7)
+    console.log("x7: ", x7.length)
+    var x8 = "This string\nfdvas two lins";
+    console.log("x8: ", x8)
+    console.log("x8: ", x8.length)
+    var x9 = "the ra\\tio of a circle cli\bjfvl\rj";
+    console.log("x9: ", x9)
+    console.log("x9: ", x9.length)
+    var x10 = "卧槽";
+    console.log("x10: ", x10.length)
+    console.log("")
+    
+    ///////////////////////3.2.3
+    var x11 = "hello,world!"
+    console.log("one: ", x11.charAt(0))                  //第一个字符
+    console.log("two: ", x11.charAt(x11.length - 1))       //最后一字符
+    console.log("three: ", x11.substring(1, 4))           //第2-4各字符
+    console.log("four: ", x11.slice(-3))                 //最后三个字符
+    console.log("five: ", x11.slice(1, 4))                //第2-4各字符
+    console.log("six: ", x11.indexOf("l"))               //字符"l"首次出现的位置
+    console.log("seven: ", x11.lastIndexOf("l"))         //字符"l"最后一次出现的位置
+    console.log("eight: ", x11.indexOf("l", 3))           //字符"l"在位置3及其之后出现的位置
+    console.log("nine: ", x11.split(","))                //寻找字符串中","并分割成数组
+    console.log("ten: ", x11.replace("h", "H"))           //替换h为H，这是一个新的字符串值，原x11未变
+    console.log("eleven: ", x11.toUpperCase())           //全部替换为大写，这是一个新的字符串值，原x11未变
+    console.log("")
+
+    
+    ///////////////////////3.2.4
+    var text = "testing: 1,2,3";
+    var pattern=/\d+/g                                   //匹配所有包含一个或多个数字的实例
+    console.log("pattern: ", pattern.test(text))         //匹配成功，text中有数字
+    console.log("search: ", text.search(pattern))       //首次匹配成功的位置
+    console.log("match: ", text.match(pattern))         //所有匹配的组成数组
+    console.log("replace: ", text.replace(pattern,"#")) //用#替换文本中匹配的数字
+    console.log("split: ", text.split(/\D+/))           //用非数字字符串截取字符串
+    console.log("")
+    
+</script>

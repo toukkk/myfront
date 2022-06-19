@@ -1,0 +1,863 @@
+var:    定义变量，对象，数组，在为赋值前，变量类型时undefined
+    变量：
+        x=1;                    number：整数
+        x=0.01;                 number：整数和实数共用一种数据类型
+        x="hello world";        string：单双引号内的文本构成的字符串
+        x=true;                 Boolean: 布尔值
+        x=null;                 object: 对象。特殊值，空
+        x=undefined;            undefined: 特殊值，未定义
+        x={};                   object:  对象
+        x=[];                   array:   数组
+    对象：  y为被定义对象，x为新变量属性，z为原有属性
+        y.x="flanagn"；         通过赋值来添加新属性
+        y.x={}；                通过赋值来添加新属性,且该属性为对象
+        y[z]                    通过[]来访问对象内属性   
+        y.z                     通过.来访问对象内属性
+    数组：  i为数字，从0开始
+        [,,]                    表示有两个元素，都为undefined，数组允许元素以逗号结尾
+        y[i]                    数组中第i+1个元素（默认0为第一个）        
+        y.length                数组有多少个元素(为一个数值)
+        y[i]=x;                 若i<y.length,则通过赋值改变第i+1个元素的值
+                                若i>=y.length,通过赋值加入第i+1个元素并赋值为x
+        y[y.length-1]           数组最后一个元素
+    eg: var points = [{ x: 2, y: 4 },{ x: 4, y: 2 }];
+        var data = {trial1: [2, 4, 6],trial2: [6, [4, 4.0], 2]};
+运算符，判断符与逻辑符：
+    运算符：
+        3+2                     加
+		3-2                     减
+		3*2                     乘
+		3/2                     除
+        3%2                     求余
+		points[1].x-points[0]x  =>2      上面数组带入运算
+		“3”+“2”                 =>"32"   +也可以作为字符串连接
+		x++；                   变量自增1，不返回值
+        ++x;                    变量自增1，返回值
+        --x;                    变量自减1，返回值
+		x-- ；                  变量自减1，不返回值
+		x +=2；                 变量加2
+		x *=3；                 变量乘3	
+        typeof null             表示返回值的类型
+        delete                  删除
+    判断符：    var x = 2, y = 3;
+        console.log(x == y)                         =>false     是否相等
+        console.log(x != y)                         =>true      是否不等
+        console.log(x >= y)                         =>false     是否大于
+        console.log(x <= y)                         =>true      是否小于
+        console.log("tow" == "three")               =>false     两个字符串不等
+        console.log("tow" > "three")                =>true      "tw"在字母表中索引大于"th"
+        console.log(false == (x == y))              =>true    
+        console.log("x" in point)                   =>true      in运算符表示前操作数x是否是后对象的属性(包括方法)
+        console.log("d: ", d instanceof Object)     =>true      instanceof运算符表示前操作数是否是后操作数的实例
+        ?:                                                      首先对第一个操作数进行布尔值判定，为真则输出第二个操作数，反之则输出第三个操作数。
+    逻辑符：    理解真值与假值
+        console.log((x == 2) && (y == 3))           =>true      &&表示第二层的对两边真值进行判定，由左往右，先判定左操作数是否为真值，如为假值则直接输出左操作数，反之输出右操作数。
+        console.log((x != 2) || (y == 3))           =>true      ||运算符与&&逻辑一样，从一组备选表达式中选出第一个真值
+        console.log(!(x == 2))                      =>false     "!"运算符较高的优先性是对布尔值的求反，所以运算符首先对操作数转换为布尔值。
+        console.log(!!(x == 2))                     =>true      通过两次逻辑非运算得到一个值等价布尔值
+function：  定义函数                
+    函数：  eg: function plus1(x) { return x + 1; }		
+        y(x,x)                      函数是由函数y及参数x组成
+        return x;                   需要数据返回时使用
+        var z = function(x){};      函数也是一种值，将其赋予给变量
+    方法：  eg: var a=[];  a.push(1,2,3);  a.reverse();	
+        将函数值赋予给对象的属性，称为“方法”
+        a.push(1,2,3);              方法push()将元素添加到数组
+        a.reverse();                方法reverse()将数组元素次序反转
+        a.dist = function(){};      自定义方法
+语句：
+    expression: 表达式  statement：语句块 statements：多分支语句块 initialize：初始化操作 test：测试判定 increment：计数器增长 excepment：异常 param：参数
+    条件语句：
+        if/else：           执行statement1或者statement2
+            if (expression) { statement1；} else { statement2；}
+        switch：            用case或者"default："语句标记的多分支语句，一般用break语句来表示终止。
+            switch (expression1) { statements; }
+            case：          在switch语句中标记的多条case语句，表示如果expression1 === expression2 则执行后面的statement。
+                case expression2：statement；
+            default：       在switch语句中默认的语句，表示如果未匹配到case则执行statement
+                default：statement；
+    循环语句：
+        while：             基本的循环结构,表示当expression为真则执行statement    
+            while (expression) { stantement; }
+        do/while：          while循环的一种替代形式，表示先执行statement再进行判定expression
+            do { statement;} while (expression)
+        for:                有初始化操作、循环条件判定、计数器便量更新三部分组成的循环，有两个分号，表示先initialize后进行test判定执行statement，最后在进行increment。
+            for ( initialize; test; increment ) { statement; }
+        for/in：            表示遍历in整个object的属性并赋值给变量var
+            for ( var in object ) { statement; }
+    跳转语句：
+        label：             给语句块指定一个标签
+            label：statement；
+        break:              表示退出最内层循环或者退出switch语句，又或者退出到label指定的语句结束处
+            break;  ||  break label;
+        continue:           表示重新开始最内层的循环或重新开始label指定的语句
+            continue;  ||  continue label;
+        return:             表示函数内退出并返回的值
+            return expression;
+        throw：             表示抛出excepment异常
+            throw expression;
+        try:                表示捕获异常excepment
+            try { statements; }
+            catch(e) { handler statements; }
+            finaiiy { cleanup statements; }
+    声明语句：
+        function：          声明一个函数
+            function name([param[],...]) {body}
+        var:                声明并初始化一个或多个变量
+            var name = [=expr][,....]
+        let:                用法和var差不多，但作用于(if,for)块级作用域，一般用于局部变量声明，且同一作用域只能声明一次
+        const:              用法和let，区别在于声明必须赋值，且不能重复赋值
+    其他语句：
+        debugger：          断电器调试，一般什么都不做，在调试模式下运行
+            debugger;
+        use strict:         对脚本或者函数应用严格模式
+            "use strict";
+        with：              扩展作用域链，一般不赞成使用
+            with(object) { statement; }
+        empty:              空语句，什么也不做
+全局函数：      不属于任何对象的方法
+    parseInt()              解析整数        从首个非空格字符开始解析，只取开始的数，会跳过任意数量的前导空格，如果第一个非空格字符是非法的数字直接量，将返回NaN
+        parseInt("x",y)         x 表示解析的内容，y表示解析时采用的进制(2-36)
+    parseFloat()            解析整数和浮点数.从首个非空格字符开始解析，只取开始的数，会跳过任意数量的前导空格，如果第一个非空格字符是非法的数字直接量，将返回NaN
+    decodeURLComponent()    参数uri或其属性	必需。要解码的 URI。返回值：字符串，表示解码后的 URI。
+关键词：
+    this：                  在方法中，this 表示该方法所调的对象
+                            在方法的嵌套函数的最外部函数中，this 表示该方法所调的对象
+                            在方法的嵌套函数的内部函数中，this 表示全局对象
+                            如果单独使用，this 表示全局对象， eg:var x=this;  //定义一个全局变量
+                            在函数中，this 表示全局对象
+                            在函数中，在严格模式下，this 是未定义的(undefined)。
+                            在事件中，this 表示接收事件的元素
+                            构造函数内this可引用新对象
+    new:                    new 后面接一个调用函数，即构造函数用以初始化一个新的对象
+    return：                需要数据返回时使用,若未接表达式则返回undefined
+    delete：                删除
+    instanceof:             instanceof操作符测试构造函数的prototype属性是否出现在对象的prototype链中的任何位置。返回值是一个布尔值。
+    break:                  switch语句中用来结束switch语句的，函数中可用return替代。
+    case：                  语句判断一个变量与一系列值中某个值是否恒相等（===），每个值称为一个分支
+    yieId:                  用法和return相似，返回函数的一个值，不同的是使用yieId的函数能产生一个保持函数内部状态的值，这个值是可以恢复的
+自带属性方法对象：
+    Math对象：
+        Math.sqrt(x):           返回平方根
+        Math.PI:                Π,圆周率
+        Math.E:                 自然对数底数e
+        abs(x)	                返回 x 的绝对值
+        ceil(x)	                对数进行上求整
+        round(x)	            四舍五入
+        floor(x)	            对 x 进行下求整
+        log(x)	                返回数的自然对数（底为e）
+        max(x,y,z,...,n)	    返回 x,y,z,...,n 中的最高值
+        min(x,y,z,...,n)	    返回 x,y,z,...,n中的最低值
+        pow(x,y)	            返回 x 的 y 次幂
+        random()	            返回 0 ~ 1 之间的随机数
+        exp(x)	                返回 Ex 的指数
+        sin(x)	                返回数的正弦
+        tan(x)	                返回角的正切
+        cos(x)	                返回数的余弦
+        acos(x)	                返回 x 的反余弦值
+        asin(x)	                返回 x 的反正弦值
+    Date对象：
+        getDate()	        返回 Date 对象返回一个月中的某一天 (1 ~ 31)
+        getDay()	        返回 Date 对象返回一周中的某一天 (0 ~ 6)
+        getFullYear()	    返回 Date 对象以四位数字返回年份
+        getHours()	        返回 Date 对象的小时 (0 ~ 23)
+        getMilliseconds()	返回 Date 对象的毫秒(0 ~ 999)
+        getMinutes()	    返回 Date 对象的分钟 (0 ~ 59)
+        getMonth()	        返回 Date 对象返回月份 (0 ~ 11)
+        getSeconds()	    返回 Date 对象的秒数 (0 ~ 59)
+        getTime()	        返回 1970 年 1 月 1 日至今的毫秒数
+        Date.now()          返回 1970 年 1 月 1 日至今的毫秒数
+        parse()             方法可解析一个日期时间字符串，返回 1970 年 1 月 1 日至今的毫秒数
+    字符串对象：
+        转义字符串表：
+            \'	                单引号
+            \"	                双引号
+            \\	                反斜杠
+            \n	                换行    
+            \r	                回车    
+            \t	                tab(制表符)    
+            \b	                退格符    
+            \f	                换页符    
+        方法：
+            charAt(0)	            返回指定索引位置的字符，第一个字符
+                []                      字符串可看作一个只读数组除了用charAT()访问单个字符，也可以用[].  eg:x.[0]
+            charAt(x11.length-1)	返回指定索引位置的字符，最后一个字符
+            substring(1,4)	        提取字符串中两个指定的索引号之间的字符,第2-4各字符
+            substr(1.4)             提取字符串中从1开始长度为4的字符串
+            slice(-3)	            提取字符串的片断，并在新的字符串中返回被提取的部分,后三个字符
+            slice(1,4)	            提取字符串的片断，并在新的字符串中返回被提取的部分，2-4个字符
+            indexOf("l")	        返回字符串中检索指定字符"l"第一次出现的位置
+            lastIndexOf("l")	    返回字符串中检索指定字符"l"最后一次出现的位置   
+            indexOf("l",3)          字符"l"在位置3及其之后出现的位置
+            split(",")              把字符串分割为子字符串数组，寻找字符串中","并分割成数组
+            replace("h","H")        替换与正则表达式匹配的子串,替换h为H
+            toUpperCase()           把字符串转换为大写
+            toLowerCase()           把字符串转换为小写
+            match(/character/g)     表示截取字符串中为character的字符
+    对象：
+        属性：
+            in                              是否为对象属性
+            value                           值
+            writable                        可写性
+            enumentable                     可枚举性
+            configurable                    可配置性
+        方法：
+            hasOwnProperty()                自有属性
+            propertyIsEnumentable()         自有可枚举属性
+            toString()                      没有参数，表示返回调用该方法的对象值的字符串
+            toLocaletring()                 返回一表示这个对象的本地化字符串
+            valueOf()                       当JavaScript需要将对象转化为某种原始值时调用
+            object1.isPrototypeOf(object2)  表示对象1是否是对象2的原型
+        函数：
+            Object.cerate(object,{porp:{property descriptor}})  表示创建新的对象，第一个参数为原型对象，第二个参数为属性
+            Object.keys(object)                                 列举对象所以可枚举的自有属性组成的数组
+            Object.getOwnPropertyNames(object)                  返回对象所以的自有属性
+            Object.getOwnPropertyDescriptor(object,"porp")      表示获取某个对象特定属性的属性描述符
+            Object.definePorperty(object,"porp",{stantement})   表示创建或修改属性的属性描述符对象
+            Object.definePorperties(object,"porp",{porp:{},..}) 表示创建或修改多个属性的属性描述符对象
+                使用规则:1.如果对象是不可配置的，则可以编辑自有属性，不可增加新属性
+                        2.如果属性是不可配置的，则不可修改它的可配置性和可枚举性
+                        3.如果存取器属性是不可配置的，则不能修改其getter和setter方法，不能将它转为数据属性
+                        4.如果数据属性是不可配置的，不能将它转为存取器属性
+                        5.如果数据属性是不可配置的，不能将它的可写性由false改为true，但可以改成false
+                        6.如果数据属性是可配置且不可写的，可以通过value修改其值，
+            Object.getOwnPrototypeOf(object)                    表示查询对象原型
+            Object.isExtensible(object)                         表示判断对是否可扩展
+            Object.preventExtensions(object)                    表示可将可扩展对象转换为不可扩展，不可逆。原型对像属性的增加，会被继承
+            Object.seal(object)                                 表示将对像设置为不可扩展，不可配置（封闭）
+            Object.isSealed(object)                             表示判断对象是否处于封闭（sealed）状态，即不可扩展，不可配置
+            Object.freeze(object)                               表示将对像设置为不可扩展，不可配置，所有自有属性设置为只读（冻结）
+            Object.isFrozen(object)                             表示判断对象是否处于冻结（freeze）状态
+            JSON.stringify(object)                              表示将对象转化为字符串保存
+            JSON.parse(string)                                  表示字符串对象还原为对象       
+    数组：
+        属性：
+            length：                数组长度
+            getter：                只读，存取器属性
+                get prop() {return stantement;},
+            setter：                只写，一起读写
+                set porp(value) {stantement;},
+        方法、
+            join():                 方法表示将数组所有元素转化为字符串连接在一起，并返回字符串
+                                        无参数：默认以逗号隔开元素
+                                        "":  以引号内内容作为元素的分隔符
+            reverse():              方法用于颠倒数组中元素的顺序
+            sort():                 方法表示将数组元素在原数组内重新排序
+                                        无参数：默认按字母顺序表排序
+                                        function(a,b){return a-b;}: 该参数表示数字按从小到大排序
+                                        function(a,b){return b-a;}: 该参数表示数字按从大到小排序
+                                        function(a,b){  var s = a.toLowerCase();
+                                                        var j = b.toLowerCase();
+                                                        if (s < j) return -1
+                                                        if (s > j) return 1;
+                                                        return 0;}： 该参数表示不区分大小写排序，此参数只对字母有用，数字报错
+            concat():               方法表示创建一个并返回新数组，保留原数组元素和concat()的每个参数，第一级[]会被合并
+            slice():                方法表示返回一个新数组，内容为指定原数组的片段或者子数组
+                                        一个参数：表示截取参数数组开始位置到后面所有元素
+                                        两个参数；表示从第一个参数引索开始到第二个参数前的所有元素，负值表示倒数
+            splice():               方法表示在数组中插入删除元素的通用方法，返回删除元素组成的数组
+                                        一个参数：表示从参数数组开始位置，删除后面所有元素
+                                        两个参数：表示从参数数组开始位置，删除第二位参数值个元素
+                                        三个以上参数：表示后面参数表示在第一位参数数组位置前插入的元素
+            push()：                方法可向原数组的末尾添加一个或多个元素(参数)，并返回新的长度
+            pop():                  没有参数，删除原数组最后一位元素，并返回删除元素值
+            unshift():              方法可向原数组的头部添加一个或多个元素(参数)，并返回新的长度。为一次性插入，不改变参数位置
+            shift():                没有参数，删除原数组头部一位元素，并返回删除元素值
+            toString()              没有参数，表示返回调用该方法的数组值的字符串
+            toLocaletring()         返回一表示这个对象的本地化字符串
+        ECMAScript 5中的数组方法:
+            调用函数参数f：
+                一个参数：表示元素值
+                两个参数：表示元素值，元素索引
+                三个参数：表示元素值，元素索引，数组
+            调用函数参数f1：
+                第一个参数：初始值，无初始值时则为运算第一个元素
+                第二个参数：元素值，无初始值时则为运算第二个元素
+            forEach(f):             方法表示从头打尾遍历数组，为每个元素调用指定函数
+            map(f):                 方法表示将调用的数组的每个元素传递给函数进行运算，并返回一个新数组，新数组包含该函数返回值
+            filter(f)：             方法表示返回一个调用数组的一个符合函数判定元素的新子集数组
+            every(f)：              方法表示对数组的逻辑判定，返回全对为turn或者有一个错为false
+            some(f)：               方法表示对数组的逻辑判定，返回有一个对为turn或者全错为false
+            reduce(f1。初始值):      方法表示法表示用指定函数将数组元素从左到右进行组合，并返回一个值，初始值参数可选   
+                                        在空数组上，不带初始值参数的调用函数reduce()将报类型异常错误
+                                        只有一个值的数组上，不带初始值参数的调用函数reduce()将简单返回这个值，不会调用函数
+            reduceRight(f1，初始值): 方法表示法表示用指定函数将数组元素从右到左进行组合，并返回一个值，初始值参数可选          
+            indexOf(特定值，i)：     方法表示从左到右搜索整个数组中特定值的元素，并返回第一个匹配元素的引索
+                                        参数1：表示要搜索的值
+                                        参数2(可选)：值是从数组的引索，表示从数组中i的位置开始搜索，未定义则从头开始搜索，为负数倒数
+            includes(特定值，i):     方法表示从左到右搜索整个数组中特定值的元素，并返回布尔值
+                                        参数1：表示要搜索的值
+                                        参数2(可选)：值是从数组的引索，表示从数组中i的位置开始搜索，未定义则从头开始搜索，为负数倒数
+            lastIndexOf(特定值，i)： 方法表示从右到左搜索整个数组中特定值的元素，并返回第一个匹配元素的引索，参数二可选
+                                        参数1：表示要搜索的值
+                                        参数2(可选)：值是从数组的引索，表示从数组中i的位置开始搜索，未定义则从头开始搜索，为负数倒数
+        函数：
+            Array()                 构造函数，用来建立新数组
+            Array.isArray(array)    判断是否为数组
+            isFinite(len)           判读那是否为有限数
+        类数组：
+            方法：                      数组方法都可以用下面的方法调用（concat()方法除外）
+                Array.prototype.join.call(object, " "))
+                Array.prototype.slice.call(oobject, 0)
+                Array.prototype.map.call(oobject, function (x) { return x + 1; }))
+            ECMAScript 5中的类数组方法:
+                Array.join(object, "+")
+                Array.slice(object, 0)
+                Array.map(object, function (x) { return x + 1; })
+    函数对象：
+        实参对象：
+            arguments[]：               只是一个实参对象，函数的参数可以看作一个类数组，而arguments就是用来表示这个数组
+        属性：
+            length：                        函数形参个数，只读
+            prototype：                     函数原型对象
+        方法：
+            f.call(object，....):           方法表示对象object调用函数f，函数内可以通过this获得对象的引用,后接参数输入函数的实参
+            f.apply(object，arguments):     方法表示对象object调用函数f，函数内可以通过this获得对象的引用，后接参数输入函数的实参，不同的是apply要用数组[]包起
+            f.bind(object):                 方法表示将函数绑定在对象上，并返回个新函数，调用这个新函数相当于引用对象的方法函数f
+            toString()：                    方法表示将函数返回字符串（非全部），内置函数返回"[native code]"
+            Function():                     方法表示构造一个新函数，参数最后一个便是新函数语句块，前面参数表示函数形参344饿饿3e
+    window对象：
+        属性对象：
+            location：                      用来指代Location对象的属性，表示指定当前显示在窗口的URL(网址)
+                push:                       返回一个URL的锚部分
+                search:                     返回一个URL的查询部分
+                href：          	        返回完整的URL
+                replace(url):               删除前文档并替换当前文档
+                assign(url):                载入一个新的文档
+                reload():                   重新载入当前文档
+            document:                       用来引用Document对象，表示显示在窗口的文档、
+                location：                              用来指代Location对象的属性，表示指定当前显示在窗口的URL(网址)
+                document.getElementById("debuglog"):    通过方法在document文档中查找id为debuglog的元素
+                document.createElement("div"):          创建元素
+                document.body.appendChild(log):         插入页面最后
+                document.createTextNode(msg)：          文档节点插入
+                document.getElementsByTagName("img")    通过方法在document文档中查找元素名为img的元素
+                document.getElementsByClassName("img")  通过方法在document文档中查找类名为img的元素
+                document.querySelectorAll()	            document.querySelectorAll() 是 HTML5中引入的新方法，返回文档中匹配的CSS选择器的所有元素节点列表
+                document.write()                        向文档写 HTML 表达式 或 JavaScript 代码。
+                document.writeln()	                    等同于 write() 方法，不同的是在每个表达式之后写一个换行符。
+                document.compatMode                     检测文档以哪种模式进行渲染，CSS|Compat为标准模式，BackCompat为怪异模式
+                document.readyState	                    返回文档状态,loading - 载入中      uninitialized - 还未开始载入
+                                                                    complete - 载入完成   interactive - 已加载，文档与用户可以开始交互
+            element:                        用来引用Element对象，表示文档的元素对象
+                children：                  返回元素所有子元素数组
+                innerHTML：                 设置或者返回元素的内容。
+                appendChild：               为元素添加一个新的子元素
+                getElementsByTagName("img") 通过方法在element元素中查找元素名为img的元素
+                element.contentEditable	    设置或返回元素的内容是否可编辑，true为可编辑，false为不可编辑，可修改，也为HTML标签的属性
+            Node：                          节点对象，Document对象、Element对象、Text对象都是节点对象
+                childNodes	                返回节点的子节点的节点列表
+                firstChild	                返回节点的第一个子节点
+                lastChild	                返回节点的最后一个子节点
+                parentNode	                返回节点的父节点
+                ownerDocument	            返回节点的根元素（document 对象）
+                nodeName	                返回节点的名称，根据其类型
+                nodeType	                返回节点的类型
+                nodeValue	                设置或返回节点的值，根据其类型
+                previousSibling	            返回元素之前紧接的节点
+                nextSibling	                返回元素之后紧接的节点
+                textContent	                设置或返回节点及其后代的文本内容
+                appendChild()	            把新的子节点添加到节点的子节点列表末尾
+                cloneNode()	                克隆节点
+                insertBefore()	            在已有的子节点之前插入一个新的子节
+                removeChild()	            删除子节点
+                replaceChild()	            替换子节点  
+            Event：                         事件对象
+                bubbles	                    返回布尔值，指示事件是否是起泡事件类型
+                cancelable	                返回布尔值，指示事件是否可拥可取消的默认动作
+                currentTarget	            返回其事件监听器触发该事件的元素，eventlistener触发事件的元素。
+                target	                    返回触发此事件的元素（事件的目标节点），并且不一定eventlistener的元素
+                timeStamp	                返回事件生成的日期和时间
+                type	                    返回当前 Event 对象表示的事件的名称
+                initEvent()	                初始化新创建的 Event 对象的属性
+                preventDefault()	        通知浏览器不要执行与事件关联的默认动作
+                stopPropagation()	        不再派发事件
+                addEventListener()	        允许在目标事件中注册监听事件(IE8 = attachEvent())
+                dispatchEvent()	            允许发送事件到监听器上 (IE8 = fireEvent())
+                removeEventListener()	    运行一次注册在事件目标上的监听事件(IE8 = detachEvent())
+            history：                       用来引用该窗口的History对象，表示窗口的浏览历史用文档和文档状态列表的形式
+                length	                    返回历史列表中的网址数
+                back()	                    加载 history 列表中的前一个 URL
+                forward()	                加载 history 列表中的下一个 URL
+                go(number)	                加载 history 列表中的某个具体页面，参数number正负表示向前或后跳过任意页
+            navigator:                      用来引用Navigator对象，表示浏览器厂商和版本信息的对象
+                appCodeName	                返回浏览器的代码名
+                appName	                    返回浏览器的名称
+                appVersion	                返回浏览器的平台和版本信息
+                platform	                返回运行浏览器的操作系统平台
+                userAgent	                返回由客户机发送服务器的user-agent 头部的值
+                onLine                      返回当前浏览器是否连接网络
+                cookieEnabled	            返回指明浏览器中是否启用 cookie 的布尔值
+                javaEnabled()	            指定是否在浏览器中启用Java小程序
+            screen:                         用来引用Screen对象，表示提供窗口显示的大小和可用的颜色数量的信息
+                availHeight	                返回屏幕的高度（不包括Windows任务栏）
+                availWidth	                返回屏幕的宽度（不包括Windows任务栏）
+                height	                    返回屏幕的总高度
+                width	                    返回屏幕的总宽度
+                colorDepth	                返回目标设备或缓冲器上的调色板的比特深度
+                pixelDepth	                返回屏幕的颜色分辨率（每象素的位数）
+            window，self：                  用来引用自身全局对象
+            parent:                         用来引用包含它的窗口或窗体的window对象,当为顶级对象时，引用为自身
+            top:                            用来引用为所在窗口的顶级窗口
+        方法(全局函数)：
+            alert():                        显示带有一段消息以及确认按钮(关闭对话框)的对话框
+            confirm("准备好了吗"):           显示带有一段消息以及确认按钮和取消按钮的对话框，返回布尔值
+            prompt()：                      显示带有一段消息以及一个输入框的对话框，输入字符串并返回字符串
+            showModalDialog(url,[],"")：    显示包含HTML的拟态对话框，url指导入的HTML文档，[]指输入的参数，""指对话框的设置样式
+            console.log():                  控制台输出函数
+                console.log("注释" typeof x):    输出元素类型
+            console.dir():                  可以显示一个对象所有的属性和方法。
+            setTimeout(y,x):                方法用于在指定的毫秒数后调用函数或计算表达式,y为函数或表达式，x为毫秒时间
+                clearTimeout():                 传入setTimeout()的值为参数，用于终止setTimeout()的执行
+            setInterval(y,x):               方法用于在指定的毫秒数后重复调用函数或计算表达式,y为函数或表达式，x为毫秒时间
+                clearInterval():                传入setInterval()的值为参数，用于终止setInterval的执行
+            getSelection()	                返回一个 Selection 对象，表示用户选择的文本范围或光标的当前位置
+            getComputedStyle(e,null)	    获取指定元素的 CSS 样式
+            window.onload():                页面文档加载完后执行的方法，因为 JavaScript 中的函数方法需要在 HTML 文档渲染完成后才可以使用，
+                                                如果没有渲染完成，此时的 DOM 树是不完整的，这样在调用一些 JavaScript 代码时就可能报出"undefined"错误
+            window.open():                  用于打开一个新的浏览器窗口或查找一个已命名的窗口，返回window对象
+            window.close():                 关闭窗口
+            addEventListener("click", hide, false)      为一个对象目标设置事件处理程序   
+            removeEventListener("click", hide, false)   为一个对象目标注销事件处理程序 
+                "click"；                   click 是方法，onclick是事件。执行click就是模拟鼠标点击，同时会触发onclick事件。
+                hide：                      事件触发时执行（删除）的函数
+                false:                      第三个参数表示，当多个元素同时触发时是冒泡还是捕获 
+                                            false:默认值表示，事件由内到外触发  true: 事件由外到内触发
+        储存对象：
+            localStorage:           用于长久保存整个网站的数据，保存的数据没有过期时间，直到手动去除。同源文档可共享数据
+            sessionStorage:         用于临时保存同一窗口(或标签页)的数据，在关闭窗口或标签页之后将会删除(可恢复)这些数据。需要同源且同顶级窗口才可共享数据                                        
+            属性方法：
+                length：	            返回存储对象中包含多少条数据
+                key(n)	                返回存储对象中第 n 个键的名称
+                getItem(keyname)	    返回指定键的值
+                setItem(keyname, value)	添加键和值，如果对应的值存在，则更新该键对应的值
+                removeItem(keyname)	    移除键
+                clear()	                清除存储对象中所有的键
+            储存事件对象：
+                key:                    被设置或者移除项的名字或者健名，如调用clear()函数则为null
+                newValue:               保存该项的新值，removeItem(keyname)时为null
+                oldValue:               改变或者删除项前的值，插入新值时为null
+                storgaeArea:            储存属性上的存储属性
+                url:                    触发储存变化脚本所在文档url
+            cookie:                 用于浏览器储存的少量数据
+            属性方法：
+                max-age：
+                path:
+                damain:
+                secuer:yh
+    类型转换：      
+        类型转换表：
+            原始值	        转换为数字	        转换为字符串	    转换为布尔值
+            false	            0	            "false"             false	
+            true	            1	            "true"	            true	
+            0	                0	            "0"	                false	
+            1	                1	            "1"	                true	
+            "0"	                0	            "0"	                true	
+            "000"	            0	            "000"	            true	
+            "1"	                1	            "1"	                true	
+            NaN	                NaN	            "NaN"	            false	
+            Infinity	        Infinity        "Infinity"	        true	
+            -Infinity	        -Infinity       "-Infinity"	        true	
+            ""	                0	            ""	                false	
+            "20"	            20	            "20"	            true	
+            "Runoob"	        NaN	             "Runoob"	        true	
+            [ ]	                0	            ""	                true	
+            [20]	            20	            "20"	            true	
+            [10,20]             NaN	            "10,20"     	    true	
+            ["Runoob"]	        NaN	            "Runoob"	        true	
+            ["Runoob",  "Google"]  NaN	        "Runoob,Google"     true	
+            function(){}        NaN	            "function(){}"	    true	
+            { }	                NaN	            "[object Object]"   true	
+            null	            0	            "null"	            false	
+            undefined	        NaN	            "undefined"	        false
+        方法：
+            Number()            返回数字
+            String()            返回字符串
+            Boolean()           返回布尔值
+            Object()            返回对象
+            toString()          返回十进制的字符串
+            toFixed(x)：        返回保留x位小数的值
+            toString(x)：       返回x进制的值
+            toExponential(x)    方法表示保留x位数的科学计数法
+            toPrecision(x)      方法表示保留x位数
+            valueOf()           将默认对象转化为原始值
+            isNaN()             如果参数值为 NaN 或字符串、对象、undefined等非数字值则返回 true, 否则返回 false。
+    正则表达式RegExp 对象：
+        属性：
+            constructor	            返回一个函数，该函数是一个创建 RegExp 对象的原型。
+            global	                判断是否设置了 "g" 修饰符
+            ignoreCase	            判断是否设置了 "i" 修饰符
+            lastIndex	            用于规定下次匹配的起始位置
+            multiline	            判断是否设置了 "m" 修饰符
+            source	                返回正则表达式的匹配模式
+        RegExp对象方法：
+            exec	                检索字符串中指定的值。返回找到的值，并确定其位置
+            test	                检索字符串中指定的值。返回 true 或 false
+            toString	            返回正则表达式的字符串
+        支持正则表达式的 String 对象的方法：
+            search	                检索与正则表达式相匹配的值，返回位置
+            match	                找到一个或多个正则表达式的匹配，返回匹配的对象
+            replace	                替换与正则表达式匹配的子串，返回新的字符串
+            split	                把字符串分割为字符串数组，返回新数组
+        正则表达式字符：
+            直接量字符表：
+                字母和数字字符   匹配 
+                \0	            查找 NULL 字符
+                \o              查找 NUL 字符
+                \n  	        查找换行符
+                \f	            查找换页符
+                \r	            查找回车符
+                \t	            查找制表符
+                \v	            查找垂直制表符
+                \xxx	        查找以八进制数 xxx 规定的字符
+                \xdd	        查找以十六进制数 dd 规定的字符，例\x0A=\n
+                \uxxxx	        查找以十六进制数 xxxx 规定的 Unicode 字符，例\u0009=\t
+            字符类表：
+                字符            匹配
+                [abc]	        查找方括号之间的任何字符
+                [^abc]	        查找任何不在方括号之间的字符。
+                [0-9]	        查找任何从 0 至 9 的数字
+                [a-z]	        查找任何从小写 a 到小写 z 的字符
+                [A-Z]	        查找任何从大写 A 到大写 Z 的字符
+                .	            查找单个字符，除了换行和行结束符
+                \w	            查找长度大于一的数字、字母及下划线
+                \W	            查找非单词字符
+                \d	            查找数字
+                \D	            查找非数字字符
+                \s	            查找空白字符
+                \S	            查找非空白字符
+                [\b]            退格直接量（特例）
+            重复字符语法表：
+                字符            含义
+                {n,m}           匹配前一项至少n次，但不能超过m次
+                {n,}            匹配前一项至少n次或者更多次
+                {n}             匹配前一项n次
+                ?               匹配前一项至少0次或者1次,也就是说前一项是可选的，等价{0，1}
+                +               匹配前一项至少1次或者多次，等价{1，}
+                *               匹配前一项至少0次或者多次，等价{0，}
+            选择，分组，引用字符表：
+                |               选择，匹配该字符左边的表达式或者右边的表达式
+                (...)           组合，将几个项组合为一个单元，这个单元可通过修饰符修饰，而且可以记住和这个单元相匹配的字符串
+                (?:...)         只组合，把项目合到一个单元，但不记住字符串
+                \number         和第number个分组匹配的字符串相匹配，组索引是从左到右的左括号数，“(?:”形式的分组不编码
+            锚字符表：
+                字符            含义
+                n$          	匹配任何结尾为 n 的字符串
+                ^n	            匹配任何开头为 n 的字符串
+                \b	            匹配单词边界
+                \B	            匹配非单词边界
+                ?=n	            匹配任何其后紧接指定字符串 n 的字符串
+                ?!n	            匹配任何其后没有紧接指定字符串 n 的字符串
+            修饰符表：
+                字符            含义
+                i	            执行对大小写不敏感的匹配
+                g	            执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）
+                m	            执行多行匹配
+    XMLHttpRequest 对象：
+        属性：
+            responseText：          表示将响应信息作为字符串返回
+            responseXML：           表示将响应信息格式化为Xml Document对象并返回
+            readyState：            表示返回XMLHTTP请求的当前状态
+                                        0	描述一种“未初始化”状态。此时，已经创建了一个XMLHttpRequest对象，但是还没有初始化。
+                                        1	描述一种“发送”状态。此时，代码已经调用了XMLHttpRequest open()方法并且XMLHttpRequest已经准备好把一个请求发送到服务器。
+                                        2	描述一种“发送”状态。此时，已经通过send()方法把一个请求发送到服务器端，但是还没有收到一个响应。
+                                        3	描述一种“正在接收”状态。此时，已经接收到HTTP响应头部信息，但是消息体部分还没有完全接收结束。
+                                        4	描述一种“已加载”状态。此时，响应已经被完全接收。
+            status:                 表示返回当前请求的http状态码
+                                    200 表示成功
+                                    404 表示未找到资源
+            responseBody：          表示变量，此属性只读，以unsigned array格式表示直接从服务器返回的未经解码的二进制数据。
+            onreadystatechange:     表示指定当readyState属性改变时的事件处理句柄
+            upload:
+        方法：
+            open():                 表示创建一个新的http请求，并指定此请求的方法、URL以及验证信息，语法：oXMLHttpRequest.open(bstrMethod, bstrUrl, varAsync, bstrUser, bstrPassword);
+                                        第一参数：http方法，例如：POST、GET、PUT及PROPFIND。大小写不敏感。 
+                                        第二参数：请求的URL地址，可以为绝对地址也可以为相对地址。 
+                                        第三参数[可选]：布尔型，指定此请求是否为异步方式，默认为true。如果为真，当状态改变时会调用onreadystatechange属性指定的回调函数。 
+                                        第四参数[可选]：如果服务器需要验证，此处指定用户名，如果未指定，当服务器需要验证时，会弹出验证窗口。 
+                                        第五参数[可选]：验证信息中的密码部分，如果用户名为空，则此值将被忽略。
+            send():                 表示发送请求到http服务器并接收回应，参数为预发送的数据
+            setRequestHeader():     表示单独指定请求的某个http头
+            getRequestHeaders():    表示获取响应的所有http头
+            getRequestHeader():     表示从响应信息中获取指定的http头，参数为指定头
+            abort():                表示取消当前请求
+    画布canvas:
+        属性：
+            fillStyle	        设置或返回用于填充绘画的颜色、渐变或模式
+            strokeStyle	        设置或返回用于笔触的颜色、渐变或模式
+            shadowColor	        设置或返回用于阴影的颜色
+            shadowBlur	        设置或返回用于阴影的模糊级别
+            shadowOffsetX	    设置或返回阴影与形状的水平距离
+            shadowOffsetY	    设置或返回阴影与形状的垂直距离
+            lineCap	            设置或返回线条的结束端点样式
+            lineJoin	        设置或返回两条线相交时，所创建的拐角类型
+            lineWidth	        设置或返回当前的线条宽度
+            miterLimit	        设置或返回最大斜接长度
+            font	            设置或返回文本内容的当前字体属性
+            textAlign	        设置或返回文本内容的当前对齐方式
+            textBaseline	    设置或返回在绘制文本时使用的当前文本基线
+            width	            返回 ImageData 对象的宽度
+            height	            返回 ImageData 对象的高度
+            data	            返回一个对象，其包含指定的 ImageData 对象的图像数据
+            globalAlpha	        设置或返回绘图的当前 alpha 或透明值
+            globalCompositeOperation	设置或返回新图像如何绘制到已有的图像上
+        方法：
+            createLinearGradient()	    创建线性渐变（用在画布内容上）
+            createPattern()	            在指定的方向上重复指定的元素
+            createRadialGradient()	    创建放射状/环形的渐变（用在画布内容上）
+            addColorStop()	            规定渐变对象中的颜色和停止位置
+            rect()	                    创建矩形
+            fillRect()	                绘制"被填充"的矩形
+            strokeRect()	            绘制矩形（无填充）
+            clearRect()	                在给定的矩形内清除指定的像素
+            fill()	                    填充当前绘图（路径）
+            stroke()	                绘制已定义的路径
+            beginPath()	                起始一条路径，或重置当前路径
+            moveTo()	                把路径移动到画布中的指定点，不创建线条
+            closePath()	                创建从当前点回到起始点的路径
+            lineTo()	                添加一个新点，然后在画布中创建从该点到最后指定点的线条
+            clip()	                    从原始画布剪切任意形状和尺寸的区域
+            quadraticCurveTo()	        创建二次贝塞尔曲线
+            bezierCurveTo()	            创建三次贝塞尔曲线
+            arc()	                    创建弧/曲线（用于创建圆形或部分圆）
+            arcTo()	                    创建两切线之间的弧/曲线
+            isPointInPath()	            如果指定的点位于当前路径中，则返回 true，否则返回 false
+            scale()	                    缩放当前绘图至更大或更小
+            rotate()	                旋转当前绘图
+            translate()	                重新映射画布上的 (0,0) 位置
+            transform()	                替换绘图的当前转换矩阵
+            setTransform()	            将当前转换重置为单位矩阵然后运行 transform()
+            fillText()	                在画布上绘制"被填充的"文本
+            strokeText()	            在画布上绘制文本（无填充）
+            measureText()	            返回包含指定文本宽度的对象
+            drawImage()	                向画布上绘制图像、画布或视频
+            createImageData()	        创建新的、空白的 ImageData 对象
+            getImageData()	            返回 ImageData 对象，该对象为画布上指定的矩形复制像素数据
+            putImageData()	            把图像数据（从指定的 ImageData 对象）放回画布上
+    音频：
+        方法：
+            addTextTrack()	    向音频/视频添加新的文本轨道
+            canPlayType()	    检测浏览器是否能播放指定的音频/视频类型
+            load()	            重新加载音频/视频元素
+            play()	            开始播放音频/视频
+            pause()	            暂停当前播放的音频/视频
+            HTML                音频/视频属性
+        属性：
+            audioTracks	        返回表示可用音频轨道的 AudioTrackList 对象
+            autoplay	        设置或返回是否在加载完成后随即播放音频/视频
+            buffered	        返回表示音频/视频已缓冲部分的 TimeRanges 对象
+            controller	        返回表示音频/视频当前媒体控制器的 MediaController 对象
+            controls	        设置或返回音频/视频是否显示控件（比如播放/暂停等）
+            crossOrigin	        设置或返回音频/视频的 CORS 设置
+            currentSrc	        返回当前音频/视频的 URL
+            currentTime	        设置或返回音频/视频中的当前播放位置（以秒计）
+            defaultMuted	    设置或返回音频/视频默认是否静音
+            defaultPlaybackRate	设置或返回音频/视频的默认播放速度
+            duration	        返回当前音频/视频的长度（以秒计）
+            ended	            返回音频/视频的播放是否已结束
+            error	            返回表示音频/视频错误状态的 MediaError 对象
+            loop	            设置或返回音频/视频是否应在结束时重新播放
+            mediaGroup	        设置或返回音频/视频所属的组合（用于连接多个音频/视频元素）
+            muted	            设置或返回音频/视频是否静音
+            networkState	    返回音频/视频的当前网络状态
+            paused	            设置或返回音频/视频是否暂停
+            playbackRate	    设置或返回音频/视频播放的速度
+            played	            返回表示音频/视频已播放部分的 TimeRanges 对象
+            preload	            设置或返回音频/视频是否应该在页面加载后进行加载
+            readyState	        返回音频/视频当前的就绪状态
+            seekable	        返回表示音频/视频可寻址部分的 TimeRanges 对象
+            seeking	            返回用户是否正在音频/视频中进行查找
+            src	                设置或返回音频/视频元素的当前来源
+            startDate	        返回表示当前时间偏移的 Date 对象
+            textTracks	        返回表示可用文本轨道的 TextTrackList 对象
+            videoTracks	        返回表示可用视频轨道的 VideoTrackList 对象
+            volume	            设置或返回音频/视频的音量
+书本表格：
+    表3-1javascript转义字符---------40
+    表3-2javascript类型转换---------49
+    表4-2javascript运算符-----------66
+    表4-3任意值在typeof运算的返回值---------87
+    表5-1javascript语句语法---------116
+    表10-1正则表达式中的直接量字符------------255
+    表10.2正则表达式中的字符类-------------256
+    表10.3正则表达式中的重复字符语法-------------257
+    表10.4正则表达式中的选择，分组，引用字符------------259
+    表10.5正则表达式中的锚字符-------------261
+    表10.6正则表达式中的修饰符-------------261
+运算符：
+    任意js的值都可以转换为布尔值，
+	（假值）false:  undefined，null,  0 ,  -0   ,  NaN    ,""   
+	（真值）true:   其他值包括对象数组都会转为true
+
+    "+"和"=="等运算符都遵循将对象转化为原始值，一般首先调用valueOf(),然后调用toString()。不管原始值是否被直接使用，它都不会进一步被转化为数字或者字符串。
+    
+    乘法和除法优先级高于加法减法，赋值运算的优先级非常低，通常最后执行。属性访问表达式和调用表达式的优先级比运算符高。
+	    只有任何一个表达式具有副作用会影响其他表达式的值，其求值顺序才会有所不同。
+
+    位运算符“&”“|”“^”“-”"<<" ">>"">>>",是指对32位二进制整数进行操作的符号，位运算符会将NaN,Infinity,-Infinity转化为0。
+        
+    字母顺序表：1>2>3.....>9>A>B......>Z>a>b...>z
+
+    表示===两边的量的值与量的类型必须完全相同.
+        null===null
+        undefined===undefined
+        0===-0  
+        两个引用指向同一对象则两个引用相等
+        NaN不等于任何值，包括它本身，只有x!==x时才确定x=NaN.
+        
+    表示==两边类型不同，比较时会进行隐式转换，再比较
+        x=null，y=undefined，  x==y
+        x=number， y=string，先将字符串转化为数值，在比较值
+        x=trun或x=false，则将其转换为1或者0在进行比较
+        x=object，y=number或string，则将对象通过valueOf()或toString()转换为原始值，在比较
+        除以上所有类型不等
+    !=,!==运算符的检车规则是==，===运算符的求反：
+        相同之处：	都是比较两个参数是否相同，不同返回true，相同返回false
+        不同之处：	!= 首先会尝试类型转换，转换成相同类型再比较。一般字符串1跟数字1会被转换成相同类型，然后进行比较，结果是false;
+                    但是!==不会进行类型转换，如果类型不同直接返回true. 比如var a=1,b=‘1’; console.log(a!==b)的结果是true;而console.log(a!=b)的结果是false
+        
+    “+”运算符以string为先，比较“<”">""-"以number为先。
+
+    in运算符和instanceof运算符：     表达式都为  x  in  y;  x  instanceof  y.
+        in：		左操作数x为string或可以转换为string的类型，右操作数y为对象。表示前操作数是否是后对象的属性(包括方法，[0])
+        instanceof:  	希望左操作数x为对象（数组），右操作数y为表示对象的类。表示前操作数是否是后操作数的实例
+
+    赋值所有运算如a op=b,当啊表达式具有副作用（比如函数调用和赋值操作）的时候不等价于a = a op b。
+
+    .运算符是静态的，写死在程序里，在不知到属性名时无法使用，而[]运算符则是使用字符串值(字符串是动态的)，所以程序运行时必须用[]作为引索来访问属性
+语句：
+    "use strict"严格模式的特点：
+        1."use strict" 指令只允许出现在脚本或函数的开头。
+        2.禁止使用with语句
+        3.所用变量必须先声明，否则会引用错误异常。在非严格下，这种隐性声明的全局变量的方法是给全局对象添加一个新属性
+        4.调用的函数（不是方法）中this值是undefined。非严格下，this值表示全局对象
+        5.不允许对只读属性赋值
+        6.不允许删除变量或对象,还有函数。
+        7.不允许变量重名
+        8.不允许使用八进制
+        9.不允许使用转义字符
+        10.不允许对一个使用getter方法读取的属性进行赋值
+        11.不允许删除一个不允许删除的属性，如prototype属性
+        12.在作用域 eval() 创建的变量不能被调用
+        13. "eval" 字符串和"arguments" 字符串是关键词，不能作为标记符
+    
+    复合语句的应用： {x = 2 ; y = 3 ; z = 4 ;}  可以看成一个语句/????????///
+    空语句的应用：for(i = 0; i < a.length ; a[i++]=0);
+
+    else if语句就是多个if else语句嵌套。
+
+    在函数内，所有变量声明会默认自动写在在函数上部，而函数的初始化(即赋值)留在原来位置。套嵌函数仅对自身变量。
+
+    使用var声明一个变量时，这个属性是不可配置的，也意味着这个变量无法通过delete运算符删除。
+
+    函数声明语句一般出现在代码顶部，嵌套在其函数内的函数一般也在嵌套函数的顶部。函数定义不能出现在if语句，while循环或其他语句中。
+	和声明变量不同，变量时声明提前了，但变量初始值还在原来位置，而函数名称和函数体都被提前了，也是说可以在声明一个函数前调用它。
+	函数表达式可出现在任何地方
+
+    for/in中对象的属性可枚举性：
+        不可枚举：内置方法(toString())、内置属性(length)、for/in循环体删除的未枚举属性、循环体定义的新属性
+        可枚举：   代码中定义的所有属性和方法、对象继承的自定义属性、使用delete删除的对象已有属性
+    
+    函数表达式定义的函数不能提前使用，因为变量声明只是名称提前，表达式不会提前
+对象函数：
+    两个单独的对象，数组用不相等。
+
+    eval()只有一个参数，如果传入参数不是字符串，则返回这个参数
+		 	  如果是字符串（该字符串必须在语法上讲的通），则将字符串解析成一段代码，成功则运行它并返回字符串最后一个表达式或返回值（没有返回undefined）。
+									         					         失败则抛出一个语法错误（syntaError）异常。
+
+    每一个JavaScript对象(null除外），都与另一个对象相关联。“另一个”对象就是原型，每个对象都从原创那里继承属性。
+        所有通过对象直接量创建的对象都有用一个原型对象，
+        通过关键字new和构造函数调用创建的对象原型是构造函数的prototype属性的值
+
+    对象的常见用法：创建create、设置set、查找query、删除delete、检测test、枚举enumerate它的属性、
+        属性特性： 	可写writable attribute   		表明是否可以设置该属性的值
+                可枚举enumerable attribute	表明是否可以通过for/in循环返回该属性
+                可配置configurable attribute	表明是否可以删除或修改该属性 
+
+    对象属性索引可以用数字当属性名来使用，JavaScript会将1转化为“1”
+
+    Object.prototype.toString.call(a)输出是[object Array]
+
+    字符串，数字，布尔值（只读）都是通过构造函数创建临时对象（包装对象）以获得属性和方法，且不能给临时对象添加属性及修改（无效undefined）
+	原始值==包装对象                 原始值!===包装值
+属性：
+    属性的访问错误：	1.属性不存在		undefined
+			2.属性的对象不存在		抛出类型错误异常
+	设置属性失败：
+			3.属性设置为只读		
+			4.属性为继承的只读		不能通过同名自有属性覆盖只读属性
+			5.对象内没有属性p,没有setter方法调用，且对象的可扩展性是false，那对象内不能定义新属性
+    
+    属性标识符：
+        value			值(number)
+        writable		可写性(布尔值)
+        enumerable		可枚举性(布尔值)
+        configurable	可配置性(布尔值)
+        存取器属性：
+            get			值(函数)
+            set			可写性(函数)
+            enumerable		可枚举性(布尔值)
+            configurable	可配置性(布尔值)
+
+    如果属性同时拥有getter(无参数)和setter(value)方法，那他是个可读可写的属性，只有getter方法则只读，只有setter方法则只写,这是读取该值返回undefined。
+						value:该参数表示将赋值表达式的右侧值当作参数传入setter。
+其他：
+    click和onclick的区别：
+        onclick是绑定事件，告诉浏览器在鼠标点击时候要做什么；click本身是方法，作用是触发onclick事件，只要执行了元素的click()方法，就会触发onclick事件
+        click可以理解为一次简单的触发，只执行一次，找不到以后就不再执行；onclick则是给这个id注册一种行为，可以重复触发
+        click 是方法，onclick是事件。执行click就是模拟鼠标点击，同时会触发onclick事件。
+
+    undefined表示系统级的，出乎预料的或类似错误的值的空缺，而null 是程序级的，表示正常的或意料中的值的空缺。如要将它们赋值给变量，属性，函数参数最好使用null。
+            null==undefined   true             null===undefined    false
+
+    数组特性： 	当有新元素加入时，自动更新length
+            当设置小的length时自动截断数组
+            从Array.proptype继承一些有用的方法
+            类属性为Arrayv
+
+    构造函数中的this所指的调用上下文，将变成新对象，如new o.m()中的方法中的this不在指方法对象o，而是指新对象
+        构造函数一般没有return，通常构造函数调用表达式的计算结果就是这个新对象的值
+        如果有return显式的返回一个对象，那么调用表达式就是这个对象hh 
+
+    大部分情况下JavaScript默认行为是：省略的实参都将是undefined，多余的实参都将被自动省略。
+
+    闭包的特性：this指代全局对象，如需指向外部函数，则需要外部函数var变量=this
+            闭包有自己的arguments，如需指向外部函数的，则需要外部函数var变量=arguments
+            关联闭包的作用域链是活动的，嵌套函数不会将私有变量复制一遍，这是所有闭包共享的
+
+    构造函数通常用作类名，
+
+    在两个不同框架组中创建两个数组继承自两个相同但独立的原型对象，其中一个数组不是另一个的原型对象的实例，
+js子集：
+	1.禁止eval()和unction()构造函数在任何安全子集里使用，因为它们可以执行任意代码，JS无法对这些代码进行静态检查。
+	2.禁止使用关键字this，因为在非严格下可以通过this访问全局对象。而沙箱的一个重要目的就是阻止对全局对象的访问。
+	3.禁止使用with语句，因为with语句会增加静态代码的检查的难度。
+	4.禁止使用某些全局变量，
+	5.禁止使用某些属性和方法，以免在沙箱中的代码拥有过多的权限，如：arguments对象的属性caller和callee(甚至某些子集中禁用arguments)、函数的apply()和call()方法，以及constructor和prototype属性
+	6.通常禁用[]来访问属性，无法对方括号内的表达式作静态分析，静态分析可以有效地防止带（.）运算符的属性存取表达式去读写特殊属性
+在XHTML中如果js代码中包含“<"或"&"会被解释为XML标记，所以最好将js代码写入<script><![CDATA[/***JavaScript代码***/]]</script>。
+<script>标签有两个属性defer和async，它们都是布尔属性，它们可以在支持它们的浏览器上改变脚本的执行方式，两者都是告诉浏览器链接进来的脚本都不会使用document.write，也不会生产文档
+	defer是使浏览器延迟链接脚本的执行，直到文档的载入和解析完成  <script defer src=""></script>
+	async是使浏览器尽快的链接脚本的执行，而不用在下载脚本时阻塞文档解析，如果同时i存在则忽略defer属性
+js的加载时间线：
+	1.创建Document对象，开始解析web页面，此时 document.readyState = ‘loading’
+	2.遇到 link 外部引入的 css ，会开启一个新的线程进行异步加载
+	3.遇到 script 外部 js ，并没有设置 defer 或 async ，会同步加载 js 文件并阻塞页面，等js加载完并执行完才继续解析页面
+	4.遇到有 async或 defer 的 script，会异步加载js文件；其中设置了async的脚本会在加载完成后执行，而设置了defer的脚本会在dom树构建完成(文档解析完成)后执行
+	5.遇到 img (带有src的) 等，会异步加载
+	6.文档解析完成后(dom树构建完成)，设置了defer的脚本立即执行；document触发DOMContentLoaded事件(只能通过addEventListener绑定)，document.readyState = ‘interactive’；由此从同步脚本执行阶段进入到事件驱动阶段
+	7.当所有的async脚本执行完，img加载完，所有的资源都加载完成后；document.readyState=‘complete’；触发onload事件
+	8.从此，以异步响应方式处理用户输入、网络事件等。
+IE里的条件注释：
+	<!--[if IE]><script src="extend.js"></script><![endif]-->   只在IE上显示
+	<!--[if IE 6]><script src="extend.js"></script><![endif]-->   只在IE6上显示
+	<!--[if lte IE 7]><script src="extend.js"></script><![endif]-->   只在IE7,6,5上显示
+	<!--[if !IE]><script src="extend.js"></script><![endif]-->   只不在IE上显示
+	/*@cc_on   @if（@_js）alert("in IE");   @else（@_js）alert("in IE");  @end @*/   条件注释，以/*@cc_on开头，以 @end @*/ 结尾，条件语句及条件前加@。
+name 既不是关键字也不是保留字，但他是属性，这也就是问题所在，这样的话其他的属性也不能用作变量名（不是全部，仅仅是一部分，但还是建议不要使用属性做变量名），
+	比如 top 也不行，但是 left， bottom 却可以。另外 location，self 也不可以，而造成这一切的原因是这些变量名是JS的主机变量，永远不能被重新声明。
+
+
+
+

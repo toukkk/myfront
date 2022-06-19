@@ -1,0 +1,75 @@
+git init 			创建一个名为 .git 的子目录，初始化当前目录的git仓库
+git show                           显示后接内容信息
+git commit                  	提交一次版本
+git commit -m ""        	提交一次版本,并添加一些说明
+git commit -a		添加所以更新文件到缓存区并提交一次版本
+git commit --amend	重新提交一次
+git status                     	查看更新的文件状态
+git status --short		简单查看更新的文件状态。简写git status -s
+git diff             		查看尚未暂存的文件更新了哪些部分
+git diff --cached		查看暂存的文件更新了哪些部分
+git diff --check		列出可能存在的空白错误
+git difftool 			用来Araxis ，emerge 或 vimdiff 等软件输出 diff 分析结果
+git difftool --tool-help 	来看你的系统支持哪些 Git Diff 插件
+git rm      			删除文件
+git mv  			重命名文件
+git add text.txt            	添加更新文件到缓存区
+git add .		     	添加所以更新文件到缓存区？并跟踪
+git log  		     	查看提交历史记录
+	--all				查看所有提交历史记录
+	-p				用来显示每次提交的内容差异
+	-n				仅显示最近n提交
+	--stat				显示每次更新的文件修改统计信息
+	--online			简单显示一行
+	--graph			添加了一些ASCII字符串来形象地展示你的分支、合并历史			
+	--pretty			使用其他格式显示历史提交信息。可用的选项包括 oneline，short，full，fuller 和 format（后跟指定格式）
+git reflog			可以查看所有分支的所有操作记录（）,包含已删除的commit记录
+git reset HEAD^		撤销变更
+git reset HEAD file		取消缓存
+git revert HEAD^		远程仓库撤销变更
+git reset --hard [commit id]	回滚六位id的版本
+//git reset --hard		当前HEAD
+git branch			命令查看当前分支 ，-v显示当前分支指向的HEAD --merged和--no-merged表示分支是否被合并
+git branch  name             创建名为name的分支
+git branch -d name         删除分支
+git branch -f name HEAD~<num>	强制将分支name指向HEAD~<num>
+git branch -u o/main name 		绑定分支name，追踪远程分支o/main
+git tag name HEAD 	创建名为name的标签，并永久固定在该HEAD头上
+git tag			列出标签
+git tag -l "v1.4.5*"		筛选标签
+git tag -a v1.2 -m ""	创建附注标签
+git tag -a v1.2 9fceb02	后期添加标签
+git checkout name		转到名为name的分支
+//git checkout main		转到主支
+git checkout -b name	创建并转到名为name的分支
+git checkout -b name o/main  	创建并转到名为name的分支，并追踪远程分支o/main
+git checkout name^		在该分支上移一次提交记录
+git checkout name^^		在该分支上移两次提交记录
+git checkout name~<num>	在该分支上移多次提交记录
+git checkout HEAD^		在当前HEAD上移一次提交记录
+git checkout HEAD~<num>	在当前HEAD上移多次提交记录
+git merge name               合并name分支到当前位置，如果在该分支内表示更新分支
+git merge --abort		取消合并
+git mergetool		启动一个合适的可视化合并工具
+git rebase name		提交并合并到name分支，如果在该分支内表示更新分支,
+git rebase name1 name2	快速前进，把name2合并到name1上
+git rebase -i HEAD		打开ui编辑需要复制的提交记录
+git cherry-pick <提交号>...	将一些提交复制到当前所在的位置（HEAD）下面
+cat .git/HEAD 		查看当前HEAD头指向那个
+git describe HEAD||name	输出该头或分支最近的标签tag-标签到该头的提交数-g头的哈希值或分支名
+git clone [url]		建立远程仓库，在真实的环境下的作用是在本地创建一个远程仓库的拷贝（比如从 github.com）
+git remote 			
+git fetch 			从远程仓库下载数据，并更新本体仓库o/main分支的提交 ，不会改变本地main 
+git pull 			git fetch 和git merge 的集合，下载远程仓库数据并合并到main上  
+git pull --rebase        	git fetch 和git rebase 的集合     	
+git push<remote><place>	提交本地更新到远程仓库，并更新本地o/main的状态,
+						remote :远程库一般为origin 
+						place：指需要上传的位置   <source>:<destination>
+								source: 表示本地仓库的位置， 为空时会删除远程的destination分支，在fetch内则是创建一个新destination分支
+								destination：表示远程仓库的位置，为空时则在会自动创建一个source分支
+git push origin v1.2	共享标签
+git push origin --tags 	共享所有没有的标签
+git config --global		全局配置
+git config --list		获取所有配置
+git config --global alias.name command    	配置命令别名
+				

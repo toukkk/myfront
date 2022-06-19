@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div id="class" class="background" 
+        :class="[{color:isColor , 'font-size':isFont} , isColor?isText:'' , kuangao]">
+        绑定样式class
+    </div>
+    <div id="style" style="width:300px;"
+        :style="[mystyle , {'line-height':linesize , display:['-webkit-box' , '-ms-flexbox' , 'flex']}]">
+        绑定内联样式class
+    </div>
+</body>
+
+</html>
+<style>
+    .background {
+        background-color: red;
+    }
+
+    .color {
+        color: aliceblue;
+    }
+
+    .font-size {
+        font-size: 300%;
+    }
+
+    .text {
+        text-align: center;
+    }
+
+    .width {
+        width: 300px;
+    }
+
+    .height {
+        height: 300px;
+        line-height: 200px;
+    }
+</style>
+<script>
+    //绑定 HTML Class
+    var vm = new Vue({
+        el: '#class',               //指向元素id要带#井号键
+        data: {                     //绑定class不影响自身的class属性
+            isColor: true,          //对象语法，即{color:iscolor}，可与数组语法组合写
+            isFont: true,           //对象语法中class类有- 需要加引号，即{'font-size':isfont}
+            isText: "text"          //数组语法，即[istext,..],数组语法的元素也写成三元表达式iscolor ? istext : ''
+        },
+        computed: {                 //计算属性
+            kuangao: function () {  //getter函数，默认
+                return {            //返回对象；
+                    width: this.isColor && this.isFont,
+                    height: this.isText ? true : false
+                };
+            }
+        }
+    });
+    //绑定内联样式
+    var vmStyle = new Vue({
+        el: '#style',
+        data: {
+            mystyle: {              //内联数组语法，可以将多个样式对象应用到同一个元素上,即[mystyle,..]
+                background: 'blue',
+                color: 'red',
+                fontSize: '200%',
+                textAlign: 'center'
+            },
+            linesize: '300px',       //内联对象语法，即{'line-height':linesize+'px'}
+        }
+    });
+</script>

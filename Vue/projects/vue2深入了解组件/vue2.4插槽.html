@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="C:\Users\82461\Desktop\Front end\Vue\vue.js"></script>
+</head>
+
+<body>
+    <div>
+        <base-slot val="4">
+            <h3>插槽内容,可以是text、html、component等,插槽的作用域是组件根元素的作用域</h3>
+            这是文本
+            <p>这是html,输出根元素attribute: {{val}}</p>
+            <component-div-slot></component-div-slot>
+            <component-div-nameslot>
+                <template #header>
+                    <P>简写v-slot,对应name为header的插槽,v-slot指令需要放在template标签内</P>
+                </template>
+                <template #default="slotProps">
+                    <P>简写v-slot,对应默认name为default的插槽,slotProps(所有插槽 prop 的对象).props(绑定的user).title输出：{{slotProps.props.title}}</P>
+                </template>
+                <template #footer>
+                    <P>简写v-slot,对应name为footer的插槽</P>
+                </template>
+                <!-- <template slot='footer' slot-scope="{props}">
+                    <h4>废弃语法slot和slot-scope</h4>
+                    <P>简写v-slot,对应name为footer的插槽</P>
+                    <p>slot-scope语法不只限定在template标签中,输出：{{props.title}}</p>
+                </template> -->
+            </component-div-nameslot>
+            <component-div-nameslot v-slot="slotProps">
+                <p>独占默认插槽的缩写语法,main标签上输出: {{slotProps.props.title}}</p>
+                <p>默认插槽的缩写语法不能和具名插槽混用，因为它会导致作用域不明确,多个插槽时请始终为所有的插槽使用完整</p>
+            </component-div-nameslot>
+        </base-slot>
+    </div>
+
+</body>
+
+</html>
+
+<script>
+    Vue.component("base-slot", {
+        props:['val'],
+        data(){
+            return{
+                msg:12,
+            };
+        },
+        template: `<div><h1>组件标题</h1><p>组件内容{{val}}{{msg}}</p><slot><p>插槽备用内容</p></slot></div>`
+    })
+    var vm = new Vue({
+        el: 'div',
+        data: {
+            val:5,
+        },
+        components:{
+            'component-div-slot':{
+                template:`<p>这是组件，这里驼峰命名法无效</p>`,
+            },
+            'component-div-nameslot':{
+                data(){
+                    return{
+                        user:{
+                            name:'zhang',
+                            title:'name',
+                            id:100
+                        }
+                    };
+                },
+                template:`<div><h3>具名插槽,未带名字属性的slot标签默认带default的属性</h3>
+                        <header><slot name="header"></slot></header>
+                        <main><slot name="default" :props='user'>插槽备用内容可以直接用组件数据{{user.id}}</slot></main>
+                        <footer><slot name="footer"></slot></footer>
+                        </div>`,
+            },
+        },
+    });
+</script>

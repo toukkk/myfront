@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+    <h1 id="h1">CSS text-align 实例,加阴影</h1>
+
+    <h5 class="date">文本划线</h5>
+    <h2>有上划线的标题</h2>
+    <h3>有删除线的标题</h3>
+    <h4>有下划线的标题</h4>
+
+    <h5>靠右对齐时间</h5>
+    <p class="date">2015 年 3 月 14 号</p>
+
+    <h5>预设格式，标准行高，文本左右对齐</h5>
+    <div class="pre">
+        <h5>标准行高</h5>
+        <p class="main">“当我年轻的时候，我梦想改变这个世界；
+            当我成熟以后，我发现我不能够改变这个世界，
+            我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，
+            我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下
+            我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，
+            我突然意识到：如果一开始我仅仅去改变我自己，然后，
+            我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家
+            做一些事情；然后，谁知道呢?我甚至可能改变这个世界。”
+        </p>
+    </div>
+
+</body>
+
+</html>
+
+<style>
+    .hilite {
+        color: rgb(165, 42, 42);
+    }
+
+    /* .main{
+        color: rgb(165, 42, 42);
+    } */
+</style>
+
+<script>
+    var h1 = document.getElementById("h1")          //从文档里获取id为h1的元素赋值给h1
+    var h5 = document.getElementsByTagName("h5")    //从文档里获取元素名为h5的元素赋值给h5，为一个数组
+    // console.log(!![]) [ document1,document1] 
+    console.log(h5)                                 //输出h5数组
+    function hide(e, reflow) {                      //定义两个参数的函数
+        if (reflow) {                               //如果第二个参数为真，则
+            e.style.display = "none";               //第一参数e元素的display赋值为none
+        }
+        else {
+            e.style.visibility = "hidden";          //false则，将e元素的visibility赋值为hidden
+        }
+    }
+    hide(h1, h5)                                    //运行函数
+    function highlight(e) {                         
+        var i;                                      //定义变量i
+        for (i = 0; i < h5.length; i++) {                   //当i<4时，i循环后自增，
+            if (!e[i].className) {                  //e元素没有类名class时。则
+                e[i].className = "hilite";          //添加有hilite的类的类名class=""
+            }
+            else {
+                e[i].className += " hilite";        //反之则，在原有的类名上加一个 hilite
+            }
+        }
+
+    }
+    highlight(h5)                                   //运行函数
+</script>

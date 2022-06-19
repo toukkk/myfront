@@ -1,0 +1,159 @@
+html{
+    width:50%;
+    margin:0 auto;
+}
+h1{
+    text-align: center;
+    color:red;
+    text-shadow:2px 3px 1px rgb(199, 57, 57);
+}
+h2{
+    text-align: center;
+    color:blueviolet;
+}
+.dropdown{
+    /* position:relative; */
+    display:inline-block;
+}
+/* 容器div 定位下拉内容 */
+/* .button{
+    background-color: green;
+    padding:30px;
+    font-size: 150%;
+    margin:0;
+    cursor: pointer;
+    color:white;
+} */
+/* 下拉按钮样式 */
+.button{
+    background-color: green;
+    cursor: pointer;
+    padding:12px;
+    color:white;
+    border:none;
+}
+.button-form{
+    box-shadow:0px 8px 16px 0px rgba(0,0,0,0.2);
+    position:absolute;
+    background-color:aqua;
+    min-width:100px;
+    display:none;
+}
+/* 下拉内容，隐藏 */
+.button-form a{
+    text-decoration: none;
+    display:block;
+    color:black;
+    padding:10px 0 10px 10px;
+}
+/* 下拉内容链接样式 */
+.button-form a:hover {
+    background-color: #f1f1f1
+}
+/* 下拉链接悬停时背景色 */
+.dropdown:hover .button-form {
+    display:block;
+}
+/* 在鼠标移上去后显示下拉菜单 */
+.dropdown:hover .button {
+    background-color: #3e8e41;
+}
+/* 下拉链接悬停时按钮的背景色 */
+.text p {
+    text-align: center;
+    background-color: aquamarine;
+    margin:0;
+    padding:10px;
+}
+
+.nav {
+    list-style-type:none;
+    overflow:hidden;
+    margin:0;
+    padding:0;
+    background-color: black;
+}
+.nav li {
+    float:left;
+    width:6em;
+    /* background-color: rgb(165, 125, 125); */
+}
+.nav a {
+    color:white;
+    text-decoration:none;
+    display:block;
+    text-align: center;
+    padding:10px;
+}
+.dropdown img {
+    padding:5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

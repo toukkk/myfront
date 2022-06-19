@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    var x1 = Infinity;
+    console.log("x1: ",x1)
+    var x2 = Number.POSITIVE_INFINITY;
+    console.log("x2: ",x2)
+    var x3 = 1 / 0;
+    console.log("x3: ",x3)
+    var x4 = Number.MAX_VALUE;
+    console.log("x4:",x4)     //IEEE 754 标准规定: 只有大于等于1.7976931348623158e+308的数才会被 round 到 Infinity. 而 Number.MAX_VALUE 才是1.7976931348623157e+308
+    var x5 = Number.NEGATIVE_INFINITY;
+    console.log("x5: ",x5)
+    var x6 = -Infinity;
+    console.log("x6: ",x6)
+    var x7 = -1 / 0;
+    console.log("x7: ",x7)
+    var x8 = Number.MAX_VALUE - 1;
+    console.log("x8: ",x8)
+    var x9 = NaN;
+    console.log("x9: ",x9)
+    var x10 = Number.NaN;
+    console.log("x10: ",x10)
+    var x11 = 0 / 0;
+    console.log("x11: ",x11)
+    var x12 = Number.MIN_VALUE / 2;
+    console.log("x12: ",x12)
+    var x13 = -Number.MIN_VALUE / 2;
+    console.log("x13: ",x13)
+    var x14 = -1 / Infinity;
+    console.log("x14: ",x14)
+    var x15 = -0;
+    console.log("x15: ",x15)
+    console.log("")
+    
+    var x=0; var y=-0;
+    console.log("x16: ",x===y)      //0与-0 相等
+    console.log("x17: ",1/x===1/y)  //正无穷与负无穷不等
+    console.log("")
+    
+    var test1 = 1;
+    var test2 = "1";
+    console.log("==: ",test1==test2)        //==表示内容相等
+    console.log("===: ",test1===test2)      //===表示不仅内容要等，类型也要等
+    console.log("")
+    
+    var a=.3-.2;                        //二进制四舍五入错误
+    var b=.2-.1;
+    console.log("x18: ",a)
+    console.log("x19: ",b)
+    console.log("x20: ",.3)
+    console.log("x21: ",.2)
+    console.log("x21: ",.1)
+
+    var x=this;
+    console.log("this: ",x)
+    console.log("")
+
+    var i=0;
+    // console.log(i++)
+    console.log("x22: ",++i)
+    console.log("x23: ",4/2)
+    console.log("")
+    
+    console.log("x24: ",1+2+"eok")      //加法的运算顺序对结果的影响
+    console.log("x24: ",1+(2+"eok"))
+</script>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script src="./scripts/Range.js"></script>
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    //给Range类添加比较方法
+    Range.prototype.constructor = Range;
+    Range.prototype.equals = function (that) {
+        if (that == null) return false;                             //处理null和undefined
+        if (this.constructor !== that.constructor) return false;    //比较构造函数是否相等
+        return this.from === that.from && this.to === that.to;      //再是内容,返回对错
+    };
+    //给Range类添加比较下边界方法
+    Range.prototype.compareTo = function (that) {                       //没有对that类型判定
+        return this.from - that.from;                                 //返回大小
+    };
+    //重新定义compareTo方法
+    Range.prototype.compareTo = function (that) {                       //没有对that类型判定
+        if (!(that instanceof Range))                                   //参数类型判断
+            throw TypeError("Can't Range");
+        var diff = this.from - that.from;                               //比较下边界
+        if (diff == 0) diff = this.to - that.to;                        //比较上边界
+        return diff;                                                    //返回大小
+    };
+    //用于对象排序
+    ranges.sort(function (a, b) { return a.compareTo(b); });
+    //或者
+    Range.byLowerBound = function (a, b) { return a.compareTo(b); };
+    ranges.sort(Range.byLowerBound);
+</script>

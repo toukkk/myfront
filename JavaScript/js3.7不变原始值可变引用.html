@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    var x=[],y=[];
+    console.log("false: ",x==y)         //两个单独的对象，数组用不相等。
+    console.log("")
+    var a=[];                           //定义一个引用[]数组的变量a
+    var b=a;                            //b也引用了同一数组
+    b[0]=1;
+    console.log("a: " ,a[0])            //变量啊也被修改
+    console.log("true: ",a===b)         //a与b引用同一数组，因此它们相等
+    console.log("")
+
+
+    var a=["a","b","c"];
+    var b=[];
+    for(var i=0;i<a.length;i++){
+        b[i]=a[i];
+    }
+    console.log("false: ",a===b)        //b数组通过循环完成了a[]数组的复制，所以a不等于b
+    console.log("")
+    
+    var a=["a","b","c"];
+    var b=["a","b","c"];
+    function ab(a,b){                   //定义一个函数确定两个数组比较，输出结果表示比较结果
+        if(a.length!=b.length){        
+            return false;
+        }
+        else{
+            for(var i=0;i<a.length;i++){
+                if(a[i]!==b[i]){
+                    return false;
+                }
+            }
+        return true;}
+    }
+    console.log("a: ",a)
+    console.log("b: ",b)
+    console.log("hanshu : ",ab(a,b))
+    console.log("")
+    
+</script>

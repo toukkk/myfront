@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+
+</html>
+
+<script>
+    var scope = "global scope";
+    function checkscope() {
+        var scope = "local scope";
+        function f() {
+            return scope;
+        }
+        return f;
+    }
+    console.log("scope: ", checkscope()());      //输出：local scope，checkscope()将函数f提出，然后运行f(),其变量还是局部的
+    console.log("");
+    //重新定义函数uniqueInteger(),使之形成闭包--
+    var uniqueInteger = (function () {          //定义一个即刻调用的函数将返回值的函数赋值给变量
+        var counter = 0;                        //这个变量就变成了私有的局部变量
+        return function () {                    //嵌套函数也可以调用外函数的变量
+            return counter++;
+        };
+    }());                                       //形成一个闭包
+    //同一函数可以多次调用，每次调用都会创建新的作用域链和新的私有变量，与对象的引用不同
+    function counter() {
+        var n = 0;                              //函数的私有变量
+        return {                                //输出对象
+            count: function () { return n++; },     //定义对象方法
+            reset: function () { return n = 0; }
+        };
+    }
+    var counter1 = counter(), counter2 = counter();     //两次调用函数                  相当于var n = 0；counter1 = {count: function () { return n++; }, 
+    console.log("counter1.count(): ", counter1.count()); //输出：0                                                   reset: function () { return n = 0;} }
+    console.log("counter2.count(): ", counter2.count()); //输出：0                                       
+    console.log("counter1.reset(): ", counter1.reset()); //重置了对象1 的变量n值
+    console.log("counter1.count(): ", counter1.count()); //输出：0
+    console.log("counter2.count(): ", counter2.count()); //输出：1，对象2没有重置
+    console.log("");
+    //重新定义属性存取器方法getter和setter的代码，利用闭包实现私有状态
+    function counter_n(n) {                                 //未声明局部变量仅以参数n来保留私有状态
+        return {
+            get count() { return n++; },
+            set count(m) {
+                if (m >= n) n = m;
+                else throw Error("xinzhitaixiao")
+            }
+        };
+    }
+    var counter3 = counter_n(1000);                         //设置初始n值
+    console.log("counter3.count: ", counter3.count);        //输出：1000                                                   reset: function () { return n = 0;} }
+    console.log("counter3.count: ", counter3.count);        //输出：1001     
+    counter3.count = 2000                                   //输入m的值为2000
+    console.log("counter3.count: ", counter3.count);        //输出：2000，所以n=m
+    //console.log("counter3.count: ", counter3.count = 2000); //输出：Error，2000<2001
+    console.log("");
+        //8.4例利用闭包实现的私有属性存取器方法-----
+        function addPrivateProperty(o, name, predicate) {
+        var value;
+        o["get" + name] = function () { return value; };                //增加属性存取器方法o.getname()
+        o["set" + name] = function (v) {                                //增加属性存取器方法o.setname()
+            if (predicate && !pedicate(v)) {                           //输入设置值v要为字符串
+                throw Error("set" + name + ":invalid value" + v);
+            }
+            else value = v;                                             //赋值给属性值
+        }
+    }
+    var o = {};
+    addPrivateProperty(o, "name", function (x) { return typeof x === "string"; })
+    o.setname("frank");
+    console.log("o: ", o);
+    console.log("o.getname(): ", o.getname());
+    console.log(!!(function (x) { return typeof x === "string"; }));    //输出：true
+
+    function constfuncs() {
+        var funcs = [];
+        for (var i = 0; i < 10; i++) {               //for循环创建了十个闭包并存储在同一数组中，这些闭包都是同一函数内定义的，所以共享私有变量
+            funcs[i] = function () { return i; };    //所以嵌套函数的返回值i都是同一个值10
+        }                                            //关联到闭包的作用域链都是"活动的"。
+        return funcs;
+    }
+    console.log(constfuncs()[5]);                    //输出：ƒ () { return i; }
+    console.log(constfuncs()[5]());                  //输出：10
+
+
+</script>

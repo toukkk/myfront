@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/inherit.js"></script>
+    <script src="./scripts/Fun_extend.js"></script>
+    <script src="./scripts/Set.js"></script> -->
+
+
+</head>
+
+<body>
+
+    <div>javascript</div>
+    <button type="button" id="timestemp"></button>
+    <div class="reveal">
+        <h1 class="handle">Click Here to Reveal Hidden Text</h1>
+        <p>This paragraph is hidden ,It appears when you click on the title.</p>
+    </div>
+
+</body>
+
+
+</html>
+
+<style>
+    .reveal * {
+        display: none;
+    }
+
+    .reveal *.handle {
+        display: block;
+    }
+</style>
+<script>
+    // window.location = "http://www.oreilly.com";                  //页面运行时跳转网址
+    setTimeout(function () { alert("hello wrold"); }, 2000);        //窗口在2000毫秒后弹出带信息的对话框
+    var timestemp = document.getElementById("timestemp");           //提取文档的特定id元素对象
+    if (timestemp.firstChild == null)                               //如果该元素没有内容
+        timestemp.appendChild(document.createTextNode(new Date().toString()));      //插入时间文本
+    timestemp.style.background = "yellow";                          //每个元素对象都有style和className属性
+    timestemp.className = "highlight";
+    timestemp.onclick = function () { this.innerHTML = new Date().toString(); };    //添加点击事件，更新初始值时间
+    //例13-1显示内容的简单客户端js
+    window.onload = function () {                                   //文档加载完后运行的方法内的代码
+        var elements = document.getElementsByClassName("reveal");
+        console.log("elements: ",elements)
+        for (var i = 0; i < elements.length; i++) {
+            var ele = elements[i];
+            console.log("ele: ",ele);
+            var title = document.getElementsByClassName("handle")[0];
+            console.log("title: ",title)
+            addRevealHandler(title, ele);
+            function addRevealHandler(x, y) {
+                x.onclick = function () {
+                    if (y.className == "reveal")
+                        y.className = "revealed";
+                    else if (y.className == "revealed")
+                        y.className = "reveal";
+                }
+            }
+        }
+    };
+</script>

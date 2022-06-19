@@ -1,0 +1,264 @@
+1.<!DOCTYPE HTML>:声明html5文档
+2.<head>:头部元素
+     <meta>:元
+        http-equiv="refresh"：刷新速度      eg:<meta http-equiv="refresh" content="30">
+        name:
+             keywords:关键字   description：页面描述    author：作者     content="":前属性内容
+        content：集合
+        charset: 声明编码                   eg：<meta charset="utf-8">(中文网页需要) 或 <meta charset="gbk">(有些浏览器(如 360 浏览器)会设置 GBK 为默认编码）
+    <title>:文档的标题                      eg：<title>第一节</title>
+    <base>: 默认链接                        eg: <base href="https://www.baidu.com/images" target="_blank">
+    <link>: 外部链接                        eg:  <link href="./text1.css" rel="stylesheet">
+    <script>；
+3.<body>:可见页面内容
+    class:  一类或多类名                    eg：class="name"
+    id：    唯一id                          eg：id="zpl"
+    style:  元素行内样式
+    title:  元素额外信息                    eg: <abbr title="etcetera">etc.</abbr>
+4.<a>:超链接
+    href:   链接                           eg: <a href="www.baidu.com">
+            可访问id及其他页面id            eg: <a href="https://www.runoob.com/html/html-links.html#tips">
+    id:     唯一id                         eg: <a id="text">
+    target: 链接打开位置                    eg：_blank打开新链接，_top取代与界面，_self界面内打开
+    title:  鼠标悬停时提示
+5.<img>:图片
+    <figure>：独立内容，常用于引用图片，插图，表格，代码
+        <figcaption>: 配合<figure>使用，说明    eg: <figure> <img src="/media/cc0-images/elephant-660-480.jpg" alt="Elephant at sunset"> <figcaption> An elephant at sunset </figcaption> </figure>
+    src（source）:   位置                   eg:  <img src="C:\Users\peiliang\Pictures\Camera Roll\v2-8743affe18dd7e689b351fe4e09e7230_b.jpg"/>
+    alt:   预备的可用于替换的文本 
+    height:高度                   一般使用css进行调整
+    width: 宽度
+    usemap:用图像地图                       eg:  <img src="planets.gif" width="200" height="200" alt="planets" usemap="#planetmap">
+    border:边框宽度
+    style:                                  eg:  <img src="C:\Users\peiliang\Desktop/3.jpeg" alt="3" width="70" height="70" style="float:left">
+6.<table>:表格
+    <thead>:     因为它通常代表第一行，第一行中往往都是每列的标题  
+    <tfoot>:     放置在底部 (页脚)的位置，一般是最后一行，往往是对前面所有行的总结
+    <tbody>:     需要嵌套在 table 元素中，放置在 <thead>的下面或者是 <tfoot> 的下面，这取决于你如何设计你的结构。
+        <th>:    表格的表头
+            <scope>:  表格关联      col:关联一列   row:关联一行   eg:   <th scope="col">Purchase</th>       方便屏幕阅读器识别
+            id：      给HTML表格中每个单元格的位置一个明确的定义
+        <td>:    表格单元
+            headers:  给HTML表格中每个单元格的位置一个明确的定义
+        <tr>：   表格得行
+        <caption>:    表格名字                eg:   <caption>表一水平标题：</caption>
+        <colgroup>:  
+            <col>:    定义每一列样式，每列要一个     eg;   <colgroup> <col> <col style="background-color: yellow"> </colgroup>     
+                span:                        eg:<col span="6">表示定义了6行。
+        width:表宽  height:表高  cellspacion:单元格间距   cellpaddinh:  border:框宽   colspan:占用和表格行数  rowspan:占用表格列数  vertion-align:top   对其顶端
+7.<ul>: 无序列表
+    style="list-style-tpye:" ：选择列表标记
+    <ol>:   有序列表                          eg:<ol start="4" reversed>
+        type="a#1#i#A"  :序号类型
+        start: 从任意序号开始       reversed:  开启倒数 
+    <dl>：  自定义列表
+    <dt>:   列表项目
+    <dd>：  列表项描述内容   一个<dt>可以有多个<dd>
+    <li>: 
+        value:  自定义列表序号                 eg: <li value="4">    
+8.<form>：  定义表单
+    action:  发送到                             eg:  <form action="MAILTO:824618906@qq.com" method="post" enctype="text/plain"> 
+    method:  发送方法                           eg:  method="post"
+    enctype:  编码方式                          eg: enctype="text/plain"
+    <fieldset>:  定义了一组相关的表单元素，并使用外框包含起来
+        <legend>:  定义fieldset的标题           eg:            <fieldset style="width:50%;"> <legend>这是一份调查表:</legend>
+    <input>:   输入
+        type;  text:文本  radio:单选  checkbox:复选   submit:发送  reset:重置   botton:按钮  password:密码  disabled: 表示表单不可用 search：搜索
+        name:  value:  checked:预选项   size: 字节长度   
+        radio类型的name属性表示同一组互斥选项
+    <select>:  设置下拉列表
+        <optgrounp>:  设置选项组                eg:   <optgroup label="Swedish Cars">
+        <option>:     下拉列表的选项
+            select:预选   value: 
+    <textarwa>:  文本域
+    <button>:    定义一个按钮                   eg:  <botton type="button" onclick="alert('叫你点你就点,傻逼')">点我!傻逼</botton>
+        type:    onclick:点击按钮时选中它
+9.<iframe>:  一个内联的iframe   
+    frameborder:  边框
+    src: 导向位置  name:iframe命名   width;  height:  
+    allowfullscreen: 全屏模式 
+    sandbox：沙盒        一个允许包含在其里的代码以适当的方式执行或者用于测试，但不能对其他代码库（意外或恶意）造成任何损害的容器称为沙盒
+10.<video>:  视频
+    src:     地址       controls:用户控制视频和音频的回放功能       eg；<video src="rabbit320.webm" controls>
+    autoplay:   自动播放    loop:  循环播放    muted:  默认关闭声音     poster:  指向一个图像url,视频播放前的图像    
+    preload: 用于文件大的缓存   
+        none:     不缓存
+        auto:     缓存视频文件
+        metadata: 仅缓存文件元数据
+    <track>: 用于<video><audio>的指定时序文本字幕
+        default: 该属性定义了该 track 应该启用,每个媒体文件只有一个track内可以有该属性。
+        kind：   用来指明是哪一种类型
+            subtitles(默认):    添加字幕
+            captions:           同步翻译
+            timed descriptions: 文字转音频
+        srclang: track 文本数据的语言
+        src:     指向字幕文件
+        lable：  当列出可用的 text tracks 时，给浏览器使用的 text track 的标题
+11.<audio>: 音频      与<audio>几乎相同，仅poster,width,height属性不可用
+12.<h1-6>:  标题                              eg：<h1>第一个标题</h1>
+13.<p>:     段落                              eg：<p>第一段</p> 
+14.<br>:    换行                              eg： <p>第二段<br>第一行<br>第二行</p>
+15.<!-- 这是一个注释 --> 
+16.<hr>:    水平线
+17.<div>:
+    styyle: width:宽 height; 高  background-color：背景色  marin-bottom: 框下距  float：浮动方向   text-align：文本对齐
+    <span>: 设置文本内格式
+18.<style>: 文本形式设置       每个设置结束之后都要用；结束
+    color:  字体颜色
+    background-color:  背景颜色   有三种设置方式background-color:#FFFF00,background-color:rgb(255,255,0)background-color:yellow
+      rgba:   可设置颜色和透明度
+    font-family:       字体
+    font-size:         字体大小
+    text-decoration:   下划线
+    text-align：       文本对齐方式   可直接对文本对齐也可对div框内内容对齐   eg：<div style="text-align: center;">
+19.<map>:图像地图                               eg;  <area shape="rect" coords="0,0,250,80" alt="1" href="C:\Users\peiliang\Desktop/1.jpeg">
+    <area>	 定义图像地图中的可点击区域      
+    name:    地图名字唯一 引用用#
+    shape:   形状
+    coords:  坐标   矩形rect为左上右下顶点坐标，圆circle为圆心坐标加半经，多边形poly为依次个顶点坐标
+    href；   转出位置
+20.<time>:    时间                              eg：<time datetime="19:30:01.856">19:30:01.856</time>
+21.<script>:  客户端脚本
+    <noscript>: 浏览器不支持时显示
+22.scheme : 因特网服务的类型。最常见的类型是 http
+        http:	超文本传输协议	    以 http:// 开头的普通网页。不加密。
+        https:	安全超文本传输协议	安全网页，加密所有信息交换。
+        ftp:	文件传输协议	    用于将文件下载或上传至网站。
+        file:	 	               您计算机上的文件。
+    host:   主机（http 的默认主机是 www）
+    domain: 因特网域名，比如 baidu.com
+    :port : 主机上的端口号（http 的默认端口号是 80）
+    path:   服务器上的路径（如果省略，则文档必须位于网站的根目录中）。
+    filename: 文档/资源的名称
+23.文本格式化
+    1.文本格式化标签  
+      <b>：     定义粗体文本
+      <em>：    定义着重文字
+      <i>：     定义斜体字
+      <small>： 定义小号字
+      <strong>: 定义加重语气
+      <sub>：	定义下标字
+      <sup>:    定义上标字
+      <ins>:	定义插入字
+      <del>:	定义删除字
+    2.计算机输出标签
+      <code>:   定义计算机代码                  eg:  <code>&lt;font&gt;</code> 
+      <kbd>:	定义键盘码
+      <samp>:	定义计算机代码样本
+      <var>:	定义变量
+      <pre>:	定义预格式文本
+    3.引用标签
+      <abbr>：	 缩写，鼠标在上时出现全意        eg：<p>我们使用 <abbr title="超文本标记语言（Hyper text Markup Language）">HTML</abbr> 来组织网页文档。</p>
+      <acronym>: 首字缩写
+      <address>：定义地址,为了标记编写HTML文档的人的联系方式，而不是任何其他的内容。
+      <bdo>：	 定义文字方向
+      <blockquote>：定义长的引用
+      <q>：     定义短的引用语
+      <cite>：	定义引用、引证
+      <dfn>：	定义一个定义项目
+24.<div><p><h1>等都是元素的一类
+25.所有元素都需闭合
+26.../引入上一列表 ,./引入当前目录
+27.静动态图连接语法一致
+28.驼峰命名法：  第一个字母取小写，其他首字母大写   eg:document.getElementById("demo").innerHTML="Hello javascript!";
+29.都是以<html><head><title><body><style><script>为开始，</html></head></title></body></style></script>为结束，成对出现
+30.HTML是将页面分成一个个逻辑块区域，然后使用元素标签将图片，文本，影像等内容嵌入其中，形成一个可视化的界面。
+    该过程是将HTML页面结构化代入元素，又将元素结构化代入内容。像报纸一样
+31.head内包含元数据(描述数据的数据)，其中包含例如面向搜索引擎的搜索关键字（keywords）、页面描述、CSS 样式表和字符编码声明等。、作者等。
+    部分网页链接可以显示元数据内容。元数据描述得越准确，HTML文档就会被搜索引擎更有效地索
+32.HTML是一种标记语言，用来告诉浏览器如何排版页面。
+33.块级元素可以嵌套在块级元素中但不能嵌套在内联元素中，内联元素主要有超链接<a>或强调元素<em><b><strong><sup><span>等中。
+34.<html>元素包含整个网页，<head>元素包含你不想出现在页面上，但能出现在所搜结果上的内容。utf-8字集编码包含了人类大部分文字。
+35.CSS能够让HTML页面样式更多，颜色更加绚丽看起来更好看，JavaScript则让网页多了与用户互动的空间，进行更加多样化的选择以及更多的功能。
+36.lang属性能在<html>元素中设定站点的语言，  eg:<html lang="zh-CN">
+37.在建立<h>标题时，尽可能按照大小正常嵌套，如打乱顺序或使用过多级标题则会降低阅读感。
+38.网址（URL）可以指向网址，HTML文件，文本文件，图像，视频文件以及网络上保存的任何文件，和本地保存的任意文件。
+                                                           index-html（主页或登录界面）
+39.creating-hyperlinks（网站根目录）{contacts-html（）                                                                      }
+                                    pdfs {project-brief.pdf（包含PDF文件）}                                         
+                                    projects{index-html（可能是项目相关信息的主登录界面） }
+40.所有网页的结构外观都遵循一定的标准组件（像游戏，艺术界面，全屏视频除外）。页眉：<header> 通常在整个页面顶端的一个标题或者标签。
+                                                                         导航栏：<nav> 有指向网站的各个主要地方的超链接，处于页面位置所有网站具有共同性。
+                                                                         主内容：<main> 网页主要信息。
+                                                                         侧边栏：<aside>经常嵌套在<main>中使用， 一些辅助系统，次要相关链接，广告，外围信息等。
+                                                                         页脚：<footer> 页脚是放置公共信息（比如版权声明或联系方式）的，一般使用较小字体，通常为次要内容 
+41.规划一个建议网站步骤：1：构思页面结构草图，记录每一块区域作用及需要填充的内容。
+                                          2：找出大多数页面都要用到的通用内容，如：页眉，页脚或者像导航栏等。
+                                          3：列出所有要表达的内容进行分类（可以按页面需求分类），将类与单独的页面联系起来。
+                                          4：建立页面与页面之间的联系，形成一个以主界面为中心的网，可将其两者之间的链接显示方式写出来。
+42.相对路劲有时比绝对路径更加方便。比如HTML页面同路径的文件夹上<img src="./dinosaur.jpg">
+43.<img>,<video> 有时被称为替换元素，其元素内容由外部资源所定义。
+44.不要在页面上随意使用图片，大部分图片都是有版权的，如使用则：1，你是图片版权所有者。 
+                                                           2，你有版权所有者明确的书面使用授权。 
+                                                           3，你有证据证明该图片是公共领域的。
+    为了降低盗版风险，可以使用“Google 许可证过滤器”。点击“工具”按钮，然后在使用权限的选项下选择类似“标记为可再利用”的选项。                                   
+45.<alt>元素本质上，关键在于在图片无法被看见时也提供一个可用的体验，这确保了所有人都不会错失一部分内容。
+46.视频应当包含webm和MP4两种格式，这样能够支持大多数平台和浏览器。
+47.单机劫持是一种常见的iframe攻击，黑客将隐藏的iframe嵌入到您的文档中（或将自己的文档嵌入他们的恶意网站），并使用它来捕获用户的交互数据，
+    这是误导用户或窃取敏感数据的常用方式。所以网站建设会设立不允许嵌入到iframe的设置。
+48.在嵌入其他第三方内容是，要考虑它是否安全，在不确定它的安全性前，都可以假设它是不安全的。还有版权问题。
+49.https是http的加密版本:https能减少远程传输内容时被篡改的机会。     最好用https为自己的父文档提供服务。 
+                        https防止嵌入式内容访问自己的父文档的内容，反之亦然。   无论怎样，绝对不要用http嵌入第三方内容。
+50.sanbox属性是一个允许包含在其里的代码以适当的方式执行或者用于测试，但不能对其他代码库（意外或恶意）造成任何损害的容器称为沙盒。
+    不要在iframe中使用sanbox="allow-scripts"和sanbox="allow-same-origin"，这样会导致嵌入式内容可以绕过阻止站点执行脚本的同源安全策略。
+51.绘制草图，在现实的复杂网站中，设计团队往往是首先在纸上画出草稿，然后在图形编辑器中或者使用 Web 技术作出数码模型。
+52.Web 团队通常包括一个图形设计师和 用户体验设计师 。图形设计师的作用很明显是将网页视觉部分组合在一起。
+                                                  用户体验设计师则以一种更抽象的模式来定义用户的浏览和交互。
+53.web文件命名一般都用小写，且空格键用-来代替。因为浏览器、Web 服务器，对大小写的敏感度不一样，还有编程语言处理空格的方式不一致。
+54.网站最基本，最常见的构架为：一个主页index.html:这个文件一般包含主页内容，即用户第一次访问站点时看到的文本和图像。
+                             一个图片文件夹images:这个文件夹包含站点中的所有图像。
+                             一个脚本文件夹scripts:这个文件夹包含提供站点交互功能的 JavaScript 代码（比如读取数据的按钮）。
+                             一个样式文件夹style:这个文件夹包含站点所需样式表（比如，设置文本颜色和背景颜色）。
+                             使用文本编辑器在 test-site 文件夹中新建上述文件夹。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

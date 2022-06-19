@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+
+   <div>javascript</div>
+</body>
+
+</html>
+
+<script>
+    //with语句--------------------------------------------------------------------------------------
+    // document.forms[0].address.value                     从文档在引用该属性
+    // with (document.forms[0]) {                          with语句相当于在将对象document.forms[0]添加到作用域链头部
+    //     name.value = "";                                减少属性名前的引用
+    //     address.value = "";
+    //     email.value = "";
+    // }
+    // var f = document.forms[0];                          不使用with语句时可以用这些代码表示
+    // f.name.value = "";
+    // f.address.value = "";
+    // f.email.value = "";
+    // with (o) {                                          当对象o有属性x时，表示将1赋值给x，如果对象o没有属性x，则相当于定义一个局部变量x=1
+    //     x = 1;
+    // }
+    //dubugger语句----------------------------------------------------------------------------------
+    function f(o) {
+        if (0 == undefined) {
+            debugger;                                       //这一行代码只用于临时调试                                     
+        }
+        ;                                                   //函数其他部分
+    }
+    //"use strict"严格模式--------------------------------------------------------------------------------
+    var hasStrictMode = function () {
+        "use strict";                                      //执行严格模式
+        return this === undefined;                          //判断JavaScript实现是否支持严格模式
+    }
+    console.log(hasStrictMode())
+</script>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <!-- <script src="./scripts/script1.1.js"></script> -->
+</head>
+
+<body>
+
+    <div>javascript</div>
+
+</body>
+
+</html>
+
+<script>
+    //if语句---------------------------------------------------------------------------------
+    function abs1(x) {                    //求绝对值的函数
+        if (x >= 0) {
+            return x;
+        }
+        else {
+            return -x;
+        }
+    }
+    console.log("if: ", abs1(-4));
+    var n = 3, a;
+    if (n == 1) { a = 1; }
+    else if (n == 2) { a = 2; }            //else if 语句可以看作多个if语句嵌套
+    else if (n == 3) { a = 3; }
+    else { a = n }
+    console.log("else_if: ", a);
+    console.log("")
+    //switch语句---------------------------------------------------------------------------------
+    function abs4(n) {                              //定义函数，可以用return替代break
+        switch (typeof n) {                           //switch语句，n的类型
+            case "number":                          //case关键词，匹配后一个操作数，恒等则执行下一条，反之下一个case
+                return n.toString(16);
+            case "string":
+                return '"' + n + '"';
+            default:                                //当上面case都不匹配时，执行default后的代码
+                return String(n);
+        }
+    }
+    console.log("number: ", abs4(534));
+    console.log("string: ", abs4("tftygtyg"));
+    console.log("switch: ", abs4({}));
+    console.log("")
+    //while语句---------------------------------------------------------------------------------
+    function abs2(n) {                    //求阶乘的函数
+        var produst = 1;
+        while (n > 1) {		            //循环
+            produst *= n;                //produst=produst*n
+            n--;
+        }
+        return produst;
+    }
+    console.log("while: ", abs2(4));
+    console.log("")
+
+
+
+
+
+
+    //do/while语句---------------------------------------------------------------------------------
+    function abs2(n) {                    //求阶乘的函数
+        var produst = 1;
+        do {		                      //do/while循环表示先运行一次do{}中的语句
+            produst *= n;
+            n--;
+        }
+        while (n > 0);                      //判定循环是否继续
+        return produst;
+    }
+    console.log("do/while: ", abs2(4));
+    console.log("")
+
+
+
+
+
+
+    //for语句---------------------------------------------------------------------------------
+    function abs3(n) {
+        var i, produst = 1;
+        for (i = 2; i <= n; i++) {             //for循环需要有三步，两个分号
+            produst *= i;
+        }
+        return produst;
+    }
+    console.log("for: ", abs3(5));
+    console.log("")
+    var sum = 0, i = 0, j = 10;
+    for (; i < 9; i++, j--) {
+        sum += i * j;                           //计算用加一数
+    }
+    console.log(sum);
+    console.log(i);
+    console.log(j);
+
+
+
+
+    
+    //for/in语句--------------------------------------------------------------------------------
+    var o = { x: 1, y: 2, z: 3 }, a = [], i = 0;
+    for (a[i++] in o[a[i++]]) {                         //in语句表示依次访问o对象所有的属性名并赋值给a[i++]
+        console.log("a: ",a);                           //不可枚举内置方法或属性
+    }                                                   //in的左操作数通常是变量名，也可以是一个可生产左值的表达式，即可以被赋值。右操作数是计算结果为对象的表达式。
+    console.log("a: ",a);
+</script>

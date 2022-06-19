@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>javascript</title>
+    <script type="text/javascript" src="./scripts/enumeration.js">/*js代码无效*/</script>
+    <script src="./scripts/Keymap.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1 type="button">javascript</h1>
+        <button id="clock" style="padding-left:20px;">东</button>
+    </div>
+
+</body>
+
+</html>
+<script>
+    var key = new Keymap();
+    key.bind("shift_a", f);
+    key.install(document.getElementById("clock"));
+    function f(event,shift_a) {
+        event.target.style.color = "red";
+        alert("你按了" + shift_a + "键");
+    }
+</script>
